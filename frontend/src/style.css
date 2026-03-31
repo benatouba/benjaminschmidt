@@ -1,0 +1,50 @@
+:root {
+  --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-display: "Merriweather", Georgia, serif;
+  --page-text: #0f3039;
+  --page-background: #f6f4ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--page-text);
+  background: var(--page-background);
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: reveal-up 600ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes reveal-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
