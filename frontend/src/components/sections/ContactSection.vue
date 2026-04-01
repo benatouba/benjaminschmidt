@@ -42,6 +42,7 @@ const { t } = useI18n({ useScope: "global" });
               :href="link.href"
               :target="link.href ? '_blank' : undefined"
               :rel="link.href ? 'noreferrer' : undefined"
+              :sublabel="link.sublabel"
               class="link-item"
             >
               <div class="link-icon">
@@ -50,7 +51,7 @@ const { t } = useI18n({ useScope: "global" });
               <div class="link-content">
                 <span class="link-label">{{ link.label }}</span>
                 <span class="link-sublabel">
-                  {{ link.href ? t('contact.openProfile') : t('contact.comingSoon') }}
+                  {{ link.href ? t(link.sublabel) : t('contact.comingSoon') }}
                 </span>
               </div>
               <v-icon
