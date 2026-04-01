@@ -17,23 +17,24 @@ const { t } = useI18n({ useScope: "global" });
 
 <style scoped>
 .footer {
-  border-top: 1px solid rgb(15 76 92 / 13%);
-  padding-block: 1.2rem 1.8rem;
+  border-top: 1px solid var(--border-color);
+  padding-block: 1.5rem 2rem;
+  background: rgba(15, 23, 42, 0.5);
 }
 
 .footer-content {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
 }
 
 .footer-line {
   margin: 0;
-  font-size: 0.9rem;
-  color: rgb(11 45 55 / 88%);
+  font-size: 0.875rem;
+  color: var(--page-text-muted);
 }
 
 .muted {
-  color: rgb(11 45 55 / 65%);
+  color: rgba(148, 163, 184, 0.6);
 }
 </style>

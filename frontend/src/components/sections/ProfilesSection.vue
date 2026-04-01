@@ -11,50 +11,47 @@ const { t } = useI18n({ useScope: "global" });
 </script>
 
 <template>
-  <section id="profiles" class="section-block section-anchor profiles-shell">
+  <section id="profiles" class="section-block section-anchor">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
         <p class="kicker">{{ t("profiles.kicker") }}</p>
         <h2>{{ t("profiles.heading") }}</h2>
       </div>
 
-      <v-row class="mt-1" dense>
-        <v-col
+      <div class="profiles-grid">
+        <article
           v-for="(profile, index) in props.profiles"
           :key="profile.label"
-          cols="12"
-          md="6"
-          class="reveal-up"
+          class="profile-card reveal-up"
           :style="`--delay: ${120 + index * 70}ms`"
         >
-          <v-card class="profile-card h-100" variant="flat">
-            <v-card-item>
-              <template #prepend>
-                <v-avatar color="primary" variant="tonal" size="34">
-                  <v-icon :icon="profile.icon" />
-                </v-avatar>
-              </template>
-              <v-card-title>{{ profile.label }}</v-card-title>
-              <v-card-subtitle>{{ t(`profiles.categories.${profile.category}`) }}</v-card-subtitle>
-            </v-card-item>
-            <v-card-text>
-              <p class="summary">{{ profile.description }}</p>
-            </v-card-text>
-            <v-card-actions>
-              <v-btn
-                :href="profile.href"
-                :disabled="!profile.href"
-                :target="profile.href ? '_blank' : undefined"
-                :rel="profile.href ? 'noreferrer' : undefined"
-                append-icon="mdi-open-in-new"
-                variant="text"
-              >
-                {{ profile.href ? t("profiles.visitProfile") : t("profiles.comingSoon") }}
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
+          <div class="card-header">
+            <div class="card-icon">
+              <v-icon :icon="profile.icon" size="20" />
+            </div>
+            <div class="card-meta">
+              <h3 class="profile-label">{{ profile.label }}</h3>
+              <p class="profile-category">{{ t(`profiles.categories.${profile.category}`) }}</p>
+            </div>
+          </div>
+
+          <p class="profile-description">{{ profile.description }}</p>
+
+          <a
+            v-if="profile.href"
+            :href="profile.href"
+            target="_blank"
+            rel="noreferrer"
+            class="profile-link"
+          >
+            {{ t("profiles.visitProfile") }}
+            <v-icon icon="mdi-arrow-top-right" size="16" />
+          </a>
+          <span v-else class="profile-link disabled">
+            {{ t("profiles.comingSoon") }}
+          </span>
+        </article>
+      </div>
     </v-container>
   </section>
 </template>
@@ -65,37 +62,116 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .section-block {
-  padding-block: clamp(2.2rem, 5vw, 3.8rem);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
 }
 
-.profiles-shell {
-  background:
-    radial-gradient(1200px 220px at -5% -15%, rgb(15 76 92 / 10%), transparent 72%),
-    linear-gradient(180deg, rgb(255 253 247 / 72%), rgb(255 253 247 / 22%));
+.section-heading {
+  margin-bottom: 2rem;
 }
 
 .section-heading h2 {
-  margin: 0.25rem 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
-  color: rgb(8 34 42);
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-text);
 }
 
 .kicker {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: var(--primary);
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
 }
 
 .profile-card {
-  border: 1px solid rgb(15 76 92 / 16%);
-  background: rgb(255 253 247 / 85%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
 }
 
-.summary {
+.profile-card:hover {
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.card-header {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-muted);
+  border-radius: 10px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.card-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-label {
   margin: 0;
-  color: rgb(13 52 63 / 88%);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--page-text);
+}
+
+.profile-category {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--page-text-muted);
+}
+
+.profile-description {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--page-text-muted);
+}
+
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.profile-link:hover {
+  opacity: 0.8;
+}
+
+.profile-link.disabled {
+  color: var(--page-text-muted);
+  cursor: default;
+}
+
+.profile-link.disabled:hover {
+  opacity: 1;
 }
 </style>

@@ -6,17 +6,17 @@ import { md3 } from "vuetify/blueprints";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
 
 const scientificTheme = {
-  dark: false,
+  dark: true,
   colors: {
-    background: "#f6f4ee",
-    surface: "#fffdf7",
-    primary: "#0f4c5c",
-    secondary: "#5a7d7c",
-    accent: "#d98f3d",
-    info: "#1f6feb",
-    success: "#3b7a57",
-    warning: "#b97917",
-    error: "#b23a48",
+    background: "#0f172a",
+    surface: "#1e293b",
+    primary: "#22d3ee",
+    secondary: "#94a3b8",
+    accent: "#22d3ee",
+    info: "#38bdf8",
+    success: "#4ade80",
+    warning: "#fbbf24",
+    error: "#f87171",
   },
 };
 
@@ -37,12 +37,15 @@ export const vuetify = createVuetify({
   },
   defaults: {
     VBtn: {
-      rounded: "pill",
+      rounded: "lg",
       variant: "flat",
     },
     VCard: {
-      rounded: "xl",
-      elevation: 1,
+      rounded: "lg",
+      elevation: 0,
+    },
+    VChip: {
+      rounded: "md",
     },
   },
 });

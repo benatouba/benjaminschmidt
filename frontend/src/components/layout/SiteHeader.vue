@@ -35,46 +35,36 @@ const isActive = (target: string) => {
 
 <template>
   <header class="header-shell">
-    <v-app-bar class="top-bar" elevation="0" color="transparent" height="84">
+    <v-app-bar class="top-bar" elevation="0" color="transparent" height="80">
       <v-container class="header-container px-4 px-sm-6 px-md-8" fluid>
-        <div>
+        <div class="identity">
           <p class="name">{{ props.name }}</p>
           <p class="headline">{{ props.headline }}</p>
         </div>
 
         <div class="nav-area">
           <nav class="nav-links" aria-label="Primary">
-            <v-btn
+            <a
               v-for="item in props.navItems"
               :key="item.to"
-              :to="item.to"
-              :variant="isActive(item.to) ? 'flat' : 'text'"
-              :color="isActive(item.to) ? 'primary' : undefined"
-              class="nav-link"
-              size="small"
+              :href="item.to"
+              :class="['nav-link', { active: isActive(item.to) }]"
+              @click.prevent="$router.push(item.to)"
             >
               {{ t(item.label) }}
-            </v-btn>
+            </a>
           </nav>
 
-          <v-btn-toggle
-            :model-value="locale"
-            class="lang-switcher"
-            density="compact"
-            color="primary"
-            mandatory
-          >
-            <v-btn
+          <div class="lang-switcher">
+            <button
               v-for="loc in locales"
               :key="loc.code"
-              :value="loc.code"
-              size="x-small"
-              variant="text"
+              :class="['lang-btn', { active: locale === loc.code }]"
               @click="setLocale(loc.code)"
             >
               {{ t(`lang.${loc.code}`) }}
-            </v-btn>
-          </v-btn-toggle>
+            </button>
+          </div>
         </div>
       </v-container>
     </v-app-bar>
@@ -86,59 +76,99 @@ const isActive = (target: string) => {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(9px);
 }
 
 .top-bar {
-  border-bottom: 1px solid rgb(15 76 92 / 14%);
-  background: rgb(246 244 238 / 78%);
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(12px) saturate(180%);
 }
 
 .header-container {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+.identity {
+  flex-shrink: 0;
 }
 
 .name {
   margin: 0;
-  font-family: var(--font-display);
   font-size: 1.1rem;
-  letter-spacing: 0.04em;
-  color: rgb(9 40 48);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--page-text);
 }
 
 .headline {
-  margin: 0.1rem 0 0;
-  font-size: 0.92rem;
-  color: rgb(15 76 92 / 84%);
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: var(--page-text-muted);
 }
 
 .nav-area {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 1.25rem;
 }
 
 .nav-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 0.35rem;
+  gap: 0.25rem;
 }
 
 .nav-link {
-  letter-spacing: 0.01em;
-  text-transform: none;
-  font-weight: 600;
-  opacity: 0.9;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--page-text);
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  background: var(--primary-muted);
 }
 
 .lang-switcher {
-  flex-shrink: 0;
-  border: 1px solid rgb(15 76 92 / 18%);
-  border-radius: 8px;
+  display: flex;
+  gap: 0.125rem;
+  padding: 0.2rem;
+  background: rgba(148, 163, 184, 0.08);
+  border-radius: 6px;
+}
+
+.lang-btn {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.lang-btn:hover {
+  color: var(--page-text);
+}
+
+.lang-btn.active {
+  color: var(--primary);
+  background: var(--primary-muted);
 }
 
 @media (width <= 920px) {
@@ -146,16 +176,19 @@ const isActive = (target: string) => {
     display: none;
   }
 
-  .nav-links {
-    justify-content: flex-start;
-  }
-
   .header-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 
   .nav-area {
-    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
   }
 }
 
@@ -165,9 +198,8 @@ const isActive = (target: string) => {
   }
 
   .nav-link {
-    min-width: 72px;
-    padding-inline: 0.35rem;
-    font-size: 0.87rem;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.8rem;
   }
 }
 </style>

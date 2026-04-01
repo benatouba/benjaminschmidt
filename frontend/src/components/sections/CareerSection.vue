@@ -18,45 +18,41 @@ const { t } = useI18n({ useScope: "global" });
         <h2>{{ t("career.heading") }}</h2>
       </div>
 
-      <v-timeline
-        side="end"
-        line-inset="16"
-        density="compact"
-        class="career-timeline reveal-up"
-        style="--delay: 120ms"
-      >
-        <v-timeline-item
+      <div class="timeline reveal-up" style="--delay: 120ms">
+        <div
           v-for="(stage, index) in props.stages"
           :key="`${stage.period}-${stage.title}`"
-          dot-color="primary"
-          fill-dot
-          :icon="index === 0 ? 'mdi-star-four-points-circle-outline' : 'mdi-briefcase-outline'"
-          size="small"
+          class="timeline-item"
         >
-          <template #opposite>
-            <span class="period">{{ stage.period }}</span>
-          </template>
+          <div class="timeline-marker">
+            <div :class="['marker-dot', { current: index === 0 }]">
+              <v-icon
+                :icon="index === 0 ? 'mdi-star-four-points' : 'mdi-briefcase-outline'"
+                size="14"
+              />
+            </div>
+            <div class="marker-line"></div>
+          </div>
 
-          <v-card class="timeline-card" variant="tonal" color="surface">
-            <v-card-title class="timeline-title">{{ stage.title }}</v-card-title>
-            <v-card-subtitle>{{ stage.institution }}</v-card-subtitle>
-            <v-card-text>
-              <p class="timeline-summary">{{ stage.description }}</p>
+          <div class="timeline-content">
+            <span class="period">{{ stage.period }}</span>
+            <div class="timeline-card">
+              <h3 class="card-title">{{ stage.title }}</h3>
+              <p class="card-institution">{{ stage.institution }}</p>
+              <p class="card-description">{{ stage.description }}</p>
               <div class="focus-wrap">
-                <v-chip
+                <span
                   v-for="focus in stage.focusAreas"
                   :key="focus"
-                  size="x-small"
-                  color="secondary"
-                  variant="outlined"
+                  class="focus-tag"
                 >
                   {{ focus }}
-                </v-chip>
+                </span>
               </div>
-            </v-card-text>
-          </v-card>
-        </v-timeline-item>
-      </v-timeline>
+            </div>
+          </div>
+        </div>
+      </div>
     </v-container>
   </section>
 </template>
@@ -67,51 +63,142 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .section-block {
-  padding-block: clamp(2rem, 5vw, 3.5rem);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.section-heading {
+  margin-bottom: 2rem;
 }
 
 .section-heading h2 {
-  margin: 0.25rem 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
-  color: rgb(8 34 42);
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-text);
 }
 
 .kicker {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: var(--primary);
 }
 
-.career-timeline {
-  margin-top: 1.35rem;
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.25rem;
+}
+
+.marker-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--surface);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--page-text-muted);
+  flex-shrink: 0;
+}
+
+.marker-dot.current {
+  background: var(--primary-muted);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.marker-line {
+  flex: 1;
+  width: 2px;
+  background: var(--border-color);
+  margin-top: 0.5rem;
+}
+
+.timeline-item:last-child .marker-line {
+  display: none;
+}
+
+.timeline-content {
+  padding-bottom: 2rem;
 }
 
 .period {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: rgb(15 76 92);
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
 }
 
 .timeline-card {
-  border: 1px solid rgb(15 76 92 / 16%);
+  padding: 1.25rem 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
 }
 
-.timeline-title {
-  font-size: 1.08rem;
-}
-
-.timeline-summary {
+.card-title {
   margin: 0;
-  color: rgb(13 52 63 / 88%);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--page-text);
+}
+
+.card-institution {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--page-text-muted);
+}
+
+.card-description {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--page-text-muted);
 }
 
 .focus-wrap {
-  margin-top: 0.85rem;
+  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+}
+
+.focus-tag {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+@media (width <= 640px) {
+  .timeline-item {
+    gap: 1rem;
+  }
+
+  .timeline-card {
+    padding: 1rem;
+  }
 }
 </style>

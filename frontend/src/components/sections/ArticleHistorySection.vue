@@ -24,82 +24,66 @@ const filterLabel = (kind: string) => {
 </script>
 
 <template>
-  <section id="articles" class="section-block section-anchor article-shell">
+  <section id="articles" class="section-block section-anchor">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
         <p class="kicker">{{ t("articles.kicker") }}</p>
         <h2>{{ t("articles.heading") }}</h2>
       </div>
 
-      <div class="reveal-up" style="--delay: 100ms">
-        <v-btn-toggle
-          v-model="selected"
-          class="kind-filter"
-          color="primary"
-          mandatory
-          density="comfortable"
+      <div class="filter-bar reveal-up" style="--delay: 100ms">
+        <button
+          v-for="kind in filters"
+          :key="kind"
+          :class="['filter-btn', { active: selected === kind }]"
+          @click="selected = kind"
         >
-          <v-btn v-for="kind in filters" :key="kind" :value="kind" size="small">
-            {{ filterLabel(kind) }}
-          </v-btn>
-        </v-btn-toggle>
+          {{ filterLabel(kind) }}
+        </button>
       </div>
 
-      <v-row class="mt-2" dense>
-        <v-col
+      <div class="articles-grid">
+        <article
           v-for="(item, index) in visibleItems"
           :key="`${item.title}-${item.published}`"
-          cols="12"
-          md="6"
-          class="reveal-up"
+          class="article-card reveal-up"
           :style="`--delay: ${150 + index * 70}ms`"
         >
-          <v-card class="article-card h-100" variant="flat">
-            <v-card-item>
-              <template #prepend>
-                <v-avatar color="primary" variant="tonal" size="34">
-                  <v-icon icon="mdi-newspaper-variant-outline" />
-                </v-avatar>
-              </template>
-              <v-card-title class="article-title">{{ item.title }}</v-card-title>
-              <v-card-subtitle>{{ item.outlet }} · {{ item.published }}</v-card-subtitle>
-              <template #append>
-                <v-chip size="x-small" color="secondary" variant="tonal">
-                  {{ t(`articles.kinds.${item.kind}`) }}
-                </v-chip>
-              </template>
-            </v-card-item>
+          <div class="card-header">
+            <div class="card-icon">
+              <v-icon icon="mdi-newspaper-variant-outline" size="18" />
+            </div>
+            <div class="card-meta">
+              <h3 class="article-title">{{ item.title }}</h3>
+              <p class="article-outlet">{{ item.outlet }} · {{ item.published }}</p>
+            </div>
+            <span class="kind-badge">{{ t(`articles.kinds.${item.kind}`) }}</span>
+          </div>
 
-            <v-card-text>
-              <p class="summary">{{ item.summary }}</p>
-              <div class="tag-wrap">
-                <v-chip
-                  v-for="tag in item.tags"
-                  :key="tag"
-                  size="x-small"
-                  variant="outlined"
-                  color="primary"
-                >
-                  {{ tag }}
-                </v-chip>
-              </div>
-            </v-card-text>
+          <p class="article-summary">{{ item.summary }}</p>
 
-            <v-card-actions>
-              <v-btn
-                v-if="item.link"
-                :href="item.link"
-                target="_blank"
-                rel="noreferrer"
-                append-icon="mdi-open-in-new"
-                variant="text"
-              >
-                {{ t("articles.open") }}
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
+          <div class="tags-wrap">
+            <span
+              v-for="tag in item.tags"
+              :key="tag"
+              class="article-tag"
+            >
+              {{ tag }}
+            </span>
+          </div>
+
+          <a
+            v-if="item.link"
+            :href="item.link"
+            target="_blank"
+            rel="noreferrer"
+            class="article-link"
+          >
+            {{ t("articles.open") }}
+            <v-icon icon="mdi-arrow-top-right" size="16" />
+          </a>
+        </article>
+      </div>
     </v-container>
   </section>
 </template>
@@ -110,55 +94,171 @@ const filterLabel = (kind: string) => {
 }
 
 .section-block {
-  padding-block: clamp(2.2rem, 5vw, 3.8rem);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
 }
 
-.article-shell {
-  background:
-    radial-gradient(900px 300px at 100% -20%, rgb(217 143 61 / 12%), transparent 70%),
-    linear-gradient(180deg, rgb(255 253 247 / 74%), rgb(255 253 247 / 25%));
+.section-heading {
+  margin-bottom: 1.5rem;
 }
 
 .section-heading h2 {
-  margin: 0.25rem 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
-  color: rgb(8 34 42);
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-text);
 }
 
 .kicker {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: var(--primary);
 }
 
-.kind-filter {
+.filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 0.875rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  color: var(--page-text);
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.filter-btn.active {
+  color: var(--primary);
+  background: var(--primary-muted);
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.25rem;
 }
 
 .article-card {
-  border: 1px solid rgb(15 76 92 / 16%);
-  background: rgb(255 253 247 / 85%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.article-card:hover {
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.card-header {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  align-items: flex-start;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--primary-muted);
+  border-radius: 8px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.card-meta {
+  flex: 1;
+  min-width: 0;
 }
 
 .article-title {
-  font-size: 1.03rem;
-  line-height: 1.35;
-}
-
-.summary {
   margin: 0;
-  color: rgb(13 52 63 / 88%);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--page-text);
 }
 
-.tag-wrap {
-  margin-top: 0.8rem;
+.article-outlet {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: var(--page-text-muted);
+}
+
+.kind-badge {
+  flex-shrink: 0;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-muted);
+  border-radius: 4px;
+}
+
+.article-summary {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--page-text-muted);
+}
+
+.tags-wrap {
+  margin-top: 0.875rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
+}
+
+.article-tag {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.article-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.article-link:hover {
+  opacity: 0.8;
+}
+
+@media (width <= 640px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
