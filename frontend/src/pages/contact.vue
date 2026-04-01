@@ -1,12 +1,17 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import PageSectionShell from "@/components/layout/PageSectionShell.vue";
 import ContactSection from "@/components/sections/ContactSection.vue";
-import { contactLinks, profile } from "@/data/siteContent";
+import { useSiteContent } from "@/composables/useSiteContent";
+
+const { t } = useI18n({ useScope: "global" });
+const content = useSiteContent();
 </script>
 
 <template>
-  <PageSectionShell title="Contact" kicker="Collaboration">
-    <ContactSection :profile="profile" :links="contactLinks" />
+  <PageSectionShell :title="t('pages.contact.title')" :kicker="t('pages.contact.kicker')">
+    <ContactSection :profile="content.profile" :links="content.contactLinks" />
   </PageSectionShell>
 </template>
 

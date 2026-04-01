@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import type { CvAppointment, EducationEntry, HonorEntry } from "@/types/site";
 
 const props = defineProps<{
@@ -6,20 +8,22 @@ const props = defineProps<{
   education: EducationEntry[];
   honors: HonorEntry[];
 }>();
+
+const { t } = useI18n({ useScope: "global" });
 </script>
 
 <template>
   <section id="cv" class="section-block section-anchor">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">Curriculum Vitae</p>
-        <h2>Appointments, education, and honors</h2>
+        <p class="kicker">{{ t("cv.kicker") }}</p>
+        <h2>{{ t("cv.heading") }}</h2>
       </div>
 
       <v-row dense>
         <v-col cols="12" md="7" class="reveal-up" style="--delay: 100ms">
           <v-card class="h-100 cv-card" variant="flat">
-            <v-card-title>Professional Appointments</v-card-title>
+            <v-card-title>{{ t("cv.professionalAppointments") }}</v-card-title>
             <v-card-text class="cards-stack">
               <v-card
                 v-for="item in props.appointments"
@@ -64,7 +68,7 @@ const props = defineProps<{
 
         <v-col cols="12" md="5" class="reveal-up" style="--delay: 160ms">
           <v-card class="mb-3 cv-card" variant="flat">
-            <v-card-title>Education</v-card-title>
+            <v-card-title>{{ t("cv.education") }}</v-card-title>
             <v-list density="comfortable" lines="three" class="transparent-list">
               <v-list-item
                 v-for="entry in props.education"
@@ -81,7 +85,7 @@ const props = defineProps<{
           </v-card>
 
           <v-card class="cv-card" variant="flat">
-            <v-card-title>Awards and Honors</v-card-title>
+            <v-card-title>{{ t("cv.awardsAndHonors") }}</v-card-title>
             <v-list density="comfortable" lines="two" class="transparent-list">
               <v-list-item
                 v-for="honor in props.honors"

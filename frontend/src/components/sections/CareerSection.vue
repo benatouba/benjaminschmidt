@@ -1,17 +1,21 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import type { CareerStage } from "@/types/site";
 
 const props = defineProps<{
   stages: CareerStage[];
 }>();
+
+const { t } = useI18n({ useScope: "global" });
 </script>
 
 <template>
   <section id="career" class="section-block section-anchor">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">Scientific Career</p>
-        <h2>Trajectory and positions</h2>
+        <p class="kicker">{{ t("career.kicker") }}</p>
+        <h2>{{ t("career.heading") }}</h2>
       </div>
 
       <v-timeline

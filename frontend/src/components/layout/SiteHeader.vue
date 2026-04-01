@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 
 import type { NavigationItem } from "@/types/site";
@@ -10,6 +11,18 @@ const props = defineProps<{
 }>();
 
 const route = useRoute();
+const { locale, t } = useI18n({ useScope: "global" });
+
+const locales = [
+  { code: "en", flag: "GB" },
+  { code: "de", flag: "DE" },
+  { code: "es", flag: "ES" },
+] as const;
+
+const setLocale = (code: string) => {
+  locale.value = code;
+  localStorage.setItem("locale", code);
+};
 
 const isActive = (target: string) => {
   if (target === "/") {
@@ -29,19 +42,40 @@ const isActive = (target: string) => {
           <p class="headline">{{ props.headline }}</p>
         </div>
 
-        <nav class="nav-links" aria-label="Primary">
-          <v-btn
-            v-for="item in props.navItems"
-            :key="item.to"
-            :to="item.to"
-            :variant="isActive(item.to) ? 'flat' : 'text'"
-            :color="isActive(item.to) ? 'primary' : undefined"
-            class="nav-link"
-            size="small"
+        <div class="nav-area">
+          <nav class="nav-links" aria-label="Primary">
+            <v-btn
+              v-for="item in props.navItems"
+              :key="item.to"
+              :to="item.to"
+              :variant="isActive(item.to) ? 'flat' : 'text'"
+              :color="isActive(item.to) ? 'primary' : undefined"
+              class="nav-link"
+              size="small"
+            >
+              {{ t(item.label) }}
+            </v-btn>
+          </nav>
+
+          <v-btn-toggle
+            :model-value="locale"
+            class="lang-switcher"
+            density="compact"
+            color="primary"
+            mandatory
           >
-            {{ item.label }}
-          </v-btn>
-        </nav>
+            <v-btn
+              v-for="loc in locales"
+              :key="loc.code"
+              :value="loc.code"
+              size="x-small"
+              variant="text"
+              @click="setLocale(loc.code)"
+            >
+              {{ t(`lang.${loc.code}`) }}
+            </v-btn>
+          </v-btn-toggle>
+        </div>
       </v-container>
     </v-app-bar>
   </header>
@@ -81,6 +115,12 @@ const isActive = (target: string) => {
   color: rgb(15 76 92 / 84%);
 }
 
+.nav-area {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
 .nav-links {
   display: flex;
   flex-wrap: wrap;
@@ -95,6 +135,12 @@ const isActive = (target: string) => {
   opacity: 0.9;
 }
 
+.lang-switcher {
+  flex-shrink: 0;
+  border: 1px solid rgb(15 76 92 / 18%);
+  border-radius: 8px;
+}
+
 @media (width <= 920px) {
   .headline {
     display: none;
@@ -106,6 +152,10 @@ const isActive = (target: string) => {
 
   .header-container {
     grid-template-columns: 1fr;
+  }
+
+  .nav-area {
+    flex-wrap: wrap;
   }
 }
 

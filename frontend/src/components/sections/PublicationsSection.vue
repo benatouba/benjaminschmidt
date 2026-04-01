@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 import type { PublicationItem } from "@/types/site";
 
 const props = defineProps<{
   publications: PublicationItem[];
 }>();
+
+const { t } = useI18n({ useScope: "global" });
 
 const kindFilter = ref<"All" | PublicationItem["kind"]>("All");
 const publicationKinds: Array<"All" | PublicationItem["kind"]> = [
@@ -21,14 +24,19 @@ const filteredPublications = computed(() =>
     (entry) => kindFilter.value === "All" || entry.kind === kindFilter.value,
   ),
 );
+
+const kindLabel = (kind: string) => {
+  if (kind === "All") return t("publications.filterAll");
+  return t(`publications.kinds.${kind}`);
+};
 </script>
 
 <template>
   <section id="publications" class="section-block section-anchor publications-shell">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">Scientific Publications</p>
-        <h2>Selected output and writing</h2>
+        <p class="kicker">{{ t("publications.kicker") }}</p>
+        <h2>{{ t("publications.heading") }}</h2>
       </div>
 
       <div class="reveal-up" style="--delay: 100ms">
@@ -41,7 +49,7 @@ const filteredPublications = computed(() =>
           variant="text"
         >
           <v-btn v-for="kind in publicationKinds" :key="kind" :value="kind" size="small">
-            {{ kind }}
+            {{ kindLabel(kind) }}
           </v-btn>
         </v-btn-toggle>
       </div>
@@ -70,7 +78,7 @@ const filteredPublications = computed(() =>
             <v-card-text>
               <div class="meta-row">
                 <v-chip size="x-small" color="secondary" variant="tonal">{{
-                  publication.kind
+                  t(`publications.kinds.${publication.kind}`)
                 }}</v-chip>
                 <v-chip v-if="publication.doi" size="x-small" variant="outlined"
                   >DOI {{ publication.doi }}</v-chip
@@ -101,7 +109,7 @@ const filteredPublications = computed(() =>
                 append-icon="mdi-open-in-new"
                 variant="text"
               >
-                Read
+                {{ t("publications.read") }}
               </v-btn>
             </v-card-actions>
           </v-card>

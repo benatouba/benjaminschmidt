@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import type { ContactLink, ProfileInfo } from "@/types/site";
 
 const props = defineProps<{
   profile: ProfileInfo;
   links: ContactLink[];
 }>();
+
+const { t } = useI18n({ useScope: "global" });
 </script>
 
 <template>
@@ -13,12 +17,9 @@ const props = defineProps<{
       <v-card class="contact-card reveal-up" style="--delay: 90ms" variant="flat">
         <v-card-text class="contact-grid">
           <div>
-            <p class="kicker">Contact and Collaboration</p>
-            <h2 class="contact-title">Let's collaborate on research projects and publications.</h2>
-            <p class="contact-copy">
-              I am open to interdisciplinary collaborations, invited talks, and joint writing
-              efforts in computational and data-driven science.
-            </p>
+            <p class="kicker">{{ t("contact.kicker") }}</p>
+            <h2 class="contact-title">{{ t("contact.heading") }}</h2>
+            <p class="contact-copy">{{ t("contact.copy") }}</p>
             <p v-if="props.profile.address" class="address-line">
               <v-icon icon="mdi-home-map-marker" size="small" class="mr-1" />
               {{ props.profile.address }}
@@ -43,7 +44,7 @@ const props = defineProps<{
               :rel="link.href ? 'noreferrer' : undefined"
               :prepend-icon="link.icon"
               :title="link.label"
-              :subtitle="link.href ? 'Open profile' : 'Coming soon'"
+              :subtitle="link.href ? t('contact.openProfile') : t('contact.comingSoon')"
               :append-icon="link.href ? 'mdi-open-in-new' : 'mdi-clock-outline'"
             />
           </v-list>

@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import type { ResearchProject } from "@/types/site";
 
 const props = defineProps<{
   projects: ResearchProject[];
 }>();
+
+const { t } = useI18n({ useScope: "global" });
 
 const projectStatusColor = (status: ResearchProject["status"]) => {
   if (status === "Active") return "success";
@@ -16,8 +20,8 @@ const projectStatusColor = (status: ResearchProject["status"]) => {
   <section id="projects" class="section-block section-anchor">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">Scientific Projects</p>
-        <h2>Research software and initiatives</h2>
+        <p class="kicker">{{ t("projects.kicker") }}</p>
+        <h2>{{ t("projects.heading") }}</h2>
       </div>
 
       <v-row class="mt-1" dense>
@@ -33,7 +37,7 @@ const projectStatusColor = (status: ResearchProject["status"]) => {
             <v-card-item>
               <template #append>
                 <v-chip :color="projectStatusColor(project.status)" size="x-small" variant="tonal">
-                  {{ project.status }}
+                  {{ t(`projects.status.${project.status}`) }}
                 </v-chip>
               </template>
               <v-card-title class="project-title">{{ project.name }}</v-card-title>
@@ -43,7 +47,7 @@ const projectStatusColor = (status: ResearchProject["status"]) => {
             <v-card-text>
               <p class="project-summary">{{ project.summary }}</p>
 
-              <p class="meta-label">Stack</p>
+              <p class="meta-label">{{ t("projects.stack") }}</p>
               <div class="chip-wrap">
                 <v-chip
                   v-for="item in project.stack"
@@ -56,7 +60,7 @@ const projectStatusColor = (status: ResearchProject["status"]) => {
                 </v-chip>
               </div>
 
-              <p class="meta-label mt-4">Outcomes</p>
+              <p class="meta-label mt-4">{{ t("projects.outcomes") }}</p>
               <v-list class="outcome-list" density="compact" lines="one">
                 <v-list-item
                   v-for="outcome in project.outcomes"

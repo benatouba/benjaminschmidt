@@ -2,14 +2,20 @@
 import PageBackground from "@/components/layout/PageBackground.vue";
 import SiteFooter from "@/components/layout/SiteFooter.vue";
 import SiteHeader from "@/components/layout/SiteHeader.vue";
-import { navItems, profile } from "@/data/siteContent";
+import { useSiteContent } from "@/composables/useSiteContent";
+
+const content = useSiteContent();
 </script>
 
 <template>
   <v-app>
     <PageBackground />
 
-    <SiteHeader :name="profile.name" :headline="profile.headline" :nav-items="navItems" />
+    <SiteHeader
+      :name="content.profile.name"
+      :headline="content.profile.headline"
+      :nav-items="content.navItems"
+    />
 
     <v-main>
       <RouterView />

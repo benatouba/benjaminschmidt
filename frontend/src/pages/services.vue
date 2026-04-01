@@ -1,12 +1,17 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import PageSectionShell from "@/components/layout/PageSectionShell.vue";
 import ServicesSection from "@/components/sections/ServicesSection.vue";
-import { services } from "@/data/siteContent";
+import { useSiteContent } from "@/composables/useSiteContent";
+
+const { t } = useI18n({ useScope: "global" });
+const content = useSiteContent();
 </script>
 
 <template>
-  <PageSectionShell title="Services" kicker="Professional Website Features">
-    <ServicesSection :services="services" />
+  <PageSectionShell :title="t('pages.services.title')" :kicker="t('pages.services.kicker')">
+    <ServicesSection :services="content.services" />
   </PageSectionShell>
 </template>
 

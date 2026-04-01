@@ -481,30 +481,30 @@ export const contactLinks: ContactLink[] = [
     label: "Email",
     href: "mailto:benjamin.schmidt@tu-berlin.de",
     icon: "mdi-email-outline",
+    sublabel: "Send Email",
   },
   {
     label: "ORCID",
     href: "https://orcid.org/0000-0002-9669-3360",
     icon: "mdi-account-badge-outline",
+    sublabel: "See publications",
   },
   {
     label: "GitHub",
     href: "https://github.com/benatouba/",
     icon: "mdi-github",
+    sublabel: "See software projects",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/dr-benjamin-schmidt/",
     icon: "mdi-linkedin",
-  },
-  {
-    label: "Personal Website",
-    href: undefined,
-    icon: "mdi-web",
+    sublabel: "Open profile",
   },
   {
     label: "Google Scholar",
     href: "https://scholar.google.de/citations?hl=de&user=cRAeTxYAAAAJ",
     icon: "mdi-school-outline",
+    sublabel: "Open profile",
   },
 ];

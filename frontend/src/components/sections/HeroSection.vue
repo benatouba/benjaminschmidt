@@ -1,16 +1,20 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import type { ProfileInfo } from "@/types/site";
 
 const props = defineProps<{
   profile: ProfileInfo;
 }>();
+
+const { t } = useI18n({ useScope: "global" });
 </script>
 
 <template>
   <section id="about" class="section-anchor">
     <v-container class="hero-grid px-4 px-sm-6 px-md-8" fluid>
       <div class="intro reveal-up" style="--delay: 80ms">
-        <p class="eyebrow">Scientific Career Profile</p>
+        <p class="eyebrow">{{ t("hero.eyebrow") }}</p>
         <h1 class="hero-title">{{ props.profile.name }}</h1>
         <p class="hero-summary">{{ props.profile.summary }}</p>
 
@@ -42,12 +46,14 @@ const props = defineProps<{
             prepend-icon="mdi-book-open-page-variant-outline"
             color="primary"
           >
-            View Publications
+            {{ t("hero.viewPublications") }}
           </v-btn>
           <v-btn to="/cv" prepend-icon="mdi-file-account-outline" color="secondary" variant="tonal">
-            Open CV
+            {{ t("hero.openCv") }}
           </v-btn>
-          <v-btn to="/blog" prepend-icon="mdi-post-outline" variant="text">Read Blog</v-btn>
+          <v-btn to="/blog" prepend-icon="mdi-post-outline" variant="text">
+            {{ t("hero.readBlog") }}
+          </v-btn>
         </div>
       </div>
 
@@ -58,8 +64,8 @@ const props = defineProps<{
               <v-icon icon="mdi-account" />
             </v-avatar>
           </template>
-          <v-card-title>Research Focus</v-card-title>
-          <v-card-subtitle>Current areas of interest</v-card-subtitle>
+          <v-card-title>{{ t("hero.researchFocus") }}</v-card-title>
+          <v-card-subtitle>{{ t("hero.currentInterests") }}</v-card-subtitle>
         </v-card-item>
 
         <v-card-text>
@@ -77,7 +83,7 @@ const props = defineProps<{
 
           <v-divider class="my-5" />
 
-          <p class="skill-heading">Core strengths</p>
+          <p class="skill-heading">{{ t("hero.coreStrengths") }}</p>
           <v-list class="skill-list" density="compact" lines="one">
             <v-list-item
               v-for="skill in props.profile.skills"

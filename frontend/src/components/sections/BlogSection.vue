@@ -1,17 +1,21 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import type { BlogPost } from "@/types/site";
 
 const props = defineProps<{
   posts: BlogPost[];
 }>();
+
+const { t } = useI18n({ useScope: "global" });
 </script>
 
 <template>
   <section id="blog" class="section-block section-anchor">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">Blog</p>
-        <h2>Notes from projects, methods, and publication work</h2>
+        <p class="kicker">{{ t("blog.kicker") }}</p>
+        <h2>{{ t("blog.heading") }}</h2>
       </div>
 
       <v-row class="mt-1" dense>
@@ -31,7 +35,9 @@ const props = defineProps<{
                 </v-avatar>
               </template>
               <v-card-title class="blog-title">{{ post.title }}</v-card-title>
-              <v-card-subtitle>{{ post.date }} · {{ post.readMinutes }} min read</v-card-subtitle>
+              <v-card-subtitle>
+                {{ post.date }} · {{ post.readMinutes }} {{ t("blog.minRead") }}
+              </v-card-subtitle>
             </v-card-item>
 
             <v-card-text>
@@ -49,7 +55,7 @@ const props = defineProps<{
               </div>
 
               <div v-if="post.relatedArticles?.length" class="related-wrap">
-                <p class="related-label">Related articles</p>
+                <p class="related-label">{{ t("blog.relatedArticles") }}</p>
                 <ul class="related-list">
                   <li
                     v-for="article in post.relatedArticles"
@@ -73,7 +79,7 @@ const props = defineProps<{
                 variant="text"
                 append-icon="mdi-open-in-new"
               >
-                Read post
+                {{ t("blog.readPost") }}
               </v-btn>
             </v-card-actions>
           </v-card>

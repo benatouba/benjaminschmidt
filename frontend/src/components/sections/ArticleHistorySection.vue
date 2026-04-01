@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 import type { ArticleHistoryItem } from "@/types/site";
 
@@ -7,20 +8,27 @@ const props = defineProps<{
   items: ArticleHistoryItem[];
 }>();
 
+const { t } = useI18n({ useScope: "global" });
+
 const filters = ["All", "Article", "Interview", "Editorial", "Review"] as const;
 const selected = ref<(typeof filters)[number]>("All");
 
 const visibleItems = computed(() =>
   props.items.filter((item) => selected.value === "All" || item.kind === selected.value),
 );
+
+const filterLabel = (kind: string) => {
+  if (kind === "All") return t("articles.filterAll");
+  return t(`articles.kinds.${kind}`);
+};
 </script>
 
 <template>
   <section id="articles" class="section-block section-anchor article-shell">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">Article History</p>
-        <h2>Writing, interviews, and editorial contributions</h2>
+        <p class="kicker">{{ t("articles.kicker") }}</p>
+        <h2>{{ t("articles.heading") }}</h2>
       </div>
 
       <div class="reveal-up" style="--delay: 100ms">
@@ -31,7 +39,9 @@ const visibleItems = computed(() =>
           mandatory
           density="comfortable"
         >
-          <v-btn v-for="kind in filters" :key="kind" :value="kind" size="small">{{ kind }}</v-btn>
+          <v-btn v-for="kind in filters" :key="kind" :value="kind" size="small">
+            {{ filterLabel(kind) }}
+          </v-btn>
         </v-btn-toggle>
       </div>
 
@@ -54,7 +64,9 @@ const visibleItems = computed(() =>
               <v-card-title class="article-title">{{ item.title }}</v-card-title>
               <v-card-subtitle>{{ item.outlet }} · {{ item.published }}</v-card-subtitle>
               <template #append>
-                <v-chip size="x-small" color="secondary" variant="tonal">{{ item.kind }}</v-chip>
+                <v-chip size="x-small" color="secondary" variant="tonal">
+                  {{ t(`articles.kinds.${item.kind}`) }}
+                </v-chip>
               </template>
             </v-card-item>
 
@@ -82,7 +94,7 @@ const visibleItems = computed(() =>
                 append-icon="mdi-open-in-new"
                 variant="text"
               >
-                Open
+                {{ t("articles.open") }}
               </v-btn>
             </v-card-actions>
           </v-card>

@@ -49,6 +49,7 @@ export interface ContactLink {
   label: string;
   href?: string;
   icon: string;
+	sublabel: string;
 }
 
 export interface CvAppointment {
@@ -113,4 +114,20 @@ export interface ResearchService {
   description: string;
   ctaLabel: string;
   ctaHref: string;
+}
+
+export interface SiteContent {
+  navItems: NavigationItem[];
+  profile: ProfileInfo;
+  careerStages: CareerStage[];
+  publications: PublicationItem[];
+  projects: ResearchProject[];
+  cvAppointments: CvAppointment[];
+  education: EducationEntry[];
+  honors: HonorEntry[];
+  articleHistory: ArticleHistoryItem[];
+  blogPosts: BlogPost[];
+  externalProfiles: ExternalProfileLink[];
+  services: ResearchService[];
+  contactLinks: ContactLink[];
 }

@@ -9,31 +9,24 @@ import ProjectsSection from "@/components/sections/ProjectsSection.vue";
 import ProfilesSection from "@/components/sections/ProfilesSection.vue";
 import PublicationsSection from "@/components/sections/PublicationsSection.vue";
 import ServicesSection from "@/components/sections/ServicesSection.vue";
-import {
-  articleHistory,
-  blogPosts,
-  careerStages,
-  contactLinks,
-  cvAppointments,
-  education,
-  externalProfiles,
-  honors,
-  profile,
-  projects,
-  publications,
-  services,
-} from "@/data/siteContent";
+import { useSiteContent } from "@/composables/useSiteContent";
+
+const content = useSiteContent();
 </script>
 
 <template>
-  <HeroSection :profile="profile" />
-  <CvSection :appointments="cvAppointments" :education="education" :honors="honors" />
-  <CareerSection :stages="careerStages" />
-  <PublicationsSection :publications="publications" />
-  <ArticleHistorySection :items="articleHistory" />
-  <BlogSection :posts="blogPosts" />
-  <ProjectsSection :projects="projects" />
-  <ProfilesSection :profiles="externalProfiles" />
-  <ServicesSection :services="services" />
-  <ContactSection :profile="profile" :links="contactLinks" />
+  <HeroSection :profile="content.profile" />
+  <CvSection
+    :appointments="content.cvAppointments"
+    :education="content.education"
+    :honors="content.honors"
+  />
+  <CareerSection :stages="content.careerStages" />
+  <PublicationsSection :publications="content.publications" />
+  <ArticleHistorySection :items="content.articleHistory" />
+  <BlogSection :posts="content.blogPosts" />
+  <ProjectsSection :projects="content.projects" />
+  <ProfilesSection :profiles="content.externalProfiles" />
+  <ServicesSection :services="content.services" />
+  <ContactSection :profile="content.profile" :links="content.contactLinks" />
 </template>

@@ -1,12 +1,17 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import PageSectionShell from "@/components/layout/PageSectionShell.vue";
 import ProfilesSection from "@/components/sections/ProfilesSection.vue";
-import { externalProfiles } from "@/data/siteContent";
+import { useSiteContent } from "@/composables/useSiteContent";
+
+const { t } = useI18n({ useScope: "global" });
+const content = useSiteContent();
 </script>
 
 <template>
-  <PageSectionShell title="Linked Profiles" kicker="Accounts and Identity">
-    <ProfilesSection :profiles="externalProfiles" />
+  <PageSectionShell :title="t('pages.profiles.title')" :kicker="t('pages.profiles.kicker')">
+    <ProfilesSection :profiles="content.externalProfiles" />
   </PageSectionShell>
 </template>
 

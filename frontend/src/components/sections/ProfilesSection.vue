@@ -1,17 +1,21 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import type { ExternalProfileLink } from "@/types/site";
 
 const props = defineProps<{
   profiles: ExternalProfileLink[];
 }>();
+
+const { t } = useI18n({ useScope: "global" });
 </script>
 
 <template>
   <section id="profiles" class="section-block section-anchor profiles-shell">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">Linked Accounts</p>
-        <h2>Academic, professional, and public profiles</h2>
+        <p class="kicker">{{ t("profiles.kicker") }}</p>
+        <h2>{{ t("profiles.heading") }}</h2>
       </div>
 
       <v-row class="mt-1" dense>
@@ -31,7 +35,7 @@ const props = defineProps<{
                 </v-avatar>
               </template>
               <v-card-title>{{ profile.label }}</v-card-title>
-              <v-card-subtitle>{{ profile.category }}</v-card-subtitle>
+              <v-card-subtitle>{{ t(`profiles.categories.${profile.category}`) }}</v-card-subtitle>
             </v-card-item>
             <v-card-text>
               <p class="summary">{{ profile.description }}</p>
@@ -45,7 +49,7 @@ const props = defineProps<{
                 append-icon="mdi-open-in-new"
                 variant="text"
               >
-                {{ profile.href ? "Visit profile" : "Coming soon" }}
+                {{ profile.href ? t("profiles.visitProfile") : t("profiles.comingSoon") }}
               </v-btn>
             </v-card-actions>
           </v-card>

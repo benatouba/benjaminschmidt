@@ -1,17 +1,21 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import type { ResearchService } from "@/types/site";
 
 const props = defineProps<{
   services: ResearchService[];
 }>();
+
+const { t } = useI18n({ useScope: "global" });
 </script>
 
 <template>
   <section id="services" class="section-block section-anchor">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">Services</p>
-        <h2>Standard professional offerings for a research website</h2>
+        <p class="kicker">{{ t("services.kicker") }}</p>
+        <h2>{{ t("services.heading") }}</h2>
       </div>
 
       <v-row class="mt-1" dense>

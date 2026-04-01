@@ -1,12 +1,15 @@
+<script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
+</script>
+
 <template>
   <footer class="footer">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="footer-content">
-        <p class="footer-line">Built with Vue 3, TypeScript, Vuetify, oxlint, eslint, and oxfmt.</p>
-        <p class="footer-line muted">
-          Includes CV, article history, linked accounts, project portfolio, and blog sections for a
-          complete professional researcher website.
-        </p>
+        <p class="footer-line">{{ t("footer.builtWith") }}</p>
+        <p class="footer-line muted">{{ t("footer.includes") }}</p>
       </div>
     </v-container>
   </footer>

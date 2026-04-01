@@ -1,12 +1,17 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import PageSectionShell from "@/components/layout/PageSectionShell.vue";
 import ProjectsSection from "@/components/sections/ProjectsSection.vue";
-import { projects } from "@/data/siteContent";
+import { useSiteContent } from "@/composables/useSiteContent";
+
+const { t } = useI18n({ useScope: "global" });
+const content = useSiteContent();
 </script>
 
 <template>
-  <PageSectionShell title="Scientific Projects" kicker="Software and Initiatives">
-    <ProjectsSection :projects="projects" />
+  <PageSectionShell :title="t('pages.projects.title')" :kicker="t('pages.projects.kicker')">
+    <ProjectsSection :projects="content.projects" />
   </PageSectionShell>
 </template>
 
