@@ -20,27 +20,29 @@ defineProps<{
 
 <style scoped>
 .section-shell {
-  padding-top: clamp(2rem, 5vw, 3rem);
-  padding-bottom: clamp(2.6rem, 6vw, 4.2rem);
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: clamp(3rem, 7vw, 5rem);
 }
 
 .section-heading {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.75rem;
 }
 
 .kicker {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: var(--primary);
 }
 
 .page-title {
-  margin: 0.24rem 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3vw, 2.4rem);
-  color: rgb(8 34 42);
+  margin: 0.3rem 0 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-text);
 }
 
 .content-slot {

@@ -32,89 +32,70 @@ const kindLabel = (kind: string) => {
 </script>
 
 <template>
-  <section id="publications" class="section-block section-anchor publications-shell">
+  <section id="publications" class="section-block section-anchor">
     <v-container class="px-4 px-sm-6 px-md-8" fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
         <p class="kicker">{{ t("publications.kicker") }}</p>
         <h2>{{ t("publications.heading") }}</h2>
       </div>
 
-      <div class="reveal-up" style="--delay: 100ms">
-        <v-btn-toggle
-          v-model="kindFilter"
-          class="kind-filter"
-          color="primary"
-          mandatory
-          density="comfortable"
-          variant="text"
+      <div class="filter-bar reveal-up" style="--delay: 100ms">
+        <button
+          v-for="kind in publicationKinds"
+          :key="kind"
+          :class="['filter-btn', { active: kindFilter === kind }]"
+          @click="kindFilter = kind"
         >
-          <v-btn v-for="kind in publicationKinds" :key="kind" :value="kind" size="small">
-            {{ kindLabel(kind) }}
-          </v-btn>
-        </v-btn-toggle>
+          {{ kindLabel(kind) }}
+        </button>
       </div>
 
-      <v-row class="mt-1" dense>
-        <v-col
+      <div class="publications-grid">
+        <article
           v-for="(publication, index) in filteredPublications"
           :key="`${publication.title}-${publication.year}`"
-          cols="12"
-          md="6"
-          class="reveal-up"
+          class="publication-card reveal-up"
           :style="`--delay: ${160 + index * 70}ms`"
         >
-          <v-card class="publication-card h-100" variant="flat">
-            <v-card-item>
-              <template #prepend>
-                <v-avatar color="primary" variant="tonal" size="34">
-                  <v-icon icon="mdi-file-document-outline" />
-                </v-avatar>
-              </template>
+          <div class="card-header">
+            <div class="card-icon">
+              <v-icon icon="mdi-file-document-outline" size="18" />
+            </div>
+            <div class="card-meta">
+              <h3 class="publication-title">{{ publication.title }}</h3>
+              <p class="publication-venue">{{ publication.venue }} - {{ publication.year }}</p>
+            </div>
+          </div>
 
-              <v-card-title class="publication-title">{{ publication.title }}</v-card-title>
-              <v-card-subtitle>{{ publication.venue }} - {{ publication.year }}</v-card-subtitle>
-            </v-card-item>
+          <div class="meta-badges">
+            <span class="kind-badge">{{ t(`publications.kinds.${publication.kind}`) }}</span>
+            <span v-if="publication.doi" class="doi-badge">DOI {{ publication.doi }}</span>
+          </div>
 
-            <v-card-text>
-              <div class="meta-row">
-                <v-chip size="x-small" color="secondary" variant="tonal">{{
-                  t(`publications.kinds.${publication.kind}`)
-                }}</v-chip>
-                <v-chip v-if="publication.doi" size="x-small" variant="outlined"
-                  >DOI {{ publication.doi }}</v-chip
-                >
-              </div>
+          <p class="publication-summary">{{ publication.summary }}</p>
 
-              <p class="summary">{{ publication.summary }}</p>
+          <div class="tags-wrap">
+            <span
+              v-for="tag in publication.tags"
+              :key="tag"
+              class="pub-tag"
+            >
+              {{ tag }}
+            </span>
+          </div>
 
-              <div class="tag-wrap">
-                <v-chip
-                  v-for="tag in publication.tags"
-                  :key="tag"
-                  size="x-small"
-                  variant="outlined"
-                  color="primary"
-                >
-                  {{ tag }}
-                </v-chip>
-              </div>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn
-                v-if="publication.link"
-                :href="publication.link"
-                target="_blank"
-                rel="noreferrer"
-                append-icon="mdi-open-in-new"
-                variant="text"
-              >
-                {{ t("publications.read") }}
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
+          <a
+            v-if="publication.link"
+            :href="publication.link"
+            target="_blank"
+            rel="noreferrer"
+            class="publication-link"
+          >
+            {{ t("publications.read") }}
+            <v-icon icon="mdi-arrow-top-right" size="16" />
+          </a>
+        </article>
+      </div>
     </v-container>
   </section>
 </template>
@@ -125,62 +106,186 @@ const kindLabel = (kind: string) => {
 }
 
 .section-block {
-  padding-block: clamp(2.2rem, 5vw, 3.7rem);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
 }
 
-.publications-shell {
-  background:
-    radial-gradient(1200px 240px at 0 -20%, rgb(15 76 92 / 10%), transparent 65%),
-    linear-gradient(180deg, rgb(255 253 247 / 66%), rgb(255 253 247 / 20%));
+.section-heading {
+  margin-bottom: 1.5rem;
 }
 
 .section-heading h2 {
-  margin: 0.25rem 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
-  color: rgb(8 34 42);
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-text);
 }
 
 .kicker {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: var(--primary);
 }
 
-.kind-filter {
-  margin-top: 1rem;
+.filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 0.875rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  color: var(--page-text);
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.filter-btn.active {
+  color: var(--primary);
+  background: var(--primary-muted);
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.publications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.25rem;
 }
 
 .publication-card {
-  border: 1px solid rgb(15 76 92 / 16%);
-  background: rgb(255 253 247 / 84%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.publication-card:hover {
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.card-header {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--primary-muted);
+  border-radius: 8px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.card-meta {
+  flex: 1;
+  min-width: 0;
 }
 
 .publication-title {
-  font-size: 1.06rem;
-  line-height: 1.35;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--page-text);
 }
 
-.meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
+.publication-venue {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: var(--page-text-muted);
 }
 
-.summary {
-  margin: 0.85rem 0 0;
-  color: rgb(13 52 63 / 88%);
-}
-
-.tag-wrap {
-  margin-top: 0.85rem;
+.meta-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.kind-badge {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-muted);
+  border-radius: 4px;
+}
+
+.doi-badge {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.publication-summary {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--page-text-muted);
+}
+
+.tags-wrap {
+  margin-top: 0.875rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.pub-tag {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.publication-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.publication-link:hover {
+  opacity: 0.8;
+}
+
+@media (width <= 640px) {
+  .publications-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

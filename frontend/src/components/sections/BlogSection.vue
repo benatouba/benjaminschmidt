@@ -18,73 +18,64 @@ const { t } = useI18n({ useScope: "global" });
         <h2>{{ t("blog.heading") }}</h2>
       </div>
 
-      <v-row class="mt-1" dense>
-        <v-col
+      <div class="blog-grid">
+        <article
           v-for="(post, index) in props.posts"
           :key="post.slug"
-          cols="12"
-          md="4"
-          class="reveal-up"
+          class="blog-card reveal-up"
           :style="`--delay: ${120 + index * 80}ms`"
         >
-          <v-card class="blog-card h-100" variant="flat">
-            <v-card-item>
-              <template #prepend>
-                <v-avatar color="primary" variant="tonal" size="34">
-                  <v-icon icon="mdi-post-outline" />
-                </v-avatar>
-              </template>
-              <v-card-title class="blog-title">{{ post.title }}</v-card-title>
-              <v-card-subtitle>
+          <div class="card-header">
+            <div class="card-icon">
+              <v-icon icon="mdi-post-outline" size="18" />
+            </div>
+            <div class="card-meta">
+              <h3 class="blog-title">{{ post.title }}</h3>
+              <p class="blog-date">
                 {{ post.date }} · {{ post.readMinutes }} {{ t("blog.minRead") }}
-              </v-card-subtitle>
-            </v-card-item>
+              </p>
+            </div>
+          </div>
 
-            <v-card-text>
-              <p class="summary">{{ post.summary }}</p>
-              <div class="tag-wrap">
-                <v-chip
-                  v-for="tag in post.tags"
-                  :key="tag"
-                  size="x-small"
-                  variant="outlined"
-                  color="secondary"
-                >
-                  {{ tag }}
-                </v-chip>
-              </div>
+          <p class="blog-summary">{{ post.summary }}</p>
 
-              <div v-if="post.relatedArticles?.length" class="related-wrap">
-                <p class="related-label">{{ t("blog.relatedArticles") }}</p>
-                <ul class="related-list">
-                  <li
-                    v-for="article in post.relatedArticles"
-                    :key="`${post.slug}-${article.title}`"
-                  >
-                    <a v-if="article.href" :href="article.href" target="_blank" rel="noreferrer">
-                      {{ article.title }}
-                    </a>
-                    <span v-else>{{ article.title }}</span>
-                  </li>
-                </ul>
-              </div>
-            </v-card-text>
+          <div class="tags-wrap">
+            <span
+              v-for="tag in post.tags"
+              :key="tag"
+              class="blog-tag"
+            >
+              {{ tag }}
+            </span>
+          </div>
 
-            <v-card-actions>
-              <v-btn
-                v-if="post.href"
-                :href="post.href"
-                target="_blank"
-                rel="noreferrer"
-                variant="text"
-                append-icon="mdi-open-in-new"
+          <div v-if="post.relatedArticles?.length" class="related-section">
+            <p class="related-label">{{ t("blog.relatedArticles") }}</p>
+            <ul class="related-list">
+              <li
+                v-for="article in post.relatedArticles"
+                :key="`${post.slug}-${article.title}`"
               >
-                {{ t("blog.readPost") }}
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
+                <a v-if="article.href" :href="article.href" target="_blank" rel="noreferrer">
+                  {{ article.title }}
+                </a>
+                <span v-else>{{ article.title }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <a
+            v-if="post.href"
+            :href="post.href"
+            target="_blank"
+            rel="noreferrer"
+            class="blog-link"
+          >
+            {{ t("blog.readPost") }}
+            <v-icon icon="mdi-arrow-top-right" size="16" />
+          </a>
+        </article>
+      </div>
     </v-container>
   </section>
 </template>
@@ -95,70 +86,156 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .section-block {
-  padding-block: clamp(2.2rem, 5vw, 3.8rem);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.section-heading {
+  margin-bottom: 2rem;
 }
 
 .section-heading h2 {
-  margin: 0.25rem 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
-  color: rgb(8 34 42);
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-text);
 }
 
 .kicker {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: var(--primary);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
 }
 
 .blog-card {
-  border: 1px solid rgb(15 76 92 / 16%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.blog-card:hover {
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.card-header {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--primary-muted);
+  border-radius: 8px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.card-meta {
+  flex: 1;
+  min-width: 0;
 }
 
 .blog-title {
-  font-size: 1.02rem;
-  line-height: 1.36;
-}
-
-.summary {
   margin: 0;
-  color: rgb(13 52 63 / 88%);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--page-text);
 }
 
-.tag-wrap {
-  margin-top: 0.8rem;
+.blog-date {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: var(--page-text-muted);
+}
+
+.blog-summary {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--page-text-muted);
+}
+
+.tags-wrap {
+  margin-top: 0.875rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
 }
 
-.related-wrap {
-  margin-top: 0.85rem;
+.blog-tag {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.related-section {
+  margin-top: 1rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .related-label {
-  margin: 0;
-  font-size: 0.76rem;
-  font-weight: 700;
+  margin: 0 0 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: rgba(148, 163, 184, 0.7);
 }
 
 .related-list {
-  margin: 0.4rem 0 0;
+  margin: 0;
   padding: 0 0 0 1rem;
-  color: rgb(13 52 63 / 84%);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--page-text-muted);
 }
 
 .related-list a {
-  color: rgb(15 76 92);
+  color: var(--primary);
   text-decoration: none;
 }
 
 .related-list a:hover {
   text-decoration: underline;
+}
+
+.blog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.blog-link:hover {
+  opacity: 0.8;
 }
 </style>

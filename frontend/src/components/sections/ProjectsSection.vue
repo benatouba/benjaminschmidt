@@ -10,9 +10,9 @@ const props = defineProps<{
 const { t } = useI18n({ useScope: "global" });
 
 const projectStatusColor = (status: ResearchProject["status"]) => {
-  if (status === "Active") return "success";
-  if (status === "Planning") return "warning";
-  return "info";
+  if (status === "Active") return "var(--primary)";
+  if (status === "Planning") return "#fbbf24";
+  return "var(--page-text-muted)";
 };
 </script>
 
@@ -24,55 +24,59 @@ const projectStatusColor = (status: ResearchProject["status"]) => {
         <h2>{{ t("projects.heading") }}</h2>
       </div>
 
-      <v-row class="mt-1" dense>
-        <v-col
+      <div class="projects-grid">
+        <article
           v-for="(project, index) in props.projects"
           :key="project.name"
-          cols="12"
-          md="4"
-          class="reveal-up"
+          class="project-card reveal-up"
           :style="`--delay: ${100 + index * 90}ms`"
         >
-          <v-card class="project-card h-100" variant="flat" color="surface">
-            <v-card-item>
-              <template #append>
-                <v-chip :color="projectStatusColor(project.status)" size="x-small" variant="tonal">
-                  {{ t(`projects.status.${project.status}`) }}
-                </v-chip>
-              </template>
-              <v-card-title class="project-title">{{ project.name }}</v-card-title>
-              <v-card-subtitle>{{ project.timeframe }}</v-card-subtitle>
-            </v-card-item>
+          <div class="card-header">
+            <h3 class="project-title">{{ project.name }}</h3>
+            <span
+              class="status-badge"
+              :style="{ '--status-color': projectStatusColor(project.status) }"
+            >
+              {{ t(`projects.status.${project.status}`) }}
+            </span>
+          </div>
+          <p class="project-timeframe">{{ project.timeframe }}</p>
+          <p class="project-summary">{{ project.summary }}</p>
 
-            <v-card-text>
-              <p class="project-summary">{{ project.summary }}</p>
+          <div class="meta-section">
+            <p class="meta-label">{{ t("projects.stack") }}</p>
+            <div class="tags-wrap">
+              <span
+                v-for="item in project.stack"
+                :key="item"
+                class="tech-tag"
+              >
+                {{ item }}
+              </span>
+            </div>
+          </div>
 
-              <p class="meta-label">{{ t("projects.stack") }}</p>
-              <div class="chip-wrap">
-                <v-chip
-                  v-for="item in project.stack"
-                  :key="item"
-                  size="x-small"
-                  variant="outlined"
-                  color="secondary"
-                >
-                  {{ item }}
-                </v-chip>
-              </div>
+          <div class="meta-section">
+            <p class="meta-label">{{ t("projects.outcomes") }}</p>
+            <ul class="outcomes-list">
+              <li v-for="outcome in project.outcomes" :key="outcome">
+                {{ outcome }}
+              </li>
+            </ul>
+          </div>
 
-              <p class="meta-label mt-4">{{ t("projects.outcomes") }}</p>
-              <v-list class="outcome-list" density="compact" lines="one">
-                <v-list-item
-                  v-for="outcome in project.outcomes"
-                  :key="outcome"
-                  prepend-icon="mdi-arrow-right-thin-circle-outline"
-                  :title="outcome"
-                />
-              </v-list>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
+          <a
+            v-if="project.link"
+            :href="project.link"
+            target="_blank"
+            rel="noreferrer"
+            class="project-link"
+          >
+            View Project
+            <v-icon icon="mdi-arrow-top-right" size="16" />
+          </a>
+        </article>
+      </div>
     </v-container>
   </section>
 </template>
@@ -83,55 +87,146 @@ const projectStatusColor = (status: ResearchProject["status"]) => {
 }
 
 .section-block {
-  padding-block: clamp(2.2rem, 5vw, 3.7rem);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.section-heading {
+  margin-bottom: 2rem;
 }
 
 .section-heading h2 {
-  margin: 0.25rem 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
-  color: rgb(8 34 42);
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-text);
 }
 
 .kicker {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: var(--primary);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
 }
 
 .project-card {
-  border: 1px solid rgb(15 76 92 / 16%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(34, 211, 238, 0.3);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .project-title {
+  margin: 0;
   font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--page-text);
+  line-height: 1.4;
+}
+
+.status-badge {
+  flex-shrink: 0;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--status-color);
+  background: color-mix(in srgb, var(--status-color) 15%, transparent);
+  border-radius: 4px;
+}
+
+.project-timeframe {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--page-text-muted);
 }
 
 .project-summary {
-  margin: 0;
-  color: rgb(13 52 63 / 88%);
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--page-text-muted);
+}
+
+.meta-section {
+  margin-top: 1rem;
 }
 
 .meta-label {
-  margin: 0.9rem 0 0;
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.11em;
+  margin: 0 0 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: rgba(148, 163, 184, 0.7);
 }
 
-.chip-wrap {
-  margin-top: 0.45rem;
+.tags-wrap {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
 }
 
-.outcome-list {
-  margin-top: 0.4rem;
-  background: transparent;
+.tech-tag {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--primary);
+  background: var(--primary-muted);
+  border-radius: 4px;
+}
+
+.outcomes-list {
+  margin: 0;
+  padding: 0 0 0 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--page-text-muted);
+}
+
+.outcomes-list li {
+  margin-bottom: 0.25rem;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.project-link:hover {
+  opacity: 0.8;
 }
 </style>

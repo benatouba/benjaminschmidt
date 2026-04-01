@@ -1,8 +1,14 @@
 :root {
-  --font-body: "Source Sans 3", "Segoe UI", sans-serif;
-  --font-display: "Merriweather", Georgia, serif;
-  --page-text: #0f3039;
-  --page-background: #f6f4ee;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Inter", "Segoe UI", system-ui, sans-serif;
+  --page-text: #e2e8f0;
+  --page-text-muted: #94a3b8;
+  --page-background: #0f172a;
+  --surface: #1e293b;
+  --surface-elevated: #334155;
+  --border-color: rgba(148, 163, 184, 0.12);
+  --primary: #22d3ee;
+  --primary-muted: rgba(34, 211, 238, 0.15);
 }
 
 * {
@@ -25,7 +31,7 @@ body {
   font-family: var(--font-body);
   color: var(--page-text);
   background: var(--page-background);
-  line-height: 1.55;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -33,6 +39,11 @@ body {
 
 a {
   color: inherit;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--page-background);
 }
 
 .reveal-up {

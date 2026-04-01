@@ -20,88 +20,83 @@ const { t } = useI18n({ useScope: "global" });
         <h2>{{ t("cv.heading") }}</h2>
       </div>
 
-      <v-row dense>
-        <v-col cols="12" md="7" class="reveal-up" style="--delay: 100ms">
-          <v-card class="h-100 cv-card" variant="flat">
-            <v-card-title>{{ t("cv.professionalAppointments") }}</v-card-title>
-            <v-card-text class="cards-stack">
-              <v-card
+      <div class="cv-grid">
+        <div class="cv-column reveal-up" style="--delay: 100ms">
+          <div class="cv-card">
+            <h3 class="card-title">{{ t("cv.professionalAppointments") }}</h3>
+            <div class="appointments-stack">
+              <article
                 v-for="item in props.appointments"
                 :key="`${item.period}-${item.role}`"
-                class="appointment-card"
-                variant="tonal"
-                color="surface"
+                class="appointment-item"
               >
-                <v-card-item>
-                  <template #prepend>
-                    <v-avatar color="primary" variant="tonal" size="34">
-                      <v-icon icon="mdi-briefcase-outline" />
-                    </v-avatar>
-                  </template>
-                  <v-card-title class="appointment-title">{{ item.role }}</v-card-title>
-                  <v-card-subtitle>{{ item.institution }} · {{ item.location }}</v-card-subtitle>
-                  <template #append>
-                    <v-chip size="x-small" variant="outlined" color="primary">{{
-                      item.period
-                    }}</v-chip>
-                  </template>
-                </v-card-item>
-
-                <v-card-text>
-                  <p class="summary">{{ item.summary }}</p>
-                  <div class="chip-wrap">
-                    <v-chip
-                      v-for="highlight in item.highlights"
-                      :key="highlight"
-                      size="x-small"
-                      color="secondary"
-                      variant="outlined"
-                    >
-                      {{ highlight }}
-                    </v-chip>
+                <div class="appointment-header">
+                  <div class="appointment-icon">
+                    <v-icon icon="mdi-briefcase-outline" size="18" />
                   </div>
-                </v-card-text>
-              </v-card>
-            </v-card-text>
-          </v-card>
-        </v-col>
+                  <div class="appointment-meta">
+                    <h4 class="appointment-role">{{ item.role }}</h4>
+                    <p class="appointment-info">{{ item.institution }} · {{ item.location }}</p>
+                  </div>
+                  <span class="appointment-period">{{ item.period }}</span>
+                </div>
+                <p class="appointment-summary">{{ item.summary }}</p>
+                <div class="highlights-wrap">
+                  <span
+                    v-for="highlight in item.highlights"
+                    :key="highlight"
+                    class="highlight-tag"
+                  >
+                    {{ highlight }}
+                  </span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
 
-        <v-col cols="12" md="5" class="reveal-up" style="--delay: 160ms">
-          <v-card class="mb-3 cv-card" variant="flat">
-            <v-card-title>{{ t("cv.education") }}</v-card-title>
-            <v-list density="comfortable" lines="three" class="transparent-list">
-              <v-list-item
+        <div class="cv-column reveal-up" style="--delay: 160ms">
+          <div class="cv-card">
+            <h3 class="card-title">{{ t("cv.education") }}</h3>
+            <div class="list-stack">
+              <div
                 v-for="entry in props.education"
                 :key="`${entry.period}-${entry.degree}`"
-                prepend-icon="mdi-school-outline"
-                :title="entry.degree"
-                :subtitle="`${entry.institution} · ${entry.period}`"
+                class="list-item"
               >
-                <template #append>
-                  <span class="list-detail">{{ entry.details }}</span>
-                </template>
-              </v-list-item>
-            </v-list>
-          </v-card>
+                <div class="list-icon">
+                  <v-icon icon="mdi-school-outline" size="18" />
+                </div>
+                <div class="list-content">
+                  <h4 class="list-title">{{ entry.degree }}</h4>
+                  <p class="list-subtitle">{{ entry.institution }} · {{ entry.period }}</p>
+                  <p class="list-detail">{{ entry.details }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <v-card class="cv-card" variant="flat">
-            <v-card-title>{{ t("cv.awardsAndHonors") }}</v-card-title>
-            <v-list density="comfortable" lines="two" class="transparent-list">
-              <v-list-item
+          <div class="cv-card">
+            <h3 class="card-title">{{ t("cv.awardsAndHonors") }}</h3>
+            <div class="list-stack">
+              <div
                 v-for="honor in props.honors"
                 :key="`${honor.year}-${honor.title}`"
-                prepend-icon="mdi-medal-outline"
-                :title="honor.title"
-                :subtitle="`${honor.issuer} · ${honor.year}`"
+                class="list-item"
               >
-                <template #append>
-                  <span class="list-detail">{{ honor.description }}</span>
-                </template>
-              </v-list-item>
-            </v-list>
-          </v-card>
-        </v-col>
-      </v-row>
+                <div class="list-icon honor-icon">
+                  <v-icon icon="mdi-medal-outline" size="18" />
+                </div>
+                <div class="list-content">
+                  <h4 class="list-title">{{ honor.title }}</h4>
+                  <p class="list-subtitle">{{ honor.issuer }} · {{ honor.year }}</p>
+                  <p class="list-detail">{{ honor.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </v-container>
   </section>
 </template>
@@ -112,67 +107,196 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .section-block {
-  padding-block: clamp(2.2rem, 5vw, 3.8rem);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.section-heading {
+  margin-bottom: 2rem;
 }
 
 .section-heading h2 {
-  margin: 0.25rem 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
-  color: rgb(8 34 42);
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-text);
 }
 
 .kicker {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(90 125 124);
+  color: var(--primary);
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.5rem;
+}
+
+.cv-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .cv-card {
-  border: 1px solid rgb(15 76 92 / 16%);
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
 }
 
-.cards-stack {
-  display: grid;
-  gap: 0.8rem;
-}
-
-.appointment-card {
-  border: 1px solid rgb(15 76 92 / 14%);
-}
-
-.appointment-title {
+.card-title {
+  margin: 0 0 1.25rem;
   font-size: 1rem;
+  font-weight: 600;
+  color: var(--page-text);
 }
 
-.summary {
+.appointments-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.appointment-item {
+  padding: 1rem 1.25rem;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.appointment-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.appointment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--primary-muted);
+  border-radius: 8px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.appointment-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.appointment-role {
   margin: 0;
-  color: rgb(13 52 63 / 88%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--page-text);
 }
 
-.chip-wrap {
-  margin-top: 0.7rem;
+.appointment-info {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--page-text-muted);
+}
+
+.appointment-period {
+  flex-shrink: 0;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-muted);
+  border-radius: 4px;
+}
+
+.appointment-summary {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--page-text-muted);
+}
+
+.highlights-wrap {
+  margin-top: 0.75rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
 }
 
-.transparent-list {
-  background: transparent;
+.highlight-tag {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.list-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list-item {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.list-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(148, 163, 184, 0.1);
+  border-radius: 8px;
+  color: var(--page-text-muted);
+  flex-shrink: 0;
+}
+
+.honor-icon {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+
+.list-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.list-title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--page-text);
+}
+
+.list-subtitle {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--page-text-muted);
 }
 
 .list-detail {
-  max-width: 16rem;
-  font-size: 0.78rem;
-  color: rgb(13 52 63 / 72%);
-  text-align: right;
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(148, 163, 184, 0.7);
 }
 
 @media (width <= 960px) {
-  .list-detail {
-    display: none;
+  .cv-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
