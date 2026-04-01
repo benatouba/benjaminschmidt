@@ -30,7 +30,7 @@ export const profile: ProfileInfo = {
   name: "Dr. Benjamin Schmidt",
   headline: "Research Scientist and Data-Intensive Software Engineer",
   location: "Berlin, Germany",
-  address: "Kaiserin-Augusta-Allee 43, 10589 Berlin",
+  address: "10589 Berlin-Charlottenburg",
   phone: "+49 (0) 171 8036920",
   email: "benjamin.schmidt@tu-berlin.de",
   orcid: "0000-0002-9669-3360",
@@ -77,7 +77,7 @@ export const careerStages: CareerStage[] = [
   },
   {
     period: "02/2024 - Present",
-    title: "Scientific Advisor",
+    title: "Chief Scientific Officer",
     institution: "Alganize GmbH",
     description:
       "Consulting on scientific communication and data analysis in biotech workflows, with focus on time-series station data and robust reporting.",
@@ -220,7 +220,7 @@ export const cvAppointments: CvAppointment[] = [
   },
   {
     period: "02/2024 - Present",
-    role: "Scientific Advisor",
+    role: "Chief Scientific Officer",
     institution: "Alganize GmbH",
     location: "Berlin",
     summary: "Advise biotech teams on scientific communication and climate time-series analysis.",
@@ -436,13 +436,6 @@ export const externalProfiles: ExternalProfileLink[] = [
     icon: "mdi-linkedin",
     description: "Professional profile, collaborations, and speaking activities.",
     category: "Professional",
-  },
-  {
-    label: "Personal Website",
-    href: undefined,
-    icon: "mdi-web",
-    description: "Primary website URL will be added once the final domain is set.",
-    category: "Personal",
   },
   {
     label: "Google Scholar",
