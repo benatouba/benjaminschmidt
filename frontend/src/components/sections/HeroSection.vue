@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import profilePhoto from "@/assets/cv-profile-pro.png";
+
 import { useI18n } from "vue-i18n";
 
 import type { ProfileInfo } from "@/types/site";
@@ -8,6 +10,29 @@ const props = defineProps<{
 }>();
 
 const { t } = useI18n({ useScope: "global" });
+
+const quickLinks = [
+  {
+    label: "Email",
+    href: `mailto:${props.profile.email}`,
+    icon: "mdi-email-outline",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/benatouba",
+    icon: "mdi-github",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/dr-benjamin-schmidt/",
+    icon: "mdi-linkedin",
+  },
+  {
+    label: "ORCID",
+    href: "https://orcid.org/0000-0002-9669-3360",
+    icon: "mdi-account-badge-outline",
+  },
+];
 </script>
 
 <template>
@@ -31,6 +56,20 @@ const { t } = useI18n({ useScope: "global" });
             <v-icon icon="mdi-phone-outline" size="small" />
             {{ props.profile.phone }}
           </span>
+        </div>
+
+        <div class="profile-links">
+          <a
+            v-for="link in quickLinks"
+            :key="link.label"
+            :href="link.href"
+            class="profile-link-chip"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <v-icon :icon="link.icon" size="15" />
+            {{ link.label }}
+          </a>
         </div>
 
         <div class="hero-actions">
@@ -62,6 +101,10 @@ const { t } = useI18n({ useScope: "global" });
       </div>
 
       <div class="profile-card reveal-up" style="--delay: 180ms">
+        <div class="photo-wrap">
+          <img :src="profilePhoto" alt="Dr. Benjamin Schmidt" class="profile-photo" />
+        </div>
+
         <div class="card-header">
           <div class="card-icon">
             <v-icon icon="mdi-account" size="20" />
@@ -170,6 +213,38 @@ const { t } = useI18n({ useScope: "global" });
   gap: 0.75rem;
 }
 
+.profile-links {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.profile-link-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  text-decoration: none;
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.profile-link-chip:hover {
+  color: var(--page-text);
+  border-color: rgba(34, 211, 238, 0.3);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.profile-link-chip .v-icon {
+  color: var(--primary);
+}
+
 .action-btn {
   text-transform: none;
   font-weight: 500;
@@ -191,6 +266,22 @@ const { t } = useI18n({ useScope: "global" });
   border: 1px solid var(--border-color);
   border-radius: 16px;
   backdrop-filter: blur(8px);
+}
+
+.photo-wrap {
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-photo {
+  width: clamp(140px, 34vw, 190px);
+  height: clamp(140px, 34vw, 190px);
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(34, 211, 238, 0.35);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.35);
+  background: rgba(15, 23, 42, 0.45);
 }
 
 .card-header {

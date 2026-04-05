@@ -80,6 +80,15 @@ export const messages = {
       Completed: "Completado",
     },
   },
+  skills: {
+    kicker: "Kit técnico",
+    heading: "Badges de habilidades y tecnologías",
+    copy: "Un resumen compacto de tecnologías que uso en software científico, plataformas de datos y flujos de trabajo reproducibles.",
+  },
+  github: {
+    kicker: "Actividad en GitHub",
+    heading: "Estadísticas actuales y distribución de lenguajes",
+  },
   profiles: {
     kicker: "Cuentas vinculadas",
     heading: "Perfiles académicos, profesionales y públicos",

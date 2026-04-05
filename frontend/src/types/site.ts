@@ -52,6 +52,18 @@ export interface ContactLink {
 	sublabel: string;
 }
 
+export interface SkillBadge {
+  label: string;
+  image: string;
+  href?: string;
+}
+
+export interface GitHubStatCard {
+  title: string;
+  image: string;
+  href?: string;
+}
+
 export interface CvAppointment {
   period: string;
   role: string;
@@ -122,6 +134,8 @@ export interface SiteContent {
   careerStages: CareerStage[];
   publications: PublicationItem[];
   projects: ResearchProject[];
+  skillBadges?: SkillBadge[];
+  githubStats?: GitHubStatCard[];
   cvAppointments: CvAppointment[];
   education: EducationEntry[];
   honors: HonorEntry[];
