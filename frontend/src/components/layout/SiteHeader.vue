@@ -41,11 +41,13 @@ const isActive = (target: string) => {
   <header class="header-shell">
     <div class="top-bar">
       <div class="header-container">
-        <div class="identity">
-          <img class="brand-mark" src="/favicon.svg" alt="" aria-hidden="true" />
-          <p class="name">{{ props.name }}</p>
-          <p class="headline">{{ props.headline }}</p>
-        </div>
+        <a class="identity-link" href="/" @click.prevent="$router.push('/')">
+          <div class="identity">
+            <img class="brand-mark" src="/favicon.svg" alt="" aria-hidden="true" />
+            <p class="name">{{ props.name }}</p>
+            <p class="headline">{{ props.headline }}</p>
+          </div>
+        </a>
 
         <nav class="nav-links" :aria-label="t('nav.ariaLabel')">
           <a
@@ -106,6 +108,11 @@ const isActive = (target: string) => {
   column-gap: 0.6rem;
   align-items: center;
   min-width: 0;
+}
+
+.identity-link {
+  min-width: 0;
+  text-decoration: none;
 }
 
 .brand-mark {
