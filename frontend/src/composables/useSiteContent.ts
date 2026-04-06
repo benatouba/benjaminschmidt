@@ -1,31 +1,105 @@
-import { computed } from "vue";
+import { computed, shallowRef, watch } from "vue";
 import { useI18n } from "vue-i18n";
 
 import {
   githubStatCards,
-  projectCatalogDe,
-  projectCatalogEn,
-  projectCatalogEs,
   skillBadgeCatalog,
 } from "@/data/showcase";
-import { content as de } from "@/i18n/locales/de";
-import { content as en } from "@/i18n/locales/en";
-import { content as es } from "@/i18n/locales/es";
+import { initialLocale, normalizeLocaleCode } from "@/i18n";
 
+import type { AppLocale } from "@/i18n";
 import type { SiteContent } from "@/types/site";
 
-const localeContent: Record<string, SiteContent> = { en, de, es };
+const localeContentLoaders: Record<AppLocale, () => Promise<{ content: SiteContent }>> = {
+  en: () => import("@/i18n/locales/en"),
+  de: () => import("@/i18n/locales/de"),
+  es: () => import("@/i18n/locales/es"),
+};
+
+const localeContentCache = new Map<AppLocale, SiteContent>();
+const pendingLoads = new Map<AppLocale, Promise<SiteContent>>();
+const activeContent = shallowRef<SiteContent | null>(null);
+
+const EMPTY_CONTENT: SiteContent = {
+  navItems: [],
+  profile: {
+    name: "",
+    headline: "",
+    location: "",
+    email: "",
+    orcid: "",
+    summary: "",
+    interests: [],
+    skills: [],
+  },
+  careerStages: [],
+  publications: [],
+  projects: [],
+  cvAppointments: [],
+  education: [],
+  honors: [],
+  articleHistory: [],
+  blogPosts: [],
+  externalProfiles: [],
+  services: [],
+  contactLinks: [],
+};
+
+const loadLocaleContent = async (value: string | null | undefined): Promise<SiteContent> => {
+  const locale = normalizeLocaleCode(value);
+  const cached = localeContentCache.get(locale);
+
+  if (cached) {
+    return cached;
+  }
+
+  const pending = pendingLoads.get(locale);
+
+  if (pending) {
+    return pending;
+  }
+
+  const load = localeContentLoaders[locale]().then((module) => {
+    localeContentCache.set(locale, module.content);
+    pendingLoads.delete(locale);
+    return module.content;
+  });
+
+  pendingLoads.set(locale, load);
+  return load;
+};
+
+export const preloadSiteContent = async (value: string | null | undefined): Promise<void> => {
+  activeContent.value = await loadLocaleContent(value);
+};
+
+void preloadSiteContent(initialLocale);
 
 export function useSiteContent() {
   const { locale } = useI18n({ useScope: "global" });
+
+  const syncActiveContent = async (value: string) => {
+    const targetLocale = normalizeLocaleCode(value);
+    const content = await loadLocaleContent(targetLocale);
+
+    if (normalizeLocaleCode(locale.value) === targetLocale) {
+      activeContent.value = content;
+    }
+  };
+
+  watch(
+    locale,
+    (value) => {
+      void syncActiveContent(value);
+    },
+    { immediate: true },
+  );
+
   return computed(() => {
-    const base = localeContent[locale.value] ?? localeContent.en;
-    const localizedProjects =
-      locale.value === "de" ? projectCatalogDe : locale.value === "es" ? projectCatalogEs : projectCatalogEn;
+    const base = activeContent.value ?? EMPTY_CONTENT;
 
     return {
       ...base,
-      projects: localizedProjects,
       skillBadges: skillBadgeCatalog,
       githubStats: githubStatCards,
     };

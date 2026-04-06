@@ -2,6 +2,9 @@
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 
+import { preloadSiteContent } from "@/composables/useSiteContent";
+import { setAppLocale } from "@/i18n";
+
 import type { NavigationItem } from "@/types/site";
 
 const props = defineProps<{
@@ -19,9 +22,10 @@ const locales = [
   { code: "es", flag: "ES" },
 ] as const;
 
-const setLocale = (code: string) => {
-  locale.value = code;
-  localStorage.setItem("locale", code);
+const setLocale = async (code: string) => {
+  const nextLocale = await setAppLocale(code);
+  await preloadSiteContent(nextLocale);
+  locale.value = nextLocale;
 };
 
 const isActive = (target: string) => {

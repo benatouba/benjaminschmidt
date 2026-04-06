@@ -4,26 +4,44 @@ import { h } from "vue";
 import { createVuetify } from "vuetify";
 import type { IconProps, IconSet } from "vuetify";
 import { md3 } from "vuetify/blueprints";
-import { aliases, mdi as mdiSvg } from "vuetify/iconsets/mdi-svg";
+import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
 import { mdiFallbackIconPath, mdiIconPathByName } from "@/icons/mdi";
 
-const mdi: IconSet = {
+const mdiAliases = Object.fromEntries(
+  Object.entries(mdiIconPathByName).map(([key, path]) => [key.replace(/^mdi-/, ""), path]),
+);
+
+const appAliases = {
+  ...aliases,
+  ...mdiAliases,
+};
+
+const resolveIconPath = (value: string): string => {
+  const normalized = value.trim();
+
+  if (normalized.startsWith("M")) {
+    return normalized;
+  }
+
+  if (normalized.startsWith("$")) {
+    const alias = appAliases[normalized.slice(1) as keyof typeof appAliases];
+    return typeof alias === "string" ? alias : mdiFallbackIconPath;
+  }
+
+  return mdiIconPathByName[normalized] ?? mdiFallbackIconPath;
+};
+
+const iconSet: IconSet = {
   component: (props: IconProps) => {
-    const rawIcon = props.icon;
-
-    if (typeof rawIcon === "string") {
-      const iconPath = rawIcon.startsWith("M")
-        ? rawIcon
-        : mdiIconPathByName[rawIcon] ?? mdiFallbackIconPath;
-
-      return h(mdiSvg.component, {
-        ...props,
-        icon: iconPath,
-      });
+    if (typeof props.icon !== "string") {
+      return h(mdi.component, props);
     }
 
-    return h(mdiSvg.component, props);
+    return h(mdi.component, {
+      ...props,
+      icon: resolveIconPath(props.icon),
+    });
   },
 };
 
@@ -46,9 +64,9 @@ export const vuetify = createVuetify({
   blueprint: md3,
   icons: {
     defaultSet: "mdi",
-    aliases,
+    aliases: appAliases,
     sets: {
-      mdi,
+      mdi: iconSet,
     },
   },
   theme: {
