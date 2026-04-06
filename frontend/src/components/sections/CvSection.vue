@@ -129,24 +129,24 @@ const appointmentHighlightBadges = (item: CvAppointment) =>
 .cv-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
-  gap: 1.5rem;
+  gap: 1.1rem;
 }
 
 .cv-column {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .cv-card {
-  padding: 1.5rem;
+  padding: 1.2rem;
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
 }
 
 .card-title {
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.95rem;
   font-size: 1rem;
   font-weight: 600;
   color: var(--page-text);
@@ -155,11 +155,11 @@ const appointmentHighlightBadges = (item: CvAppointment) =>
 .appointments-stack {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .appointment-item {
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 1rem;
   background: rgba(15, 23, 42, 0.4);
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -220,7 +220,7 @@ const appointmentHighlightBadges = (item: CvAppointment) =>
 }
 
 .highlights-wrap {
-  margin-top: 0.75rem;
+  margin-top: 0.6rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -249,7 +249,7 @@ const appointmentHighlightBadges = (item: CvAppointment) =>
 .list-stack {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .list-item {

@@ -22,9 +22,7 @@ export const messages = {
     researchFocus: "Enfoque investigador",
     currentInterests: "Áreas de interés actuales",
     currentInterestsDetail:
-      "Modelado climático en Galápagos, ingeniería y visualización de datos climáticos a gran escala, y software de investigación full-stack para ciencia reproducible.",
-    currentInterestsDetailShort:
-      "Modelado climático en Galápagos, flujos de datos climáticos a gran escala y software de investigación full-stack.",
+      "Modelado climático regional para Galápagos con foco en la dinámica de precipitación y balance hídrico, ingeniería integral de grandes conjuntos de datos climáticos (procesamiento, control de calidad, análisis y visualización) y desarrollo de software de investigación full-stack que hace los datos ambientales complejos reproducibles, explorables y útiles para la toma de decisiones.",
     coreStrengths: "Competencias clave",
     orcidLabel: "ORCID",
   },

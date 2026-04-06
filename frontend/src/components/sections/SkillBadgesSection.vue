@@ -44,11 +44,11 @@ const { t } = useI18n({ useScope: "global" });
 
 <style scoped>
 .section-heading {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
 }
 
 .section-copy {
-  margin: 0.75rem 0 0;
+  margin: 0.55rem 0 0;
   max-width: 70ch;
   font-size: 0.95rem;
   line-height: 1.6;

@@ -69,11 +69,11 @@ const { t } = useI18n({ useScope: "global" });
 
 <style scoped>
 .section-block {
-  padding-bottom: clamp(3rem, 8vw, 6rem);
+  padding-bottom: clamp(1.8rem, 4.5vw, 3rem);
 }
 
 .contact-card {
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.2rem, 2.5vw, 2rem);
   background: 
     radial-gradient(ellipse 80% 60% at 0% 0%, rgba(34, 211, 238, 0.08), transparent 50%),
     radial-gradient(ellipse 80% 60% at 100% 100%, rgba(99, 102, 241, 0.06), transparent 50%),
@@ -86,7 +86,7 @@ const { t } = useI18n({ useScope: "global" });
 .contact-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
-  gap: clamp(2rem, 4vw, 3rem);
+  gap: clamp(1.2rem, 3vw, 2rem);
 }
 
 .contact-info {
@@ -113,7 +113,7 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .contact-copy {
-  margin: 1rem 0 0;
+  margin: 0.8rem 0 0;
   font-size: 0.95rem;
   line-height: 1.7;
   color: var(--page-text-muted);
@@ -124,7 +124,7 @@ const { t } = useI18n({ useScope: "global" });
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin: 1.25rem 0 0;
+  margin: 1rem 0 0;
   font-size: 0.9rem;
   color: var(--page-text-muted);
 }
@@ -137,7 +137,7 @@ const { t } = useI18n({ useScope: "global" });
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   padding: 0.75rem 1.25rem;
   font-size: 0.9rem;
   font-weight: 500;
@@ -157,7 +157,7 @@ const { t } = useI18n({ useScope: "global" });
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.8rem;
   background: rgba(15, 23, 42, 0.4);
   border: 1px solid var(--border-color);
   border-radius: 12px;

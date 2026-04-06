@@ -132,19 +132,19 @@ const stageFocusBadges = (stage: CareerStage) =>
 }
 
 .timeline-content {
-  padding-bottom: 2rem;
+  padding-bottom: 1.25rem;
 }
 
 .period {
   display: inline-block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--primary);
 }
 
 .timeline-card {
-  padding: 1.25rem 1.5rem;
+  padding: 1.05rem 1.2rem;
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -164,14 +164,14 @@ const stageFocusBadges = (stage: CareerStage) =>
 }
 
 .card-description {
-  margin: 0.75rem 0 0;
+  margin: 0.6rem 0 0;
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--page-text-muted);
 }
 
 .focus-wrap {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;

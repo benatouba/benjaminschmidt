@@ -61,13 +61,15 @@ const { t } = useI18n({ useScope: "global" });
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.25rem;
+  gap: 1rem;
+  align-items: stretch;
 }
 
 .service-card {
   display: flex;
   flex-direction: column;
-  padding: 1.75rem;
+  padding: 1.3rem;
+  height: 100%;
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -85,7 +87,7 @@ const { t } = useI18n({ useScope: "global" });
   justify-content: center;
   width: 48px;
   height: 48px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   background: var(--primary-muted);
   border-radius: 12px;
   color: var(--primary);
@@ -105,7 +107,7 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .service-description {
-  margin: 0.75rem 0 0;
+  margin: 0.6rem 0 0;
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--page-text-muted);
@@ -116,7 +118,7 @@ const { t } = useI18n({ useScope: "global" });
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   padding: 0.6rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;

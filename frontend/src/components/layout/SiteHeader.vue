@@ -117,9 +117,9 @@ const isActive = (target: string) => {
 
 .brand-mark {
   grid-area: icon;
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
   display: block;
 }
 
@@ -254,8 +254,8 @@ const isActive = (target: string) => {
   }
 
   .brand-mark {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
   }
 
   .lang-btn {

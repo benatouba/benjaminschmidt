@@ -66,7 +66,7 @@ const streakCard = computed(() => props.cards[2]);
 
 <style scoped>
 .section-heading {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
 }
 
 .stats-grid {
@@ -76,7 +76,7 @@ const streakCard = computed(() => props.cards[2]);
 }
 
 .streak-wrap {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   display: flex;
   justify-content: center;
 }

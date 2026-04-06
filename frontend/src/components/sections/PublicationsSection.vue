@@ -281,14 +281,14 @@ const formattedReleaseDate = (value: string) => {
 
 <style scoped>
 .section-heading {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
 }
 
 .filter-btn {
@@ -317,13 +317,15 @@ const formattedReleaseDate = (value: string) => {
 .publications-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 1.25rem;
+  gap: 1rem;
+  align-items: stretch;
 }
 
 .publication-card {
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1.2rem;
+  height: 100%;
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -337,7 +339,7 @@ const formattedReleaseDate = (value: string) => {
 .card-header {
   display: flex;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .card-icon {
@@ -413,7 +415,7 @@ const formattedReleaseDate = (value: string) => {
 }
 
 .tags-wrap {
-  margin-top: 0.875rem;
+  margin-top: 0.7rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -444,7 +446,7 @@ const formattedReleaseDate = (value: string) => {
   align-items: center;
   gap: 0.35rem;
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 0.8rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--primary);

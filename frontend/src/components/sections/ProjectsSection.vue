@@ -109,13 +109,15 @@ const projectTechBadges = (project: ResearchProject) =>
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.25rem;
+  gap: 1rem;
+  align-items: stretch;
 }
 
 .project-card {
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1.2rem;
+  height: 100%;
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -162,14 +164,14 @@ const projectTechBadges = (project: ResearchProject) =>
 }
 
 .project-summary {
-  margin: 0.75rem 0 0;
+  margin: 0.6rem 0 0;
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--page-text-muted);
 }
 
 .meta-section {
-  margin-top: 1rem;
+  margin-top: 0.85rem;
 }
 
 .meta-label {
@@ -211,7 +213,7 @@ const projectTechBadges = (project: ResearchProject) =>
   margin: 0;
   padding: 0 0 0 1.25rem;
   font-size: 0.85rem;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--page-text-muted);
 }
 
@@ -224,7 +226,7 @@ const projectTechBadges = (project: ResearchProject) =>
   align-items: center;
   gap: 0.35rem;
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 0.8rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--primary);

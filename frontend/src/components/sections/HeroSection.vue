@@ -129,51 +129,55 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
       </div>
 
       <div class="profile-card reveal-up" style="--delay: 180ms">
-        <div class="photo-wrap">
-          <img
-            :src="profilePhoto"
-            :srcset="profilePhotoSrcset"
-            sizes="(max-width: 980px) 140px, 190px"
-            :alt="props.profile.name"
-            width="384"
-            height="384"
-            fetchpriority="high"
-            decoding="async"
-            class="profile-photo"
-          />
-        </div>
-
-        <div class="card-header">
-          <div class="card-icon">
-            <v-icon icon="mdi-account" size="20" />
-          </div>
-          <div>
-            <h2 class="card-title">{{ t("hero.researchFocus") }}</h2>
-            <p class="card-subtitle">{{ t("hero.currentInterests") }}</p>
-            <p class="card-focus-copy focus-copy-desktop">{{ t("hero.currentInterestsDetail") }}</p>
-            <p class="card-focus-copy focus-copy-mobile">{{ t("hero.currentInterestsDetailShort") }}</p>
-          </div>
-        </div>
-
-        <div v-if="interestBadges.length" class="interests-wrap">
-          <a
-            v-for="badge in interestBadges"
-            :key="badge.key"
-            :href="badge.href"
-            :target="badge.href ? '_blank' : undefined"
-            :rel="badge.href ? 'noreferrer' : undefined"
-            class="interest-badge-link"
-          >
+        <div class="profile-top">
+          <div class="photo-wrap">
             <img
-              :src="badge.image"
-              :alt="badge.label"
-              :width="badge.width ?? 80"
-              :height="badge.height ?? 20"
-              loading="lazy"
+              :src="profilePhoto"
+              :srcset="profilePhotoSrcset"
+              sizes="(max-width: 980px) 180px, 240px"
+              :alt="props.profile.name"
+              width="384"
+              height="384"
+              fetchpriority="high"
               decoding="async"
-              class="interest-badge"
+              class="profile-photo"
             />
-          </a>
+          </div>
+
+          <div class="focus-pane">
+            <div class="card-header">
+              <div class="card-icon">
+                <v-icon icon="mdi-account" size="20" />
+              </div>
+              <div>
+                <h2 class="card-title">{{ t("hero.researchFocus") }}</h2>
+                <p class="card-subtitle">{{ t("hero.currentInterests") }}</p>
+              </div>
+            </div>
+
+            <p class="card-focus-copy">{{ t("hero.currentInterestsDetail") }}</p>
+
+            <div v-if="interestBadges.length" class="interests-wrap">
+              <a
+                v-for="badge in interestBadges"
+                :key="badge.key"
+                :href="badge.href"
+                :target="badge.href ? '_blank' : undefined"
+                :rel="badge.href ? 'noreferrer' : undefined"
+                class="interest-badge-link"
+              >
+                <img
+                  :src="badge.image"
+                  :alt="badge.label"
+                  :width="badge.width ?? 80"
+                  :height="badge.height ?? 20"
+                  loading="lazy"
+                  decoding="async"
+                  class="interest-badge"
+                />
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="divider"></div>
@@ -211,10 +215,13 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: clamp(2rem, 4vw, 3.5rem);
-  padding-top: clamp(3rem, 8vw, 6rem);
-  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+  grid-template-columns: 1.25fr 1fr;
+  gap: clamp(0.75rem, 1.8vw, 1.4rem);
+  max-width: min(1440px, 98vw);
+  margin-inline: auto;
+  padding-inline: clamp(0.6rem, 1.4vw, 1.2rem);
+  padding-top: clamp(2rem, 5.5vw, 3.8rem);
+  padding-bottom: clamp(1.5rem, 4vw, 2.8rem);
 }
 
 .intro {
@@ -241,7 +248,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 }
 
 .hero-summary {
-  margin: 1.25rem 0 0;
+  margin: 1rem 0 0;
   max-width: 60ch;
   font-size: clamp(1rem, 1.3vw, 1.125rem);
   line-height: 1.7;
@@ -249,7 +256,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 }
 
 .hero-meta {
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -268,14 +275,14 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 }
 
 .hero-actions {
-  margin-top: 2rem;
+  margin-top: 1.4rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
 .profile-links {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
@@ -322,34 +329,50 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 }
 
 .profile-card {
-  padding: 1.75rem;
-  background: rgba(30, 41, 59, 0.6);
+  padding: clamp(1.25rem, 2.5vw, 1.9rem);
+  background:
+    radial-gradient(ellipse 90% 70% at 20% 0%, rgba(34, 211, 238, 0.08), transparent 55%),
+    rgba(30, 41, 59, 0.6);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   backdrop-filter: blur(8px);
 }
 
+.profile-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
 .photo-wrap {
-  margin-bottom: 1.25rem;
   display: flex;
   justify-content: center;
+  margin: 0;
 }
 
 .profile-photo {
-  width: clamp(140px, 34vw, 190px);
-  height: clamp(140px, 34vw, 190px);
+  width: clamp(230px, 34vw, 310px);
+  height: clamp(230px, 34vw, 310px);
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid rgba(34, 211, 238, 0.35);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.35);
+  border: 3px solid rgba(34, 211, 238, 0.35);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.4);
   background: rgba(15, 23, 42, 0.45);
+}
+
+.focus-pane {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  background: rgba(15, 23, 42, 0.38);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
 }
 
 .card-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.875rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.7rem;
 }
 
 .card-icon {
@@ -365,30 +388,30 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 
 .card-title {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--page-text);
 }
 
 .card-subtitle {
-  margin: 0.15rem 0 0;
-  font-size: 0.8rem;
+  margin: 0.2rem 0 0;
+  font-size: 0.77rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--page-text-muted);
 }
 
 .card-focus-copy {
-  margin: 0.5rem 0 0;
-  max-width: 44ch;
-  font-size: 0.83rem;
-  line-height: 1.55;
+  margin: 0;
+  max-width: none;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  text-wrap: pretty;
   color: var(--page-text-muted);
 }
 
-.focus-copy-mobile {
-  display: none;
-}
-
 .interests-wrap {
+  margin-top: 0.9rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -415,13 +438,13 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 }
 
 .divider {
-  margin: 1.5rem 0;
+  margin: 1.1rem 0;
   height: 1px;
   background: var(--border-color);
 }
 
 .skill-heading {
-  margin: 0 0 0.875rem;
+  margin: 0 0 0.65rem;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -460,12 +483,20 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
     grid-template-columns: 1fr;
   }
 
-  .focus-copy-desktop {
-    display: none;
+  .profile-photo {
+    width: clamp(210px, 58vw, 280px);
+    height: clamp(210px, 58vw, 280px);
   }
 
-  .focus-copy-mobile {
-    display: block;
+}
+
+@media (width <= 640px) {
+  .profile-card {
+    padding: 1rem;
+  }
+
+  .focus-pane {
+    padding: 0.8rem 0.85rem;
   }
 }
 </style>

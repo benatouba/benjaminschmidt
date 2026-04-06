@@ -59,13 +59,15 @@ const { t } = useI18n({ useScope: "global" });
 .profiles-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
+  gap: 1rem;
+  align-items: stretch;
 }
 
 .profile-card {
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1.2rem;
+  height: 100%;
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -124,7 +126,7 @@ const { t } = useI18n({ useScope: "global" });
   align-items: center;
   gap: 0.35rem;
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 0.8rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--primary);

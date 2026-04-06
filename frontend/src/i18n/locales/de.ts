@@ -22,9 +22,7 @@ export const messages = {
     researchFocus: "Forschungsschwerpunkt",
     currentInterests: "Aktuelle Interessengebiete",
     currentInterestsDetail:
-      "Klimamodellierung auf Galápagos, Engineering und Visualisierung großskaliger Klimadaten sowie Full-Stack-Forschungssoftware für reproduzierbare Wissenschaft.",
-    currentInterestsDetailShort:
-      "Galápagos-Klimamodellierung, großskalige Klimadaten-Workflows und Full-Stack-Forschungssoftware.",
+      "Regionale Klimamodellierung für Galápagos mit Fokus auf Niederschlags- und Wasserhaushaltsdynamik, durchgängiges Engineering großer Klimadatensätze (Processing, Qualitätssicherung, Analyse und Visualisierung) sowie die Entwicklung von Full-Stack-Forschungssoftware, die komplexe Umweltdaten reproduzierbar, explorierbar und entscheidungsrelevant macht.",
     coreStrengths: "Kernkompetenzen",
     orcidLabel: "ORCID",
   },
