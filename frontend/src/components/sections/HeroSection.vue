@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import profilePhoto from "@/assets/cv-profile-pro.webp";
+import profilePhoto from "@/assets/cv-profile-pro-384.webp";
+import profilePhotoSmall from "@/assets/cv-profile-pro-256.webp";
 import { resolveKnownTechBadge } from "@/data/techBadges";
 
 import { useI18n } from "vue-i18n";
@@ -58,6 +59,8 @@ const skillBadges = props.profile.skills
     };
   })
   .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
+
+const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 </script>
 
 <template>
@@ -129,9 +132,12 @@ const skillBadges = props.profile.skills
         <div class="photo-wrap">
           <img
             :src="profilePhoto"
+            :srcset="profilePhotoSrcset"
+            sizes="(max-width: 980px) 140px, 190px"
             alt="Dr. Benjamin Schmidt"
-            width="512"
-            height="512"
+            width="384"
+            height="384"
+            fetchpriority="high"
             decoding="async"
             class="profile-photo"
           />

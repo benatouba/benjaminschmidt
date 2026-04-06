@@ -4,7 +4,7 @@ import { h } from "vue";
 import { createVuetify } from "vuetify";
 import type { IconProps, IconSet } from "vuetify";
 import { md3 } from "vuetify/blueprints";
-import { mdi } from "vuetify/iconsets/mdi-svg";
+import { VSvgIcon } from "vuetify/lib/composables/icons.js";
 
 import { mdiFallbackIconPath, mdiIconPathByName } from "@/icons/mdi";
 
@@ -33,13 +33,9 @@ const resolveIconPath = (value: string): string => {
 
 const iconSet: IconSet = {
   component: (props: IconProps) => {
-    if (typeof props.icon !== "string") {
-      return h(mdi.component, props);
-    }
-
-    return h(mdi.component, {
+    return h(VSvgIcon, {
       ...props,
-      icon: resolveIconPath(props.icon),
+      icon: typeof props.icon === "string" ? resolveIconPath(props.icon) : props.icon,
     });
   },
 };

@@ -9,7 +9,7 @@ const router = createRouter({
       return savedPosition;
     }
 
-    return { top: 0, left: 0, behavior: "smooth" };
+    return { top: 0, left: 0 };
   },
 });
 
