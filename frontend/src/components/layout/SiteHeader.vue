@@ -42,6 +42,7 @@ const isActive = (target: string) => {
     <div class="top-bar">
       <div class="header-container">
         <div class="identity">
+          <img class="brand-mark" src="/favicon.svg" alt="" aria-hidden="true" />
           <p class="name">{{ props.name }}</p>
           <p class="headline">{{ props.headline }}</p>
         </div>
@@ -97,10 +98,26 @@ const isActive = (target: string) => {
 }
 
 .identity {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "icon name"
+    "icon headline";
+  column-gap: 0.6rem;
+  align-items: center;
   min-width: 0;
 }
 
+.brand-mark {
+  grid-area: icon;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: block;
+}
+
 .name {
+  grid-area: name;
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
@@ -113,6 +130,7 @@ const isActive = (target: string) => {
 }
 
 .headline {
+  grid-area: headline;
   margin: 0.15rem 0 0;
   font-size: 0.85rem;
   color: var(--page-text-muted);
@@ -226,6 +244,11 @@ const isActive = (target: string) => {
 @media (width <= 640px) {
   .name {
     max-width: 7rem;
+  }
+
+  .brand-mark {
+    width: 24px;
+    height: 24px;
   }
 
   .lang-btn {
