@@ -21,6 +21,10 @@ export const messages = {
     readBlog: "Spotlights",
     researchFocus: "Forschungsschwerpunkt",
     currentInterests: "Aktuelle Interessengebiete",
+    currentInterestsDetail:
+      "Klimamodellierung auf Galápagos, Engineering und Visualisierung großskaliger Klimadaten sowie Full-Stack-Forschungssoftware für reproduzierbare Wissenschaft.",
+    currentInterestsDetailShort:
+      "Galápagos-Klimamodellierung, großskalige Klimadaten-Workflows und Full-Stack-Forschungssoftware.",
     coreStrengths: "Kernkompetenzen",
     orcidLabel: "ORCID",
   },

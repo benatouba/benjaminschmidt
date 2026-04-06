@@ -150,6 +150,8 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
           <div>
             <h2 class="card-title">{{ t("hero.researchFocus") }}</h2>
             <p class="card-subtitle">{{ t("hero.currentInterests") }}</p>
+            <p class="card-focus-copy focus-copy-desktop">{{ t("hero.currentInterestsDetail") }}</p>
+            <p class="card-focus-copy focus-copy-mobile">{{ t("hero.currentInterestsDetailShort") }}</p>
           </div>
         </div>
 
@@ -374,6 +376,18 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   color: var(--page-text-muted);
 }
 
+.card-focus-copy {
+  margin: 0.5rem 0 0;
+  max-width: 44ch;
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--page-text-muted);
+}
+
+.focus-copy-mobile {
+  display: none;
+}
+
 .interests-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -444,6 +458,14 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 @media (width <= 980px) {
   .hero-grid {
     grid-template-columns: 1fr;
+  }
+
+  .focus-copy-desktop {
+    display: none;
+  }
+
+  .focus-copy-mobile {
+    display: block;
   }
 }
 </style>
