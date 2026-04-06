@@ -337,90 +337,122 @@ export const skillBadgeCatalog: SkillBadge[] = [
     image:
       "https://img.shields.io/badge/Python-3776ab?style=flat-square&logo=python&logoColor=white",
     href: "https://www.python.org/",
+    width: 67,
+    height: 20,
   },
   {
     label: "FastAPI",
     image:
       "https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white",
     href: "https://fastapi.tiangolo.com/",
+    width: 69,
+    height: 20,
   },
   {
     label: "Django",
     image:
       "https://img.shields.io/badge/Django-092e20?style=flat-square&logo=django&logoColor=white",
     href: "https://www.djangoproject.com/",
+    width: 67,
+    height: 20,
   },
   {
     label: "Vue 3",
     image:
       "https://img.shields.io/badge/Vue%203-42b883?style=flat-square&logo=vuedotjs&logoColor=white",
     href: "https://vuejs.org/",
+    width: 59,
+    height: 20,
   },
   {
     label: "Nuxt",
     image:
       "https://img.shields.io/badge/Nuxt-00dc82?style=flat-square&logo=nuxtdotjs&logoColor=white",
     href: "https://nuxt.com/",
+    width: 37,
+    height: 20,
   },
   {
     label: "TypeScript",
     image:
       "https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white",
     href: "https://www.typescriptlang.org/",
+    width: 87,
+    height: 20,
   },
   {
     label: "PostgreSQL",
     image:
       "https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white",
     href: "https://www.postgresql.org/",
+    width: 91,
+    height: 20,
   },
   {
     label: "PostGIS",
     image:
       "https://img.shields.io/badge/PostGIS-336791?style=flat-square&logo=postgresql&logoColor=white",
     href: "https://postgis.net/",
+    width: 73,
+    height: 20,
   },
   {
     label: "Docker",
     image:
       "https://img.shields.io/badge/Docker-2496ed?style=flat-square&logo=docker&logoColor=white",
     href: "https://www.docker.com/",
+    width: 67,
+    height: 20,
   },
   {
     label: "Nix",
     image: "https://img.shields.io/badge/Nix-5277c3?style=flat-square&logo=nixos&logoColor=white",
     href: "https://nixos.org/",
+    width: 45,
+    height: 20,
   },
   {
     label: "Linux",
     image: "https://img.shields.io/badge/Linux-fcc624?style=flat-square&logo=linux&logoColor=black",
     href: "https://kernel.org/",
+    width: 57,
+    height: 20,
   },
   {
     label: "R",
     image: "https://img.shields.io/badge/R-276dc3?style=flat-square&logo=r&logoColor=white",
     href: "https://www.r-project.org/",
+    width: 35,
+    height: 20,
   },
   {
     label: "xarray",
     image: "https://img.shields.io/badge/xarray-4d4d4d?style=flat-square",
     href: "https://docs.xarray.dev/",
+    width: 45,
+    height: 20,
   },
   {
     label: "pandas",
     image:
       "https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white",
     href: "https://pandas.pydata.org/",
+    width: 67,
+    height: 20,
   },
   {
     label: "NumPy",
     image: "https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white",
     href: "https://numpy.org/",
+    width: 67,
+    height: 20,
   },
   {
     label: "NetCDF",
     image: "https://img.shields.io/badge/NetCDF-005f99?style=flat-square",
     href: "https://www.unidata.ucar.edu/software/netcdf/",
+    width: 51,
+    height: 20,
   },
 ];
 
@@ -430,16 +462,22 @@ export const githubStatCards: GitHubStatCard[] = [
     image:
       "https://github-readme-stats.vercel.app/api?username=benatouba&show_icons=true&hide_border=true&rank_icon=github&theme=transparent",
     href: "https://github.com/benatouba",
+    width: 495,
+    height: 195,
   },
   {
     title: "Top languages",
     image:
       "https://github-readme-stats.vercel.app/api/top-langs/?username=benatouba&layout=compact&hide_border=true&langs_count=8&theme=transparent",
     href: "https://github.com/benatouba",
+    width: 495,
+    height: 195,
   },
   {
     title: "GitHub streak",
     image: "https://streak-stats.demolab.com?user=benatouba&hide_border=true&theme=transparent",
     href: "https://github.com/benatouba",
+    width: 495,
+    height: 195,
   },
 ];

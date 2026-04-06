@@ -56,12 +56,16 @@ export interface SkillBadge {
   label: string;
   image: string;
   href?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface GitHubStatCard {
   title: string;
   image: string;
   href?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface CvAppointment {
