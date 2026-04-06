@@ -1,9 +1,8 @@
-import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/styles";
 
 import { createVuetify } from "vuetify";
 import { md3 } from "vuetify/blueprints";
-import { aliases, mdi } from "vuetify/iconsets/mdi";
+import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
 const scientificTheme = {
   dark: true,

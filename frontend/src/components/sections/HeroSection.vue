@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import profilePhoto from "@/assets/cv-profile-pro.png";
+import profilePhoto from "@/assets/cv-profile-pro.webp";
 import { resolveKnownTechBadge } from "@/data/techBadges";
 
 import { useI18n } from "vue-i18n";
@@ -127,7 +127,14 @@ const skillBadges = props.profile.skills
 
       <div class="profile-card reveal-up" style="--delay: 180ms">
         <div class="photo-wrap">
-          <img :src="profilePhoto" alt="Dr. Benjamin Schmidt" class="profile-photo" />
+          <img
+            :src="profilePhoto"
+            alt="Dr. Benjamin Schmidt"
+            width="512"
+            height="512"
+            decoding="async"
+            class="profile-photo"
+          />
         </div>
 
         <div class="card-header">

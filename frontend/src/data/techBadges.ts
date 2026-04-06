@@ -15,7 +15,11 @@ const knownBadges = new Map<string, SkillBadge>(
 const aliases: Record<string, string> = {
   vue: "vue 3",
   "vue.js": "vue 3",
+  vuejs: "vue 3",
+  vue3: "vue 3",
   javascript: "typescript",
+  python3: "python",
+  "python 3": "python",
 };
 
 const customBadges: Record<string, SkillBadge> = {
