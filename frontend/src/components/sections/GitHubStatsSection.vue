@@ -15,7 +15,7 @@ const streakCard = props.cards[2];
 
 <template>
   <section id="github" class="section-block section-anchor">
-    <v-container class="px-4 px-sm-6 px-md-8" fluid>
+    <v-container fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
         <p class="kicker">{{ t("github.kicker") }}</p>
         <h2>{{ t("github.heading") }}</h2>

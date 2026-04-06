@@ -39,7 +39,7 @@ const itemTagBadges = (item: ArticleHistoryItem) =>
 
 <template>
   <section id="articles" class="section-block section-anchor">
-    <v-container class="px-4 px-sm-6 px-md-8" fluid>
+    <v-container fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
         <p class="kicker">{{ t("articles.kicker") }}</p>
         <h2>{{ t("articles.heading") }}</h2>

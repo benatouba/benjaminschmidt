@@ -13,7 +13,7 @@ const { t } = useI18n({ useScope: "global" });
 
 <template>
   <section id="contact" class="section-block section-anchor">
-    <v-container class="px-4 px-sm-6 px-md-8" fluid>
+    <v-container fluid>
       <div class="contact-card reveal-up" style="--delay: 90ms">
         <div class="contact-grid">
           <div class="contact-info">

@@ -14,7 +14,7 @@ export const messages = {
     services: "Services",
   },
   hero: {
-    eyebrow: "Scientific Career Profile",
+    eyebrow: "Scientist · Engineer · Builder",
     viewPublications: "View Writing",
     openCv: "Open CV",
     readBlog: "Read Blog",
@@ -99,19 +99,20 @@ export const messages = {
   },
   services: {
     kicker: "Services",
-    heading: "Professional offerings and collaboration",
+    heading: "What I can do for you",
   },
   contact: {
     kicker: "Contact and Collaboration",
-    heading: "Let's collaborate on research projects and publications.",
-    copy: "I am open to interdisciplinary collaborations, invited talks, and joint writing efforts in computational and data-driven science.",
+    heading: "Let's build something together.",
+    copy: "Open to research collaborations, engineering roles, consulting engagements, and invited talks in data-intensive science and software.",
     openProfile: "Open profile",
     comingSoon: "Coming soon",
   },
   footer: {
-    builtWith: "Built with Vue 3, TypeScript, Vuetify, oxlint, eslint, and oxfmt.",
-    includes:
-      "Includes CV, article history, linked accounts, project portfolio, and blog sections for a complete professional researcher website.",
+    copyright: "© {year} Dr. Benjamin Schmidt",
+    location: "Berlin, Germany",
+    builtWith: "Built with Vue 3, TypeScript, and Vuetify.",
+    tagline: "Research Scientist & Full-Stack Engineer",
   },
   pages: {
     cv: { title: "Curriculum Vitae", kicker: "Professional Record" },
@@ -138,14 +139,14 @@ export const content: SiteContent = {
   ],
   profile: {
     name: "Dr. Benjamin Schmidt",
-    headline: "Research Scientist and Data-Intensive Software Engineer",
+    headline: "Research Scientist & Full-Stack Engineer",
     location: "Berlin, Germany",
     address: "10589 Berlin-Charlottenburg",
     phone: "+49 (0) 171 8036920",
     email: "benjamin.schmidt@tu-berlin.de",
     orcid: "0000-0002-9669-3360",
     summary:
-      "I design and maintain data-intensive scientific software, from robust backend services to user-facing web platforms, with a strong focus on reproducibility, communication, and long-term maintainability.",
+      "I turn complex climate and environmental datasets into production-ready research platforms — shipping full-stack web applications, automated data pipelines, and peer-reviewed science along the way.",
     interests: [
       "Climate and environmental data science",
       "Reproducible computational workflows",
@@ -643,30 +644,30 @@ export const content: SiteContent = {
   ],
   services: [
     {
-      title: "Research Collaboration",
-      icon: "mdi-account-group-outline",
-      audience: "Research groups and labs",
-      description:
-        "I co-design climate and environmental research workflows from model output processing to publication-ready analysis.",
-      ctaLabel: "Discuss a collaboration",
-      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
-    },
-    {
-      title: "Data-Intensive Web and API Development",
-      icon: "mdi-file-document-edit-outline",
-      audience: "Research projects and teams",
-      description:
-        "Development of scientific web applications and APIs for structured data access, visualization, and team workflows.",
-      ctaLabel: "Plan a technical implementation",
-      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
-    },
-    {
-      title: "Scientific Communication and Teaching",
+      title: "Full-Stack Development",
       icon: "mdi-monitor-dashboard",
-      audience: "Institutes and training programs",
+      audience: "Startups, research labs, and engineering teams",
       description:
-        "Consulting and instruction on statistics, scientific programming, and communication of quantitative research outputs.",
-      ctaLabel: "Request teaching or consulting",
+        "End-to-end development of data-rich web applications and APIs — from database design and backend services to interactive frontends with maps, graphs, and dashboards.",
+      ctaLabel: "Start a project",
+      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
+    },
+    {
+      title: "Data Engineering & Pipelines",
+      icon: "mdi-file-document-edit-outline",
+      audience: "Teams handling large-scale or scientific data",
+      description:
+        "Design and implementation of automated data processing workflows, ETL pipelines, and analysis infrastructure — built for reproducibility and scale.",
+      ctaLabel: "Discuss your data needs",
+      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
+    },
+    {
+      title: "Research & Scientific Consulting",
+      icon: "mdi-account-group-outline",
+      audience: "Research groups, BioTech, and CleanTech",
+      description:
+        "Consulting on scientific communication, statistical analysis, climate data workflows, and publication strategy — bridging domain science and software engineering.",
+      ctaLabel: "Book a consultation",
       ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
     },
   ],

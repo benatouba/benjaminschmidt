@@ -59,3 +59,9 @@ a {
     transform: translateY(0);
   }
 }
+
+@supports (scrollbar-gutter: stable) {
+  html {
+    scrollbar-gutter: stable both-edges;
+  }
+}

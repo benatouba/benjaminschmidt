@@ -39,39 +39,37 @@ const isActive = (target: string) => {
 
 <template>
   <header class="header-shell">
-    <v-app-bar class="top-bar" elevation="0" color="transparent" height="80">
-      <v-container class="header-container px-4 px-sm-6 px-md-8" fluid>
+    <div class="top-bar">
+      <div class="header-container">
         <div class="identity">
           <p class="name">{{ props.name }}</p>
           <p class="headline">{{ props.headline }}</p>
         </div>
 
-        <div class="nav-area">
-          <nav class="nav-links" aria-label="Primary">
-            <a
-              v-for="item in props.navItems"
-              :key="item.to"
-              :href="item.to"
-              :class="['nav-link', { active: isActive(item.to) }]"
-              @click.prevent="$router.push(item.to)"
-            >
-              {{ t(item.label) }}
-            </a>
-          </nav>
+        <nav class="nav-links" aria-label="Primary">
+          <a
+            v-for="item in props.navItems"
+            :key="item.to"
+            :href="item.to"
+            :class="['nav-link', { active: isActive(item.to) }]"
+            @click.prevent="$router.push(item.to)"
+          >
+            {{ t(item.label) }}
+          </a>
+        </nav>
 
-          <div class="lang-switcher">
-            <button
-              v-for="loc in locales"
-              :key="loc.code"
-              :class="['lang-btn', { active: locale === loc.code }]"
-              @click="setLocale(loc.code)"
-            >
-              {{ t(`lang.${loc.code}`) }}
-            </button>
-          </div>
+        <div class="lang-switcher">
+          <button
+            v-for="loc in locales"
+            :key="loc.code"
+            :class="['lang-btn', { active: locale === loc.code }]"
+            @click="setLocale(loc.code)"
+          >
+            {{ t(`lang.${loc.code}`) }}
+          </button>
         </div>
-      </v-container>
-    </v-app-bar>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -83,28 +81,35 @@ const isActive = (target: string) => {
 }
 
 .top-bar {
+  min-height: 80px;
   border-bottom: 1px solid var(--border-color);
   background: rgba(15, 23, 42, 0.85) !important;
   backdrop-filter: blur(12px) saturate(180%);
 }
 
 .header-container {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr) auto;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  min-height: 80px;
+  padding-inline: clamp(1rem, 2.5vw, 2rem);
 }
 
 .identity {
-  flex-shrink: 0;
+  min-width: 0;
 }
 
 .name {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
+  line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--page-text);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .headline {
@@ -113,23 +118,29 @@ const isActive = (target: string) => {
   color: var(--page-text-muted);
 }
 
-.nav-area {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
 .nav-links {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   gap: 0.25rem;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-block: 0.1rem;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-link {
+  flex: 0 0 auto;
   padding: 0.4rem 0.75rem;
   font-size: 0.875rem;
   font-weight: 500;
+  white-space: nowrap;
   color: var(--page-text-muted);
   text-decoration: none;
   border-radius: 6px;
@@ -175,35 +186,50 @@ const isActive = (target: string) => {
   background: var(--primary-muted);
 }
 
-@media (width <= 920px) {
+@media (width <= 1100px) {
   .headline {
     display: none;
   }
 
+  .name {
+    max-width: 12.5rem;
+  }
+}
+
+@media (width <= 920px) {
   .header-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.6rem;
+    min-height: 72px;
   }
 
-  .nav-area {
-    width: 100%;
-    justify-content: space-between;
+  .top-bar {
+    min-height: 72px;
   }
 
-  .nav-links {
-    justify-content: flex-start;
+  .name {
+    max-width: 10rem;
+    font-size: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.8rem;
+  }
+
+  .lang-switcher {
+    flex-shrink: 0;
+    gap: 0;
+    padding: 0.15rem;
   }
 }
 
 @media (width <= 640px) {
   .name {
-    font-size: 1rem;
+    max-width: 7rem;
   }
 
-  .nav-link {
-    padding: 0.35rem 0.5rem;
-    font-size: 0.8rem;
+  .lang-btn {
+    padding: 0.25rem 0.4rem;
   }
 }
 </style>

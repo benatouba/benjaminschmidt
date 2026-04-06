@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <v-container class="section-shell px-4 px-sm-6 px-md-8" fluid>
+  <v-container class="section-shell" fluid>
     <div class="section-heading reveal-up" style="--delay: 40ms">
       <p v-if="kicker" class="kicker">{{ kicker }}</p>
       <h1 class="page-title">{{ title }}</h1>

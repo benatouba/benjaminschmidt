@@ -14,7 +14,7 @@ export const messages = {
     services: "Servicios",
   },
   hero: {
-    eyebrow: "Perfil científico",
+    eyebrow: "Científico · Ingeniero · Desarrollador",
     viewPublications: "Ver escritura",
     openCv: "Abrir CV",
     readBlog: "Leer blog",
@@ -99,19 +99,20 @@ export const messages = {
   },
   services: {
     kicker: "Servicios",
-    heading: "Ofertas profesionales y colaboración",
+    heading: "Lo que puedo hacer por ti",
   },
   contact: {
     kicker: "Contacto y colaboración",
-    heading: "Colaboremos en proyectos de investigación y publicaciones.",
-    copy: "Estoy abierto a colaboraciones interdisciplinarias, charlas invitadas y proyectos de escritura conjunta en ciencia computacional y basada en datos.",
+    heading: "Construyamos algo juntos.",
+    copy: "Abierto a colaboraciones de investigación, roles de ingeniería, consultoría y charlas invitadas en ciencia intensiva en datos y software.",
     openProfile: "Abrir perfil",
     comingSoon: "Próximamente",
   },
   footer: {
-    builtWith: "Construido con Vue 3, TypeScript, Vuetify, oxlint, eslint y oxfmt.",
-    includes:
-      "Incluye CV, historical de artículos, cuentas vinculadas, portafolio de proyectos y secciones de blog para un sitio web professional de investigador completo.",
+    copyright: "© {year} Dr. Benjamin Schmidt",
+    location: "Berlín, Alemania",
+    builtWith: "Construido con Vue 3, TypeScript y Vuetify.",
+    tagline: "Científico investigador e ingeniero full-stack",
   },
   pages: {
     cv: { title: "Currículum Vitae", kicker: "Trayectoria professional" },
@@ -138,14 +139,14 @@ export const content: SiteContent = {
   ],
   profile: {
     name: "Dr. Benjamin Schmidt",
-    headline: "Científico investigador e ingeniero de software intensivo en datos",
+    headline: "Científico investigador e ingeniero full-stack",
     location: "Berlín, Alemania",
     address: "10589 Berlin-Charlottenburg",
     phone: "+49 (0) 171 8036920",
     email: "benjamin.schmidt@tu-berlin.de",
     orcid: "0000-0002-9669-3360",
     summary:
-      "Diseño y mantengo software científico intensivo en datos, desde servicios backend robustos hasta plataformas web orientadas al usuario, con un fuerte enfoque en reproducibilidad, comunicación y mantenibilidad a largo plazo.",
+      "Transformo conjuntos de datos climáticos y ambientales complejos en plataformas de investigación listas para producción — desarrollando aplicaciones web full-stack, pipelines de datos automatizados y ciencia revisada por pares.",
     interests: [
       "Ciencia de datos climáticos y ambientales",
       "Flujos de trabajo computacionales reproducibles",
@@ -655,30 +656,30 @@ export const content: SiteContent = {
   ],
   services: [
     {
-      title: "Colaboración en investigación",
-      icon: "mdi-account-group-outline",
-      audience: "Grupos de investigación y laboratorios",
-      description:
-        "Co-diseño de flujos de trabajo de investigación climática y ambiental, desde el procesamiento de salidas de modelos hasta análisis listos para publicación.",
-      ctaLabel: "Discutir una colaboración",
-      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
-    },
-    {
-      title: "Desarrollo web y de APIs intensivo en datos",
-      icon: "mdi-file-document-edit-outline",
-      audience: "Proyectos y equipos de investigación",
-      description:
-        "Desarrollo de aplicaciones web científicas y APIs para acceso estructurado a datos, visualización y flujos de trabajo en equipo.",
-      ctaLabel: "Planificar una implementación técnica",
-      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
-    },
-    {
-      title: "Comunicación científica y enseñanza",
+      title: "Desarrollo full-stack",
       icon: "mdi-monitor-dashboard",
-      audience: "Institutos y programas de formación",
+      audience: "Startups, laboratorios de investigación y equipos de ingeniería",
       description:
-        "Consultoría e instrucción en estadística, programación científica y comunicación de resultados de investigación cuantitativos.",
-      ctaLabel: "Solicitar enseñanza o consultoría",
+        "Desarrollo integral de aplicaciones web ricas en datos y APIs — desde diseño de bases de datos y servicios backend hasta frontends interactivos con mapas, grafos y dashboards.",
+      ctaLabel: "Iniciar un proyecto",
+      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
+    },
+    {
+      title: "Ingeniería de datos y pipelines",
+      icon: "mdi-file-document-edit-outline",
+      audience: "Equipos que manejan datos a gran escala o científicos",
+      description:
+        "Diseño e implementación de flujos de procesamiento de datos automatizados, pipelines ETL e infraestructura de análisis — construidos para reproducibilidad y escala.",
+      ctaLabel: "Discutir necesidades de datos",
+      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
+    },
+    {
+      title: "Investigación y consultoría científica",
+      icon: "mdi-account-group-outline",
+      audience: "Grupos de investigación, BioTech y CleanTech",
+      description:
+        "Consultoría en comunicación científica, análisis estadístico, flujos de trabajo de datos climáticos y estrategia de publicación — uniendo ciencia de dominio e ingeniería de software.",
+      ctaLabel: "Reservar una consulta",
       ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
     },
   ],

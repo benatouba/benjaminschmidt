@@ -14,7 +14,7 @@ export const messages = {
     services: "Leistungen",
   },
   hero: {
-    eyebrow: "Wissenschaftliches Karriereprofil",
+    eyebrow: "Wissenschaftler · Ingenieur · Entwickler",
     viewPublications: "Schreiben ansehen",
     openCv: "Lebenslauf öffnen",
     readBlog: "Blog lesen",
@@ -99,19 +99,20 @@ export const messages = {
   },
   services: {
     kicker: "Leistungen",
-    heading: "Professionelle Angebote und Zusammenarbeit",
+    heading: "Was ich für Sie tun kann",
   },
   contact: {
     kicker: "Kontakt und Zusammenarbeit",
-    heading: "Lassen Sie uns bei Forschungsprojekten und Publikationen zusammenarbeiten.",
-    copy: "Ich bin offen für interdisziplinäre Kooperationen, eingeladene Vorträge und gemeinsame Schreibprojekte in der computergestützten und datengetriebenen Wissenschaft.",
+    heading: "Lassen Sie uns gemeinsam etwas aufbauen.",
+    copy: "Offen für Forschungskooperationen, Ingenieurspositionen, Beratungsaufträge und eingeladene Vorträge in datenintensiver Wissenschaft und Softwareentwicklung.",
     openProfile: "Profil öffnen",
     comingSoon: "Demnächst verfügbar",
   },
   footer: {
-    builtWith: "Erstellt mit Vue 3, TypeScript, Vuetify, oxlint, eslint und oxfmt.",
-    includes:
-      "Enthält Lebenslauf, Artikelhistorie, verknüpfte Konten, Projektportfolio und Blog-Bereiche für eine vollständige professionelle Forscher-Website.",
+    copyright: "© {year} Dr. Benjamin Schmidt",
+    location: "Berlin, Deutschland",
+    builtWith: "Erstellt mit Vue 3, TypeScript und Vuetify.",
+    tagline: "Wissenschaftler & Full-Stack-Ingenieur",
   },
   pages: {
     cv: { title: "Lebenslauf", kicker: "Berufliche Laufbahn" },
@@ -138,14 +139,14 @@ export const content: SiteContent = {
   ],
   profile: {
     name: "Dr. Benjamin Schmidt",
-    headline: "Wissenschaftler und datenintensiver Software-Ingenieur",
+    headline: "Wissenschaftler & Full-Stack-Ingenieur",
     location: "Berlin, Deutschland",
     address: "10589 Berlin-Charlottenburg",
     phone: "+49 (0) 171 8036920",
     email: "benjamin.schmidt@tu-berlin.de",
     orcid: "0000-0002-9669-3360",
     summary:
-      "Ich entwerfe und betreue datenintensive wissenschaftliche Software – von robusten Backend-Diensten bis hin zu nutzerorientierten Webplattformen – mit starkem Fokus auf Reproduzierbarkeit, Kommunikation und langfristige Wartbarkeit.",
+      "Ich verwandle komplexe Klima- und Umweltdatensätze in produktionsreife Forschungsplattformen — mit Full-Stack-Webanwendungen, automatisierten Datenpipelines und peer-reviewter Wissenschaft.",
     interests: [
       "Klima- und Umweltdatenwissenschaft",
       "Reproduzierbare Rechenworkflows",
@@ -645,30 +646,30 @@ export const content: SiteContent = {
   ],
   services: [
     {
-      title: "Forschungskooperation",
-      icon: "mdi-account-group-outline",
-      audience: "Forschungsgruppen und Labore",
-      description:
-        "Ich gestalte gemeinsam Klima- und Umweltforschungs-Workflows von der Modellausgabeverarbeitung bis zur publikationsfertigen Analyse.",
-      ctaLabel: "Kooperation besprechen",
-      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
-    },
-    {
-      title: "Datenintensive Web- und API-Entwicklung",
-      icon: "mdi-file-document-edit-outline",
-      audience: "Forschungsprojekte und Teams",
-      description:
-        "Entwicklung wissenschaftlicher Webanwendungen und APIs für strukturierten Datenzugang, Visualisierung und Team-Workflows.",
-      ctaLabel: "Technische Umsetzung planen",
-      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
-    },
-    {
-      title: "Wissenschaftskommunikation und Lehre",
+      title: "Full-Stack-Entwicklung",
       icon: "mdi-monitor-dashboard",
-      audience: "Institute und Weiterbildungsprogramme",
+      audience: "Startups, Forschungslabore und Ingenieurteams",
       description:
-        "Beratung und Unterricht zu Statistik, wissenschaftlichem Programmieren und Kommunikation quantitativer Forschungsergebnisse.",
-      ctaLabel: "Lehre oder Beratung anfragen",
+        "End-to-End-Entwicklung datenreicher Webanwendungen und APIs — vom Datenbankdesign und Backend-Services bis zu interaktiven Frontends mit Karten, Graphen und Dashboards.",
+      ctaLabel: "Projekt starten",
+      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
+    },
+    {
+      title: "Data Engineering & Pipelines",
+      icon: "mdi-file-document-edit-outline",
+      audience: "Teams mit großskaligen oder wissenschaftlichen Daten",
+      description:
+        "Design und Implementierung automatisierter Datenverarbeitungs-Workflows, ETL-Pipelines und Analyseinfrastruktur — für Reproduzierbarkeit und Skalierbarkeit.",
+      ctaLabel: "Datenanforderungen besprechen",
+      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
+    },
+    {
+      title: "Forschung & Wissenschaftsberatung",
+      icon: "mdi-account-group-outline",
+      audience: "Forschungsgruppen, BioTech und CleanTech",
+      description:
+        "Beratung zu wissenschaftlicher Kommunikation, statistischer Analyse, Klimadaten-Workflows und Publikationsstrategie — Brücke zwischen Domänenwissenschaft und Softwareentwicklung.",
+      ctaLabel: "Beratung buchen",
       ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
     },
   ],

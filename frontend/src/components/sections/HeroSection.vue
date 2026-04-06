@@ -65,7 +65,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 
 <template>
   <section id="about" class="section-anchor">
-    <v-container class="hero-grid px-4 px-sm-6 px-md-8" fluid>
+    <v-container class="hero-grid" fluid>
       <div class="intro reveal-up" style="--delay: 80ms">
         <p class="eyebrow">{{ t("hero.eyebrow") }}</p>
         <h1 class="hero-title">{{ props.profile.name }}</h1>

@@ -32,7 +32,7 @@ const projectTechBadges = (project: ResearchProject) =>
 
 <template>
   <section id="projects" class="section-block section-anchor">
-    <v-container class="px-4 px-sm-6 px-md-8" fluid>
+    <v-container fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
         <p class="kicker">{{ t("projects.kicker") }}</p>
         <h2>{{ t("projects.heading") }}</h2>
