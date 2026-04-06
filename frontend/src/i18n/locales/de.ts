@@ -112,14 +112,14 @@ export const messages = {
     tagline: "Wissenschaftler & Full-Stack-Ingenieur",
   },
   pages: {
-    cv: { title: "Lebenslauf", kicker: "Berufliche Laufbahn" },
-    career: { title: "Wissenschaftliche Karriere", kicker: "Akademischer Werdegang" },
-    publications: { title: "Publikationen & Schreiben", kicker: "Ausgewählte Arbeiten" },
-    spotlights: { title: "Projekt-Spotlights", kicker: "Hinter den Projekten" },
-    projects: { title: "Forschungsprojekte", kicker: "Software und Initiativen" },
-    profiles: { title: "Verknüpfte Profile", kicker: "Konten und Identität" },
-    contact: { title: "Kontakt", kicker: "Zusammenarbeit" },
-    services: { title: "Leistungen", kicker: "Professionelle Angebote" },
+    cv: { title: "Lebenslauf", kicker: "Berufliche Laufbahn", metaTitle: "Lebenslauf" },
+    career: { title: "Wissenschaftliche Karriere", kicker: "Akademischer Werdegang", metaTitle: "Karriere" },
+    publications: { title: "Publikationen & Schreiben", kicker: "Ausgewählte Arbeiten", metaTitle: "Publikationen" },
+    spotlights: { title: "Projekt-Spotlights", kicker: "Hinter den Projekten", metaTitle: "Spotlights" },
+    projects: { title: "Forschungsprojekte", kicker: "Software und Initiativen", metaTitle: "Projekte" },
+    profiles: { title: "Verknüpfte Profile", kicker: "Konten und Identität", metaTitle: "Profile" },
+    contact: { title: "Kontakt", kicker: "Zusammenarbeit", metaTitle: "Kontakt" },
+    services: { title: "Leistungen", kicker: "Professionelle Angebote", metaTitle: "Leistungen" },
   },
 };
 

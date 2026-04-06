@@ -42,7 +42,6 @@ const { t } = useI18n({ useScope: "global" });
               :href="link.href"
               :target="link.href ? '_blank' : undefined"
               :rel="link.href ? 'noreferrer' : undefined"
-              :sublabel="link.sublabel"
               class="link-item"
             >
               <div class="link-icon">

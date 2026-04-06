@@ -316,7 +316,7 @@ const formattedReleaseDate = (value: string) => {
 
 .publications-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
   gap: 1rem;
   align-items: stretch;
 }
@@ -445,6 +445,9 @@ const formattedReleaseDate = (value: string) => {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  text-decoration: underline;
+  text-decoration-color: rgba(34, 211, 238, 0.4);
+  text-underline-offset: 3px;
   margin-top: auto;
   padding-top: 0.8rem;
   font-size: 0.875rem;
@@ -456,6 +459,7 @@ const formattedReleaseDate = (value: string) => {
 
 .publication-link:hover {
   opacity: 0.8;
+  text-decoration-color: var(--primary);
 }
 
 @media (width <= 640px) {

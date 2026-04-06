@@ -112,14 +112,14 @@ export const messages = {
     tagline: "Research Scientist & Full-Stack Engineer",
   },
   pages: {
-    cv: { title: "Curriculum Vitae", kicker: "Professional Record" },
-    career: { title: "Scientific Career", kicker: "Academic Timeline" },
-    publications: { title: "Publications & Writing", kicker: "Selected Work" },
-    spotlights: { title: "Project Spotlights", kicker: "Behind the Projects" },
-    projects: { title: "Research Projects", kicker: "Software and Initiatives" },
-    profiles: { title: "Linked Profiles", kicker: "Accounts and Identity" },
-    contact: { title: "Contact", kicker: "Collaboration" },
-    services: { title: "Services", kicker: "Professional Website Features" },
+    cv: { title: "Curriculum Vitae", kicker: "Professional Record", metaTitle: "CV" },
+    career: { title: "Scientific Career", kicker: "Academic Timeline", metaTitle: "Career" },
+    publications: { title: "Publications & Writing", kicker: "Selected Work", metaTitle: "Publications" },
+    spotlights: { title: "Project Spotlights", kicker: "Behind the Projects", metaTitle: "Spotlights" },
+    projects: { title: "Research Projects", kicker: "Software and Initiatives", metaTitle: "Projects" },
+    profiles: { title: "Linked Profiles", kicker: "Accounts and Identity", metaTitle: "Profiles" },
+    contact: { title: "Contact", kicker: "Collaboration", metaTitle: "Contact" },
+    services: { title: "Services", kicker: "Professional Website Features", metaTitle: "Services" },
   },
 };
 

@@ -48,4 +48,18 @@ defineProps<{
 .content-slot {
   min-height: min(56vh, 620px);
 }
+
+@media print {
+  .content-slot {
+    min-height: 0;
+  }
+
+  .kicker {
+    color: #666;
+  }
+
+  .page-title {
+    color: black;
+  }
+}
 </style>

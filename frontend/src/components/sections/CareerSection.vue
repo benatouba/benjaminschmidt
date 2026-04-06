@@ -148,6 +148,12 @@ const stageFocusBadges = (stage: CareerStage) =>
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.timeline-card:hover {
+  border-color: rgba(34, 211, 238, 0.3);
+  transform: translateY(-2px);
 }
 
 .card-title {

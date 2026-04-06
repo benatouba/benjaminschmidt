@@ -32,12 +32,13 @@ const streakCard = computed(() => props.cards[2]);
         >
           <img
             :src="card.image"
-            :alt="card.title"
+            :alt="`GitHub ${card.title} statistics`"
             :width="card.width ?? 495"
             :height="card.height ?? 195"
             loading="lazy"
             decoding="async"
             class="stat-image"
+            @error="(e: Event) => ((e.target as HTMLImageElement).parentElement!.style.display = 'none')"
           />
         </a>
       </div>
@@ -51,12 +52,13 @@ const streakCard = computed(() => props.cards[2]);
         >
           <img
             :src="streakCard.image"
-            :alt="streakCard.title"
+            :alt="`GitHub ${streakCard.title} statistics`"
             :width="streakCard.width ?? 495"
             :height="streakCard.height ?? 195"
             loading="lazy"
             decoding="async"
             class="stat-image streak-image"
+            @error="(e: Event) => ((e.target as HTMLImageElement).parentElement!.style.display = 'none')"
           />
         </a>
       </div>

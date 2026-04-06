@@ -304,4 +304,48 @@ const appointmentHighlightBadges = (item: CvAppointment) =>
     grid-template-columns: 1fr;
   }
 }
+
+@media print {
+  .cv-card {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+  }
+
+  .appointment-item {
+    background: none;
+    border: 1px solid #eee;
+    page-break-inside: avoid;
+  }
+
+  .appointment-icon,
+  .list-icon,
+  .honor-icon {
+    background: none;
+    color: black;
+  }
+
+  .appointment-role,
+  .card-title,
+  .list-title {
+    color: black;
+  }
+
+  .appointment-info,
+  .appointment-summary,
+  .appointment-period,
+  .list-subtitle,
+  .list-detail {
+    color: #333;
+  }
+
+  .appointment-period {
+    background: #f0f0f0;
+    color: #333;
+  }
+
+  .highlights-wrap {
+    display: none;
+  }
+}
 </style>

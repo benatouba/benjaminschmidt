@@ -107,7 +107,7 @@ const postTagBadges = (post: BlogPost) =>
 <style scoped>
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1rem;
   align-items: stretch;
 }
@@ -120,11 +120,12 @@ const postTagBadges = (post: BlogPost) =>
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .blog-card:hover {
   border-color: rgba(34, 211, 238, 0.3);
+  transform: translateY(-2px);
 }
 
 .card-header {
@@ -237,6 +238,9 @@ const postTagBadges = (post: BlogPost) =>
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  text-decoration: underline;
+  text-decoration-color: rgba(34, 211, 238, 0.4);
+  text-underline-offset: 3px;
   margin-top: auto;
   padding-top: 0.8rem;
   font-size: 0.875rem;
@@ -248,5 +252,6 @@ const postTagBadges = (post: BlogPost) =>
 
 .blog-link:hover {
   opacity: 0.8;
+  text-decoration-color: var(--primary);
 }
 </style>

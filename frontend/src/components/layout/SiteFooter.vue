@@ -40,6 +40,18 @@ const socialLinks = computed(() => {
           </p>
         </div>
 
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a
+            v-for="item in content.navItems"
+            :key="item.to"
+            :href="item.to"
+            class="footer-nav-link"
+            @click.prevent="$router.push(item.to)"
+          >
+            {{ t(item.label) }}
+          </a>
+        </nav>
+
         <div class="footer-links">
           <a
             v-for="link in socialLinks"
@@ -104,6 +116,25 @@ const socialLinks = computed(() => {
 }
 
 .footer-location .v-icon {
+  color: var(--primary);
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+}
+
+.footer-nav-link {
+  font-size: 0.8rem;
+  color: var(--page-text-muted);
+  text-decoration: none;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.footer-nav-link:hover {
   color: var(--primary);
 }
 

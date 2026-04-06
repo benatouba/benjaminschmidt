@@ -41,6 +41,15 @@ a {
   color: inherit;
 }
 
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 ::selection {
   background: var(--primary);
   color: var(--page-background);
@@ -111,5 +120,69 @@ a {
   .profiles-grid,
   .services-grid {
     grid-auto-rows: auto;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .page-fade-enter-active,
+  .page-fade-leave-active {
+    transition: none;
+  }
+}
+
+/* ── Route transitions ───────────────────────────────── */
+
+.page-fade-enter-active,
+.page-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.page-fade-enter-from,
+.page-fade-leave-to {
+  opacity: 0;
+}
+
+/* ── Alternating section backgrounds ─────────────────── */
+
+.section-block--alt {
+  background: rgba(15, 23, 42, 0.3);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ── Print styles ────────────────────────────────────── */
+
+@media print {
+  .header-shell,
+  .page-bg,
+  footer,
+  .scroll-top-btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .section-block--alt {
+    background: none;
+    border: none;
   }
 }

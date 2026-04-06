@@ -112,14 +112,14 @@ export const messages = {
     tagline: "Científico investigador e ingeniero full-stack",
   },
   pages: {
-    cv: { title: "Currículum Vitae", kicker: "Trayectoria profesional" },
-    career: { title: "Carrera científica", kicker: "Cronología académica" },
-    publications: { title: "Publicaciones y escritura", kicker: "Trabajos seleccionados" },
-    spotlights: { title: "Proyecto Spotlights", kicker: "Detrás de los proyectos" },
-    projects: { title: "Proyectos de investigación", kicker: "Software e iniciativas" },
-    profiles: { title: "Perfiles vinculados", kicker: "Cuentas e identidad" },
-    contact: { title: "Contacto", kicker: "Colaboración" },
-    services: { title: "Servicios", kicker: "Ofertas profesionales" },
+    cv: { title: "Currículum Vitae", kicker: "Trayectoria profesional", metaTitle: "CV" },
+    career: { title: "Carrera científica", kicker: "Cronología académica", metaTitle: "Carrera" },
+    publications: { title: "Publicaciones y escritura", kicker: "Trabajos seleccionados", metaTitle: "Publicaciones" },
+    spotlights: { title: "Proyecto Spotlights", kicker: "Detrás de los proyectos", metaTitle: "Spotlights" },
+    projects: { title: "Proyectos de investigación", kicker: "Software e iniciativas", metaTitle: "Proyectos" },
+    profiles: { title: "Perfiles vinculados", kicker: "Cuentas e identidad", metaTitle: "Perfiles" },
+    contact: { title: "Contacto", kicker: "Colaboración", metaTitle: "Contacto" },
+    services: { title: "Servicios", kicker: "Ofertas profesionales", metaTitle: "Servicios" },
   },
 };
 

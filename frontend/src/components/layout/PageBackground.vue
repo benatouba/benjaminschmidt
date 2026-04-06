@@ -77,4 +77,11 @@
     transform: translate3d(-4%, -6%, 0) scale(1.08);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-a,
+  .orb-b {
+    animation: none;
+  }
+}
 </style>

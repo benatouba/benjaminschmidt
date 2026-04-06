@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 
@@ -15,6 +16,22 @@ const props = defineProps<{
 
 const route = useRoute();
 const { locale, t } = useI18n({ useScope: "global" });
+
+const drawerOpen = ref(false);
+const scrolled = ref(false);
+let ticking = false;
+
+const onScroll = () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    scrolled.value = window.scrollY > 10;
+    ticking = false;
+  });
+};
+
+onMounted(() => window.addEventListener("scroll", onScroll, { passive: true }));
+onUnmounted(() => window.removeEventListener("scroll", onScroll));
 
 const locales = [
   { code: "en" },
@@ -35,11 +52,17 @@ const isActive = (target: string) => {
 
   return route.path.startsWith(target);
 };
+
+watch(() => route.path, () => {
+  drawerOpen.value = false;
+});
 </script>
 
 <template>
   <header class="header-shell">
-    <div class="top-bar">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <div :class="['top-bar', { scrolled }]">
       <div class="header-container">
         <a class="identity-link" href="/" @click.prevent="$router.push('/')">
           <div class="identity">
@@ -55,6 +78,7 @@ const isActive = (target: string) => {
             :key="item.to"
             :href="item.to"
             :class="['nav-link', { active: isActive(item.to) }]"
+            :aria-current="isActive(item.to) ? 'page' : undefined"
             @click.prevent="$router.push(item.to)"
           >
             {{ t(item.label) }}
@@ -71,8 +95,53 @@ const isActive = (target: string) => {
             {{ t(`lang.${loc.code}`) }}
           </button>
         </div>
+
+        <button
+          class="menu-toggle"
+          :aria-label="drawerOpen ? 'Close menu' : 'Open menu'"
+          :aria-expanded="drawerOpen"
+          @click="drawerOpen = !drawerOpen"
+        >
+          <svg v-if="!drawerOpen" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+          <svg v-else width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
       </div>
     </div>
+
+    <Transition name="drawer">
+      <div v-if="drawerOpen" class="mobile-drawer-backdrop" @click.self="drawerOpen = false">
+        <nav class="mobile-drawer" :aria-label="t('nav.ariaLabel')">
+          <a
+            v-for="item in props.navItems"
+            :key="item.to"
+            :href="item.to"
+            :class="['mobile-nav-link', { active: isActive(item.to) }]"
+            :aria-current="isActive(item.to) ? 'page' : undefined"
+            @click.prevent="$router.push(item.to); drawerOpen = false"
+          >
+            {{ t(item.label) }}
+          </a>
+
+          <div class="mobile-lang-switcher">
+            <button
+              v-for="loc in locales"
+              :key="loc.code"
+              :class="['lang-btn', { active: locale === loc.code }]"
+              @click="setLocale(loc.code)"
+            >
+              {{ t(`lang.${loc.code}`) }}
+            </button>
+          </div>
+        </nav>
+      </div>
+    </Transition>
   </header>
 </template>
 
@@ -83,11 +152,35 @@ const isActive = (target: string) => {
   z-index: 20;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--page-background);
+  background: var(--primary);
+  border-radius: 0 0 6px 6px;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 .top-bar {
   min-height: 80px;
   border-bottom: 1px solid var(--border-color);
   background: rgba(15, 23, 42, 0.85) !important;
   backdrop-filter: blur(12px) saturate(180%);
+  transition: box-shadow 0.2s ease;
+}
+
+.top-bar.scrolled {
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
 }
 
 .header-container {
@@ -211,6 +304,118 @@ const isActive = (target: string) => {
   background: var(--primary-muted);
 }
 
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: var(--page-text);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+/* ── Mobile drawer ─────────────────────────── */
+
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  top: 72px;
+  z-index: 19;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.mobile-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(300px, 85vw);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.97);
+  border-left: 1px solid var(--border-color);
+  overflow-y: auto;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.mobile-nav-link:hover {
+  color: var(--page-text);
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.mobile-nav-link.active {
+  color: var(--primary);
+  background: var(--primary-muted);
+}
+
+.mobile-lang-switcher {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+  padding: 0.25rem;
+  background: rgba(148, 163, 184, 0.08);
+  border-radius: 6px;
+}
+
+.mobile-lang-switcher .lang-btn {
+  flex: 1;
+  text-align: center;
+}
+
+/* Drawer transition */
+.drawer-enter-active,
+.drawer-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.drawer-enter-active .mobile-drawer,
+.drawer-leave-active .mobile-drawer {
+  transition: transform 0.2s ease;
+}
+
+.drawer-enter-from,
+.drawer-leave-to {
+  opacity: 0;
+}
+
+.drawer-enter-from .mobile-drawer,
+.drawer-leave-to .mobile-drawer {
+  transform: translateX(100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer-enter-active,
+  .drawer-leave-active,
+  .drawer-enter-active .mobile-drawer,
+  .drawer-leave-active .mobile-drawer {
+    transition: none;
+  }
+}
+
+/* ── Responsive ────────────────────────────── */
+
 @media (width <= 1100px) {
   .headline {
     display: none;
@@ -223,6 +428,7 @@ const isActive = (target: string) => {
 
 @media (width <= 920px) {
   .header-container {
+    grid-template-columns: minmax(0, max-content) 1fr auto;
     gap: 0.6rem;
     min-height: 72px;
   }
@@ -236,15 +442,13 @@ const isActive = (target: string) => {
     font-size: 1rem;
   }
 
-  .nav-link {
-    padding: 0.35rem 0.55rem;
-    font-size: 0.8rem;
+  .nav-links,
+  .lang-switcher {
+    display: none;
   }
 
-  .lang-switcher {
-    flex-shrink: 0;
-    gap: 0;
-    padding: 0.15rem;
+  .menu-toggle {
+    display: flex;
   }
 }
 

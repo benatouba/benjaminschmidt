@@ -58,7 +58,7 @@ const { t } = useI18n({ useScope: "global" });
 <style scoped>
 .profiles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1rem;
   align-items: stretch;
 }
@@ -71,11 +71,12 @@ const { t } = useI18n({ useScope: "global" });
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .profile-card:hover {
   border-color: rgba(34, 211, 238, 0.3);
+  transform: translateY(-2px);
 }
 
 .card-header {
