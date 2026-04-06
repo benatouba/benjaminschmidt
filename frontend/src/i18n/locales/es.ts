@@ -478,6 +478,98 @@ export const content: SiteContent = {
       tags: ["Datos climáticos", "Algoritmo", "ISIMIP"],
       link: "https://isi-mip.github.io/attrici/attrici.html",
     },
+    {
+      title: "Local Sea Surface Temperatures Modulate the Occurrence of Heavy Rainfall Events in the Galápagos Archipelago",
+      outlet: "Geophysical Research Letters",
+      published: "2025-12-16",
+      kind: "Article",
+      summary:
+        "Muestra cómo la variabilidad local de la temperatura superficial del mar modula la ocurrencia de lluvias intensas en el archipiélago de Galápagos.",
+      tags: ["Galápagos", "Lluvia intensa", "Temperatura superficial del mar"],
+      link: "https://doi.org/10.1029/2025GL117553",
+    },
+    {
+      title: "Analysis of the Meso-Scale Climate of the Galápagos Archipelago by Dynamical Downscaling of Reanalysis Data",
+      outlet: "International Journal of Climatology",
+      published: "2025-11-15",
+      kind: "Article",
+      summary:
+        "Presenta un análisis climático de mesoescala del archipiélago de Galápagos mediante downscaling dinámico de datos de reanálisis.",
+      tags: ["Downscaling dinámico", "Reanálisis", "Galápagos"],
+      link: "https://doi.org/10.1002/joc.8924",
+    },
+    {
+      title: "Operational satellite cloud products need local adjustment – The Galapagos case of ecoclimatic cloud zonation",
+      outlet: "Atmospheric Research",
+      published: "2025-04-01",
+      kind: "Article",
+      summary:
+        "Evalúa productos satelitales de nubes y demuestra la necesidad de ajustes locales para la zonación nubosa ecoclimática en Galápagos.",
+      tags: ["Productos satelitales", "Zonación nubosa", "Galápagos"],
+      link: "https://doi.org/10.1016/j.atmosres.2025.107918",
+    },
+    {
+      title:
+        "The Central Europe Refined analysis version 2 (CER v2): evaluating three decades of high-resolution precipitation data for the Berlin-Brandenburg metropolitan region",
+      outlet: "Meteorologische Zeitschrift",
+      published: "2025-02-10",
+      kind: "Article",
+      summary:
+        "Evalúa tres décadas de datos de precipitación de alta resolución para la región metropolitana de Berlín-Brandeburgo con CER v2.",
+      tags: ["Precipitación", "Berlín-Brandeburgo", "Análisis regional"],
+      link: "https://doi.org/10.1127/metz/2024/1233",
+    },
+    {
+      title: "The Spatio-Temporal Cloud Frequency Distribution in the Galapagos Archipelago as Seen from MODIS Cloud Mask Data",
+      outlet: "Atmosphere",
+      published: "2023-07-29",
+      kind: "Article",
+      summary:
+        "Analiza patrones espacio-temporales de frecuencia de nubosidad en el archipiélago de Galápagos usando datos de máscara de nubes MODIS.",
+      tags: ["MODIS", "Frecuencia de nubes", "Galápagos"],
+      link: "https://doi.org/10.3390/atmos14081225",
+    },
+    {
+      title:
+        "Sensitivity of micro-scale atmospheric processes in a city quarter of Berlin, Germany on elevated meso-scale temperature forcing",
+      outlet: "EGUsphere (preprint)",
+      published: "2023-05-15",
+      kind: "Article",
+      summary:
+        "Investiga cómo un forzamiento térmico de mesoescala elevado influye en procesos atmosféricos de microescala en un barrio de Berlín.",
+      tags: ["Clima urbano", "Berlín", "Forzamiento de mesoescala"],
+      link: "https://doi.org/10.5194/egusphere-egu23-1326",
+    },
+    {
+      title: "Sensitivity of Water Balance in the Qaidam Basin to the Mid-Pliocene Climate",
+      outlet: "Journal of Geophysical Research: Atmospheres",
+      published: "2021-08-27",
+      kind: "Article",
+      summary:
+        "Examina la sensibilidad del balance hídrico en la cuenca de Qaidam bajo condiciones climáticas del Plioceno medio.",
+      tags: ["Balance hídrico", "Cuenca de Qaidam", "Plioceno medio"],
+      link: "https://doi.org/10.1029/2020JD033965",
+    },
+    {
+      title: "Sensitivity of Water Balance in the Qaidam Basin to the Mid-Pliocene Climate",
+      outlet: "ESS Open Archive (preprint)",
+      published: "2020-10-09",
+      kind: "Article",
+      summary:
+        "Versión preprint que detalla la sensibilidad modelada del balance hídrico de la cuenca de Qaidam al forzamiento climático del Plioceno medio.",
+      tags: ["Preprint", "Balance hídrico", "Cuenca de Qaidam"],
+      link: "https://doi.org/10.1002/essoar.10504500.1",
+    },
+    {
+      title: "Changes in water balance of the Qaidam Basin from Pliocene to present day",
+      outlet: "EGU General Assembly",
+      published: "2020-03-23",
+      kind: "Article",
+      summary:
+        "Contribución de congreso sobre cambios de largo plazo en el balance hídrico de la cuenca de Qaidam desde el Plioceno hasta hoy.",
+      tags: ["Conferencia", "Balance hídrico", "Cuenca de Qaidam"],
+      link: "https://doi.org/10.5194/egusphere-egu2020-20666",
+    },
   ],
   blogPosts: [
     {
