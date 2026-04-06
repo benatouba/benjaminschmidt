@@ -71,7 +71,10 @@ const projectTechBadges = (project: ResearchProject) =>
                 <img
                   :src="badge.image"
                   :alt="badge.label"
+                  :width="badge.width ?? 80"
+                  :height="badge.height ?? 20"
                   loading="lazy"
+                  decoding="async"
                   class="stack-badge"
                 />
               </a>
@@ -205,17 +208,20 @@ const projectTechBadges = (project: ResearchProject) =>
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(148, 163, 184, 0.7);
+  color: var(--page-text-muted);
 }
 
 .stack-badges-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .stack-badge-link {
   display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-block: 2px;
   border-radius: 4px;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -227,6 +233,7 @@ const projectTechBadges = (project: ResearchProject) =>
 
 .stack-badge {
   display: block;
+  width: auto;
   height: 20px;
 }
 

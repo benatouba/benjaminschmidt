@@ -30,7 +30,15 @@ const streakCard = props.cards[2];
           :rel="card.href ? 'noreferrer' : undefined"
           class="stat-link"
         >
-          <img :src="card.image" :alt="card.title" loading="lazy" class="stat-image" />
+          <img
+            :src="card.image"
+            :alt="card.title"
+            :width="card.width ?? 495"
+            :height="card.height ?? 195"
+            loading="lazy"
+            decoding="async"
+            class="stat-image"
+          />
         </a>
       </div>
 
@@ -44,7 +52,10 @@ const streakCard = props.cards[2];
           <img
             :src="streakCard.image"
             :alt="streakCard.title"
+            :width="streakCard.width ?? 495"
+            :height="streakCard.height ?? 195"
             loading="lazy"
+            decoding="async"
             class="stat-image streak-image"
           />
         </a>
@@ -96,7 +107,8 @@ const streakCard = props.cards[2];
 }
 
 .stat-link {
-  display: block;
+  display: inline-block;
+  width: 100%;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border-color);

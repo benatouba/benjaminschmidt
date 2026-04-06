@@ -28,7 +28,15 @@ const { t } = useI18n({ useScope: "global" });
           :rel="badge.href ? 'noreferrer' : undefined"
           class="badge-link"
         >
-          <img :src="badge.image" :alt="badge.label" loading="lazy" class="badge-image" />
+          <img
+            :src="badge.image"
+            :alt="badge.label"
+            :width="badge.width ?? 80"
+            :height="badge.height ?? 20"
+            loading="lazy"
+            decoding="async"
+            class="badge-image"
+          />
         </a>
       </div>
     </v-container>
@@ -81,6 +89,9 @@ const { t } = useI18n({ useScope: "global" });
 
 .badge-link {
   display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-block: 2px;
   border-radius: 4px;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -92,6 +103,7 @@ const { t } = useI18n({ useScope: "global" });
 
 .badge-image {
   display: block;
+  width: auto;
   height: 20px;
 }
 

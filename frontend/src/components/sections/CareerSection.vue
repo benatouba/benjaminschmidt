@@ -63,7 +63,15 @@ const stageFocusBadges = (stage: CareerStage) =>
                   :rel="badge.href ? 'noreferrer' : undefined"
                   class="focus-badge-link"
                 >
-                  <img :src="badge.image" :alt="badge.label" loading="lazy" class="focus-badge" />
+                  <img
+                    :src="badge.image"
+                    :alt="badge.label"
+                    :width="badge.width ?? 80"
+                    :height="badge.height ?? 20"
+                    loading="lazy"
+                    decoding="async"
+                    class="focus-badge"
+                  />
                 </a>
               </div>
             </div>
@@ -196,11 +204,14 @@ const stageFocusBadges = (stage: CareerStage) =>
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .focus-badge-link {
   display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-block: 2px;
   border-radius: 4px;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -212,6 +223,7 @@ const stageFocusBadges = (stage: CareerStage) =>
 
 .focus-badge {
   display: block;
+  width: auto;
   height: 20px;
 }
 

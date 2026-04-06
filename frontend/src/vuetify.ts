@@ -4,7 +4,7 @@ import { h } from "vue";
 import { createVuetify } from "vuetify";
 import type { IconProps, IconSet } from "vuetify";
 import { md3 } from "vuetify/blueprints";
-import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
+import { mdi } from "vuetify/iconsets/mdi-svg";
 
 import { mdiFallbackIconPath, mdiIconPathByName } from "@/icons/mdi";
 
@@ -13,7 +13,6 @@ const mdiAliases = Object.fromEntries(
 );
 
 const appAliases = {
-  ...aliases,
   ...mdiAliases,
 };
 

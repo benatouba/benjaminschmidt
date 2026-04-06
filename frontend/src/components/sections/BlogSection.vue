@@ -62,7 +62,15 @@ const postTagBadges = (post: BlogPost) =>
               :rel="badge.href ? 'noreferrer' : undefined"
               class="tag-badge-link"
             >
-              <img :src="badge.image" :alt="badge.label" loading="lazy" class="tag-badge" />
+              <img
+                :src="badge.image"
+                :alt="badge.label"
+                :width="badge.width ?? 80"
+                :height="badge.height ?? 20"
+                loading="lazy"
+                decoding="async"
+                class="tag-badge"
+              />
             </a>
           </div>
 
@@ -195,11 +203,14 @@ const postTagBadges = (post: BlogPost) =>
   margin-top: 0.875rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .tag-badge-link {
   display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-block: 2px;
   border-radius: 4px;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -211,6 +222,7 @@ const postTagBadges = (post: BlogPost) =>
 
 .tag-badge {
   display: block;
+  width: auto;
   height: 20px;
 }
 
@@ -226,20 +238,23 @@ const postTagBadges = (post: BlogPost) =>
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(148, 163, 184, 0.7);
+  color: var(--page-text-muted);
 }
 
 .related-list {
   margin: 0;
   padding: 0 0 0 1rem;
   font-size: 0.8rem;
-  line-height: 1.6;
+  line-height: 1.75;
   color: var(--page-text-muted);
 }
 
 .related-list a {
   color: var(--primary);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
 }
 
 .related-list a:hover {

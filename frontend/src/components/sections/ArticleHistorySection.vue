@@ -85,7 +85,15 @@ const itemTagBadges = (item: ArticleHistoryItem) =>
               :rel="badge.href ? 'noreferrer' : undefined"
               class="tag-badge-link"
             >
-              <img :src="badge.image" :alt="badge.label" loading="lazy" class="tag-badge" />
+              <img
+                :src="badge.image"
+                :alt="badge.label"
+                :width="badge.width ?? 80"
+                :height="badge.height ?? 20"
+                loading="lazy"
+                decoding="async"
+                class="tag-badge"
+              />
             </a>
           </div>
 
@@ -244,11 +252,14 @@ const itemTagBadges = (item: ArticleHistoryItem) =>
   margin-top: 0.875rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .tag-badge-link {
   display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-block: 2px;
   border-radius: 4px;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -260,6 +271,7 @@ const itemTagBadges = (item: ArticleHistoryItem) =>
 
 .tag-badge {
   display: block;
+  width: auto;
   height: 20px;
 }
 

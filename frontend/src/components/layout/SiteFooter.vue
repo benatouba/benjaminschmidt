@@ -35,6 +35,6 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .muted {
-  color: rgba(148, 163, 184, 0.6);
+  color: var(--page-text-muted);
 }
 </style>

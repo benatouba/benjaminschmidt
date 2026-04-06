@@ -67,7 +67,10 @@ const appointmentHighlightBadges = (item: CvAppointment) =>
                     <img
                       :src="badge.image"
                       :alt="badge.label"
+                      :width="badge.width ?? 80"
+                      :height="badge.height ?? 20"
                       loading="lazy"
+                      decoding="async"
                       class="highlight-badge"
                     />
                   </a>
@@ -250,11 +253,14 @@ const appointmentHighlightBadges = (item: CvAppointment) =>
   margin-top: 0.75rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .highlight-badge-link {
   display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-block: 2px;
   border-radius: 4px;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -266,6 +272,7 @@ const appointmentHighlightBadges = (item: CvAppointment) =>
 
 .highlight-badge {
   display: block;
+  width: auto;
   height: 20px;
 }
 
@@ -319,7 +326,7 @@ const appointmentHighlightBadges = (item: CvAppointment) =>
   margin: 0.4rem 0 0;
   font-size: 0.8rem;
   line-height: 1.5;
-  color: rgba(148, 163, 184, 0.7);
+  color: var(--page-text-muted);
 }
 
 @media (width <= 960px) {

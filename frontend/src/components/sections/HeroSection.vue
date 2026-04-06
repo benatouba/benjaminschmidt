@@ -142,7 +142,7 @@ const skillBadges = props.profile.skills
             <v-icon icon="mdi-account" size="20" />
           </div>
           <div>
-            <h3 class="card-title">{{ t("hero.researchFocus") }}</h3>
+            <h2 class="card-title">{{ t("hero.researchFocus") }}</h2>
             <p class="card-subtitle">{{ t("hero.currentInterests") }}</p>
           </div>
         </div>
@@ -156,7 +156,15 @@ const skillBadges = props.profile.skills
             :rel="badge.href ? 'noreferrer' : undefined"
             class="interest-badge-link"
           >
-            <img :src="badge.image" :alt="badge.label" loading="lazy" class="interest-badge" />
+            <img
+              :src="badge.image"
+              :alt="badge.label"
+              :width="badge.width ?? 80"
+              :height="badge.height ?? 20"
+              loading="lazy"
+              decoding="async"
+              class="interest-badge"
+            />
           </a>
         </div>
 
@@ -172,7 +180,15 @@ const skillBadges = props.profile.skills
             :rel="badge.href ? 'noreferrer' : undefined"
             class="skill-badge-link"
           >
-            <img :src="badge.image" :alt="badge.label" loading="lazy" class="skill-badge" />
+            <img
+              :src="badge.image"
+              :alt="badge.label"
+              :width="badge.width ?? 80"
+              :height="badge.height ?? 20"
+              loading="lazy"
+              decoding="async"
+              class="skill-badge"
+            />
           </a>
         </div>
       </div>
@@ -355,11 +371,14 @@ const skillBadges = props.profile.skills
 .interests-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .interest-badge-link {
   display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-block: 2px;
   border-radius: 4px;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -371,6 +390,7 @@ const skillBadges = props.profile.skills
 
 .interest-badge {
   display: block;
+  width: auto;
   height: 20px;
 }
 
@@ -392,11 +412,14 @@ const skillBadges = props.profile.skills
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .skill-badge-link {
   display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-block: 2px;
   border-radius: 4px;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -408,6 +431,7 @@ const skillBadges = props.profile.skills
 
 .skill-badge {
   display: block;
+  width: auto;
   height: 20px;
 }
 

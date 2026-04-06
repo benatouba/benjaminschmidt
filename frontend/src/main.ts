@@ -18,7 +18,14 @@ const bootstrap = async () => {
     preloadSiteContent(initialLocale),
   ]);
 
-  createApp(App).use(router).use(vuetify).use(i18n).mount("#app");
+  const app = createApp(App);
+
+  app.use(router);
+  app.use(vuetify);
+  app.use(i18n);
+
+  await router.isReady();
+  app.mount("#app");
 };
 
 void bootstrap();
