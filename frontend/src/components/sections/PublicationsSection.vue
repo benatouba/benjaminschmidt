@@ -22,6 +22,7 @@ interface WritingEntry {
   title: string;
   outlet: string;
   kind: WritingKind;
+  authors?: string;
   summary: string;
   tags: string[];
   link?: string;
@@ -94,6 +95,7 @@ const mergedEntries = computed<WritingEntry[]>(() => {
     title: entry.title,
     outlet: entry.venue,
     kind: entry.kind,
+    authors: entry.authors,
     summary: entry.summary,
     tags: entry.tags,
     link: entry.link,
@@ -106,9 +108,11 @@ const mergedEntries = computed<WritingEntry[]>(() => {
     title: entry.title,
     outlet: entry.outlet,
     kind: entry.kind,
+    authors: entry.authors,
     summary: entry.summary,
     tags: entry.tags,
     link: entry.link,
+    doi: entry.doi,
     releaseDate: entry.published,
   }));
 
@@ -199,7 +203,6 @@ const formattedReleaseDate = (value: string) => {
   <section id="publications" class="section-block section-anchor">
     <v-container fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">{{ t("publications.kicker") }}</p>
         <h2>{{ t("publications.heading") }}</h2>
       </div>
 
@@ -228,12 +231,13 @@ const formattedReleaseDate = (value: string) => {
             <div class="card-meta">
               <h3 class="publication-title">{{ entry.title }}</h3>
               <p class="publication-venue">{{ entry.outlet }} - {{ formattedReleaseDate(entry.releaseDate) }}</p>
+              <p v-if="entry.authors" class="publication-authors">{{ entry.authors }}</p>
             </div>
           </div>
 
           <div class="meta-badges">
             <span class="kind-badge">{{ kindLabel(entry.kind) }}</span>
-            <span v-if="entry.doi" class="doi-badge">DOI {{ entry.doi }}</span>
+            <span v-if="entry.doi" class="doi-badge">{{ t("publications.doi") }} {{ entry.doi }}</span>
           </div>
 
           <p class="publication-summary">{{ entry.summary }}</p>
@@ -276,33 +280,8 @@ const formattedReleaseDate = (value: string) => {
 </template>
 
 <style scoped>
-.section-anchor {
-  scroll-margin-top: 110px;
-}
-
-.section-block {
-  padding-block: clamp(2.5rem, 6vw, 4.5rem);
-}
-
 .section-heading {
   margin-bottom: 1.5rem;
-}
-
-.section-heading h2 {
-  margin: 0.3rem 0 0;
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--page-text);
-}
-
-.kicker {
-  margin: 0;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--primary);
 }
 
 .filter-bar {
@@ -390,6 +369,14 @@ const formattedReleaseDate = (value: string) => {
   margin: 0.2rem 0 0;
   font-size: 0.8rem;
   color: var(--page-text-muted);
+}
+
+.publication-authors {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--page-text-muted);
+  font-style: italic;
 }
 
 .meta-badges {

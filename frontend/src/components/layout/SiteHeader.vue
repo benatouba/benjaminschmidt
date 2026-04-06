@@ -17,9 +17,9 @@ const route = useRoute();
 const { locale, t } = useI18n({ useScope: "global" });
 
 const locales = [
-  { code: "en", flag: "GB" },
-  { code: "de", flag: "DE" },
-  { code: "es", flag: "ES" },
+  { code: "en" },
+  { code: "de" },
+  { code: "es" },
 ] as const;
 
 const setLocale = async (code: string) => {
@@ -46,7 +46,7 @@ const isActive = (target: string) => {
           <p class="headline">{{ props.headline }}</p>
         </div>
 
-        <nav class="nav-links" aria-label="Primary">
+        <nav class="nav-links" :aria-label="t('nav.ariaLabel')">
           <a
             v-for="item in props.navItems"
             :key="item.to"

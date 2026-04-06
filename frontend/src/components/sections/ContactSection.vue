@@ -68,12 +68,7 @@ const { t } = useI18n({ useScope: "global" });
 </template>
 
 <style scoped>
-.section-anchor {
-  scroll-margin-top: 110px;
-}
-
 .section-block {
-  padding-block: clamp(2.5rem, 6vw, 4.5rem);
   padding-bottom: clamp(3rem, 8vw, 6rem);
 }
 

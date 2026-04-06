@@ -25,11 +25,10 @@ const postTagBadges = (post: BlogPost) =>
 </script>
 
 <template>
-  <section id="blog" class="section-block section-anchor">
+  <section id="spotlights" class="section-block section-anchor">
     <v-container fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">{{ t("blog.kicker") }}</p>
-        <h2>{{ t("blog.heading") }}</h2>
+        <h2>{{ t("spotlights.heading") }}</h2>
       </div>
 
       <div class="blog-grid">
@@ -46,7 +45,7 @@ const postTagBadges = (post: BlogPost) =>
             <div class="card-meta">
               <h3 class="blog-title">{{ post.title }}</h3>
               <p class="blog-date">
-                {{ post.date }} · {{ post.readMinutes }} {{ t("blog.minRead") }}
+                {{ post.date }}
               </p>
             </div>
           </div>
@@ -75,7 +74,7 @@ const postTagBadges = (post: BlogPost) =>
           </div>
 
           <div v-if="post.relatedArticles?.length" class="related-section">
-            <p class="related-label">{{ t("blog.relatedArticles") }}</p>
+            <p class="related-label">{{ t("spotlights.relatedArticles") }}</p>
             <ul class="related-list">
               <li
                 v-for="article in post.relatedArticles"
@@ -96,7 +95,7 @@ const postTagBadges = (post: BlogPost) =>
             rel="noreferrer"
             class="blog-link"
           >
-            {{ t("blog.readPost") }}
+            {{ t("spotlights.viewProject") }}
             <v-icon icon="mdi-arrow-top-right" size="16" />
           </a>
         </article>
@@ -106,35 +105,6 @@ const postTagBadges = (post: BlogPost) =>
 </template>
 
 <style scoped>
-.section-anchor {
-  scroll-margin-top: 110px;
-}
-
-.section-block {
-  padding-block: clamp(2.5rem, 6vw, 4.5rem);
-}
-
-.section-heading {
-  margin-bottom: 2rem;
-}
-
-.section-heading h2 {
-  margin: 0.3rem 0 0;
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--page-text);
-}
-
-.kicker {
-  margin: 0;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--primary);
-}
-
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

@@ -7,36 +7,36 @@ export const messages = {
     cv: "CV",
     career: "Career",
     publications: "Writing",
-    blog: "Blog",
+    spotlights: "Spotlights",
     projects: "Projects",
     profiles: "Profiles",
     contact: "Contact",
     services: "Services",
+    ariaLabel: "Main navigation",
   },
   hero: {
     eyebrow: "Scientist · Engineer · Builder",
     viewPublications: "View Writing",
     openCv: "Open CV",
-    readBlog: "Read Blog",
+    readBlog: "Spotlights",
     researchFocus: "Research Focus",
     currentInterests: "Current areas of interest",
     coreStrengths: "Core strengths",
+    orcidLabel: "ORCID",
   },
   cv: {
-    kicker: "Curriculum Vitae",
-    heading: "Appointments, education, and honors",
+    heading: "Curriculum Vitae",
     professionalAppointments: "Professional Appointments",
     education: "Education",
     awardsAndHonors: "Awards and Honors",
   },
   career: {
-    kicker: "Scientific Career",
-    heading: "Trajectory and positions",
+    heading: "Scientific Career",
   },
   publications: {
-    kicker: "Professional Writing",
-    heading: "Writing",
+    heading: "Publications & Writing",
     read: "Read",
+    doi: "DOI",
     filterAll: "All",
     kinds: {
       Journal: "Journal",
@@ -58,18 +58,16 @@ export const messages = {
       "Technical Report": "Technical Report",
     },
   },
-  blog: {
-    kicker: "Blog",
-    heading: "Notes from projects, methods, and publication work",
-    minRead: "min read",
+  spotlights: {
+    heading: "Project Spotlights",
     relatedArticles: "Related articles",
-    readPost: "Read post",
+    viewProject: "View project",
   },
   projects: {
-    kicker: "Scientific Projects",
-    heading: "Research software and initiatives",
+    heading: "Research Projects",
     stack: "Stack",
     outcomes: "Outcomes",
+    viewProject: "View project",
     status: {
       Active: "Active",
       Planning: "Planning",
@@ -77,17 +75,14 @@ export const messages = {
     },
   },
   skills: {
-    kicker: "Technical Toolkit",
-    heading: "Skill badges and technologies",
+    heading: "Technical Toolkit",
     copy: "A compact overview of technologies I use across scientific software, data platforms, and reproducible workflows.",
   },
   github: {
-    kicker: "GitHub Activity",
-    heading: "Current stats and language distribution",
+    heading: "GitHub Activity",
   },
   profiles: {
-    kicker: "Linked Accounts",
-    heading: "Academic, professional, and public profiles",
+    heading: "Linked Profiles",
     visitProfile: "Visit profile",
     comingSoon: "Coming soon",
     categories: {
@@ -102,7 +97,7 @@ export const messages = {
     heading: "What I can do for you",
   },
   contact: {
-    kicker: "Contact and Collaboration",
+    kicker: "Contact",
     heading: "Let's build something together.",
     copy: "Open to research collaborations, engineering roles, consulting engagements, and invited talks in data-intensive science and software.",
     openProfile: "Open profile",
@@ -117,9 +112,9 @@ export const messages = {
   pages: {
     cv: { title: "Curriculum Vitae", kicker: "Professional Record" },
     career: { title: "Scientific Career", kicker: "Academic Timeline" },
-    publications: { title: "Professional Writing", kicker: "Selected Work" },
-    blog: { title: "Blog", kicker: "Research Notes" },
-    projects: { title: "Scientific Projects", kicker: "Software and Initiatives" },
+    publications: { title: "Publications & Writing", kicker: "Selected Work" },
+    spotlights: { title: "Project Spotlights", kicker: "Behind the Projects" },
+    projects: { title: "Research Projects", kicker: "Software and Initiatives" },
     profiles: { title: "Linked Profiles", kicker: "Accounts and Identity" },
     contact: { title: "Contact", kicker: "Collaboration" },
     services: { title: "Services", kicker: "Professional Website Features" },
@@ -132,7 +127,7 @@ export const content: SiteContent = {
     { label: "nav.cv", to: "/cv" },
     { label: "nav.career", to: "/career" },
     { label: "nav.publications", to: "/publications" },
-    { label: "nav.blog", to: "/blog" },
+    { label: "nav.spotlights", to: "/spotlights" },
     { label: "nav.projects", to: "/projects" },
     { label: "nav.profiles", to: "/profiles" },
     { label: "nav.contact", to: "/contact" },
@@ -218,6 +213,7 @@ export const content: SiteContent = {
       venue: "Technische Universitat Berlin",
       year: 2025,
       kind: "Thesis",
+      authors: "Schmidt, B.",
       summary:
         "Doctoral dissertation on regional climate dynamics, water balance analysis, and multi-scale downscaling methodologies.",
       tags: ["Climate modeling", "Water balance", "Regional downscaling"],
@@ -228,6 +224,7 @@ export const content: SiteContent = {
       venue: "NFDI4Earth Incubator Lab",
       year: 2025,
       kind: "Technical Report",
+      authors: "Schmidt, B. et al.",
       summary:
         "Web platform and graph-based tooling for exploration, analysis, and visualization of Earth system science research metadata.",
       tags: ["Vue", "FastAPI", "PostGIS", "NLP"],
@@ -238,6 +235,7 @@ export const content: SiteContent = {
       venue: "[UC]2 Program",
       year: 2024,
       kind: "Technical Report",
+      authors: "Schmidt, B. et al.",
       summary:
         "Specification and implementation guidance for standardized handling of NetCDF atmospheric datasets in urban climate projects.",
       tags: ["NetCDF", "Data standards", "Urban climate"],
@@ -248,6 +246,7 @@ export const content: SiteContent = {
       venue: "ISIMIP",
       year: 2023,
       kind: "Technical Report",
+      authors: "Schmidt, B. et al.",
       summary:
         "Algorithmic framework for generating counterfactual climate datasets from historical archives.",
       tags: ["Climate data", "Counterfactual analysis", "Python"],
@@ -435,6 +434,7 @@ export const content: SiteContent = {
       outlet: "Technische Universitat Berlin",
       published: "2025-04-01",
       kind: "Thesis",
+      authors: "Schmidt, B.",
       summary:
         "Doctoral dissertation documenting multi-scale regional climate downscaling and hydrological analysis methodology.",
       tags: ["Dissertation", "Climatology", "Hydrology"],
@@ -445,6 +445,7 @@ export const content: SiteContent = {
       outlet: "NFDI4Earth Incubator Lab",
       published: "2025-01-01",
       kind: "Technical Report",
+      authors: "Schmidt, B. et al.",
       summary:
         "Project summary of a production-ready web platform for map and graph based analysis of Earth system science research data.",
       tags: ["Technical report", "Web platform", "Earth system science"],
@@ -455,6 +456,7 @@ export const content: SiteContent = {
       outlet: "[UC]2 Program",
       published: "2024-01-01",
       kind: "Technical Report",
+      authors: "Schmidt, B. et al.",
       summary:
         "Defines standardized workflows for management, exchange, and analysis of urban climate atmospheric datasets.",
       tags: ["Data standard", "NetCDF", "Urban climate"],
@@ -465,6 +467,7 @@ export const content: SiteContent = {
       outlet: "ISIMIP",
       published: "2019-07-01",
       kind: "Technical Report",
+      authors: "Schmidt, B. et al.",
       summary:
         "Technical documentation and method notes on generating counterfactual climate datasets from historical archives.",
       tags: ["Climate data", "Algorithm", "ISIMIP"],
@@ -475,6 +478,8 @@ export const content: SiteContent = {
       outlet: "Geophysical Research Letters",
       published: "2025-12-16",
       kind: "Article",
+      authors: "Schneider, M. K., Turini, N., Ballari, D., Bayas López, S. D., Delgado Maldonado, B., Orellana-Alvear, J., Schmidt, B., Scherer, D., Bendix, J.",
+      doi: "10.1029/2025GL117553",
       summary:
         "Shows how local sea surface temperature variability modulates heavy rainfall occurrence in the Galápagos Archipelago.",
       tags: ["Galapagos", "Heavy rainfall", "Sea surface temperature"],
@@ -485,6 +490,8 @@ export const content: SiteContent = {
       outlet: "International Journal of Climatology",
       published: "2025-11-15",
       kind: "Article",
+      authors: "Schmidt, B., Turini, N., Otto, M., Delgado Maldonado, B., Bayas López, S. D., Bart, F., Holtmann, A., Bendix, J., Scherer, D.",
+      doi: "10.1002/joc.8924",
       summary:
         "Presents a meso-scale climate analysis of the Galápagos Archipelago using dynamical downscaling of reanalysis data.",
       tags: ["Dynamical downscaling", "Reanalysis", "Galapagos"],
@@ -495,6 +502,8 @@ export const content: SiteContent = {
       outlet: "Atmospheric Research",
       published: "2025-04-01",
       kind: "Article",
+      authors: "Turini, N., Delgado Maldonado, B., Zander, S., Bayas López, S. D., Ballari, D., Célleri, R., Orellana-Alvear, J., Schmidt, B., Scherer, D., Bendix, J.",
+      doi: "10.1016/j.atmosres.2025.107918",
       summary:
         "Evaluates satellite cloud products and demonstrates the need for local adjustment for ecoclimatic cloud zonation over the Galapagos.",
       tags: ["Satellite products", "Cloud zonation", "Galapagos"],
@@ -506,6 +515,8 @@ export const content: SiteContent = {
       outlet: "Meteorologische Zeitschrift",
       published: "2025-02-10",
       kind: "Article",
+      authors: "Bart, F., Schmidt, B., Wang, X., Holtmann, A., Meier, F., Otto, M., Scherer, D.",
+      doi: "10.1127/metz/2024/1233",
       summary:
         "Assesses three decades of high-resolution precipitation data in the Berlin-Brandenburg metropolitan region using CER v2.",
       tags: ["Precipitation", "Berlin-Brandenburg", "Regional analysis"],
@@ -516,6 +527,8 @@ export const content: SiteContent = {
       outlet: "Atmosphere",
       published: "2023-07-29",
       kind: "Article",
+      authors: "Zander, S., Turini, N., Ballari, D., Bayas López, S. D., Célleri, R., Delgado Maldonado, B., Orellana-Alvear, J., Schmidt, B., Scherer, D., Bendix, J.",
+      doi: "10.3390/atmos14081225",
       summary:
         "Analyzes spatio-temporal cloud frequency patterns in the Galapagos Archipelago using MODIS cloud mask observations.",
       tags: ["MODIS", "Cloud frequency", "Galapagos"],
@@ -524,9 +537,11 @@ export const content: SiteContent = {
     {
       title:
         "Sensitivity of micro-scale atmospheric processes in a city quarter of Berlin, Germany on elevated meso-scale temperature forcing",
-      outlet: "EGUsphere (preprint)",
+      outlet: "EGUsphere",
       published: "2023-05-15",
       kind: "Article",
+      authors: "Scherer, D., Scherber, K., Fehrenbach, U., Meier, F., Otto, M., Schmidt, B., Steikert, R., Holtmann, A.",
+      doi: "10.5194/egusphere-egu23-1326",
       summary:
         "Investigates how elevated meso-scale temperature forcing influences micro-scale atmospheric processes within a Berlin urban quarter.",
       tags: ["Urban climate", "Berlin", "Meso-scale forcing"],
@@ -537,6 +552,8 @@ export const content: SiteContent = {
       outlet: "Journal of Geophysical Research: Atmospheres",
       published: "2021-08-27",
       kind: "Article",
+      authors: "Wang, X., Schmidt, B., Otto, M., Ehlers, T. A., Mutz, S. G., Botsyun, S., Scherer, D.",
+      doi: "10.1029/2020JD033965",
       summary:
         "Examines water-balance sensitivity in the Qaidam Basin under Mid-Pliocene climate conditions.",
       tags: ["Water balance", "Qaidam Basin", "Mid-Pliocene"],
@@ -547,6 +564,8 @@ export const content: SiteContent = {
       outlet: "ESS Open Archive (preprint)",
       published: "2020-10-09",
       kind: "Article",
+      authors: "Schmidt, B., Wang, X., Otto, M., Ehlers, T. A., Mutz, S. G., Botsyun, S., Scherer, D.",
+      doi: "10.1002/essoar.10504500.1",
       summary:
         "Preprint version detailing modeled sensitivity of Qaidam Basin water balance to Mid-Pliocene climate forcing.",
       tags: ["Preprint", "Water balance", "Qaidam Basin"],
@@ -557,6 +576,8 @@ export const content: SiteContent = {
       outlet: "EGU General Assembly",
       published: "2020-03-23",
       kind: "Article",
+      authors: "Schmidt, B., Wang, X., Mutz, S. G., Botsyun, S., Ehlers, T. A., Scherer, D.",
+      doi: "10.5194/egusphere-egu2020-20666",
       summary:
         "Conference contribution on long-term changes in Qaidam Basin water balance from the Pliocene to the present.",
       tags: ["Conference", "Water balance", "Qaidam Basin"],

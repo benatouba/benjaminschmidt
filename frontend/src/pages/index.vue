@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CvSection from "@/components/sections/CvSection.vue";
-import BlogSection from "@/components/sections/BlogSection.vue";
+import SpotlightsSection from "@/components/sections/SpotlightsSection.vue";
 import CareerSection from "@/components/sections/CareerSection.vue";
 import ContactSection from "@/components/sections/ContactSection.vue";
 import GitHubStatsSection from "@/components/sections/GitHubStatsSection.vue";
@@ -24,7 +24,7 @@ const content = useSiteContent();
   />
   <CareerSection :stages="content.careerStages" />
   <PublicationsSection :publications="content.publications" :writing="content.articleHistory" />
-  <BlogSection :posts="content.blogPosts" />
+  <SpotlightsSection :posts="content.blogPosts" />
   <ProjectsSection :projects="content.projects" />
   <SkillBadgesSection v-if="content.skillBadges?.length" :badges="content.skillBadges" />
   <GitHubStatsSection v-if="content.githubStats?.length" :cards="content.githubStats" />

@@ -1,28 +1,30 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
+import { useSiteContent } from "@/composables/useSiteContent";
+
 const { t } = useI18n({ useScope: "global" });
+const content = useSiteContent();
 
 const year = new Date().getFullYear();
 
-const quickLinks = [
-  { label: "GitHub", href: "https://github.com/benatouba", icon: "mdi-github" },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/dr-benjamin-schmidt/",
-    icon: "mdi-linkedin",
-  },
-  {
-    label: "ORCID",
-    href: "https://orcid.org/0000-0002-9669-3360",
-    icon: "mdi-account-badge-outline",
-  },
-  {
-    label: "Scholar",
-    href: "https://scholar.google.de/citations?hl=de&user=cRAeTxYAAAAJ",
-    icon: "mdi-school-outline",
-  },
-];
+const socialLinks = computed(() => {
+  const iconMap: Record<string, string> = {
+    GitHub: "mdi-github",
+    LinkedIn: "mdi-linkedin",
+    ORCID: "mdi-account-badge-outline",
+    "Google Scholar": "mdi-school-outline",
+  };
+
+  return content.value.externalProfiles
+    .filter((p) => p.href)
+    .map((p) => ({
+      label: p.label,
+      href: p.href!,
+      icon: iconMap[p.label] ?? p.icon,
+    }));
+});
 </script>
 
 <template>
@@ -40,7 +42,7 @@ const quickLinks = [
 
         <div class="footer-links">
           <a
-            v-for="link in quickLinks"
+            v-for="link in socialLinks"
             :key="link.label"
             :href="link.href"
             class="footer-link"

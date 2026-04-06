@@ -14,7 +14,6 @@ const { t } = useI18n({ useScope: "global" });
   <section id="profiles" class="section-block section-anchor">
     <v-container fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
-        <p class="kicker">{{ t("profiles.kicker") }}</p>
         <h2>{{ t("profiles.heading") }}</h2>
       </div>
 
@@ -57,35 +56,6 @@ const { t } = useI18n({ useScope: "global" });
 </template>
 
 <style scoped>
-.section-anchor {
-  scroll-margin-top: 110px;
-}
-
-.section-block {
-  padding-block: clamp(2.5rem, 6vw, 4.5rem);
-}
-
-.section-heading {
-  margin-bottom: 2rem;
-}
-
-.section-heading h2 {
-  margin: 0.3rem 0 0;
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--page-text);
-}
-
-.kicker {
-  margin: 0;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--primary);
-}
-
 .profiles-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

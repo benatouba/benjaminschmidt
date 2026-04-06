@@ -34,13 +34,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/blog': RouteRecordInfo<
-      '/blog',
-      '/blog',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/career': RouteRecordInfo<
       '/career',
       '/career',
@@ -90,6 +83,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/spotlights': RouteRecordInfo<
+      '/spotlights',
+      '/spotlights',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
   }
 
   /**
@@ -106,12 +106,6 @@ declare module 'vue-router/auto-routes' {
     'src/pages/index.vue': {
       routes:
         | '/'
-      views:
-        | never
-    }
-    'src/pages/blog.vue': {
-      routes:
-        | '/blog'
       views:
         | never
     }
@@ -154,6 +148,12 @@ declare module 'vue-router/auto-routes' {
     'src/pages/services.vue': {
       routes:
         | '/services'
+      views:
+        | never
+    }
+    'src/pages/spotlights.vue': {
+      routes:
+        | '/spotlights'
       views:
         | never
     }

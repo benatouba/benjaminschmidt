@@ -29,6 +29,7 @@ export interface PublicationItem {
   venue: string;
   year: number;
   kind: "Journal" | "Conference" | "Preprint" | "Book Chapter" | "Thesis" | "Technical Report";
+  authors?: string;
   summary: string;
   tags: string[];
   link?: string;
@@ -96,9 +97,11 @@ export interface ArticleHistoryItem {
   outlet: string;
   published: string;
   kind: "Article" | "Interview" | "Editorial" | "Review" | "Thesis" | "Technical Report";
+  authors?: string;
   summary: string;
   tags: string[];
   link?: string;
+  doi?: string;
 }
 
 export interface BlogPost {

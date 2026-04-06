@@ -78,7 +78,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
           </span>
           <span class="meta-item">
             <v-icon icon="mdi-card-account-details-outline" size="small" />
-            ORCID {{ props.profile.orcid }}
+            {{ t("hero.orcidLabel") }} {{ props.profile.orcid }}
           </span>
           <span v-if="props.profile.phone" class="meta-item">
             <v-icon icon="mdi-phone-outline" size="small" />
@@ -118,8 +118,8 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
             {{ t("hero.openCv") }}
           </v-btn>
           <v-btn
-            to="/blog"
-            prepend-icon="mdi-post-outline"
+            to="/spotlights"
+            prepend-icon="mdi-lightbulb-outline"
             variant="text"
             class="action-btn text-btn"
           >
@@ -134,7 +134,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
             :src="profilePhoto"
             :srcset="profilePhotoSrcset"
             sizes="(max-width: 980px) 140px, 190px"
-            alt="Dr. Benjamin Schmidt"
+            :alt="props.profile.name"
             width="384"
             height="384"
             fetchpriority="high"
