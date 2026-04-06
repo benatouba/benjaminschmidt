@@ -29,6 +29,40 @@ interface WritingEntry {
   releaseDate: string;
 }
 
+const normalizeTitle = (value: string) =>
+  value
+    .toLowerCase()
+    .replaceAll(/[\u2010-\u2015]/g, "-")
+    .replaceAll(/[^a-z0-9]+/g, " ")
+    .trim();
+
+const isPreprintEntry = (entry: WritingEntry) =>
+  entry.kind === "Preprint" || /preprint|egusphere|essoar/i.test(`${entry.outlet} ${entry.link ?? ""}`);
+
+const kindPriority: Record<WritingKind, number> = {
+  Journal: 1,
+  Article: 2,
+  Conference: 3,
+  "Book Chapter": 4,
+  Review: 5,
+  Editorial: 6,
+  Interview: 7,
+  "Technical Report": 8,
+  Thesis: 9,
+  Preprint: 10,
+};
+
+const shouldPreferEntry = (candidate: WritingEntry, current: WritingEntry) => {
+  const candidatePriority = kindPriority[candidate.kind];
+  const currentPriority = kindPriority[current.kind];
+
+  if (candidatePriority !== currentPriority) {
+    return candidatePriority < currentPriority;
+  }
+
+  return candidate.releaseDate > current.releaseDate;
+};
+
 const props = defineProps<{
   publications: PublicationItem[];
   writing: ArticleHistoryItem[];
@@ -82,17 +116,26 @@ const mergedEntries = computed<WritingEntry[]>(() => {
     b.releaseDate.localeCompare(a.releaseDate),
   );
 
-  const deduplicated: WritingEntry[] = [];
-  const seen = new Set<string>();
+  const titlesWithPublishedVersion = new Set(
+    merged.filter((entry) => !isPreprintEntry(entry)).map((entry) => normalizeTitle(entry.title)),
+  );
+
+  const bestByTitle = new Map<string, WritingEntry>();
 
   for (const entry of merged) {
-    const key = `${entry.title.toLowerCase()}::${entry.kind}::${entry.releaseDate.slice(0, 4)}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    deduplicated.push(entry);
+    const normalizedTitle = normalizeTitle(entry.title);
+
+    if (isPreprintEntry(entry) && titlesWithPublishedVersion.has(normalizedTitle)) {
+      continue;
+    }
+
+    const current = bestByTitle.get(normalizedTitle);
+    if (!current || shouldPreferEntry(entry, current)) {
+      bestByTitle.set(normalizedTitle, entry);
+    }
   }
 
-  return deduplicated;
+  return [...bestByTitle.values()].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate));
 });
 
 const filteredEntries = computed(() =>
