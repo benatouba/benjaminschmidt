@@ -75,30 +75,30 @@ export const projectCatalogEn: ResearchProject[] = [
 
 export const projectCatalogDe: ResearchProject[] = [
   {
-    name: "MaRESS: Platform zur Kartierung der Erdsystemforschung",
+    name: "MaRESS: Plattform fur die Kartierung der Erdsystemforschung",
     status: "Active",
-    timeframe: "2023 - 2026",
+    timeframe: "2023 - heute",
     summary:
-      "Kartiert Publikationen der Erdsystemforschung in interaktiven Karten- und Graphansichten, um Auffindbarkeit und Zusammenarbeit zu verbessern.",
+      "Bringt Publikationen der Erdsystemforschung in einer kombinierten Karten- und Graphansicht zusammen, damit Teams schneller relevante Forschung finden und vernetzen.",
     stack: ["Vue 3", "FastAPI", "PostgreSQL", "PostGIS", "OpenLayers", "Cytoscape.js"],
     outcomes: [
-      "Interactive Karten- und Graphenexploration",
-      "Durchsuchbare Workflows für Forschungsmetadaten",
-      "Wiederverwendbare Bausteine für wissenschaftliche Webplattformen",
+      "Interaktive Exploration von Orten, Themen und Beziehungen",
+      "Schneller Zugriff auf verknupfte Forschungsmetadaten",
+      "Wiederverwendbare Bausteine fur wissenschaftliche Webplattformen",
     ],
     link: "https://gitlab.klima.tu-berlin.de/klima/maress",
   },
   {
-    name: "ATTRICI: Toolkit für kontrafaktische Klimadaten",
+    name: "ATTRICI: Toolkit fur kontrafaktische Klimadaten",
     status: "Completed",
     timeframe: "2019 - 2024",
     summary:
-      "Implementiert kontrafaktische Klima-Workflows für die Impact Attribution auf Basis probabilistischer Modellierung.",
+      "Ubersetzt publizierte Methoden fur kontrafaktische Klimadaten in reproduzierbare, praxistaugliche Software.",
     stack: ["Python", "PyMC", "NumPy", "pandas"],
     outcomes: [
-      "Operative Umsetzung publizierter Methods",
-      "Reproduzierbare Workflows für kontrafaktische Datensätze",
-      "Transparente Werkzeuge für die Klima-Impact-Attribution",
+      "Operative Umsetzung wissenschaftlicher Methoden",
+      "Reproduzierbare Workflows fur kontrafaktische Datensatze",
+      "Transparente Ergebnisse fur die Impact Attribution",
     ],
     link: "https://github.com/benatouba/attrici",
   },
@@ -107,12 +107,12 @@ export const projectCatalogDe: ResearchProject[] = [
     status: "Completed",
     timeframe: "2019 - 2026",
     summary:
-      "Überführt GAR- und DARWIN-Modelldaten in robuste, analysefertige Klimadaten und Dashboard-Workflows.",
+      "Verwandelt GAR- und DARWIN-Modellausgaben in robuste, analysefahige Klimadatensatze und Dashboard-Workflows.",
     stack: ["Python", "xarray", "pandas", "salem", "Panel"],
     outcomes: [
-      "Automatisierte Transformation von Modelldaten",
-      "Analyse- und dashboardfähige Datensätze",
-      "Unterstützung für Publikations- und Reporting-Pipelines",
+      "Automatisierte Verarbeitung grosser Modelldaten",
+      "Analyse- und dashboardfahige Datensatze",
+      "Verlassliche Grundlage fur Publikationen und Berichte",
     ],
     link: "https://gitlab.klima.tu-berlin.de/schmidt/darwin",
   },
@@ -121,12 +121,12 @@ export const projectCatalogDe: ResearchProject[] = [
     status: "Completed",
     timeframe: "2019 - 2025",
     summary:
-      "Verarbeitet, validiert und tauscht NetCDF-Datensätze im UC2-Standard aus, inklusive DMS-API-Workflows.",
+      "Standardisiert Validierung, Austausch und Verteilung von NetCDF-Daten im UC2-Format, inklusive DMS-API-Workflows.",
     stack: ["Python", "NetCDF", "Datenvalidierung", "API-Workflows"],
     outcomes: [
-      "Konformitätsprüfungen für atmosphärische Datensätze",
-      "Automatisierte Upload- und Download-Prozesse für Partnerteams",
-      "Interoperabler Datenaustausch zwischen Projektteams",
+      "Konformitatsprufungen fur atmospharische Datensatze",
+      "Automatisierte Upload- und Download-Prozesse fur Partnerteams",
+      "Interoperabler Datenaustausch uber Institutionsgrenzen hinweg",
     ],
     link: "https://gitlab.klima.tu-berlin.de/klima/uc2data",
   },
@@ -135,71 +135,127 @@ export const projectCatalogDe: ResearchProject[] = [
     status: "Completed",
     timeframe: "2020 - 2025",
     summary:
-      "Bietet partnerorientierten Zugang zu urbanen Klimadaten und Visualisierungen für Kommunikation und Zusammenarbeit.",
-    stack: ["Nuxt", "Django", "Geospatial Web Tooling", "NetCDF"],
+      "Bietet partnerorientierten Zugang zu urbanen Klimadaten mit klaren Visualisierungen fur Kommunikation und Zusammenarbeit.",
+    stack: ["Nuxt", "Django", "Geospatiales Web-Tooling", "NetCDF"],
     outcomes: [
-      "Partnerorientierte Datenzugangsoberfläche",
-      "Visualisierungs-Workflows für urbane Klimadaten",
-      "Verbesserte Projektkommunikation mit Stakeholdern",
+      "Partnerfreundliche Datenzugangsoberflache",
+      "Klar strukturierte Visualisierungs-Workflows",
+      "Bessere Kommunikation zwischen Fachteam und Stakeholdern",
     ],
     link: "https://uco.berlin/en",
+  },
+  {
+    name: "Alganize Frontend",
+    status: "Active",
+    timeframe: "2024 - heute",
+    summary:
+      "Entwickelt ein produktnahes Frontend fur biotechnologische und umweltbezogene Daten-Workflows mit Fokus auf Nutzbarkeit und Reporting.",
+    stack: ["Nuxt", "Vue", "TypeScript"],
+    outcomes: [
+      "Strukturierte User Journeys fur datengetriebene Ablaufe",
+      "Transparente Analyse- und Reporting-Ansichten",
+      "Wartbare Frontend-Architektur",
+    ],
+    link: "https://github.com/benatouba/alganize",
+  },
+  {
+    name: "Alganize Backend",
+    status: "Active",
+    timeframe: "2024 - heute",
+    summary:
+      "Baut robuste Backend-Services fur Datenmanagement, Nutzer-Workflows und produktionsnahes Reporting in wissenschaftlichen Anwendungen.",
+    stack: ["Django", "PostgreSQL", "Docker", "Python"],
+    outcomes: [
+      "Skalierbare API- und Datendienste",
+      "Fundament fur Authentifizierung und Nutzerverwaltung",
+      "Zuverlassige Reporting-Schnittstellen",
+    ],
+    link: "https://github.com/benatouba/alganize_back",
+  },
+  {
+    name: "Alganize Soilmonitor Plattform",
+    status: "Active",
+    timeframe: "2025 - heute",
+    summary:
+      "Vereint Monitoring und Analyse von Stations- und Bodendaten in einer Full-Stack-Plattform fur den operativen Einsatz.",
+    stack: ["FastAPI", "Vue 3", "PostgreSQL", "Docker"],
+    outcomes: [
+      "Operative Monitoring-Dashboards",
+      "Analyse-Workflows fur Stations- und Bodendaten",
+      "Einheitliches Frontend-Backend-Deployment",
+    ],
+    link: "https://github.com/benatouba/alganize-soilmonitor",
+  },
+  {
+    name: "benjaminschmidt.de Website",
+    status: "Active",
+    timeframe: "2025 - heute",
+    summary:
+      "Prasentiert Projekte, Publikationen, CV und Kontakt in einer klaren, mehrsprachigen Profil-Website fur wissenschaftliche Sichtbarkeit.",
+    stack: ["Vue 3", "TypeScript", "Vuetify", "Vite", "vue-i18n"],
+    outcomes: [
+      "Kompakte Darstellung von Projekten und Ergebnissen",
+      "Integrierte Profile und Kontaktwege",
+      "Wartbare mehrsprachige Inhaltsstruktur",
+    ],
+    link: "https://github.com/benatouba/benjaminschmidt",
   },
 ];
 
 export const projectCatalogEs: ResearchProject[] = [
   {
-    name: "MaRESS: Plataforma de mapeo de investigación del sistema terrestre",
+    name: "MaRESS: Plataforma para mapear la investigacion del sistema terrestre",
     status: "Active",
-    timeframe: "2023 - 2026",
+    timeframe: "2023 - actualidad",
     summary:
-      "Mapea publicaciones del sistema terrestre en interfaces interactivas de mapas y grafos para mejorar el descubrimiento y la colaboración.",
+      "Integra publicaciones del sistema terrestre en una experiencia combinada de mapa y grafo para acelerar el descubrimiento cientifico y la colaboracion.",
     stack: ["Vue 3", "FastAPI", "PostgreSQL", "PostGIS", "OpenLayers", "Cytoscape.js"],
     outcomes: [
-      "Exploración interactiva de mapas y grafos",
-      "Flujos de metadatos de investigación con búsqueda",
-      "Herramientas reutilizables para plataformas web científicas",
+      "Exploracion interactiva de ubicaciones, temas y relaciones",
+      "Acceso agil a metadatos de investigacion conectados",
+      "Componentes reutilizables para plataformas web cientificas",
     ],
     link: "https://gitlab.klima.tu-berlin.de/klima/maress",
   },
   {
-    name: "ATTRICI: Toolkit de datos climáticos contrafactuales",
+    name: "ATTRICI: Toolkit de datos climaticos contrafactuales",
     status: "Completed",
     timeframe: "2019 - 2024",
     summary:
-      "Implementa flujos climáticos contrafactuales para la atribución de impacto, basados en modelado probabilístico.",
+      "Convierte metodos publicados de datos climaticos contrafactuales en software reproducible y listo para uso aplicado.",
     stack: ["Python", "PyMC", "NumPy", "pandas"],
     outcomes: [
-      "Implementación operativa de métodos publicados",
+      "Implementacion operativa de metodos publicados",
       "Flujos reproducibles de datos contrafactuales",
-      "Herramientas transparentes para atribución de impacto climático",
+      "Resultados transparentes para atribucion de impacto",
     ],
     link: "https://github.com/benatouba/attrici",
   },
   {
-    name: "Analítica de datos climáticos DARWIN",
+    name: "Analitica de datos climaticos DARWIN",
     status: "Completed",
     timeframe: "2019 - 2026",
     summary:
-      "Convierte salidas de modelos GAR y DARWIN en datos climáticos robustos, listos para análisis y dashboards.",
+      "Transforma salidas de modelos GAR y DARWIN en datasets climaticos robustos y listos para analisis y paneles.",
     stack: ["Python", "xarray", "pandas", "salem", "Panel"],
     outcomes: [
-      "Transformación automatizada de salidas de modelo",
-      "Conjuntos listos para análisis y dashboards",
-      "Soporte para pipelines de publicación y reporting",
+      "Procesamiento automatizado de grandes volumenes de datos",
+      "Conjuntos listos para analisis y paneles",
+      "Base confiable para publicaciones e informes",
     ],
     link: "https://gitlab.klima.tu-berlin.de/schmidt/darwin",
   },
   {
-    name: "Intercambio de datos UC2 y tooling de estándares",
+    name: "Intercambio de datos UC2 y herramientas de estandarizacion",
     status: "Completed",
     timeframe: "2019 - 2025",
     summary:
-      "Gestiona, valida e intercambia datasets NetCDF bajo el estándar UC2, incluyendo flujos de API de DMS.",
-    stack: ["Python", "NetCDF", "Validacion de datos", "Flujos API"],
+      "Estandariza validacion, intercambio y distribucion de archivos NetCDF bajo UC2, incluidos flujos de API del DMS.",
+    stack: ["Python", "NetCDF", "Validacion de datos", "Flujos de API"],
     outcomes: [
-      "Controles de conformidad para datos atmosféricos",
-      "Automatización de subida y descarga para equipos asociados",
-      "Intercambio interoperable entre equipos del proyecto",
+      "Controles de conformidad para datos atmosfericos",
+      "Automatizacion de cargas y descargas para equipos asociados",
+      "Intercambio interoperable entre instituciones",
     ],
     link: "https://gitlab.klima.tu-berlin.de/klima/uc2data",
   },
@@ -208,14 +264,70 @@ export const projectCatalogEs: ResearchProject[] = [
     status: "Completed",
     timeframe: "2020 - 2025",
     summary:
-      "Ofrece acceso y visualización de datos climáticos urbanos orientados a socios para comunicación y colaboración.",
+      "Ofrece acceso orientado a socios y visualizaciones claras de datos climaticos urbanos para comunicar resultados y colaborar mejor.",
     stack: ["Nuxt", "Django", "Tooling web geoespacial", "NetCDF"],
     outcomes: [
-      "Interfaz de acceso a datos orientada a socios",
-      "Flujos de visualización para clima urbano",
-      "Mejor comunicación del proyecto con stakeholders",
+      "Interfaz de acceso pensada para socios",
+      "Visualizaciones claras para clima urbano",
+      "Comunicacion de proyecto mas efectiva con stakeholders",
     ],
     link: "https://uco.berlin/en",
+  },
+  {
+    name: "Frontend de Alganize",
+    status: "Active",
+    timeframe: "2024 - actualidad",
+    summary:
+      "Desarrolla una interfaz de producto para flujos de datos biotecnologicos y ambientales, priorizando usabilidad y reporting.",
+    stack: ["Nuxt", "Vue", "TypeScript"],
+    outcomes: [
+      "Recorridos de usuario estructurados",
+      "Vistas transparentes de analisis e informes",
+      "Arquitectura frontend mantenible",
+    ],
+    link: "https://github.com/benatouba/alganize",
+  },
+  {
+    name: "Backend de Alganize",
+    status: "Active",
+    timeframe: "2024 - actualidad",
+    summary:
+      "Construye servicios backend solidos para gestion de datos, flujos de usuario y reporting en productos cientificos aplicados.",
+    stack: ["Django", "PostgreSQL", "Docker", "Python"],
+    outcomes: [
+      "Servicios API y de datos escalables",
+      "Base para autenticacion y gestion de usuarios",
+      "Capas de reporting confiables",
+    ],
+    link: "https://github.com/benatouba/alganize_back",
+  },
+  {
+    name: "Plataforma Alganize Soilmonitor",
+    status: "Active",
+    timeframe: "2025 - actualidad",
+    summary:
+      "Unifica monitoreo y analisis de datos de estaciones y suelo en una plataforma full-stack para operacion diaria.",
+    stack: ["FastAPI", "Vue 3", "PostgreSQL", "Docker"],
+    outcomes: [
+      "Paneles de monitoreo operativo",
+      "Flujos de analisis para estaciones y suelo",
+      "Despliegue unificado de frontend y backend",
+    ],
+    link: "https://github.com/benatouba/alganize-soilmonitor",
+  },
+  {
+    name: "Sitio web benjaminschmidt.de",
+    status: "Active",
+    timeframe: "2025 - actualidad",
+    summary:
+      "Presenta proyectos, publicaciones, CV y contacto en un sitio multilingue disenado para visibilidad profesional.",
+    stack: ["Vue 3", "TypeScript", "Vuetify", "Vite", "vue-i18n"],
+    outcomes: [
+      "Presentacion clara de proyectos y resultados",
+      "Perfiles y vias de contacto integrados",
+      "Estructura de contenido multilingue mantenible",
+    ],
+    link: "https://github.com/benatouba/benjaminschmidt",
   },
 ];
 

@@ -6,8 +6,7 @@ export const messages = {
     overview: "Überblick",
     cv: "Lebenslauf",
     career: "Karriere",
-    publications: "Publikationen",
-    articles: "Artikel",
+    publications: "Schreiben",
     blog: "Blog",
     projects: "Projekte",
     profiles: "Profile",
@@ -16,7 +15,7 @@ export const messages = {
   },
   hero: {
     eyebrow: "Wissenschaftliches Karriereprofil",
-    viewPublications: "Publikationen ansehen",
+    viewPublications: "Schreiben ansehen",
     openCv: "Lebenslauf öffnen",
     readBlog: "Blog lesen",
     researchFocus: "Forschungsschwerpunkt",
@@ -35,8 +34,8 @@ export const messages = {
     heading: "Werdegang und Positionen",
   },
   publications: {
-    kicker: "Wissenschaftliche Publikationen",
-    heading: "Ausgewählte Veröffentlichungen",
+    kicker: "Professionelles Schreiben",
+    heading: "Gesamter Schreiboutput",
     read: "Lesen",
     filterAll: "Alle",
     kinds: {
@@ -49,10 +48,7 @@ export const messages = {
     },
   },
   articles: {
-    kicker: "Artikelhistorie",
-    heading: "Schriften, Interviews und redaktionelle Beiträge",
     open: "Öffnen",
-    filterAll: "Alle",
     kinds: {
       Article: "Artikel",
       Interview: "Interview",
@@ -120,8 +116,7 @@ export const messages = {
   pages: {
     cv: { title: "Lebenslauf", kicker: "Berufliche Laufbahn" },
     career: { title: "Wissenschaftliche Karriere", kicker: "Akademischer Werdegang" },
-    publications: { title: "Wissenschaftliche Publikationen", kicker: "Ausgewählte Arbeiten" },
-    articles: { title: "Artikelhistorie", kicker: "Schriftenportfolio" },
+    publications: { title: "Professionelles Schreiben", kicker: "Ausgewählte Arbeiten" },
     blog: { title: "Blog", kicker: "Forschungsnotizen" },
     projects: { title: "Wissenschaftliche Projekte", kicker: "Software und Initiativen" },
     profiles: { title: "Verknüpfte Profile", kicker: "Konten und Identität" },
@@ -136,7 +131,6 @@ export const content: SiteContent = {
     { label: "nav.cv", to: "/cv" },
     { label: "nav.career", to: "/career" },
     { label: "nav.publications", to: "/publications" },
-    { label: "nav.articles", to: "/articles" },
     { label: "nav.blog", to: "/blog" },
     { label: "nav.projects", to: "/projects" },
     { label: "nav.profiles", to: "/profiles" },

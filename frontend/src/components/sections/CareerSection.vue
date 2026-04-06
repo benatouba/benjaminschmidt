@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { resolveKnownTechBadge } from "@/data/techBadges";
 import { useI18n } from "vue-i18n";
 
 import type { CareerStage } from "@/types/site";
@@ -8,6 +9,19 @@ const props = defineProps<{
 }>();
 
 const { t } = useI18n({ useScope: "global" });
+
+const stageFocusBadges = (stage: CareerStage) =>
+  stage.focusAreas
+    .map((focus) => {
+      const badge = resolveKnownTechBadge(focus);
+      if (!badge) return null;
+
+      return {
+        key: `${stage.title}-${focus}`,
+        ...badge,
+      };
+    })
+    .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
 </script>
 
 <template>
@@ -40,14 +54,17 @@ const { t } = useI18n({ useScope: "global" });
               <h3 class="card-title">{{ stage.title }}</h3>
               <p class="card-institution">{{ stage.institution }}</p>
               <p class="card-description">{{ stage.description }}</p>
-              <div class="focus-wrap">
-                <span
-                  v-for="focus in stage.focusAreas"
-                  :key="focus"
-                  class="focus-tag"
+              <div v-if="stageFocusBadges(stage).length" class="focus-wrap">
+                <a
+                  v-for="badge in stageFocusBadges(stage)"
+                  :key="badge.key"
+                  :href="badge.href"
+                  :target="badge.href ? '_blank' : undefined"
+                  :rel="badge.href ? 'noreferrer' : undefined"
+                  class="focus-badge-link"
                 >
-                  {{ focus }}
-                </span>
+                  <img :src="badge.image" :alt="badge.label" loading="lazy" class="focus-badge" />
+                </a>
               </div>
             </div>
           </div>
@@ -179,17 +196,23 @@ const { t } = useI18n({ useScope: "global" });
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
-.focus-tag {
-  padding: 0.25rem 0.6rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--page-text-muted);
-  background: rgba(148, 163, 184, 0.1);
-  border: 1px solid var(--border-color);
+.focus-badge-link {
+  display: inline-flex;
   border-radius: 4px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.focus-badge-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.focus-badge {
+  display: block;
+  height: 20px;
 }
 
 @media (width <= 640px) {

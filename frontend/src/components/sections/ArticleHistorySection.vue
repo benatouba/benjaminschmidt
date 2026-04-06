@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { resolveKnownTechBadge } from "@/data/techBadges";
 import { computed, ref } from "vue";
 import { useI18n } from "vue-i18n";
 
@@ -21,6 +22,19 @@ const filterLabel = (kind: string) => {
   if (kind === "All") return t("articles.filterAll");
   return t(`articles.kinds.${kind}`);
 };
+
+const itemTagBadges = (item: ArticleHistoryItem) =>
+  item.tags
+    .map((tag) => {
+      const badge = resolveKnownTechBadge(tag);
+      if (!badge) return null;
+
+      return {
+        key: `${item.title}-${tag}`,
+        ...badge,
+      };
+    })
+    .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
 </script>
 
 <template>
@@ -62,14 +76,17 @@ const filterLabel = (kind: string) => {
 
           <p class="article-summary">{{ item.summary }}</p>
 
-          <div class="tags-wrap">
-            <span
-              v-for="tag in item.tags"
-              :key="tag"
-              class="article-tag"
+          <div v-if="itemTagBadges(item).length" class="tags-wrap">
+            <a
+              v-for="badge in itemTagBadges(item)"
+              :key="badge.key"
+              :href="badge.href"
+              :target="badge.href ? '_blank' : undefined"
+              :rel="badge.href ? 'noreferrer' : undefined"
+              class="tag-badge-link"
             >
-              {{ tag }}
-            </span>
+              <img :src="badge.image" :alt="badge.label" loading="lazy" class="tag-badge" />
+            </a>
           </div>
 
           <a
@@ -227,16 +244,23 @@ const filterLabel = (kind: string) => {
   margin-top: 0.875rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
-.article-tag {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--page-text-muted);
-  border: 1px solid var(--border-color);
+.tag-badge-link {
+  display: inline-flex;
   border-radius: 4px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.tag-badge-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.tag-badge {
+  display: block;
+  height: 20px;
 }
 
 .article-link {

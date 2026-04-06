@@ -1,33 +1,154 @@
 <script setup lang="ts">
+import { resolveKnownTechBadge } from "@/data/techBadges";
 import { computed, ref } from "vue";
 import { useI18n } from "vue-i18n";
 
-import type { PublicationItem } from "@/types/site";
+import type { ArticleHistoryItem, PublicationItem } from "@/types/site";
+
+type WritingKind =
+  | "Journal"
+  | "Conference"
+  | "Preprint"
+  | "Book Chapter"
+  | "Thesis"
+  | "Technical Report"
+  | "Article"
+  | "Interview"
+  | "Editorial"
+  | "Review";
+
+interface WritingEntry {
+  id: string;
+  title: string;
+  outlet: string;
+  kind: WritingKind;
+  summary: string;
+  tags: string[];
+  link?: string;
+  doi?: string;
+  releaseDate: string;
+}
 
 const props = defineProps<{
   publications: PublicationItem[];
+  writing: ArticleHistoryItem[];
 }>();
 
 const { t } = useI18n({ useScope: "global" });
 
-const kindFilter = ref<"All" | PublicationItem["kind"]>("All");
-const publicationKinds: Array<"All" | PublicationItem["kind"]> = [
+const kindFilter = ref<"All" | WritingKind>("All");
+
+const writingKinds: Array<"All" | WritingKind> = [
   "All",
   "Journal",
   "Conference",
   "Preprint",
   "Book Chapter",
+  "Thesis",
+  "Technical Report",
+  "Article",
+  "Interview",
+  "Editorial",
+  "Review",
 ];
 
-const filteredPublications = computed(() =>
-  props.publications.filter(
-    (entry) => kindFilter.value === "All" || entry.kind === kindFilter.value,
-  ),
+const toIsoFromYear = (year: number) => `${year}-01-01`;
+
+const mergedEntries = computed<WritingEntry[]>(() => {
+  const publications = props.publications.map((entry) => ({
+    id: `pub:${entry.title}:${entry.year}`,
+    title: entry.title,
+    outlet: entry.venue,
+    kind: entry.kind,
+    summary: entry.summary,
+    tags: entry.tags,
+    link: entry.link,
+    doi: entry.doi,
+    releaseDate: toIsoFromYear(entry.year),
+  }));
+
+  const writing = props.writing.map((entry) => ({
+    id: `writing:${entry.title}:${entry.published}`,
+    title: entry.title,
+    outlet: entry.outlet,
+    kind: entry.kind,
+    summary: entry.summary,
+    tags: entry.tags,
+    link: entry.link,
+    releaseDate: entry.published,
+  }));
+
+  const merged = [...publications, ...writing].sort((a, b) =>
+    b.releaseDate.localeCompare(a.releaseDate),
+  );
+
+  const deduplicated: WritingEntry[] = [];
+  const seen = new Set<string>();
+
+  for (const entry of merged) {
+    const key = `${entry.title.toLowerCase()}::${entry.kind}::${entry.releaseDate.slice(0, 4)}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    deduplicated.push(entry);
+  }
+
+  return deduplicated;
+});
+
+const filteredEntries = computed(() =>
+  mergedEntries.value.filter((entry) => kindFilter.value === "All" || entry.kind === kindFilter.value),
 );
 
-const kindLabel = (kind: string) => {
+const kindLabel = (kind: "All" | WritingKind) => {
   if (kind === "All") return t("publications.filterAll");
-  return t(`publications.kinds.${kind}`);
+
+  const publicationKinds = [
+    "Journal",
+    "Conference",
+    "Preprint",
+    "Book Chapter",
+    "Thesis",
+    "Technical Report",
+  ] as const;
+
+  if (publicationKinds.includes(kind as (typeof publicationKinds)[number])) {
+    return t(`publications.kinds.${kind}`);
+  }
+
+  return t(`articles.kinds.${kind}`);
+};
+
+const entryTagBadges = (entry: WritingEntry) =>
+  entry.tags
+    .map((tag) => {
+      const badge = resolveKnownTechBadge(tag);
+      if (!badge) return null;
+
+      return {
+        key: `${entry.id}:${tag}`,
+        ...badge,
+      };
+    })
+    .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
+
+const formattedReleaseDate = (value: string) => {
+  const parsed = new Date(value);
+
+  if (Number.isNaN(parsed.getTime())) {
+    return value;
+  }
+
+  const isYearOnly = value.endsWith("-01-01");
+
+  if (isYearOnly) {
+    return String(parsed.getUTCFullYear());
+  }
+
+  return parsed.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  });
 };
 </script>
 
@@ -41,7 +162,7 @@ const kindLabel = (kind: string) => {
 
       <div class="filter-bar reveal-up" style="--delay: 100ms">
         <button
-          v-for="kind in publicationKinds"
+          v-for="kind in writingKinds"
           :key="kind"
           :class="['filter-btn', { active: kindFilter === kind }]"
           @click="kindFilter = kind"
@@ -52,41 +173,44 @@ const kindLabel = (kind: string) => {
 
       <div class="publications-grid">
         <article
-          v-for="(publication, index) in filteredPublications"
-          :key="`${publication.title}-${publication.year}`"
+          v-for="(entry, index) in filteredEntries"
+          :key="entry.id"
           class="publication-card reveal-up"
-          :style="`--delay: ${160 + index * 70}ms`"
+          :style="`--delay: ${160 + index * 50}ms`"
         >
           <div class="card-header">
             <div class="card-icon">
               <v-icon icon="mdi-file-document-outline" size="18" />
             </div>
             <div class="card-meta">
-              <h3 class="publication-title">{{ publication.title }}</h3>
-              <p class="publication-venue">{{ publication.venue }} - {{ publication.year }}</p>
+              <h3 class="publication-title">{{ entry.title }}</h3>
+              <p class="publication-venue">{{ entry.outlet }} - {{ formattedReleaseDate(entry.releaseDate) }}</p>
             </div>
           </div>
 
           <div class="meta-badges">
-            <span class="kind-badge">{{ t(`publications.kinds.${publication.kind}`) }}</span>
-            <span v-if="publication.doi" class="doi-badge">DOI {{ publication.doi }}</span>
+            <span class="kind-badge">{{ kindLabel(entry.kind) }}</span>
+            <span v-if="entry.doi" class="doi-badge">DOI {{ entry.doi }}</span>
           </div>
 
-          <p class="publication-summary">{{ publication.summary }}</p>
+          <p class="publication-summary">{{ entry.summary }}</p>
 
-          <div class="tags-wrap">
-            <span
-              v-for="tag in publication.tags"
-              :key="tag"
-              class="pub-tag"
+          <div v-if="entryTagBadges(entry).length" class="tags-wrap">
+            <a
+              v-for="badge in entryTagBadges(entry)"
+              :key="badge.key"
+              :href="badge.href"
+              :target="badge.href ? '_blank' : undefined"
+              :rel="badge.href ? 'noreferrer' : undefined"
+              class="tag-badge-link"
             >
-              {{ tag }}
-            </span>
+              <img :src="badge.image" :alt="badge.label" loading="lazy" class="tag-badge" />
+            </a>
           </div>
 
           <a
-            v-if="publication.link"
-            :href="publication.link"
+            v-if="entry.link"
+            :href="entry.link"
             target="_blank"
             rel="noreferrer"
             class="publication-link"
@@ -254,16 +378,23 @@ const kindLabel = (kind: string) => {
   margin-top: 0.875rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
-.pub-tag {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--page-text-muted);
-  border: 1px solid var(--border-color);
+.tag-badge-link {
+  display: inline-flex;
   border-radius: 4px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.tag-badge-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.tag-badge {
+  display: block;
+  height: 20px;
 }
 
 .publication-link {

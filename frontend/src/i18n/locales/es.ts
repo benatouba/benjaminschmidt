@@ -6,8 +6,7 @@ export const messages = {
     overview: "Inicio",
     cv: "CV",
     career: "Carrera",
-    publications: "Publicaciones",
-    articles: "Artículos",
+    publications: "Escritura",
     blog: "Blog",
     projects: "Proyectos",
     profiles: "Perfiles",
@@ -16,7 +15,7 @@ export const messages = {
   },
   hero: {
     eyebrow: "Perfil científico",
-    viewPublications: "Ver publicaciones",
+    viewPublications: "Ver escritura",
     openCv: "Abrir CV",
     readBlog: "Leer blog",
     researchFocus: "Enfoque investigador",
@@ -35,8 +34,8 @@ export const messages = {
     heading: "Trayectoria y cargos",
   },
   publications: {
-    kicker: "Publicaciones científicas",
-    heading: "Selección de publicaciones y escritos",
+    kicker: "Escritura profesional",
+    heading: "Producción completa de escritura",
     read: "Leer",
     filterAll: "Todas",
     kinds: {
@@ -49,10 +48,7 @@ export const messages = {
     },
   },
   articles: {
-    kicker: "Historical de artículos",
-    heading: "Escritos, entrevistas y contribuciones editoriales",
     open: "Abrir",
-    filterAll: "Todos",
     kinds: {
       Article: "Artículo",
       Interview: "Entrevista",
@@ -120,8 +116,7 @@ export const messages = {
   pages: {
     cv: { title: "Currículum Vitae", kicker: "Trayectoria professional" },
     career: { title: "Carrera científica", kicker: "Cronología académica" },
-    publications: { title: "Publicaciones científicas", kicker: "Trabajos seleccionados" },
-    articles: { title: "Historical de artículos", kicker: "Portafolio de escritos" },
+    publications: { title: "Escritura profesional", kicker: "Trabajos seleccionados" },
     blog: { title: "Blog", kicker: "Notas de investigación" },
     projects: { title: "Proyectos científicos", kicker: "Software e iniciativas" },
     profiles: { title: "Perfiles vinculados", kicker: "Cuentas e identidad" },
@@ -136,7 +131,6 @@ export const content: SiteContent = {
     { label: "nav.cv", to: "/cv" },
     { label: "nav.career", to: "/career" },
     { label: "nav.publications", to: "/publications" },
-    { label: "nav.articles", to: "/articles" },
     { label: "nav.blog", to: "/blog" },
     { label: "nav.projects", to: "/projects" },
     { label: "nav.profiles", to: "/profiles" },

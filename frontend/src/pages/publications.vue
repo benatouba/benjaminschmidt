@@ -14,7 +14,7 @@ const content = useSiteContent();
     :title="t('pages.publications.title')"
     :kicker="t('pages.publications.kicker')"
   >
-    <PublicationsSection :publications="content.publications" />
+    <PublicationsSection :publications="content.publications" :writing="content.articleHistory" />
   </PageSectionShell>
 </template>
 

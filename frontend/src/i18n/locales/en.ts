@@ -6,8 +6,7 @@ export const messages = {
     overview: "Overview",
     cv: "CV",
     career: "Career",
-    publications: "Publications",
-    articles: "Articles",
+    publications: "Writing",
     blog: "Blog",
     projects: "Projects",
     profiles: "Profiles",
@@ -16,7 +15,7 @@ export const messages = {
   },
   hero: {
     eyebrow: "Scientific Career Profile",
-    viewPublications: "View Publications",
+    viewPublications: "View Writing",
     openCv: "Open CV",
     readBlog: "Read Blog",
     researchFocus: "Research Focus",
@@ -35,8 +34,8 @@ export const messages = {
     heading: "Trajectory and positions",
   },
   publications: {
-    kicker: "Scientific Publications",
-    heading: "Selected output and writing",
+    kicker: "Professional Writing",
+    heading: "Complete writing output",
     read: "Read",
     filterAll: "All",
     kinds: {
@@ -49,10 +48,7 @@ export const messages = {
     },
   },
   articles: {
-    kicker: "Article History",
-    heading: "Writing, interviews, and editorial contributions",
     open: "Open",
-    filterAll: "All",
     kinds: {
       Article: "Article",
       Interview: "Interview",
@@ -120,8 +116,7 @@ export const messages = {
   pages: {
     cv: { title: "Curriculum Vitae", kicker: "Professional Record" },
     career: { title: "Scientific Career", kicker: "Academic Timeline" },
-    publications: { title: "Scientific Publications", kicker: "Selected Work" },
-    articles: { title: "Article History", kicker: "Writing Portfolio" },
+    publications: { title: "Professional Writing", kicker: "Selected Work" },
     blog: { title: "Blog", kicker: "Research Notes" },
     projects: { title: "Scientific Projects", kicker: "Software and Initiatives" },
     profiles: { title: "Linked Profiles", kicker: "Accounts and Identity" },
@@ -136,7 +131,6 @@ export const content: SiteContent = {
     { label: "nav.cv", to: "/cv" },
     { label: "nav.career", to: "/career" },
     { label: "nav.publications", to: "/publications" },
-    { label: "nav.articles", to: "/articles" },
     { label: "nav.blog", to: "/blog" },
     { label: "nav.projects", to: "/projects" },
     { label: "nav.profiles", to: "/profiles" },

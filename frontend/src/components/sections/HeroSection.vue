@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import profilePhoto from "@/assets/cv-profile-pro.png";
+import { resolveKnownTechBadge } from "@/data/techBadges";
 
 import { useI18n } from "vue-i18n";
 
@@ -33,6 +34,30 @@ const quickLinks = [
     icon: "mdi-account-badge-outline",
   },
 ];
+
+const interestBadges = props.profile.interests
+  .map((interest) => {
+    const badge = resolveKnownTechBadge(interest);
+    if (!badge) return null;
+
+    return {
+      key: `interest-${interest}`,
+      ...badge,
+    };
+  })
+  .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
+
+const skillBadges = props.profile.skills
+  .map((skill) => {
+    const badge = resolveKnownTechBadge(skill);
+    if (!badge) return null;
+
+    return {
+      key: `skill-${skill}`,
+      ...badge,
+    };
+  })
+  .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
 </script>
 
 <template>
@@ -115,28 +140,33 @@ const quickLinks = [
           </div>
         </div>
 
-        <div class="interests-wrap">
-          <span
-            v-for="interest in props.profile.interests"
-            :key="interest"
-            class="interest-tag"
+        <div v-if="interestBadges.length" class="interests-wrap">
+          <a
+            v-for="badge in interestBadges"
+            :key="badge.key"
+            :href="badge.href"
+            :target="badge.href ? '_blank' : undefined"
+            :rel="badge.href ? 'noreferrer' : undefined"
+            class="interest-badge-link"
           >
-            {{ interest }}
-          </span>
+            <img :src="badge.image" :alt="badge.label" loading="lazy" class="interest-badge" />
+          </a>
         </div>
 
         <div class="divider"></div>
 
         <p class="skill-heading">{{ t("hero.coreStrengths") }}</p>
-        <div class="skills-grid">
-          <div
-            v-for="skill in props.profile.skills"
-            :key="skill"
-            class="skill-item"
+        <div v-if="skillBadges.length" class="skills-grid">
+          <a
+            v-for="badge in skillBadges"
+            :key="badge.key"
+            :href="badge.href"
+            :target="badge.href ? '_blank' : undefined"
+            :rel="badge.href ? 'noreferrer' : undefined"
+            class="skill-badge-link"
           >
-            <v-icon icon="mdi-check-circle-outline" size="16" class="skill-icon" />
-            <span>{{ skill }}</span>
-          </div>
+            <img :src="badge.image" :alt="badge.label" loading="lazy" class="skill-badge" />
+          </a>
         </div>
       </div>
     </v-container>
@@ -318,17 +348,23 @@ const quickLinks = [
 .interests-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
-.interest-tag {
-  padding: 0.35rem 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--primary);
-  background: var(--primary-muted);
-  border: 1px solid rgba(34, 211, 238, 0.2);
-  border-radius: 6px;
+.interest-badge-link {
+  display: inline-flex;
+  border-radius: 4px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.interest-badge-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.interest-badge {
+  display: block;
+  height: 20px;
 }
 
 .divider {
@@ -347,21 +383,25 @@ const quickLinks = [
 }
 
 .skills-grid {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.skill-item {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--page-text-muted);
+  flex-wrap: wrap;
+  gap: 0.45rem;
 }
 
-.skill-icon {
-  color: var(--primary);
-  flex-shrink: 0;
+.skill-badge-link {
+  display: inline-flex;
+  border-radius: 4px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.skill-badge-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.skill-badge {
+  display: block;
+  height: 20px;
 }
 
 @media (width <= 980px) {

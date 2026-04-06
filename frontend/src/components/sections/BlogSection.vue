@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { resolveKnownTechBadge } from "@/data/techBadges";
 import { useI18n } from "vue-i18n";
 
 import type { BlogPost } from "@/types/site";
@@ -8,6 +9,19 @@ const props = defineProps<{
 }>();
 
 const { t } = useI18n({ useScope: "global" });
+
+const postTagBadges = (post: BlogPost) =>
+  post.tags
+    .map((tag) => {
+      const badge = resolveKnownTechBadge(tag);
+      if (!badge) return null;
+
+      return {
+        key: `${post.slug}-${tag}`,
+        ...badge,
+      };
+    })
+    .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
 </script>
 
 <template>
@@ -39,14 +53,17 @@ const { t } = useI18n({ useScope: "global" });
 
           <p class="blog-summary">{{ post.summary }}</p>
 
-          <div class="tags-wrap">
-            <span
-              v-for="tag in post.tags"
-              :key="tag"
-              class="blog-tag"
+          <div v-if="postTagBadges(post).length" class="tags-wrap">
+            <a
+              v-for="badge in postTagBadges(post)"
+              :key="badge.key"
+              :href="badge.href"
+              :target="badge.href ? '_blank' : undefined"
+              :rel="badge.href ? 'noreferrer' : undefined"
+              class="tag-badge-link"
             >
-              {{ tag }}
-            </span>
+              <img :src="badge.image" :alt="badge.label" loading="lazy" class="tag-badge" />
+            </a>
           </div>
 
           <div v-if="post.relatedArticles?.length" class="related-section">
@@ -178,16 +195,23 @@ const { t } = useI18n({ useScope: "global" });
   margin-top: 0.875rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
-.blog-tag {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--page-text-muted);
-  border: 1px solid var(--border-color);
+.tag-badge-link {
+  display: inline-flex;
   border-radius: 4px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.tag-badge-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.tag-badge {
+  display: block;
+  height: 20px;
 }
 
 .related-section {

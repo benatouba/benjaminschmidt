@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { resolveKnownTechBadge } from "@/data/techBadges";
 import { useI18n } from "vue-i18n";
 
 import type { ResearchProject } from "@/types/site";
@@ -14,6 +15,19 @@ const projectStatusColor = (status: ResearchProject["status"]) => {
   if (status === "Planning") return "#fbbf24";
   return "var(--page-text-muted)";
 };
+
+const projectTechBadges = (project: ResearchProject) =>
+  project.stack
+    .map((item) => {
+      const badge = resolveKnownTechBadge(item);
+      if (!badge) return null;
+
+      return {
+        key: `${project.name}-${item}`,
+        ...badge,
+      };
+    })
+    .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
 </script>
 
 <template>
@@ -45,14 +59,22 @@ const projectStatusColor = (status: ResearchProject["status"]) => {
 
           <div class="meta-section">
             <p class="meta-label">{{ t("projects.stack") }}</p>
-            <div class="tags-wrap">
-              <span
-                v-for="item in project.stack"
-                :key="item"
-                class="tech-tag"
+            <div v-if="projectTechBadges(project).length" class="stack-badges-wrap">
+              <a
+                v-for="badge in projectTechBadges(project)"
+                :key="badge.key"
+                :href="badge.href"
+                :target="badge.href ? '_blank' : undefined"
+                :rel="badge.href ? 'noreferrer' : undefined"
+                class="stack-badge-link"
               >
-                {{ item }}
-              </span>
+                <img
+                  :src="badge.image"
+                  :alt="badge.label"
+                  loading="lazy"
+                  class="stack-badge"
+                />
+              </a>
             </div>
           </div>
 
@@ -186,19 +208,26 @@ const projectStatusColor = (status: ResearchProject["status"]) => {
   color: rgba(148, 163, 184, 0.7);
 }
 
-.tags-wrap {
+.stack-badges-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
-.tech-tag {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--primary);
-  background: var(--primary-muted);
+.stack-badge-link {
+  display: inline-flex;
   border-radius: 4px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.stack-badge-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.stack-badge {
+  display: block;
+  height: 20px;
 }
 
 .outcomes-list {

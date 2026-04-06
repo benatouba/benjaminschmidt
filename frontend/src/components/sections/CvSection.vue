@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { resolveKnownTechBadge } from "@/data/techBadges";
 import { useI18n } from "vue-i18n";
 
 import type { CvAppointment, EducationEntry, HonorEntry } from "@/types/site";
@@ -10,6 +11,19 @@ const props = defineProps<{
 }>();
 
 const { t } = useI18n({ useScope: "global" });
+
+const appointmentHighlightBadges = (item: CvAppointment) =>
+  item.highlights
+    .map((highlight) => {
+      const badge = resolveKnownTechBadge(highlight);
+      if (!badge) return null;
+
+      return {
+        key: `${item.role}-${highlight}`,
+        ...badge,
+      };
+    })
+    .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
 </script>
 
 <template>
@@ -41,14 +55,22 @@ const { t } = useI18n({ useScope: "global" });
                   <span class="appointment-period">{{ item.period }}</span>
                 </div>
                 <p class="appointment-summary">{{ item.summary }}</p>
-                <div class="highlights-wrap">
-                  <span
-                    v-for="highlight in item.highlights"
-                    :key="highlight"
-                    class="highlight-tag"
+                <div v-if="appointmentHighlightBadges(item).length" class="highlights-wrap">
+                  <a
+                    v-for="badge in appointmentHighlightBadges(item)"
+                    :key="badge.key"
+                    :href="badge.href"
+                    :target="badge.href ? '_blank' : undefined"
+                    :rel="badge.href ? 'noreferrer' : undefined"
+                    class="highlight-badge-link"
                   >
-                    {{ highlight }}
-                  </span>
+                    <img
+                      :src="badge.image"
+                      :alt="badge.label"
+                      loading="lazy"
+                      class="highlight-badge"
+                    />
+                  </a>
                 </div>
               </article>
             </div>
@@ -228,17 +250,23 @@ const { t } = useI18n({ useScope: "global" });
   margin-top: 0.75rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
-.highlight-tag {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--page-text-muted);
-  background: rgba(148, 163, 184, 0.1);
-  border: 1px solid var(--border-color);
+.highlight-badge-link {
+  display: inline-flex;
   border-radius: 4px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.highlight-badge-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.highlight-badge {
+  display: block;
+  height: 20px;
 }
 
 .list-stack {
