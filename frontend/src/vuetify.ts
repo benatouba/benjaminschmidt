@@ -1,9 +1,31 @@
-import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/styles";
 
+import { h } from "vue";
 import { createVuetify } from "vuetify";
+import type { IconProps, IconSet } from "vuetify";
 import { md3 } from "vuetify/blueprints";
-import { aliases, mdi } from "vuetify/iconsets/mdi";
+import { aliases, mdi as mdiSvg } from "vuetify/iconsets/mdi-svg";
+
+import { mdiFallbackIconPath, mdiIconPathByName } from "@/icons/mdi";
+
+const mdi: IconSet = {
+  component: (props: IconProps) => {
+    const rawIcon = props.icon;
+
+    if (typeof rawIcon === "string") {
+      const iconPath = rawIcon.startsWith("M")
+        ? rawIcon
+        : mdiIconPathByName[rawIcon] ?? mdiFallbackIconPath;
+
+      return h(mdiSvg.component, {
+        ...props,
+        icon: iconPath,
+      });
+    }
+
+    return h(mdiSvg.component, props);
+  },
+};
 
 const scientificTheme = {
   dark: true,

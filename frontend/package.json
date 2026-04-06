@@ -17,7 +17,7 @@
   "dependencies": {
     "@fontsource/merriweather": "^5.2.11",
     "@fontsource/source-sans-3": "^5.2.9",
-    "@mdi/font": "^7.4.47",
+    "@mdi/js": "^7.4.47",
     "vue": "^3.5.32",
     "vue-i18n": "^11.3.1",
     "vue-router": "^5.0.4",
