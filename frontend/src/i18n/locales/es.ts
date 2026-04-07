@@ -22,7 +22,7 @@ export const messages = {
     researchFocus: "Enfoque investigador",
     currentInterests: "Áreas de interés actuales",
     currentInterestsDetail:
-      "Modelado climático regional para Galápagos con foco en la dinámica de precipitación y balance hídrico, ingeniería integral de grandes conjuntos de datos climáticos (procesamiento, control de calidad, análisis y visualización) y desarrollo de software de investigación full-stack que hace los datos ambientales complejos reproducibles, explorables y útiles para la toma de decisiones.",
+      "Modelado climático regional y urbano, ingeniería integral de grandes conjuntos de datos geocientíficos (procesamiento, control de calidad, análisis y visualización) y desarrollo de software de investigación full-stack que hace los datos complejos reproducibles, explorables y útiles para la toma de decisiones.",
     coreStrengths: "Competencias clave",
     orcidLabel: "ORCID",
   },
@@ -143,7 +143,7 @@ export const content: SiteContent = {
     email: "benjamin.schmidt@tu-berlin.de",
     orcid: "0000-0002-9669-3360",
     summary:
-      "Transformo conjuntos de datos climáticos y ambientales complejos en plataformas de investigación listas para producción — desarrollando aplicaciones web full-stack, pipelines de datos automatizados y ciencia revisada por pares.",
+      "Lidero, diseño y entrego plataformas de investigación listas para producción — desarrollando aplicaciones web full-stack, pipelines de datos automatizados y resultados revisados por pares a partir de datos científicos complejos.",
     interests: [
       "Ciencia de datos climáticos y ambientales",
       "Flujos de trabajo computacionales reproducibles",
@@ -168,7 +168,7 @@ export const content: SiteContent = {
       title: "Investigador asociado (doctorado)",
       institution: "Technische Universitat Berlin, Climatología",
       description:
-        "Dirigió proyectos de investigación climática y del sistema terrestre y desarrolló plataformas de software intensivas en datos para análisis, visualización y flujos de publicación.",
+        "Lideró programas de investigación climática y del sistema terrestre y entregó plataformas intensivas en datos para análisis, visualización y flujos de publicación.",
       focusAreas: [
         "Plataforma web MaRESS (Vue, FastAPI, PostGIS)",
         "Pipelines y dashboards de datos climáticos DARWIN",
@@ -180,7 +180,7 @@ export const content: SiteContent = {
       title: "Docente",
       institution: "Freie Universitat Berlin y Technische Universitat Berlin",
       description:
-        "Diseñó e impartió cursos de estadística, climatología, programación científica y análisis de datos de teledetección.",
+        "Diseñó e impartió cursos de estadística, climatología, programación científica y análisis de teledetección con enfoque aplicado.",
       focusAreas: ["Estadística con R", "Programación científica", "Comunicación investigadora"],
     },
     {
@@ -188,7 +188,7 @@ export const content: SiteContent = {
       title: "Chief Scientific Officer",
       institution: "Alganize GmbH",
       description:
-        "Consultoría en comunicación científica y análisis de datos en flujos de trabajo biotecnológicos, con enfoque en datos de estaciones de series temporales e informes robustos.",
+        "Asesoró a equipos biotecnológicos en comunicación científica y análisis de series temporales, transformando datos en soporte de decisión e informes robustos.",
       focusAreas: [
         "Consultoría BioTech",
         "Análisis de series temporales",
@@ -200,7 +200,7 @@ export const content: SiteContent = {
       title: "Asistente de investigación",
       institution: "Instituto Potsdam para la Investigación del Impacto Climático (PIK), ISIMIP",
       description:
-        "Desarrolló flujos de trabajo de datos climáticos contrafactuales y herramientas estadísticas para conjuntos de datos climáticos a gran escala.",
+        "Diseñó flujos de trabajo de datos climáticos contrafactuales y herramientas estadísticas para archivos de modelos y observaciones a gran escala.",
       focusAreas: ["Algoritmo ATTRICI", "Datos climáticos contrafactuales", "Python"],
     },
     {
@@ -208,7 +208,7 @@ export const content: SiteContent = {
       title: "Asistente de investigación estudiantil",
       institution: "Humboldt-Universitat zu Berlin, Geografía Climática",
       description:
-        "Investigó proyecciones de olas de calor y patrones espaciales de estrés térmico en Berlín mediante modelado de mesoescala.",
+        "Investigó proyecciones de olas de calor y patrones urbanos de estrés térmico en Berlín mediante modelado de mesoescala y flujos de análisis reproducibles.",
       focusAreas: [
         "COSMO-CLM",
         "Proyecciones climáticas urbanas",
@@ -269,7 +269,7 @@ export const content: SiteContent = {
       status: "Active",
       timeframe: "2023 - 2026",
       summary:
-        "Desarrollo de una plataforma web rica en datos para la visualización y exploración de metadatos y relaciones en ciencias del sistema terrestre.",
+        "Lideré el desarrollo de una plataforma web rica en datos para la visualización y exploración de metadatos y relaciones en ciencias del sistema terrestre.",
       stack: ["Vue.js", "FastAPI", "OpenLayers", "Cytoscape.js", "PostgreSQL", "PostGIS"],
       outcomes: [
         "Interfaz interactiva de mapas y grafos",
@@ -283,7 +283,7 @@ export const content: SiteContent = {
       status: "Completed",
       timeframe: "2019 - 2026",
       summary:
-        "Gestión y análisis de datos de modelos atmosféricos de alto volumen para estudiar la dinámica de fuentes de precipitación bajo cambio climático en las Galápagos.",
+        "Lideré la ingeniería de análisis de datos atmosféricos de alto volumen para investigar la dinámica de fuentes de precipitación y entregar evidencia climática reproducible, incluyendo casos de Galápagos.",
       stack: ["pandas", "xarray", "NumPy", "Matplotlib", "Plotly", "Panel", "Proxmox", "SaltStack"],
       outcomes: [
         "Pipelines automatizados de datos climáticos",
@@ -297,7 +297,7 @@ export const content: SiteContent = {
       status: "Completed",
       timeframe: "2019 - 2025",
       summary:
-        "Construcción de infraestructura de gestión de datos y visualización para estudios de clima urbano, incluyendo herramientas web y estándares de datos.",
+        "Lideré la infraestructura de gestión y visualización de datos para programas de clima urbano, entregando herramientas web y estándares de datos interoperables.",
       stack: ["Django", "Nuxt", "NetCDF", "Python"],
       outcomes: [
         "Plataforma de visualización UCO Berlin",
@@ -311,7 +311,7 @@ export const content: SiteContent = {
       status: "Completed",
       timeframe: "2020 - 2024",
       summary:
-        "Modelado y análisis de conjuntos de datos climatológicos para dinámicas de puntos de inflexión en sistemas lacustres de Asia Central.",
+        "Diseñé y entregué flujos de modelado para conjuntos de datos climatológicos para investigar dinámicas de puntos de inflexión en sistemas lacustres de Asia Central.",
       stack: ["WRF", "Python", "Análisis científico de datos"],
       outcomes: [
         "Evaluaciones climáticas basadas en modelos",
@@ -327,7 +327,7 @@ export const content: SiteContent = {
       institution: "Technische Universitat Berlin, Climatología",
       location: "Berlín",
       summary:
-        "Desarrollo de flujos de trabajo climáticos intensivos en datos y aplicaciones web científicas, coordinando resultados de investigación listos para publicación.",
+        "Lideré flujos de trabajo climáticos intensivos en datos y entregué aplicaciones web científicas, coordinando resultados de investigación listos para publicación.",
       highlights: [
         "Plataforma MaRESS de mapeo del sistema terrestre",
         "Análisis de datos climáticos DARWIN y dashboards",
@@ -341,7 +341,7 @@ export const content: SiteContent = {
       institution: "Alganize GmbH",
       location: "Berlín",
       summary:
-        "Asesoramiento a equipos biotecnológicos en comunicación científica y análisis de series temporales climáticas.",
+        "Asesoro a equipos biotecnológicos en comunicación científica, análisis de series temporales y reporting orientado a decisiones.",
       highlights: [
         "Consultoría científica para estudios aplicados",
         "Análisis de series temporales de datos de estaciones climáticas",
@@ -354,7 +354,7 @@ export const content: SiteContent = {
       institution: "FU Berlin y TU Berlin",
       location: "Berlín",
       summary:
-        "Enseñanza de cursos cuantitativos y orientados a la programación para investigación ambiental y basada en datos.",
+        "Diseño e imparto cursos cuantitativos y orientados a la programación para investigación ambiental y basada en datos.",
       highlights: [
         "Estadística 101 y Estadística con R",
         "Climatología y Atmósfera Urbana",
@@ -367,7 +367,7 @@ export const content: SiteContent = {
       institution: "PIK, ISIMIP",
       location: "Potsdam",
       summary:
-        "Desarrollo de algoritmos para la generación de datos climáticos contrafactuales a partir de grandes conjuntos de datos.",
+        "Diseñé algoritmos para generar datos climáticos contrafactuales a partir de archivos a gran escala.",
       highlights: [
         "Diseño y aplicación del algoritmo ATTRICI",
         "Procesamiento de datos climáticos a gran escala en Python",
@@ -380,7 +380,7 @@ export const content: SiteContent = {
       institution: "Humboldt-Universitat zu Berlin",
       location: "Berlín",
       summary:
-        "Análisis de la dinámica de olas de calor urbanas y proyecciones climáticas con enfoques de modelado de mesoescala.",
+        "Investigué la dinámica de olas de calor urbanas y proyecciones climáticas con modelos de mesoescala y flujos de análisis reproducibles.",
       highlights: [
         "Flujos de trabajo del modelo COSMO-CLM",
         "Estudios de proyección climática urbana",

@@ -1,6 +1,7 @@
 export interface NavigationItem {
   label: string;
   to: string;
+  external?: boolean;
 }
 
 export interface ProfileInfo {
@@ -50,7 +51,7 @@ export interface ContactLink {
   label: string;
   href?: string;
   icon: string;
-	sublabel: string;
+  sublabel: string;
 }
 
 export interface SkillBadge {

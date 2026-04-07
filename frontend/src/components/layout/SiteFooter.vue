@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
 
 import { useSiteContent } from "@/composables/useSiteContent";
+import type { NavigationItem } from "@/types/site";
 
 const { t } = useI18n({ useScope: "global" });
 const content = useSiteContent();
+const router = useRouter();
 
 const year = new Date().getFullYear();
 
@@ -25,6 +28,15 @@ const socialLinks = computed(() => {
       icon: iconMap[p.label] ?? p.icon,
     }));
 });
+
+const onFooterNavClick = (event: MouseEvent, item: NavigationItem) => {
+  if (item.external) {
+    return;
+  }
+
+  event.preventDefault();
+  void router.push(item.to);
+};
 </script>
 
 <template>
@@ -45,8 +57,10 @@ const socialLinks = computed(() => {
             v-for="item in content.navItems"
             :key="item.to"
             :href="item.to"
+            :target="item.external ? '_blank' : undefined"
+            :rel="item.external ? 'noreferrer noopener' : undefined"
             class="footer-nav-link"
-            @click.prevent="$router.push(item.to)"
+            @click="onFooterNavClick($event, item)"
           >
             {{ t(item.label) }}
           </a>

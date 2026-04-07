@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 import { preloadSiteContent } from "@/composables/useSiteContent";
 import { setAppLocale } from "@/i18n";
@@ -15,6 +15,7 @@ const props = defineProps<{
 }>();
 
 const route = useRoute();
+const router = useRouter();
 const { locale, t } = useI18n({ useScope: "global" });
 
 const drawerOpen = ref(false);
@@ -53,6 +54,20 @@ const isActive = (target: string) => {
   return route.path.startsWith(target);
 };
 
+const onNavClick = (event: MouseEvent, item: NavigationItem) => {
+  if (item.external) {
+    return;
+  }
+
+  event.preventDefault();
+  void router.push(item.to);
+};
+
+const onMobileNavClick = (event: MouseEvent, item: NavigationItem) => {
+  onNavClick(event, item);
+  drawerOpen.value = false;
+};
+
 watch(() => route.path, () => {
   drawerOpen.value = false;
 });
@@ -77,9 +92,11 @@ watch(() => route.path, () => {
             v-for="item in props.navItems"
             :key="item.to"
             :href="item.to"
+            :target="item.external ? '_blank' : undefined"
+            :rel="item.external ? 'noreferrer noopener' : undefined"
             :class="['nav-link', { active: isActive(item.to) }]"
             :aria-current="isActive(item.to) ? 'page' : undefined"
-            @click.prevent="$router.push(item.to)"
+            @click="onNavClick($event, item)"
           >
             {{ t(item.label) }}
           </a>
@@ -122,9 +139,11 @@ watch(() => route.path, () => {
             v-for="item in props.navItems"
             :key="item.to"
             :href="item.to"
+            :target="item.external ? '_blank' : undefined"
+            :rel="item.external ? 'noreferrer noopener' : undefined"
             :class="['mobile-nav-link', { active: isActive(item.to) }]"
             :aria-current="isActive(item.to) ? 'page' : undefined"
-            @click.prevent="$router.push(item.to); drawerOpen = false"
+            @click="onMobileNavClick($event, item)"
           >
             {{ t(item.label) }}
           </a>

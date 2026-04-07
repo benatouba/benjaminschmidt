@@ -22,7 +22,7 @@ export const messages = {
     researchFocus: "Research Focus",
     currentInterests: "Current areas of interest",
     currentInterestsDetail:
-      "Regional climate modeling for the Galápagos with a focus on precipitation and water-balance dynamics, end-to-end engineering of large climate datasets (processing, quality control, analysis, and visualization), and development of full-stack research software that makes complex environmental data reproducible, explorable, and decision-ready.",
+      "Regional and urban climate modeling, end-to-end engineering of large geoscientific datasets (processing, quality control, analysis, and visualization), and development of full-stack research software that makes complex data reproducible, explorable, and decision-ready.",
     coreStrengths: "Core strengths",
     orcidLabel: "ORCID",
   },
@@ -143,7 +143,7 @@ export const content: SiteContent = {
     email: "benjamin.schmidt@tu-berlin.de",
     orcid: "0000-0002-9669-3360",
     summary:
-      "I turn complex climate and environmental datasets into production-ready research platforms — shipping full-stack web applications, automated data pipelines, and peer-reviewed science along the way.",
+      "I lead, design, and deliver production-ready research platforms — building full-stack web applications, automated data pipelines, and peer-reviewed outputs from complex scientific data.",
     interests: [
       "Climate and environmental data science",
       "Reproducible computational workflows",
@@ -168,7 +168,7 @@ export const content: SiteContent = {
       title: "Research Associate (PhD)",
       institution: "Technische Universitat Berlin, Climatology",
       description:
-        "Led climate and Earth system research projects and built data-intensive software platforms for analysis, visualization, and publication workflows.",
+        "Led climate and Earth system research programs and delivered data-intensive platforms for analysis, visualization, and publication workflows.",
       focusAreas: [
         "MaRESS web platform (Vue, FastAPI, PostGIS)",
         "DARWIN climate data pipelines and dashboards",
@@ -180,7 +180,7 @@ export const content: SiteContent = {
       title: "Lecturer",
       institution: "Freie Universitat Berlin and Technische Universitat Berlin",
       description:
-        "Designed and delivered teaching in statistics, climatology, scientific programming, and remote sensing data analysis.",
+        "Designed and delivered courses in statistics, climatology, scientific programming, and remote sensing analysis with an applied focus.",
       focusAreas: ["Statistics with R", "Scientific programming", "Research communication"],
     },
     {
@@ -188,7 +188,7 @@ export const content: SiteContent = {
       title: "Chief Scientific Officer",
       institution: "Alganize GmbH",
       description:
-        "Consulting on scientific communication and data analysis in biotech workflows, with focus on time-series station data and robust reporting.",
+        "Advised biotech teams on scientific communication and time-series analytics, translating data into robust decision support and reporting.",
       focusAreas: ["BioTech consulting", "Time-series analysis", "Scientific communication"],
     },
     {
@@ -196,7 +196,7 @@ export const content: SiteContent = {
       title: "Research Assistant",
       institution: "Potsdam Institute for Climate Impact Research (PIK), ISIMIP",
       description:
-        "Developed counterfactual climate data workflows and statistical tooling for large-scale climate datasets.",
+        "Designed counterfactual climate data workflows and statistical tooling for large-scale model and observation archives.",
       focusAreas: ["ATTRICI algorithm", "Counterfactual climate data", "Python"],
     },
     {
@@ -204,7 +204,7 @@ export const content: SiteContent = {
       title: "Student Research Assistant",
       institution: "Humboldt-Universitat zu Berlin, Climate Geography",
       description:
-        "Investigated heat-wave projections and spatial patterns of thermal stress in Berlin using mesoscale modeling.",
+        "Investigated heat-wave projections and urban thermal-stress patterns in Berlin using mesoscale modeling and reproducible analysis pipelines.",
       focusAreas: ["COSMO-CLM", "Urban climate projections", "Data processing and analysis"],
     },
   ],
@@ -261,7 +261,7 @@ export const content: SiteContent = {
       status: "Active",
       timeframe: "2023 - 2026",
       summary:
-        "Developed a data-rich web platform for visualization and exploration of Earth system science metadata and relationships.",
+        "Led development of a data-rich web platform for visualization and exploration of Earth system science metadata and relationships.",
       stack: ["Vue.js", "FastAPI", "OpenLayers", "Cytoscape.js", "PostgreSQL", "PostGIS"],
       outcomes: [
         "Interactive map and graph interface",
@@ -275,7 +275,7 @@ export const content: SiteContent = {
       status: "Completed",
       timeframe: "2019 - 2026",
       summary:
-        "Managed and analyzed high-volume atmospheric model data to study precipitation source dynamics under climate change in the Galapagos.",
+        "Led analysis engineering for high-volume atmospheric model data to investigate precipitation-source dynamics and deliver reproducible climate evidence, including Galapagos case studies.",
       stack: ["pandas", "xarray", "NumPy", "Matplotlib", "Plotly", "Panel", "Proxmox", "SaltStack"],
       outcomes: [
         "Automated climate data pipelines",
@@ -289,7 +289,7 @@ export const content: SiteContent = {
       status: "Completed",
       timeframe: "2019 - 2025",
       summary:
-        "Built data management and visualization infrastructure for urban climate studies, including web tooling and data standards.",
+        "Led data management and visualization infrastructure for urban climate programs, delivering web tooling and interoperable data standards.",
       stack: ["Django", "Nuxt", "NetCDF", "Python"],
       outcomes: [
         "UCO Berlin visualization platform",
@@ -303,7 +303,7 @@ export const content: SiteContent = {
       status: "Completed",
       timeframe: "2020 - 2024",
       summary:
-        "Modeled and analyzed climatological datasets for tipping-point dynamics in Central Asian lake systems.",
+        "Designed and delivered modeling workflows for climatological datasets to investigate tipping-point dynamics in Central Asian lake systems.",
       stack: ["WRF", "Python", "Scientific data analysis"],
       outcomes: [
         "Model-based climate assessments",
@@ -319,7 +319,7 @@ export const content: SiteContent = {
       institution: "Technische Universitat Berlin, Climatology",
       location: "Berlin",
       summary:
-        "Built data-intensive climate workflows and scientific web applications while coordinating publication-ready research outputs.",
+        "Led data-intensive climate workflows and delivered scientific web applications while coordinating publication-ready research outputs.",
       highlights: [
         "MaRESS Earth system mapping platform",
         "DARWIN climate data analysis and dashboards",
@@ -332,7 +332,8 @@ export const content: SiteContent = {
       role: "Chief Scientific Officer",
       institution: "Alganize GmbH",
       location: "Berlin",
-      summary: "Advise biotech teams on scientific communication and climate time-series analysis.",
+      summary:
+        "Advise biotech teams on scientific communication, time-series analytics, and decision-focused reporting.",
       highlights: [
         "Scientific consulting for applied studies",
         "Time-series analysis of climate station data",
@@ -345,7 +346,7 @@ export const content: SiteContent = {
       institution: "FU Berlin and TU Berlin",
       location: "Berlin",
       summary:
-        "Teach quantitative and programming-focused courses for environmental and data-driven research.",
+        "Design and teach quantitative and programming-focused courses for environmental and data-driven research.",
       highlights: [
         "Statistics 101 and Statistics with R",
         "Climatology and Urban Atmosphere",
@@ -358,7 +359,7 @@ export const content: SiteContent = {
       institution: "PIK, ISIMIP",
       location: "Potsdam",
       summary:
-        "Developed algorithms for counterfactual climate data generation from large datasets.",
+        "Designed algorithms for counterfactual climate data generation from large-scale archives.",
       highlights: [
         "ATTRICI algorithm design and application",
         "Large-scale climate data processing in Python",
@@ -371,7 +372,7 @@ export const content: SiteContent = {
       institution: "Humboldt-Universitat zu Berlin",
       location: "Berlin",
       summary:
-        "Analyzed urban heat-wave dynamics and climate projections with mesoscale modeling approaches.",
+        "Investigated urban heat-wave dynamics and climate projections using mesoscale models and reproducible analysis workflows.",
       highlights: [
         "COSMO-CLM model workflows",
         "Urban climate projection studies",
