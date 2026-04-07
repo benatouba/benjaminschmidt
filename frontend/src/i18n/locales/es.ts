@@ -139,7 +139,7 @@ export const content: SiteContent = {
     headline: "Científico investigador e ingeniero full-stack",
     location: "Berlín, Alemania",
     address: "10589 Berlin-Charlottenburg",
-    phone: "+49 (0) 171 8036920",
+    phone: "Por favor, contáctame por correo electrónico",
     email: "benjamin.schmidt@tu-berlin.de",
     orcid: "0000-0002-9669-3360",
     summary:
