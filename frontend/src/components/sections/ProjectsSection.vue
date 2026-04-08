@@ -4,9 +4,12 @@ import { useI18n } from "vue-i18n";
 
 import type { ResearchProject } from "@/types/site";
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   projects: ResearchProject[];
-}>();
+  showHeading?: boolean;
+}>(), {
+  showHeading: true,
+});
 
 const { t } = useI18n({ useScope: "global" });
 
@@ -33,8 +36,10 @@ const projectTechBadges = (project: ResearchProject) =>
 <template>
   <section id="projects" class="section-block section-anchor">
     <v-container fluid>
-      <div class="section-heading reveal-up" style="--delay: 40ms">
+      <div v-if="props.showHeading" class="section-heading reveal-up" style="--delay: 40ms">
+        <p class="kicker">{{ t("projects.kicker") }}</p>
         <h2>{{ t("projects.heading") }}</h2>
+        <p class="section-copy">{{ t("projects.copy") }}</p>
       </div>
 
       <div class="projects-grid">
@@ -42,46 +47,43 @@ const projectTechBadges = (project: ResearchProject) =>
           v-for="(project, index) in props.projects"
           :key="project.name"
           class="project-card reveal-up"
-          :style="`--delay: ${100 + index * 90}ms`"
+          :style="`--delay: ${100 + index * 80}ms`"
         >
-          <div class="card-header">
-            <h3 class="project-title">{{ project.name }}</h3>
-            <span
-              class="status-badge"
-              :style="{ '--status-color': projectStatusColor(project.status) }"
-            >
+          <div class="card-top">
+            <div>
+              <p class="project-timeframe">{{ project.timeframe }}</p>
+              <h3 class="project-title">{{ project.name }}</h3>
+            </div>
+            <span class="status-badge" :style="{ '--status-color': projectStatusColor(project.status) }">
               {{ t(`projects.status.${project.status}`) }}
             </span>
           </div>
-          <p class="project-timeframe">{{ project.timeframe }}</p>
+
           <p class="project-summary">{{ project.summary }}</p>
 
-          <div class="meta-section">
-            <p class="meta-label">{{ t("projects.stack") }}</p>
-            <div v-if="projectTechBadges(project).length" class="stack-badges-wrap">
-              <a
-                v-for="badge in projectTechBadges(project)"
-                :key="badge.key"
-                :href="badge.href"
-                :target="badge.href ? '_blank' : undefined"
-                :rel="badge.href ? 'noreferrer' : undefined"
-                class="stack-badge-link"
-              >
-                <img
-                  :src="badge.image"
-                  :alt="badge.label"
-                  :width="badge.width ?? 80"
-                  :height="badge.height ?? 20"
-                  loading="lazy"
-                  decoding="async"
-                  class="stack-badge"
-                />
-              </a>
-            </div>
+          <div v-if="projectTechBadges(project).length" class="stack-badges-wrap">
+            <a
+              v-for="badge in projectTechBadges(project)"
+              :key="badge.key"
+              :href="badge.href"
+              :target="badge.href ? '_blank' : undefined"
+              :rel="badge.href ? 'noreferrer' : undefined"
+              class="stack-badge-link"
+            >
+              <img
+                :src="badge.image"
+                :alt="badge.label"
+                :width="badge.width ?? 80"
+                :height="badge.height ?? 20"
+                loading="lazy"
+                decoding="async"
+                class="stack-badge"
+              />
+            </a>
           </div>
 
-          <div class="meta-section">
-            <p class="meta-label">{{ t("projects.outcomes") }}</p>
+          <div class="outcomes-panel">
+            <p class="outcomes-label">{{ t("projects.outcomes") }}</p>
             <ul class="outcomes-list">
               <li v-for="outcome in project.outcomes" :key="outcome">
                 {{ outcome }}
@@ -89,13 +91,7 @@ const projectTechBadges = (project: ResearchProject) =>
             </ul>
           </div>
 
-          <a
-            v-if="project.link"
-            :href="project.link"
-            target="_blank"
-            rel="noreferrer"
-            class="project-link"
-          >
+          <a v-if="project.link" :href="project.link" target="_blank" rel="noreferrer" class="project-link">
             {{ t("projects.viewProject") }}
             <v-icon icon="mdi-arrow-top-right" size="16" />
           </a>
@@ -106,9 +102,26 @@ const projectTechBadges = (project: ResearchProject) =>
 </template>
 
 <style scoped>
+.kicker {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.section-copy {
+  margin: 0.55rem 0 0;
+  max-width: 70ch;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--page-text-muted);
+}
+
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
   gap: 1rem;
   align-items: stretch;
 }
@@ -116,70 +129,52 @@ const projectTechBadges = (project: ResearchProject) =>
 .project-card {
   display: flex;
   flex-direction: column;
-  padding: 1.2rem;
-  height: 100%;
+  padding: 1.25rem;
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  border-radius: 14px;
 }
 
-.project-card:hover {
-  border-color: rgba(34, 211, 238, 0.3);
-  transform: translateY(-2px);
-}
-
-.card-header {
+.card-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 0.25rem;
-}
-
-.project-title {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--page-text);
-  line-height: 1.4;
-}
-
-.status-badge {
-  flex-shrink: 0;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--status-color);
-  background: color-mix(in srgb, var(--status-color) 15%, transparent);
-  border-radius: 4px;
+  gap: 0.9rem;
 }
 
 .project-timeframe {
   margin: 0;
-  font-size: 0.8rem;
-  color: var(--page-text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.project-title {
+  margin: 0.35rem 0 0;
+  font-size: 1.1rem;
+  font-weight: 650;
+  line-height: 1.35;
+  color: var(--page-text);
+}
+
+.status-badge {
+  flex-shrink: 0;
+  padding: 0.24rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--status-color);
+  background: color-mix(in srgb, var(--status-color) 15%, transparent);
+  border-radius: 999px;
 }
 
 .project-summary {
-  margin: 0.6rem 0 0;
+  margin: 0.85rem 0 0;
   font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--page-text-muted);
-}
-
-.meta-section {
-  margin-top: 0.85rem;
-}
-
-.meta-label {
-  margin: 0 0 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  line-height: 1.7;
   color: var(--page-text-muted);
 }
 
@@ -187,20 +182,12 @@ const projectTechBadges = (project: ResearchProject) =>
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 0.9rem;
 }
 
 .stack-badge-link {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
-  padding-block: 2px;
-  border-radius: 4px;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-.stack-badge-link:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
 }
 
 .stack-badge {
@@ -209,16 +196,29 @@ const projectTechBadges = (project: ResearchProject) =>
   height: 20px;
 }
 
-.outcomes-list {
-  margin: 0;
-  padding: 0 0 0 1.25rem;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: var(--page-text-muted);
+.outcomes-panel {
+  margin-top: 1rem;
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.34);
+  border: 1px solid var(--border-color);
 }
 
-.outcomes-list li {
-  margin-bottom: 0.25rem;
+.outcomes-label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.outcomes-list {
+  margin: 0.6rem 0 0;
+  padding: 0 0 0 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--page-text-muted);
 }
 
 .project-link {
@@ -226,15 +226,10 @@ const projectTechBadges = (project: ResearchProject) =>
   align-items: center;
   gap: 0.35rem;
   margin-top: auto;
-  padding-top: 0.8rem;
+  padding-top: 1rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--primary);
   text-decoration: none;
-  transition: opacity 0.15s ease;
-}
-
-.project-link:hover {
-  opacity: 0.8;
 }
 </style>

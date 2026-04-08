@@ -10,8 +10,10 @@ const content = useSiteContent();
 </script>
 
 <template>
-  <PageSectionShell :title="t('pages.cv.title')" :kicker="t('pages.cv.kicker')">
+  <PageSectionShell :title="t('pages.cv.title')" :kicker="t('pages.cv.kicker')" :copy="t('pages.cv.copy')">
     <CvSection
+      :profile="content.profile"
+      :highlights="content.impactHighlights"
       :appointments="content.cvAppointments"
       :education="content.education"
       :honors="content.honors"

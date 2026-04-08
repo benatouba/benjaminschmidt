@@ -10,8 +10,12 @@ const content = useSiteContent();
 </script>
 
 <template>
-  <PageSectionShell :title="t('pages.career.title')" :kicker="t('pages.career.kicker')">
-    <CareerSection :stages="content.careerStages" />
+  <PageSectionShell
+    :title="t('pages.career.title')"
+    :kicker="t('pages.career.kicker')"
+    :copy="t('pages.career.copy')"
+  >
+    <CareerSection :stages="content.careerStages" :show-heading="false" />
   </PageSectionShell>
 </template>
 

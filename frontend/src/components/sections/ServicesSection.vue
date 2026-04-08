@@ -3,9 +3,12 @@ import { useI18n } from "vue-i18n";
 
 import type { ResearchService } from "@/types/site";
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   services: ResearchService[];
-}>();
+  showHeading?: boolean;
+}>(), {
+  showHeading: true,
+});
 
 const { t } = useI18n({ useScope: "global" });
 </script>
@@ -13,31 +16,24 @@ const { t } = useI18n({ useScope: "global" });
 <template>
   <section id="services" class="section-block section-anchor">
     <v-container fluid>
-      <div class="section-heading reveal-up" style="--delay: 40ms">
+      <div v-if="props.showHeading" class="section-heading reveal-up" style="--delay: 40ms">
         <p class="kicker">{{ t("services.kicker") }}</p>
         <h2>{{ t("services.heading") }}</h2>
+        <p class="section-copy">{{ t("services.copy") }}</p>
       </div>
 
       <div class="services-grid">
         <article
-          v-for="(service, index) in props.services"
+          v-for="(service, index) in services"
           :key="service.title"
           class="service-card reveal-up"
           :style="`--delay: ${120 + index * 80}ms`"
         >
           <div class="card-icon">
-            <v-icon :icon="service.icon" size="24" />
+            <v-icon :icon="service.icon" size="22" />
           </div>
           <h3 class="service-title">{{ service.title }}</h3>
-          <p class="service-audience">{{ service.audience }}</p>
           <p class="service-description">{{ service.description }}</p>
-          <a
-            :href="service.ctaHref"
-            class="service-cta"
-          >
-            <v-icon icon="mdi-send-outline" size="16" />
-            {{ service.ctaLabel }}
-          </a>
         </article>
       </div>
     </v-container>
@@ -45,92 +41,58 @@ const { t } = useI18n({ useScope: "global" });
 </template>
 
 <style scoped>
-.section-heading h2 {
-  margin: 0.3rem 0 0;
-}
-
 .kicker {
   margin: 0;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--primary);
 }
 
+.section-copy {
+  margin: 0.55rem 0 0;
+  max-width: 68ch;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--page-text-muted);
+}
+
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1rem;
-  align-items: stretch;
 }
 
 .service-card {
-  display: flex;
-  flex-direction: column;
-  padding: 1.3rem;
-  height: 100%;
-  background: rgba(30, 41, 59, 0.5);
+  padding: 1.25rem;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.service-card:hover {
-  border-color: rgba(34, 211, 238, 0.3);
-  transform: translateY(-2px);
+  border-radius: 14px;
+  background: rgba(30, 41, 59, 0.5);
 }
 
 .card-icon {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 0.8rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
   background: var(--primary-muted);
-  border-radius: 12px;
   color: var(--primary);
 }
 
 .service-title {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
+  margin: 0.85rem 0 0;
+  font-size: 1rem;
+  font-weight: 650;
   color: var(--page-text);
 }
 
-.service-audience {
-  margin: 0.25rem 0 0;
-  font-size: 0.8rem;
-  color: var(--page-text-muted);
-}
-
 .service-description {
-  margin: 0.6rem 0 0;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  margin: 0.45rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
   color: var(--page-text-muted);
-  flex: 1;
-}
-
-.service-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.6rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--page-background);
-  background: var(--primary);
-  border-radius: 8px;
-  text-decoration: none;
-  transition: opacity 0.15s ease;
-  width: fit-content;
-}
-
-.service-cta:hover {
-  opacity: 0.9;
 }
 </style>

@@ -10,8 +10,12 @@ const content = useSiteContent();
 </script>
 
 <template>
-  <PageSectionShell :title="t('pages.contact.title')" :kicker="t('pages.contact.kicker')">
-    <ContactSection :profile="content.profile" :links="content.contactLinks" />
+  <PageSectionShell
+    :title="t('pages.contact.title')"
+    :kicker="t('pages.contact.kicker')"
+    :copy="t('pages.contact.copy')"
+  >
+    <ContactSection :profile="content.profile" :links="content.contactLinks" :show-heading="false" />
   </PageSectionShell>
 </template>
 

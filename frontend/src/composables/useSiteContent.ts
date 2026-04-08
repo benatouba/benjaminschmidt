@@ -32,6 +32,7 @@ const EMPTY_CONTENT: SiteContent = {
     interests: [],
     skills: [],
   },
+  impactHighlights: [],
   careerStages: [],
   publications: [],
   projects: [],

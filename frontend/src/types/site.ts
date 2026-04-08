@@ -17,6 +17,13 @@ export interface ProfileInfo {
   skills: string[];
 }
 
+export interface ImpactHighlight {
+  icon: string;
+  value: string;
+  label: string;
+  detail: string;
+}
+
 export interface CareerStage {
   period: string;
   title: string;
@@ -130,15 +137,16 @@ export interface ExternalProfileLink {
 export interface ResearchService {
   title: string;
   icon: string;
-  audience: string;
+  audience?: string;
   description: string;
-  ctaLabel: string;
-  ctaHref: string;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 export interface SiteContent {
   navItems: NavigationItem[];
   profile: ProfileInfo;
+  impactHighlights: ImpactHighlight[];
   careerStages: CareerStage[];
   publications: PublicationItem[];
   projects: ResearchProject[];

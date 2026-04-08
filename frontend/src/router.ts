@@ -33,7 +33,7 @@ router.afterEach((to) => {
     const t = i18n.global.t;
     document.title = `${t(titleKey)} | ${BASE_TITLE}`;
   } else {
-    document.title = `${BASE_TITLE} | Research Scientist & Full-Stack Engineer`;
+    document.title = `${BASE_TITLE} | Senior Full-Stack Engineer`;
   }
 });
 

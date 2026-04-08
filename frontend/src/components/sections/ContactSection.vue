@@ -3,10 +3,13 @@ import { useI18n } from "vue-i18n";
 
 import type { ContactLink, ProfileInfo } from "@/types/site";
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   profile: ProfileInfo;
   links: ContactLink[];
-}>();
+  showHeading?: boolean;
+}>(), {
+  showHeading: true,
+});
 
 const { t } = useI18n({ useScope: "global" });
 </script>
@@ -14,52 +17,47 @@ const { t } = useI18n({ useScope: "global" });
 <template>
   <section id="contact" class="section-block section-anchor">
     <v-container fluid>
-      <div class="contact-card reveal-up" style="--delay: 90ms">
-        <div class="contact-grid">
-          <div class="contact-info">
+      <div class="contact-shell reveal-up" style="--delay: 80ms">
+        <div class="contact-main">
+          <template v-if="props.showHeading">
             <p class="kicker">{{ t("contact.kicker") }}</p>
             <h2 class="contact-title">{{ t("contact.heading") }}</h2>
             <p class="contact-copy">{{ t("contact.copy") }}</p>
-            
-            <p v-if="props.profile.address" class="address-line">
-              <v-icon icon="mdi-home-map-marker" size="18" />
-              {{ props.profile.address }}
-            </p>
-            
-            <a
-              :href="`mailto:${props.profile.email}`"
-              class="email-btn"
-            >
-              <v-icon icon="mdi-email-outline" size="18" />
-              {{ props.profile.email }}
-            </a>
-          </div>
+          </template>
+          <template v-else>
+            <p class="contact-copy inline-copy">{{ t("contact.copy") }}</p>
+          </template>
 
-          <div class="links-list">
-            <a
-              v-for="link in props.links"
-              :key="link.label"
-              :href="link.href"
-              :target="link.href ? '_blank' : undefined"
-              :rel="link.href ? 'noreferrer' : undefined"
-              class="link-item"
-            >
-              <div class="link-icon">
-                <v-icon :icon="link.icon" size="20" />
-              </div>
-              <div class="link-content">
-                <span class="link-label">{{ link.label }}</span>
-                <span class="link-sublabel">
-                  {{ link.href ? t(link.sublabel) : t('contact.comingSoon') }}
-                </span>
-              </div>
-              <v-icon
-                :icon="link.href ? 'mdi-arrow-top-right' : 'mdi-clock-outline'"
-                size="16"
-                class="link-arrow"
-              />
+          <div class="contact-actions">
+            <a :href="`mailto:${profile.email}`" class="primary-cta">
+              <v-icon icon="mdi-email-outline" size="18" />
+              {{ t("contact.primaryCta") }}
+            </a>
+            <a href="/cv" class="secondary-cta">
+              <v-icon icon="mdi-file-account-outline" size="18" />
+              {{ t("contact.secondaryCta") }}
             </a>
           </div>
+        </div>
+
+        <div class="links-panel">
+          <a
+            v-for="link in links"
+            :key="link.label"
+            :href="link.href"
+            :target="link.href ? '_blank' : undefined"
+            :rel="link.href ? 'noreferrer' : undefined"
+            class="link-item"
+          >
+            <div class="link-icon">
+              <v-icon :icon="link.icon" size="20" />
+            </div>
+            <div class="link-content">
+              <span class="link-label">{{ link.label }}</span>
+              <span class="link-sublabel">{{ link.href ? link.sublabel : t("contact.comingSoon") }}</span>
+            </div>
+            <v-icon :icon="link.href ? 'mdi-arrow-top-right' : 'mdi-clock-outline'" size="16" class="link-arrow" />
+          </a>
         </div>
       </div>
     </v-container>
@@ -67,100 +65,85 @@ const { t } = useI18n({ useScope: "global" });
 </template>
 
 <style scoped>
-.section-block {
-  padding-bottom: clamp(1.8rem, 4.5vw, 3rem);
-}
-
-.contact-card {
-  padding: clamp(1.2rem, 2.5vw, 2rem);
-  background: 
-    radial-gradient(ellipse 80% 60% at 0% 0%, rgba(34, 211, 238, 0.08), transparent 50%),
-    radial-gradient(ellipse 80% 60% at 100% 100%, rgba(99, 102, 241, 0.06), transparent 50%),
-    rgba(30, 41, 59, 0.5);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  backdrop-filter: blur(8px);
-}
-
-.contact-grid {
+.contact-shell {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: clamp(1.2rem, 3vw, 2rem);
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 1rem;
+  padding: clamp(1.2rem, 2.5vw, 1.8rem);
+  background:
+    radial-gradient(ellipse 90% 65% at 0% 0%, rgba(34, 211, 238, 0.08), transparent 48%),
+    rgba(30, 41, 59, 0.54);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
 }
 
 .kicker {
   margin: 0;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--primary);
 }
 
 .contact-title {
-  margin: 0.5rem 0 0;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
+  margin: 0.45rem 0 0;
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  line-height: 1.1;
   letter-spacing: -0.02em;
-  line-height: 1.2;
   color: var(--page-text);
 }
 
 .contact-copy {
   margin: 0.8rem 0 0;
-  font-size: 0.95rem;
+  max-width: 58ch;
+  font-size: 0.96rem;
   line-height: 1.7;
   color: var(--page-text-muted);
-  max-width: 50ch;
 }
 
-.address-line {
+.inline-copy {
+  margin-top: 0;
+}
+
+.contact-actions {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0 0;
-  font-size: 0.9rem;
-  color: var(--page-text-muted);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
 }
 
-.address-line .v-icon {
-  color: var(--primary);
-}
-
-.email-btn {
+.primary-cta,
+.secondary-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.2rem;
-  padding: 0.75rem 1.25rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--page-background);
-  background: var(--primary);
-  border-radius: 8px;
+  padding: 0.75rem 1.1rem;
+  border-radius: 10px;
   text-decoration: none;
-  transition: opacity 0.15s ease;
-  width: fit-content;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-.email-btn:hover {
-  opacity: 0.9;
+.primary-cta {
+  color: #0f172a;
+  background: var(--primary);
 }
 
-.links-list {
+.secondary-cta {
+  color: var(--page-text);
+  border: 1px solid var(--border-color);
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.links-panel {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 0.8rem;
-  background: rgba(15, 23, 42, 0.4);
+  padding: 0.85rem;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  align-self: start;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.34);
 }
 
 .link-item {
@@ -168,9 +151,8 @@ const { t } = useI18n({ useScope: "global" });
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
+  border-radius: 10px;
   text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.15s ease;
 }
 
 .link-item:hover {
@@ -178,43 +160,37 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .link-icon {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   background: rgba(148, 163, 184, 0.1);
-  border-radius: 8px;
   color: var(--page-text-muted);
-  flex-shrink: 0;
 }
 
 .link-content {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+  flex: 1;
 }
 
 .link-label {
-  display: block;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--page-text);
 }
 
-.link-sublabel {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--page-text-muted);
-  margin-top: 0.1rem;
-}
-
+.link-sublabel,
 .link-arrow {
+  font-size: 0.78rem;
   color: var(--page-text-muted);
-  flex-shrink: 0;
 }
 
 @media (width <= 920px) {
-  .contact-grid {
+  .contact-shell {
     grid-template-columns: 1fr;
   }
 }

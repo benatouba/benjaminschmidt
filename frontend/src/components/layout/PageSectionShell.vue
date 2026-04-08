@@ -2,6 +2,7 @@
 defineProps<{
   title: string;
   kicker?: string;
+  copy?: string;
 }>();
 </script>
 
@@ -10,6 +11,7 @@ defineProps<{
     <div class="section-heading reveal-up" style="--delay: 40ms">
       <p v-if="kicker" class="kicker">{{ kicker }}</p>
       <h1 class="page-title">{{ title }}</h1>
+      <p v-if="copy" class="page-copy">{{ copy }}</p>
     </div>
 
     <div class="content-slot reveal-up" style="--delay: 120ms">
@@ -45,6 +47,14 @@ defineProps<{
   color: var(--page-text);
 }
 
+.page-copy {
+  margin: 0.75rem 0 0;
+  max-width: 66ch;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--page-text-muted);
+}
+
 .content-slot {
   min-height: min(56vh, 620px);
 }
@@ -60,6 +70,10 @@ defineProps<{
 
   .page-title {
     color: black;
+  }
+
+  .page-copy {
+    color: #333;
   }
 }
 </style>

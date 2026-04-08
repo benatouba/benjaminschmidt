@@ -1,24 +1,19 @@
 <script setup lang="ts">
-import profilePhoto from "@/assets/cv-profile-pro-384.webp";
-import profilePhotoSmall from "@/assets/cv-profile-pro-256.webp";
-import { resolveKnownTechBadge } from "@/data/techBadges";
-
 import { useI18n } from "vue-i18n";
 
-import type { ProfileInfo } from "@/types/site";
+import profilePhoto from "@/assets/cv-profile-pro-384.webp";
+import profilePhotoSmall from "@/assets/cv-profile-pro-256.webp";
+
+import type { ImpactHighlight, ProfileInfo } from "@/types/site";
 
 const props = defineProps<{
   profile: ProfileInfo;
+  highlights: ImpactHighlight[];
 }>();
 
 const { t } = useI18n({ useScope: "global" });
 
 const quickLinks = [
-  {
-    label: "Email",
-    href: `mailto:${props.profile.email}`,
-    icon: "mdi-email-outline",
-  },
   {
     label: "GitHub",
     href: "https://github.com/benatouba",
@@ -36,54 +31,40 @@ const quickLinks = [
   },
 ];
 
-const interestBadges = props.profile.interests
-  .map((interest) => {
-    const badge = resolveKnownTechBadge(interest);
-    if (!badge) return null;
-
-    return {
-      key: `interest-${interest}`,
-      ...badge,
-    };
-  })
-  .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
-
-const skillBadges = props.profile.skills
-  .map((skill) => {
-    const badge = resolveKnownTechBadge(skill);
-    if (!badge) return null;
-
-    return {
-      key: `skill-${skill}`,
-      ...badge,
-    };
-  })
-  .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
-
+const featuredHighlights = props.highlights.slice(0, 3);
 const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 </script>
 
 <template>
-  <section id="about" class="section-anchor">
+  <section id="about" class="section-anchor hero-section">
     <v-container class="hero-grid" fluid>
-      <div class="intro reveal-up" style="--delay: 80ms">
+      <div class="hero-copy reveal-up" style="--delay: 60ms">
         <p class="eyebrow">{{ t("hero.eyebrow") }}</p>
         <h1 class="hero-title">{{ props.profile.name }}</h1>
+        <p class="hero-headline">{{ props.profile.headline }}</p>
         <p class="hero-summary">{{ props.profile.summary }}</p>
 
         <div class="hero-meta">
-          <span class="meta-item">
-            <v-icon icon="mdi-map-marker-outline" size="small" />
+          <span class="meta-chip">
+            <v-icon icon="mdi-map-marker-outline" size="15" />
             {{ props.profile.location }}
           </span>
-          <span class="meta-item">
-            <v-icon icon="mdi-card-account-details-outline" size="small" />
-            {{ t("hero.orcidLabel") }} {{ props.profile.orcid }}
+          <span class="meta-chip emphasis">
+            <v-icon icon="mdi-briefcase-check-outline" size="15" />
+            {{ t("hero.availability") }}
           </span>
-          <span v-if="props.profile.phone" class="meta-item">
-            <v-icon icon="mdi-phone-outline" size="small" />
-            {{ props.profile.phone }}
-          </span>
+        </div>
+
+        <div class="hero-actions">
+          <v-btn to="/projects" color="primary" class="action-btn primary-btn">
+            {{ t("hero.viewProjects") }}
+          </v-btn>
+          <v-btn to="/cv" variant="outlined" class="action-btn">
+            {{ t("hero.openCv") }}
+          </v-btn>
+          <v-btn :href="`mailto:${props.profile.email}`" variant="text" class="action-btn text-btn">
+            {{ t("hero.contactMe") }}
+          </v-btn>
         </div>
 
         <div class="profile-links">
@@ -99,37 +80,10 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
             {{ link.label }}
           </a>
         </div>
-
-        <div class="hero-actions">
-          <v-btn
-            to="/publications"
-            prepend-icon="mdi-book-open-page-variant-outline"
-            color="primary"
-            class="action-btn primary-btn"
-          >
-            {{ t("hero.viewPublications") }}
-          </v-btn>
-          <v-btn
-            to="/cv"
-            prepend-icon="mdi-file-account-outline"
-            variant="outlined"
-            class="action-btn"
-          >
-            {{ t("hero.openCv") }}
-          </v-btn>
-          <v-btn
-            to="/spotlights"
-            prepend-icon="mdi-lightbulb-outline"
-            variant="text"
-            class="action-btn text-btn"
-          >
-            {{ t("hero.readBlog") }}
-          </v-btn>
-        </div>
       </div>
 
-      <div class="profile-card reveal-up" style="--delay: 180ms">
-        <div class="profile-top">
+      <div class="hero-proof reveal-up" style="--delay: 140ms">
+        <div class="proof-header">
           <div class="photo-wrap">
             <img
               :src="profilePhoto"
@@ -144,64 +98,32 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
             />
           </div>
 
-          <div class="focus-pane">
-            <div class="card-header">
-              <div class="card-icon">
-                <v-icon icon="mdi-account" size="20" />
-              </div>
-              <div>
-                <h2 class="card-title">{{ t("hero.researchFocus") }}</h2>
-                <p class="card-subtitle">{{ t("hero.currentInterests") }}</p>
-              </div>
-            </div>
-
-            <p class="card-focus-copy">{{ t("hero.currentInterestsDetail") }}</p>
-
-            <div v-if="interestBadges.length" class="interests-wrap">
-              <a
-                v-for="badge in interestBadges"
-                :key="badge.key"
-                :href="badge.href"
-                :target="badge.href ? '_blank' : undefined"
-                :rel="badge.href ? 'noreferrer' : undefined"
-                class="interest-badge-link"
-              >
-                <img
-                  :src="badge.image"
-                  :alt="badge.label"
-                  :width="badge.width ?? 80"
-                  :height="badge.height ?? 20"
-                  loading="lazy"
-                  decoding="async"
-                  class="interest-badge"
-                />
-              </a>
-            </div>
+          <div class="focus-card">
+            <p class="focus-kicker">{{ t("hero.researchFocus") }}</p>
+            <h2 class="focus-title">{{ t("hero.currentInterests") }}</h2>
+            <p class="focus-copy">{{ t("hero.currentInterestsDetail") }}</p>
           </div>
         </div>
 
-        <div class="divider"></div>
-
-        <p class="skill-heading">{{ t("hero.coreStrengths") }}</p>
-        <div v-if="skillBadges.length" class="skills-grid">
-          <a
-            v-for="badge in skillBadges"
-            :key="badge.key"
-            :href="badge.href"
-            :target="badge.href ? '_blank' : undefined"
-            :rel="badge.href ? 'noreferrer' : undefined"
-            class="skill-badge-link"
+        <div class="highlights-grid">
+          <article
+            v-for="item in featuredHighlights"
+            :key="`${item.value}-${item.label}`"
+            class="highlight-card"
           >
-            <img
-              :src="badge.image"
-              :alt="badge.label"
-              :width="badge.width ?? 80"
-              :height="badge.height ?? 20"
-              loading="lazy"
-              decoding="async"
-              class="skill-badge"
-            />
-          </a>
+            <v-icon :icon="item.icon" size="18" class="highlight-icon" />
+            <p class="highlight-value">{{ item.value }}</p>
+            <p class="highlight-label">{{ item.label }}</p>
+          </article>
+        </div>
+
+        <div class="strengths-card">
+          <p class="strengths-heading">{{ t("hero.coreStrengths") }}</p>
+          <div class="strengths-grid">
+            <span v-for="skill in props.profile.skills" :key="skill" class="strength-chip">
+              {{ skill }}
+            </span>
+          </div>
         </div>
       </div>
     </v-container>
@@ -209,118 +131,97 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 </template>
 
 <style scoped>
-.section-anchor {
-  scroll-margin-top: 120px;
+.hero-section {
+  padding-block: clamp(2rem, 5vw, 4rem) clamp(1.6rem, 4vw, 3rem);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: clamp(0.75rem, 1.8vw, 1.4rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.95fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
   max-width: min(1440px, 98vw);
   margin-inline: auto;
   padding-inline: clamp(0.6rem, 1.4vw, 1.2rem);
-  padding-top: clamp(2rem, 5.5vw, 3.8rem);
-  padding-bottom: clamp(1.5rem, 4vw, 2.8rem);
 }
 
-.intro {
+.hero-copy {
   align-self: center;
+  min-width: 0;
 }
 
 .eyebrow {
   margin: 0;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--primary);
 }
 
 .hero-title {
-  margin: 0.75rem 0 0;
-  font-size: clamp(2.5rem, 5.5vw, 4rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  margin: 0.8rem 0 0;
+  font-size: clamp(2.8rem, 6vw, 4.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
   color: var(--page-text);
   text-wrap: balance;
 }
 
+.hero-headline {
+  margin: 0.8rem 0 0;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: #f8fafc;
+}
+
 .hero-summary {
   margin: 1rem 0 0;
-  max-width: 60ch;
-  font-size: clamp(1rem, 1.3vw, 1.125rem);
-  line-height: 1.7;
+  max-width: 58ch;
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
+  line-height: 1.75;
   color: var(--page-text-muted);
 }
 
 .hero-meta {
-  margin-top: 1.2rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
 }
 
-.meta-item {
-  display: flex;
+.meta-chip {
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.875rem;
+  gap: 0.45rem;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.82rem;
   color: var(--page-text-muted);
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
 }
 
-.meta-item .v-icon {
-  color: var(--primary);
+.meta-chip.emphasis {
+  color: var(--page-text);
+  border-color: rgba(34, 211, 238, 0.24);
+  background: rgba(34, 211, 238, 0.1);
 }
 
 .hero-actions {
-  margin-top: 1.4rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-}
-
-.profile-links {
-  margin-top: 0.8rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-}
-
-.profile-link-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.65rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--page-text-muted);
-  text-decoration: none;
-  background: rgba(148, 163, 184, 0.1);
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
-  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-}
-
-.profile-link-chip:hover {
-  color: var(--page-text);
-  border-color: rgba(34, 211, 238, 0.3);
-  background: rgba(34, 211, 238, 0.08);
-}
-
-.profile-link-chip .v-icon {
-  color: var(--primary);
+  margin-top: 1.4rem;
 }
 
 .action-btn {
   text-transform: none;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0;
 }
 
 .primary-btn {
-  background: var(--primary) !important;
   color: #0f172a !important;
 }
 
@@ -328,175 +229,172 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   color: var(--page-text-muted) !important;
 }
 
-.profile-card {
-  padding: clamp(1.25rem, 2.5vw, 1.9rem);
-  background:
-    radial-gradient(ellipse 90% 70% at 20% 0%, rgba(34, 211, 238, 0.08), transparent 55%),
-    rgba(30, 41, 59, 0.6);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  backdrop-filter: blur(8px);
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
 }
 
-.profile-top {
+.profile-link-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--page-text-muted);
+  text-decoration: none;
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.profile-link-chip:hover {
+  color: var(--page-text);
+  border-color: rgba(34, 211, 238, 0.28);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.hero-proof {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 1rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse 100% 75% at 15% 0%, rgba(34, 211, 238, 0.09), transparent 52%),
+    rgba(30, 41, 59, 0.56);
+  backdrop-filter: blur(10px);
+}
+
+.proof-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
 }
 
 .photo-wrap {
   display: flex;
   justify-content: center;
-  margin: 0;
 }
 
 .profile-photo {
-  width: clamp(230px, 34vw, 310px);
-  height: clamp(230px, 34vw, 310px);
+  width: clamp(144px, 18vw, 198px);
+  height: clamp(144px, 18vw, 198px);
   object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid rgba(34, 211, 238, 0.35);
-  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.4);
-  background: rgba(15, 23, 42, 0.45);
+  border-radius: 22px;
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.35);
 }
 
-.focus-pane {
-  width: 100%;
-  padding: 0.95rem 1rem;
-  background: rgba(15, 23, 42, 0.38);
+.focus-card,
+.strengths-card {
+  padding: 1rem;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.38);
 }
 
-.card-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.875rem;
-  margin-bottom: 0.7rem;
-}
-
-.card-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--primary-muted);
-  border-radius: 10px;
-  color: var(--primary);
-}
-
-.card-title {
+.focus-kicker,
+.strengths-heading {
   margin: 0;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--page-text);
-}
-
-.card-subtitle {
-  margin: 0.2rem 0 0;
-  font-size: 0.77rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--page-text-muted);
-}
-
-.card-focus-copy {
-  margin: 0;
-  max-width: none;
-  font-size: 0.86rem;
-  line-height: 1.6;
-  text-wrap: pretty;
-  color: var(--page-text-muted);
-}
-
-.interests-wrap {
-  margin-top: 0.9rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.interest-badge-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  padding-block: 2px;
-  border-radius: 4px;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-.interest-badge-link:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
-}
-
-.interest-badge {
-  display: block;
-  width: auto;
-  height: 20px;
-}
-
-.divider {
-  margin: 1.1rem 0;
-  height: 1px;
-  background: var(--border-color);
-}
-
-.skill-heading {
-  margin: 0 0 0.65rem;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--primary);
+}
+
+.focus-title {
+  margin: 0.45rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 650;
+  color: var(--page-text);
+}
+
+.focus-copy {
+  margin: 0.65rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
   color: var(--page-text-muted);
 }
 
-.skills-grid {
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.highlight-card {
+  padding: 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.28);
+}
+
+.highlight-icon {
+  color: var(--primary);
+}
+
+.highlight-value {
+  margin: 0.55rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--page-text);
+}
+
+.highlight-label {
+  margin: 0.22rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--page-text-muted);
+}
+
+.strengths-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
 }
 
-.skill-badge-link {
+.strength-chip {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
-  padding-block: 2px;
-  border-radius: 4px;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  padding: 0.42rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--page-text);
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
 }
 
-.skill-badge-link:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
-}
-
-.skill-badge {
-  display: block;
-  width: auto;
-  height: 20px;
-}
-
-@media (width <= 980px) {
+@media (width <= 1080px) {
   .hero-grid {
     grid-template-columns: 1fr;
   }
 
-  .profile-photo {
-    width: clamp(210px, 58vw, 280px);
-    height: clamp(210px, 58vw, 280px);
+  .proof-header {
+    grid-template-columns: 1fr;
   }
 
+  .photo-wrap {
+    justify-content: flex-start;
+  }
 }
 
-@media (width <= 640px) {
-  .profile-card {
-    padding: 1rem;
+@media (width <= 720px) {
+  .highlights-grid {
+    grid-template-columns: 1fr;
   }
 
-  .focus-pane {
-    padding: 0.8rem 0.85rem;
+  .profile-photo {
+    width: 132px;
+    height: 132px;
   }
 }
 </style>

@@ -5,35 +5,50 @@ export const messages = {
   nav: {
     overview: "Inicio",
     cv: "CV",
-    career: "Carrera",
+    career: "Experiencia",
     publications: "Escritura",
-    spotlights: "Spotlights",
-    projects: "Proyectos",
+    spotlights: "Casos",
+    projects: "Delivery",
     profiles: "Perfiles",
     contact: "Contacto",
-    services: "Servicios",
+    services: "Valor",
+    garden: "Jardín",
     ariaLabel: "Navegación principal",
   },
   hero: {
-    eyebrow: "Científico · Ingeniero · Desarrollador",
-    viewPublications: "Ver escritura",
+    eyebrow: "Senior/Staff Engineering · Plataformas de datos · Product Delivery",
+    viewProjects: "Ver delivery",
     openCv: "Abrir CV",
-    readBlog: "Spotlights",
-    researchFocus: "Enfoque investigador",
-    currentInterests: "Áreas de interés actuales",
+    contactMe: "Contactarme",
+    researchFocus: "Dónde creo valor",
+    currentInterests: "Qué construyo mejor",
     currentInterestsDetail:
-      "Modelado climático regional y urbano, ingeniería integral de grandes conjuntos de datos geocientíficos (procesamiento, control de calidad, análisis y visualización) y desarrollo de software de investigación full-stack que hace los datos complejos reproducibles, explorables y útiles para la toma de decisiones.",
-    coreStrengths: "Competencias clave",
+      "Rindo mejor donde producto, datos e ingeniería se encuentran: aplicaciones full-stack, arquitectura de plataformas, automatización y herramientas internas que convierten flujos complejos en software confiable.",
+    coreStrengths: "Stack principal",
+    availability: "Abierto a roles full-time senior/staff",
     orcidLabel: "ORCID",
   },
+  impact: {
+    kicker: "Prueba",
+    heading: "Alcance de ingeniería que un recruiter puede entender en segundos",
+    copy:
+      "Un resumen rápido del alcance que ya he liderado: delivery end-to-end, liderazgo técnico y sistemas intensivos en datos que necesitan tanto criterio de producto como ejecución.",
+  },
   cv: {
-    heading: "Currículum Vitae",
-    professionalAppointments: "Cargos profesionales",
+    kicker: "Perfil profesional",
+    heading: "CV",
+    copy:
+      "Un resumen pensado para recruiters de la experiencia más relevante para roles senior y staff de ingeniería.",
+    profileTitle: "Posicionamiento actual",
+    professionalAppointments: "Experiencia",
     education: "Formación",
-    awardsAndHonors: "Premios y distinciones",
+    awardsAndHonors: "Credenciales destacadas",
   },
   career: {
-    heading: "Carrera científica",
+    kicker: "Experiencia",
+    heading: "Historial de liderazgo y delivery",
+    copy:
+      "Roles en los que asumí arquitectura, entregué sistemas y traduje requisitos complejos en software útil, productos de datos y flujos técnicos.",
   },
   publications: {
     heading: "Publicaciones y escritura",
@@ -61,15 +76,18 @@ export const messages = {
     },
   },
   spotlights: {
-    heading: "Proyecto Spotlights",
-    relatedArticles: "Artículos relacionados",
-    viewProject: "Ver proyecto",
+    heading: "Casos",
+    relatedArticles: "Trabajo relacionado",
+    viewProject: "Abrir caso",
   },
   projects: {
-    heading: "Proyectos de investigación",
+    kicker: "Delivery seleccionado",
+    heading: "Plataformas, productos y sistemas que entregué",
+    copy:
+      "Ejemplos de trabajo end-to-end en frontend, backend, data engineering y delivery técnico transversal.",
     stack: "Tecnologías",
-    outcomes: "Resultados",
-    viewProject: "Ver proyecto",
+    outcomes: "Resultados de negocio y delivery",
+    viewProject: "Abrir proyecto",
     status: {
       Active: "Activo",
       Planning: "En planificación",
@@ -84,8 +102,8 @@ export const messages = {
     heading: "Actividad en GitHub",
   },
   profiles: {
-    heading: "Perfiles vinculados",
-    visitProfile: "Visitar perfil",
+    heading: "Perfiles externos",
+    visitProfile: "Abrir perfil",
     comingSoon: "Próximamente",
     categories: {
       Academic: "Académico",
@@ -95,13 +113,18 @@ export const messages = {
     },
   },
   services: {
-    kicker: "Servicios",
-    heading: "Lo que puedo hacer por ti",
+    kicker: "Lo que aporto",
+    heading: "Cómo contribuyo a nivel senior/staff",
+    copy:
+      "Busco roles full-time de ingeniería donde pueda asumir sistemas críticos, mejorar delivery y ayudar a equipos a convertir complejidad técnica en productos que funcionen.",
   },
   contact: {
     kicker: "Contacto",
-    heading: "Construyamos algo juntos.",
-    copy: "Abierto a colaboraciones de investigación, roles de ingeniería, consultoría y charlas invitadas en ciencia intensiva en datos y software.",
+    heading: "¿Buscan senior o staff engineering?",
+    copy:
+      "Estoy enfocado en roles full-time donde pueda liderar arquitectura, construir sistemas confiables y elevar el nivel técnico en trabajo de producto, datos y plataforma.",
+    primaryCta: "Escribirme por una vacante",
+    secondaryCta: "Revisar mi CV",
     openProfile: "Abrir perfil",
     comingSoon: "Próximamente",
   },
@@ -109,17 +132,65 @@ export const messages = {
     copyright: "© {year} Dr. Benjamin Schmidt",
     location: "Berlín, Alemania",
     builtWith: "Construido con Vue 3, TypeScript y Vuetify.",
-    tagline: "Científico investigador e ingeniero full-stack",
+    tagline: "Senior Full-Stack Engineer | Plataformas de datos y product delivery",
   },
   pages: {
-    cv: { title: "Currículum Vitae", kicker: "Trayectoria profesional", metaTitle: "CV" },
-    career: { title: "Carrera científica", kicker: "Cronología académica", metaTitle: "Carrera" },
-    publications: { title: "Publicaciones y escritura", kicker: "Trabajos seleccionados", metaTitle: "Publicaciones" },
-    spotlights: { title: "Proyecto Spotlights", kicker: "Detrás de los proyectos", metaTitle: "Spotlights" },
-    projects: { title: "Proyectos de investigación", kicker: "Software e iniciativas", metaTitle: "Proyectos" },
-    profiles: { title: "Perfiles vinculados", kicker: "Cuentas e identidad", metaTitle: "Perfiles" },
-    contact: { title: "Contacto", kicker: "Colaboración", metaTitle: "Contacto" },
-    services: { title: "Servicios", kicker: "Ofertas profesionales", metaTitle: "Servicios" },
+    cv: {
+      title: "CV",
+      kicker: "Perfil senior/staff de ingeniería",
+      metaTitle: "CV",
+      copy:
+        "La forma más rápida de entender mi encaje: ownership de arquitectura, delivery orientado a producto y experiencia con sistemas full-stack y de datos.",
+    },
+    career: {
+      title: "Experiencia",
+      kicker: "Liderazgo y delivery",
+      metaTitle: "Experiencia",
+      copy:
+        "Una vista por rol de cómo lideré sistemas, entregué plataformas y traduje requisitos complejos en software funcional.",
+    },
+    publications: {
+      title: "Publicaciones y escritura",
+      kicker: "Escritura técnica e investigación",
+      metaTitle: "Publicaciones",
+      copy:
+        "Una selección de textos, informes técnicos y publicaciones que muestran profundidad en sistemas complejos, pensamiento analítico y comunicación.",
+    },
+    spotlights: {
+      title: "Casos",
+      kicker: "Cómo construyo",
+      metaTitle: "Casos",
+      copy:
+        "Una mirada más narrativa a cómo abordo arquitectura de plataformas, flujos de datos y problemas de ingeniería orientados a producto.",
+    },
+    projects: {
+      title: "Delivery seleccionado",
+      kicker: "Plataformas, productos, sistemas",
+      metaTitle: "Delivery",
+      copy:
+        "Trabajo representativo en full-stack engineering, aplicaciones intensivas en datos, automatización de workflows y liderazgo técnico.",
+    },
+    profiles: {
+      title: "Perfiles externos",
+      kicker: "Presencia pública",
+      metaTitle: "Perfiles",
+      copy:
+        "Un directorio rápido de los lugares donde mi trabajo de ingeniería, trayectoria de investigación y perfil profesional son visibles públicamente.",
+    },
+    contact: {
+      title: "Contacto",
+      kicker: "Oportunidades senior/staff",
+      metaTitle: "Contacto",
+      copy:
+        "Si están contratando para un rol que necesita criterio de producto, profundidad técnica y ownership end-to-end, aquí es donde conviene empezar.",
+    },
+    services: {
+      title: "Lo que aporto",
+      kicker: "Dónde creo valor",
+      metaTitle: "Valor",
+      copy:
+        "Esta página resume el tipo de contribución de ingeniería a nivel staff que quiero aportar dentro de una organización fuerte de producto o plataforma.",
+    },
   },
 };
 
@@ -133,35 +204,63 @@ export const content: SiteContent = {
     { label: "nav.projects", to: "/projects" },
     { label: "nav.profiles", to: "/profiles" },
     { label: "nav.contact", to: "/contact" },
+    { label: "nav.garden", to: "https://garden.benrlschmidt.de", external: true },
   ],
   profile: {
     name: "Dr. Benjamin Schmidt",
-    headline: "Científico investigador e ingeniero full-stack",
+    headline: "Senior Full-Stack Engineer para productos y plataformas intensivos en datos",
     location: "Berlín, Alemania",
     address: "10589 Berlin-Charlottenburg",
     phone: "Por favor, contáctame por correo electrónico",
     email: "benjamin.schmidt@tu-berlin.de",
     orcid: "0000-0002-9669-3360",
     summary:
-      "Lidero, diseño y entrego plataformas de investigación listas para producción — desarrollando aplicaciones web full-stack, pipelines de datos automatizados y resultados revisados por pares a partir de datos científicos complejos.",
+      "Construyo y lidero sistemas de software que convierten flujos complejos de datos en productos confiables. Mi ventaja es el ownership end-to-end en frontend, backend, plataforma y analítica, especialmente donde los equipos necesitan ejecución sólida con alto contexto técnico.",
     interests: [
-      "Ciencia de datos climáticos y ambientales",
-      "Flujos de trabajo computacionales reproducibles",
-      "Aplicaciones web científicas",
-      "Prácticas de investigación abiertas y transparentes",
+      "Ingeniería orientada a producto",
+      "Plataformas de datos y herramientas internas",
+      "Automatización de workflows",
+      "Confiabilidad de plataformas y developer experience",
     ],
     skills: [
       "Python",
-      "R",
       "TypeScript",
       "Vue 3",
+      "Nuxt",
       "FastAPI",
+      "Django",
+      "PostgreSQL",
+      "Docker",
       "Linux",
-      "Analítica de big data",
-      "Administración de sistemas",
-      "Escritura científica",
+      "Arquitectura de sistemas",
     ],
   },
+  impactHighlights: [
+    {
+      icon: "mdi-layers-triple-outline",
+      value: "8+ años",
+      label: "Delivery técnico complejo",
+      detail: "Liderando proyectos entre ingeniería de aplicaciones, sistemas de datos y traducción de investigación a producto.",
+    },
+    {
+      icon: "mdi-web",
+      value: "Varias plataformas",
+      label: "Entregado end-to-end",
+      detail: "Construcción y entrega de plataformas web, dashboards, APIs y tooling de workflows con nivel de producción.",
+    },
+    {
+      icon: "mdi-database-cog-outline",
+      value: "Datos de gran escala",
+      label: "Ingeniería intensiva en datos",
+      detail: "Diseño de pipelines y sistemas de análisis para datos científicos y operativos de alto volumen.",
+    },
+    {
+      icon: "mdi-account-group-outline",
+      value: "Transversal",
+      label: "Traducción entre stakeholders",
+      detail: "Trabajo entre científicos, expertos de dominio, equipos socios y perfiles técnicos para entregar sistemas útiles.",
+    },
+  ],
   careerStages: [
     {
       period: "08/2019 - 02/2026",
