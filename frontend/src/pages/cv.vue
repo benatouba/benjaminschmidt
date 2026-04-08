@@ -17,6 +17,8 @@ const content = useSiteContent();
       :appointments="content.cvAppointments"
       :education="content.education"
       :honors="content.honors"
+      :certifications="content.certifications"
+      :clients="content.selectedClients"
     />
   </PageSectionShell>
 </template>

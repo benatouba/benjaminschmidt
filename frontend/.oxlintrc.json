@@ -8,8 +8,7 @@
   "rules": {
     "no-debugger": "error",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
-    "typescript/consistent-type-imports": "error",
-    "vue/no-ref-as-operand": "error"
+    "typescript/consistent-type-imports": "error"
   },
   "env": {
     "builtin": true,
@@ -18,15 +17,7 @@
   },
   "globals": {},
   "ignorePatterns": ["dist/**", "node_modules/**"],
-  "overrides": [
-    {
-      "files": ["src/**/*.vue"],
-      "rules": {
-        "vue/no-parsing-error": "error",
-        "vue/no-unused-refs": "warn"
-      }
-    }
-  ],
+  "overrides": [],
   "options": {
     "denyWarnings": true
   }

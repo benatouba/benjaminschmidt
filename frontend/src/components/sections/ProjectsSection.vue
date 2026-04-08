@@ -53,6 +53,7 @@ const projectTechBadges = (project: ResearchProject) =>
             <div>
               <p class="project-timeframe">{{ project.timeframe }}</p>
               <h3 class="project-title">{{ project.name }}</h3>
+              <p v-if="project.role" class="project-role">{{ project.role }}</p>
             </div>
             <span class="status-badge" :style="{ '--status-color': projectStatusColor(project.status) }">
               {{ t(`projects.status.${project.status}`) }}
@@ -157,6 +158,12 @@ const projectTechBadges = (project: ResearchProject) =>
   font-weight: 650;
   line-height: 1.35;
   color: var(--page-text);
+}
+
+.project-role {
+  margin: 0.3rem 0 0;
+  font-size: 0.82rem;
+  color: var(--page-text-muted);
 }
 
 .status-badge {

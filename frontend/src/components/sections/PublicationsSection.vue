@@ -1,80 +1,18 @@
 <script setup lang="ts">
-import { resolveKnownTechBadge } from "@/data/techBadges";
-import { computed, ref } from "vue";
+import { computed, ref, watchEffect } from "vue";
 import { useI18n } from "vue-i18n";
 
-import type { ArticleHistoryItem, PublicationItem } from "@/types/site";
-
-type WritingKind =
-  | "Journal"
-  | "Conference"
-  | "Preprint"
-  | "Book Chapter"
-  | "Thesis"
-  | "Technical Report"
-  | "Article"
-  | "Interview"
-  | "Editorial"
-  | "Review";
-
-interface WritingEntry {
-  id: string;
-  title: string;
-  outlet: string;
-  kind: WritingKind;
-  authors?: string;
-  summary: string;
-  tags: string[];
-  link?: string;
-  doi?: string;
-  releaseDate: string;
-}
-
-const normalizeTitle = (value: string) =>
-  value
-    .toLowerCase()
-    .replaceAll(/[\u2010-\u2015]/g, "-")
-    .replaceAll(/[^a-z0-9]+/g, " ")
-    .trim();
-
-const isPreprintEntry = (entry: WritingEntry) =>
-  entry.kind === "Preprint" || /preprint|egusphere|essoar/i.test(`${entry.outlet} ${entry.link ?? ""}`);
-
-const kindPriority: Record<WritingKind, number> = {
-  Journal: 1,
-  Article: 2,
-  Conference: 3,
-  "Book Chapter": 4,
-  Review: 5,
-  Editorial: 6,
-  Interview: 7,
-  "Technical Report": 8,
-  Thesis: 9,
-  Preprint: 10,
-};
-
-const shouldPreferEntry = (candidate: WritingEntry, current: WritingEntry) => {
-  const candidatePriority = kindPriority[candidate.kind];
-  const currentPriority = kindPriority[current.kind];
-
-  if (candidatePriority !== currentPriority) {
-    return candidatePriority < currentPriority;
-  }
-
-  return candidate.releaseDate > current.releaseDate;
-};
+import type { PublicationInsight, PublicationKind } from "@/types/site";
 
 const props = defineProps<{
-  publications: PublicationItem[];
-  writing: ArticleHistoryItem[];
+  insights: PublicationInsight[];
 }>();
 
 const { t } = useI18n({ useScope: "global" });
 
-const kindFilter = ref<"All" | WritingKind>("All");
+const kindFilter = ref<"All" | PublicationKind>("All");
 
-const writingKinds: Array<"All" | WritingKind> = [
-  "All",
+const preferredKinds: PublicationKind[] = [
   "Journal",
   "Conference",
   "Preprint",
@@ -87,66 +25,22 @@ const writingKinds: Array<"All" | WritingKind> = [
   "Review",
 ];
 
-const toIsoFromYear = (year: number) => `${year}-01-01`;
-
-const mergedEntries = computed<WritingEntry[]>(() => {
-  const publications = props.publications.map((entry) => ({
-    id: `pub:${entry.title}:${entry.year}`,
-    title: entry.title,
-    outlet: entry.venue,
-    kind: entry.kind,
-    authors: entry.authors,
-    summary: entry.summary,
-    tags: entry.tags,
-    link: entry.link,
-    doi: entry.doi,
-    releaseDate: toIsoFromYear(entry.year),
-  }));
-
-  const writing = props.writing.map((entry) => ({
-    id: `writing:${entry.title}:${entry.published}`,
-    title: entry.title,
-    outlet: entry.outlet,
-    kind: entry.kind,
-    authors: entry.authors,
-    summary: entry.summary,
-    tags: entry.tags,
-    link: entry.link,
-    doi: entry.doi,
-    releaseDate: entry.published,
-  }));
-
-  const merged = [...publications, ...writing].sort((a, b) =>
-    b.releaseDate.localeCompare(a.releaseDate),
-  );
-
-  const titlesWithPublishedVersion = new Set(
-    merged.filter((entry) => !isPreprintEntry(entry)).map((entry) => normalizeTitle(entry.title)),
-  );
-
-  const bestByTitle = new Map<string, WritingEntry>();
-
-  for (const entry of merged) {
-    const normalizedTitle = normalizeTitle(entry.title);
-
-    if (isPreprintEntry(entry) && titlesWithPublishedVersion.has(normalizedTitle)) {
-      continue;
-    }
-
-    const current = bestByTitle.get(normalizedTitle);
-    if (!current || shouldPreferEntry(entry, current)) {
-      bestByTitle.set(normalizedTitle, entry);
-    }
-  }
-
-  return [...bestByTitle.values()].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate));
-});
+const writingKinds = computed<Array<"All" | PublicationKind>>(() => [
+  "All",
+  ...preferredKinds.filter((kind) => props.insights.some((entry) => entry.kind === kind)),
+]);
 
 const filteredEntries = computed(() =>
-  mergedEntries.value.filter((entry) => kindFilter.value === "All" || entry.kind === kindFilter.value),
+  props.insights.filter((entry) => kindFilter.value === "All" || entry.kind === kindFilter.value),
 );
 
-const kindLabel = (kind: "All" | WritingKind) => {
+watchEffect(() => {
+  if (kindFilter.value !== "All" && !writingKinds.value.includes(kindFilter.value)) {
+    kindFilter.value = "All";
+  }
+});
+
+const kindLabel = (kind: "All" | PublicationKind) => {
   if (kind === "All") return t("publications.filterAll");
 
   const publicationKinds = [
@@ -164,49 +58,18 @@ const kindLabel = (kind: "All" | WritingKind) => {
 
   return t(`articles.kinds.${kind}`);
 };
-
-const entryTagBadges = (entry: WritingEntry) =>
-  entry.tags
-    .map((tag) => {
-      const badge = resolveKnownTechBadge(tag);
-      if (!badge) return null;
-
-      return {
-        key: `${entry.id}:${tag}`,
-        ...badge,
-      };
-    })
-    .filter((badge): badge is NonNullable<typeof badge> => badge !== null);
-
-const formattedReleaseDate = (value: string) => {
-  const parsed = new Date(value);
-
-  if (Number.isNaN(parsed.getTime())) {
-    return value;
-  }
-
-  const isYearOnly = value.endsWith("-01-01");
-
-  if (isYearOnly) {
-    return String(parsed.getUTCFullYear());
-  }
-
-  return parsed.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "2-digit",
-  });
-};
 </script>
 
 <template>
   <section id="publications" class="section-block section-anchor">
     <v-container fluid>
       <div class="section-heading reveal-up" style="--delay: 40ms">
+        <p class="kicker">{{ t("publications.kicker") }}</p>
         <h2>{{ t("publications.heading") }}</h2>
+        <p class="section-copy">{{ t("publications.copy") }}</p>
       </div>
 
-      <div class="filter-bar reveal-up" style="--delay: 100ms">
+      <div v-if="insights.length" class="filter-bar reveal-up" style="--delay: 100ms">
         <button
           v-for="kind in writingKinds"
           :key="kind"
@@ -217,10 +80,10 @@ const formattedReleaseDate = (value: string) => {
         </button>
       </div>
 
-      <div class="publications-grid">
+      <div v-if="filteredEntries.length" class="publications-grid">
         <article
           v-for="(entry, index) in filteredEntries"
-          :key="entry.id"
+          :key="entry.slug"
           class="publication-card reveal-up"
           :style="`--delay: ${160 + index * 50}ms`"
         >
@@ -229,8 +92,8 @@ const formattedReleaseDate = (value: string) => {
               <v-icon icon="mdi-file-document-outline" size="18" />
             </div>
             <div class="card-meta">
+              <p class="publication-venue">{{ entry.outlet }} · {{ entry.published.slice(0, 4) }}</p>
               <h3 class="publication-title">{{ entry.title }}</h3>
-              <p class="publication-venue">{{ entry.outlet }} - {{ formattedReleaseDate(entry.releaseDate) }}</p>
               <p v-if="entry.authors" class="publication-authors">{{ entry.authors }}</p>
             </div>
           </div>
@@ -240,48 +103,48 @@ const formattedReleaseDate = (value: string) => {
             <span v-if="entry.doi" class="doi-badge">{{ t("publications.doi") }} {{ entry.doi }}</span>
           </div>
 
-          <p class="publication-summary">{{ entry.summary }}</p>
+          <p class="publication-summary">{{ entry.oneLiner }}</p>
 
-          <div v-if="entryTagBadges(entry).length" class="tags-wrap">
-            <a
-              v-for="badge in entryTagBadges(entry)"
-              :key="badge.key"
-              :href="badge.href"
-              :target="badge.href ? '_blank' : undefined"
-              :rel="badge.href ? 'noreferrer' : undefined"
-              class="tag-badge-link"
-            >
-              <img
-                :src="badge.image"
-                :alt="badge.label"
-                :width="badge.width ?? 80"
-                :height="badge.height ?? 20"
-                loading="lazy"
-                decoding="async"
-                class="tag-badge"
-              />
-            </a>
+          <ul class="findings-list">
+            <li v-for="finding in entry.findings.slice(0, 3)" :key="finding">
+              {{ finding }}
+            </li>
+          </ul>
+
+          <div class="metrics-wrap">
+            <span v-for="metric in entry.metrics.slice(0, 3)" :key="metric" class="metric-chip">{{ metric }}</span>
           </div>
 
-          <a
-            v-if="entry.link"
-            :href="entry.link"
-            target="_blank"
-            rel="noreferrer"
-            class="publication-link"
-          >
+          <RouterLink :to="`/publications/${entry.slug}`" class="publication-link">
             {{ t("publications.read") }}
-            <v-icon icon="mdi-arrow-top-right" size="16" />
-          </a>
+            <v-icon icon="mdi-arrow-right" size="16" />
+          </RouterLink>
         </article>
+      </div>
+
+      <div v-else class="empty-state reveal-up" style="--delay: 160ms">
+        <p>{{ t("publications.empty") }}</p>
       </div>
     </v-container>
   </section>
 </template>
 
 <style scoped>
-.section-heading {
-  margin-bottom: 1.2rem;
+.kicker {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.section-copy {
+  margin: 0.55rem 0 0;
+  max-width: 70ch;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--page-text-muted);
 }
 
 .filter-bar {
@@ -300,12 +163,6 @@ const formattedReleaseDate = (value: string) => {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.filter-btn:hover {
-  color: var(--page-text);
-  background: rgba(148, 163, 184, 0.1);
 }
 
 .filter-btn.active {
@@ -318,28 +175,21 @@ const formattedReleaseDate = (value: string) => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
   gap: 1rem;
-  align-items: stretch;
 }
 
 .publication-card {
   display: flex;
   flex-direction: column;
   padding: 1.2rem;
-  height: 100%;
-  background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  transition: border-color 0.2s ease;
-}
-
-.publication-card:hover {
-  border-color: rgba(34, 211, 238, 0.3);
+  background: rgba(30, 41, 59, 0.5);
 }
 
 .card-header {
   display: flex;
   gap: 0.75rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.65rem;
 }
 
 .card-icon {
@@ -348,37 +198,38 @@ const formattedReleaseDate = (value: string) => {
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: var(--primary-muted);
   border-radius: 8px;
+  background: var(--primary-muted);
   color: var(--primary);
   flex-shrink: 0;
 }
 
 .card-meta {
-  flex: 1;
   min-width: 0;
 }
 
-.publication-title {
+.publication-venue {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.76rem;
   font-weight: 600;
-  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.publication-title {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.45;
   color: var(--page-text);
 }
 
-.publication-venue {
-  margin: 0.2rem 0 0;
-  font-size: 0.8rem;
-  color: var(--page-text-muted);
-}
-
 .publication-authors {
-  margin: 0.15rem 0 0;
-  font-size: 0.75rem;
-  line-height: 1.5;
+  margin: 0.35rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.55;
   color: var(--page-text-muted);
-  font-style: italic;
 }
 
 .meta-badges {
@@ -388,78 +239,72 @@ const formattedReleaseDate = (value: string) => {
   margin-bottom: 0.75rem;
 }
 
-.kind-badge {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-muted);
-  border-radius: 4px;
+.kind-badge,
+.doi-badge,
+.metric-chip {
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
 }
 
-.doi-badge {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 500;
+.kind-badge {
+  color: var(--primary);
+  background: var(--primary-muted);
+}
+
+.doi-badge,
+.metric-chip {
   color: var(--page-text-muted);
-  background: rgba(148, 163, 184, 0.1);
+  background: rgba(148, 163, 184, 0.08);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
 }
 
 .publication-summary {
   margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: 0.88rem;
+  line-height: 1.65;
   color: var(--page-text-muted);
 }
 
-.tags-wrap {
-  margin-top: 0.7rem;
+.findings-list {
+  margin: 0.75rem 0 0;
+  padding: 0 0 0 1.05rem;
+  font-size: 0.84rem;
+  line-height: 1.7;
+  color: var(--page-text-muted);
+}
+
+.metrics-wrap {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-}
-
-.tag-badge-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  padding-block: 2px;
-  border-radius: 4px;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-.tag-badge-link:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
-}
-
-.tag-badge {
-  display: block;
-  width: auto;
-  height: 20px;
+  margin-top: 0.8rem;
 }
 
 .publication-link {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  text-decoration: underline;
-  text-decoration-color: rgba(34, 211, 238, 0.4);
-  text-underline-offset: 3px;
   margin-top: auto;
-  padding-top: 0.8rem;
+  padding-top: 0.9rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--primary);
   text-decoration: none;
-  transition: opacity 0.15s ease;
 }
 
-.publication-link:hover {
-  opacity: 0.8;
-  text-decoration-color: var(--primary);
+.empty-state {
+  padding: 1.1rem 1.15rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: rgba(30, 41, 59, 0.5);
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--page-text-muted);
 }
 
 @media (width <= 640px) {

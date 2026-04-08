@@ -74,6 +74,13 @@ declare module 'vue-router/auto-routes' {
       '/publications',
       Record<never, never>,
       Record<never, never>,
+      | '/publications/[slug]'
+    >,
+    '/publications/[slug]': RouteRecordInfo<
+      '/publications/[slug]',
+      '/publications/:slug',
+      { slug: ParamValue<true> },
+      { slug: ParamValue<false> },
       | never
     >,
     '/services': RouteRecordInfo<
@@ -142,6 +149,13 @@ declare module 'vue-router/auto-routes' {
     'src/pages/publications.vue': {
       routes:
         | '/publications'
+        | '/publications/[slug]'
+      views:
+        | 'default'
+    }
+    'src/pages/publications/[slug].vue': {
+      routes:
+        | '/publications/[slug]'
       views:
         | never
     }

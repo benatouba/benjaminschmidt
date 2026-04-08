@@ -32,6 +32,18 @@ export interface CareerStage {
   focusAreas: string[];
 }
 
+export type PublicationKind =
+  | "Journal"
+  | "Conference"
+  | "Preprint"
+  | "Book Chapter"
+  | "Thesis"
+  | "Technical Report"
+  | "Article"
+  | "Interview"
+  | "Editorial"
+  | "Review";
+
 export interface PublicationItem {
   title: string;
   venue: string;
@@ -44,10 +56,29 @@ export interface PublicationItem {
   doi?: string;
 }
 
+export interface PublicationInsight {
+  slug: string;
+  title: string;
+  outlet: string;
+  published: string;
+  kind: PublicationKind;
+  authors?: string;
+  summary: string;
+  tags: string[];
+  doi?: string;
+  link?: string;
+  oneLiner: string;
+  findings: string[];
+  whyItMatters: string;
+  recruiterTakeaway: string;
+  metrics: string[];
+}
+
 export interface ResearchProject {
   name: string;
   status: "Active" | "Planning" | "Completed";
   timeframe: string;
+  role?: string;
   summary: string;
   stack: string[];
   outcomes: string[];
@@ -100,6 +131,13 @@ export interface HonorEntry {
   description: string;
 }
 
+export interface CertificationEntry {
+  year?: string;
+  title: string;
+  issuer: string;
+  description: string;
+}
+
 export interface ArticleHistoryItem {
   title: string;
   outlet: string;
@@ -143,21 +181,30 @@ export interface ResearchService {
   ctaHref?: string;
 }
 
+export interface SelectedClient {
+  name: string;
+  note: string;
+}
+
 export interface SiteContent {
   navItems: NavigationItem[];
   profile: ProfileInfo;
   impactHighlights: ImpactHighlight[];
   careerStages: CareerStage[];
   publications: PublicationItem[];
+  publicationInsights: PublicationInsight[];
   projects: ResearchProject[];
   skillBadges?: SkillBadge[];
   githubStats?: GitHubStatCard[];
   cvAppointments: CvAppointment[];
   education: EducationEntry[];
   honors: HonorEntry[];
+  certifications: CertificationEntry[];
   articleHistory: ArticleHistoryItem[];
   blogPosts: BlogPost[];
   externalProfiles: ExternalProfileLink[];
   services: ResearchService[];
+  infrastructure: ResearchService[];
+  selectedClients: SelectedClient[];
   contactLinks: ContactLink[];
 }

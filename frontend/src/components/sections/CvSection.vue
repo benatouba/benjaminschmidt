@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
-import type { CvAppointment, EducationEntry, HonorEntry, ImpactHighlight, ProfileInfo } from "@/types/site";
+import type {
+  CertificationEntry,
+  CvAppointment,
+  EducationEntry,
+  HonorEntry,
+  ImpactHighlight,
+  ProfileInfo,
+  SelectedClient,
+} from "@/types/site";
 
 const props = withDefaults(defineProps<{
   profile: ProfileInfo;
@@ -9,6 +17,8 @@ const props = withDefaults(defineProps<{
   appointments: CvAppointment[];
   education: EducationEntry[];
   honors: HonorEntry[];
+  certifications: CertificationEntry[];
+  clients: SelectedClient[];
   showHeading?: boolean;
 }>(), {
   showHeading: true,
@@ -93,6 +103,33 @@ const { t } = useI18n({ useScope: "global" });
                 <h4 class="list-title">{{ honor.title }}</h4>
                 <p class="list-subtitle">{{ honor.issuer }} · {{ honor.year }}</p>
                 <p class="list-detail">{{ honor.description }}</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="cv-card">
+            <h3 class="card-title">{{ t("cv.certifications") }}</h3>
+            <div class="list-stack compact">
+              <article
+                v-for="certification in props.certifications"
+                :key="`${certification.year}-${certification.title}`"
+                class="list-item"
+              >
+                <h4 class="list-title">{{ certification.title }}</h4>
+                <p class="list-subtitle">
+                  {{ certification.issuer }}<template v-if="certification.year"> · {{ certification.year }}</template>
+                </p>
+                <p class="list-detail">{{ certification.description }}</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="cv-card">
+            <h3 class="card-title">{{ t("cv.selectedClients") }}</h3>
+            <div class="client-list">
+              <article v-for="client in props.clients" :key="client.name" class="client-item">
+                <h4 class="list-title">{{ client.name }}</h4>
+                <p class="list-detail">{{ client.note }}</p>
               </article>
             </div>
           </div>
@@ -269,6 +306,22 @@ const { t } = useI18n({ useScope: "global" });
 
 .compact .list-item {
   padding: 0.85rem 0.95rem;
+}
+
+.client-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.client-item {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.client-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 @media (width <= 920px) {

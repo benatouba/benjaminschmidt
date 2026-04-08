@@ -6,55 +6,90 @@ export const messages = {
     overview: "Inicio",
     cv: "CV",
     career: "Experiencia",
-    publications: "Escritura",
+    publications: "Investigación",
     spotlights: "Casos",
-    projects: "Delivery",
+    projects: "Proyectos",
     profiles: "Perfiles",
     contact: "Contacto",
-    services: "Valor",
+    services: "Liderazgo técnico",
     garden: "Jardín",
     ariaLabel: "Navegación principal",
   },
   hero: {
-    eyebrow: "Senior/Staff Engineering · Plataformas de datos · Product Delivery",
-    viewProjects: "Ver delivery",
+    eyebrow: "Senior Full-Stack Engineering · Plataformas de datos · Infraestructura",
+    viewProjects: "Ver proyectos",
     openCv: "Abrir CV",
     contactMe: "Contactarme",
-    researchFocus: "Dónde creo valor",
-    currentInterests: "Qué construyo mejor",
+    researchFocus: "En qué estoy ahora",
+    currentInterests: "Qué estoy entregando hoy",
     currentInterestsDetail:
-      "Rindo mejor donde producto, datos e ingeniería se encuentran: aplicaciones full-stack, arquitectura de plataformas, automatización y herramientas internas que convierten flujos complejos en software confiable.",
+      "En Alganize lidero el frente científico y de datos del negocio y al mismo tiempo sigo trabajando directamente en flujos de producto, informes, analítica y ejecución. Más allá de eso, construyo productos y plataformas intensivos en datos sobre frontends Vue/Nuxt, backends FastAPI/Django e infraestructura Linux y cercana a HPC, especialmente en contextos donde hacen falta profundidad técnica y comunicación clara al mismo tiempo.",
     coreStrengths: "Stack principal",
-    availability: "Abierto a roles full-time senior/staff",
+    availability: "Abierto a roles senior o staff a tiempo completo",
     orcidLabel: "ORCID",
   },
   impact: {
     kicker: "Prueba",
-    heading: "Alcance de ingeniería que un recruiter puede entender en segundos",
+    heading: "Un perfil basado en sistemas entregados, no en frases vacías",
     copy:
-      "Un resumen rápido del alcance que ya he liderado: delivery end-to-end, liderazgo técnico y sistemas intensivos en datos que necesitan tanto criterio de producto como ejecución.",
+      "La señal más fuerte que puedo ofrecer a responsables de contratación y líderes técnicos es amplitud con evidencia: ejecución full-stack, trabajo profundo con datos, criterio de infraestructura y capacidad para convertir dominios complejos en sistemas confiables.",
+  },
+  clients: {
+    kicker: "Clientes seleccionados",
+    heading: "Confianza en entornos científicos, públicos y aplicados",
+    copy:
+      "Además de mis roles institucionales, he trabajado con clientes de investigación, clima y análisis aplicado que necesitaban ejecución técnica sólida y comunicación clara bajo restricciones reales.",
+  },
+  infrastructure: {
+    kicker: "Profundidad técnica",
+    heading: "Experiencia en sistemas, almacenamiento y HPC que la mayoría de perfiles full-stack no tienen",
+    copy:
+      "Mi trabajo no termina en la capa de aplicación. También tengo experiencia práctica en administración Linux, almacenamiento distribuido, automatización y entornos cercanos a HPC, incluyendo BeeGFS, InfiniBand, SaltStack y operaciones con Proxmox.",
+  },
+  publicationHighlights: {
+    kicker: "Analítica validada",
+    heading: "Investigación como evidencia de profundidad técnica, disciplina de validación y pensamiento sistémico",
+    copy:
+      "Estas publicaciones no están aquí como adorno académico. Sirven para mostrar que puedo construir sistemas analíticos, validarlos frente a observaciones reales, cuantificar incertidumbre con rigor y explicar qué significan realmente los resultados.",
+    openDetail: "Abrir análisis detallado",
+    viewAll: "Ver todos los análisis de publicaciones",
+  },
+  publicationDetail: {
+    openSource: "Abrir publicación",
+    openDoi: "Abrir DOI",
+    mainFindings: "Hallazgos principales",
+    whyItMatters: "Por qué importa",
+    recruiterTakeaway: "Qué demuestra",
+    keyMetrics: "Métricas y datos clave",
+    backToPublications: "Volver a todos los análisis de publicaciones",
   },
   cv: {
     kicker: "Perfil profesional",
     heading: "CV",
     copy:
-      "Un resumen pensado para recruiters de la experiencia más relevante para roles senior y staff de ingeniería.",
+      "Un resumen compacto y útil para selección y contratación de la experiencia más relevante para roles senior y staff en entornos de producto, plataforma, datos e infraestructura.",
     profileTitle: "Posicionamiento actual",
     professionalAppointments: "Experiencia",
     education: "Formación",
-    awardsAndHonors: "Credenciales destacadas",
+    awardsAndHonors: "Distinciones académicas",
+    certifications: "Certificaciones",
+    selectedClients: "Clientes seleccionados",
   },
   career: {
     kicker: "Experiencia",
-    heading: "Historial de liderazgo y delivery",
+    heading: "Roles en los que entregué sistemas, lideré trabajo técnico y traduje dominios complejos en software",
     copy:
-      "Roles en los que asumí arquitectura, entregué sistemas y traduje requisitos complejos en software útil, productos de datos y flujos técnicos.",
+      "El hilo conductor de mi trayectoria no es una academia estrecha, sino la responsabilidad técnica en entornos intensivos en datos y conocimiento especializado, donde ingeniería, criterio y comunicación importan al mismo tiempo.",
   },
   publications: {
-    heading: "Publicaciones y escritura",
-    read: "Leer",
+    kicker: "Investigación y profundidad técnica",
+    heading: "Análisis detallados de mis publicaciones",
+    copy:
+      "Una lectura más profunda del trabajo detrás de la lista de publicaciones: qué encontró cada estudio, por qué importa y qué muestra sobre mis fortalezas técnicas y analíticas.",
+    read: "Leer análisis detallado",
     doi: "DOI",
     filterAll: "Todas",
+    empty: "Ningún análisis de publicaciones coincide con el filtro actual.",
     kinds: {
       Journal: "Revista",
       Conference: "Conferencia",
@@ -81,12 +116,12 @@ export const messages = {
     viewProject: "Abrir caso",
   },
   projects: {
-    kicker: "Delivery seleccionado",
-    heading: "Plataformas, productos y sistemas que entregué",
+    kicker: "Proyectos seleccionados",
+    heading: "Productos, plataformas y sistemas que realmente construí",
     copy:
-      "Ejemplos de trabajo end-to-end en frontend, backend, data engineering y delivery técnico transversal.",
+      "La versión más sólida de mi perfil es concreta: plataformas geoespaciales, sistemas B2B, portales de datos, ingeniería de datos climáticos e infraestructura basada en estándares para flujos complejos.",
     stack: "Tecnologías",
-    outcomes: "Resultados de negocio y delivery",
+    outcomes: "Qué entregué",
     viewProject: "Abrir proyecto",
     status: {
       Active: "Activo",
@@ -96,7 +131,7 @@ export const messages = {
   },
   skills: {
     heading: "Kit técnico",
-    copy: "Un resumen compacto de tecnologías que uso en software científico, plataformas de datos y flujos de trabajo reproducibles.",
+    copy: "Un resumen compacto de tecnologías que uso en software científico, plataformas de datos y flujos reproducibles.",
   },
   github: {
     heading: "Actividad en GitHub",
@@ -113,16 +148,16 @@ export const messages = {
     },
   },
   services: {
-    kicker: "Lo que aporto",
-    heading: "Cómo contribuyo a nivel senior/staff",
+    kicker: "Liderazgo técnico",
+    heading: "Cómo contribuyo a nivel senior y staff",
     copy:
-      "Busco roles full-time de ingeniería donde pueda asumir sistemas críticos, mejorar delivery y ayudar a equipos a convertir complejidad técnica en productos que funcionen.",
+      "Rindo mejor en roles que necesitan a un ingeniero senior muy práctico y con amplitud real: criterio de producto, ejecución en backend y frontend, profundidad en datos y analítica, y suficiente comprensión de infraestructura para tomar decisiones arquitectónicas sólidas.",
   },
   contact: {
     kicker: "Contacto",
-    heading: "¿Buscan senior o staff engineering?",
+    heading: "¿Están buscando un perfil senior o staff para un entorno complejo?",
     copy:
-      "Estoy enfocado en roles full-time donde pueda liderar arquitectura, construir sistemas confiables y elevar el nivel técnico en trabajo de producto, datos y plataforma.",
+      "Si el rol se mueve entre producto, datos, plataforma y comunicación técnica, vale la pena hablar. Soy especialmente útil donde la complejidad es real y aun así los sistemas tienen que salir adelante.",
     primaryCta: "Escribirme por una vacante",
     secondaryCta: "Revisar mi CV",
     openProfile: "Abrir perfil",
@@ -132,7 +167,7 @@ export const messages = {
     copyright: "© {year} Dr. Benjamin Schmidt",
     location: "Berlín, Alemania",
     builtWith: "Construido con Vue 3, TypeScript y Vuetify.",
-    tagline: "Senior Full-Stack Engineer | Plataformas de datos y product delivery",
+    tagline: "Senior Full-Stack Engineer | Plataformas de datos, infraestructura y sistemas complejos",
   },
   pages: {
     cv: {
@@ -140,56 +175,59 @@ export const messages = {
       kicker: "Perfil senior/staff de ingeniería",
       metaTitle: "CV",
       copy:
-        "La forma más rápida de entender mi encaje: ownership de arquitectura, delivery orientado a producto y experiencia con sistemas full-stack y de datos.",
+        "Un resumen práctico de la experiencia en software, datos, infraestructura, comunicación y liderazgo que puedo aportar en roles senior y staff.",
     },
     career: {
       title: "Experiencia",
-      kicker: "Liderazgo y delivery",
+      kicker: "Liderazgo, ejecución y amplitud técnica",
       metaTitle: "Experiencia",
       copy:
-        "Una vista por rol de cómo lideré sistemas, entregué plataformas y traduje requisitos complejos en software funcional.",
+        "Una vista por rol de cómo lideré trabajo técnico, construí sistemas y operé en entornos donde software, conocimiento especializado y comunicación tenían que funcionar juntos.",
     },
     publications: {
-      title: "Publicaciones y escritura",
-      kicker: "Escritura técnica e investigación",
-      metaTitle: "Publicaciones",
+      title: "Investigación",
+      kicker: "Profundidad técnica con evidencia sólida",
+      metaTitle: "Investigación",
       copy:
-        "Una selección de textos, informes técnicos y publicaciones que muestran profundidad en sistemas complejos, pensamiento analítico y comunicación.",
+        "Una lectura sustancial de mi investigación y escritura técnica presentada como evidencia de rigor analítico, validación de modelos, razonamiento espacial y mentalidad de producto de datos.",
+      notFoundTitle: "Análisis de publicación no encontrado",
+      notFoundCopy:
+        "El análisis de publicación solicitado no existe en este idioma o todavía no se ha añadido. Vuelve a la vista general de investigación para revisar los análisis disponibles.",
     },
     spotlights: {
       title: "Casos",
       kicker: "Cómo construyo",
       metaTitle: "Casos",
       copy:
-        "Una mirada más narrativa a cómo abordo arquitectura de plataformas, flujos de datos y problemas de ingeniería orientados a producto.",
+        "Una mirada más narrativa a cómo abordo sistemas de producto, flujos intensivos en datos e implementaciones técnicamente exigentes.",
     },
     projects: {
-      title: "Delivery seleccionado",
+      title: "Proyectos",
       kicker: "Plataformas, productos, sistemas",
-      metaTitle: "Delivery",
+      metaTitle: "Proyectos",
       copy:
-        "Trabajo representativo en full-stack engineering, aplicaciones intensivas en datos, automatización de workflows y liderazgo técnico.",
+        "Trabajo representativo en ingeniería full-stack, sistemas de datos climáticos y científicos, flujos B2B y plataformas geoespaciales.",
     },
     profiles: {
       title: "Perfiles externos",
-      kicker: "Presencia pública",
+      kicker: "Trayectoria pública verificable",
       metaTitle: "Perfiles",
       copy:
-        "Un directorio rápido de los lugares donde mi trabajo de ingeniería, trayectoria de investigación y perfil profesional son visibles públicamente.",
+        "Lugares donde mi código, mi investigación, mis publicaciones y mi perfil profesional son visibles y verificables públicamente.",
     },
     contact: {
       title: "Contacto",
-      kicker: "Oportunidades senior/staff",
+      kicker: "Oportunidades senior y staff",
       metaTitle: "Contacto",
       copy:
-        "Si están contratando para un rol que necesita criterio de producto, profundidad técnica y ownership end-to-end, aquí es donde conviene empezar.",
+        "Si están contratando para un rol de ingeniería que requiere amplitud técnica, criterio y responsabilidad end-to-end, este es el punto correcto para empezar.",
     },
     services: {
-      title: "Lo que aporto",
-      kicker: "Dónde creo valor",
-      metaTitle: "Valor",
+      title: "Liderazgo técnico",
+      kicker: "Cómo contribuyo",
+      metaTitle: "Liderazgo técnico",
       copy:
-        "Esta página resume el tipo de contribución de ingeniería a nivel staff que quiero aportar dentro de una organización fuerte de producto o plataforma.",
+        "La combinación de amplitud técnica, profundidad de sistemas, rigor analítico y capacidad de comunicación que aportaría al equipo adecuado.",
     },
   },
 };
@@ -199,99 +237,117 @@ export const content: SiteContent = {
     { label: "nav.overview", to: "/" },
     { label: "nav.cv", to: "/cv" },
     { label: "nav.career", to: "/career" },
-    { label: "nav.publications", to: "/publications" },
-    { label: "nav.spotlights", to: "/spotlights" },
     { label: "nav.projects", to: "/projects" },
+    { label: "nav.publications", to: "/publications" },
     { label: "nav.profiles", to: "/profiles" },
     { label: "nav.contact", to: "/contact" },
     { label: "nav.garden", to: "https://garden.benrlschmidt.de", external: true },
   ],
   profile: {
     name: "Dr. Benjamin Schmidt",
-    headline: "Senior Full-Stack Engineer para productos y plataformas intensivos en datos",
+    headline: "Senior Full-Stack Engineer para productos, plataformas e infraestructura intensivos en datos",
     location: "Berlín, Alemania",
     address: "10589 Berlin-Charlottenburg",
     phone: "Por favor, contáctame por correo electrónico",
     email: "benjamin.schmidt@tu-berlin.de",
     orcid: "0000-0002-9669-3360",
     summary:
-      "Construyo y lidero sistemas de software que convierten flujos complejos de datos en productos confiables. Mi ventaja es el ownership end-to-end en frontend, backend, plataforma y analítica, especialmente donde los equipos necesitan ejecución sólida con alto contexto técnico.",
+      "Construyo y lidero sistemas de software en entornos con un nivel de complejidad técnica poco habitual. Mi principal fortaleza es convertir flujos complejos en productos funcionales, desde frontends con Vue y Nuxt hasta backends con FastAPI y Django, pasando por pipelines automatizados de datos, capas de analítica y visualización, sistemas intensivos en almacenamiento, administración Linux e infraestructura cercana a HPC. Además, tengo amplia experiencia comunicando datos climáticos y científicos.",
     interests: [
-      "Ingeniería orientada a producto",
-      "Plataformas de datos y herramientas internas",
-      "Automatización de workflows",
-      "Confiabilidad de plataformas y developer experience",
+      "Ingeniería full-stack orientada a producto",
+      "Aplicaciones intensivas en datos",
+      "Automatización de flujos de trabajo",
+      "Infraestructura de sistemas y almacenamiento",
     ],
     skills: [
-      "Python",
-      "TypeScript",
       "Vue 3",
       "Nuxt",
+      "TypeScript",
       "FastAPI",
       "Django",
+      "Python",
       "PostgreSQL",
       "Docker",
       "Linux",
-      "Arquitectura de sistemas",
+      "BeeGFS",
+      "SaltStack",
+      "Ansible",
+      "Proxmox",
     ],
   },
   impactHighlights: [
     {
       icon: "mdi-layers-triple-outline",
       value: "8+ años",
-      label: "Delivery técnico complejo",
-      detail: "Liderando proyectos entre ingeniería de aplicaciones, sistemas de datos y traducción de investigación a producto.",
+      label: "Ingeniería en dominios complejos",
+      detail: "Construyendo sistemas en investigación, clima, biotecnología, portales públicos de datos y entornos intensivos en infraestructura.",
     },
     {
       icon: "mdi-web",
-      value: "Varias plataformas",
-      label: "Entregado end-to-end",
-      detail: "Construcción y entrega de plataformas web, dashboards, APIs y tooling de workflows con nivel de producción.",
+      value: "Varios productos entregados",
+      label: "Ejecución full-stack",
+      detail: "Entregué plataformas web, portales públicos de datos, herramientas internas, APIs, dashboards y sistemas de reporting con orientación real a producción.",
     },
     {
       icon: "mdi-database-cog-outline",
       value: "Datos de gran escala",
-      label: "Ingeniería intensiva en datos",
-      detail: "Diseño de pipelines y sistemas de análisis para datos científicos y operativos de alto volumen.",
+      label: "Ingeniería y analítica de datos",
+      detail: "Trabajé con netCDF, xarray, datos geoespaciales, metadatos de investigación, flujos de muestras y pipelines analíticos automatizados.",
     },
     {
-      icon: "mdi-account-group-outline",
-      value: "Transversal",
-      label: "Traducción entre stakeholders",
-      detail: "Trabajo entre científicos, expertos de dominio, equipos socios y perfiles técnicos para entregar sistemas útiles.",
+      icon: "mdi-server-network",
+      value: "Profundidad en infraestructura",
+      label: "Almacenamiento, Linux y operación HPC",
+      detail: "Experiencia práctica con sistemas de archivos distribuidos, administración Linux, InfiniBand y automatización en contextos de cómputo científico.",
     },
   ],
   careerStages: [
-    {
-      period: "08/2019 - 02/2026",
-      title: "Investigador asociado (doctorado)",
-      institution: "Technische Universitat Berlin, Climatología",
-      description:
-        "Lideró programas de investigación climática y del sistema terrestre y entregó plataformas intensivas en datos para análisis, visualización y flujos de publicación.",
-      focusAreas: [
-        "Plataforma web MaRESS (Vue, FastAPI, PostGIS)",
-        "Pipelines y dashboards de datos climáticos DARWIN",
-        "Estándares y herramientas UC2 para datos climáticos urbanos",
-      ],
-    },
-    {
-      period: "10/2019 - actualidad",
-      title: "Docente",
-      institution: "Freie Universitat Berlin y Technische Universitat Berlin",
-      description:
-        "Diseñó e impartió cursos de estadística, climatología, programación científica y análisis de teledetección con enfoque aplicado.",
-      focusAreas: ["Estadística con R", "Programación científica", "Comunicación investigadora"],
-    },
     {
       period: "02/2024 - actualidad",
       title: "Chief Scientific Officer",
       institution: "Alganize GmbH",
       description:
-        "Asesoró a equipos biotecnológicos en comunicación científica y análisis de series temporales, transformando datos en soporte de decisión e informes robustos.",
+        "Lidero la parte científica y orientada a datos de Alganize y al mismo tiempo actúo como colaborador técnico senior en informes, analítica, traducción de requisitos de dominio, lógica de producto y proyectos de software aplicados.",
       focusAreas: [
-        "Consultoría BioTech",
-        "Análisis de series temporales",
-        "Comunicación científica",
+        "Responsabilidad sobre estrategia científica y de datos en proyectos internos y orientados a clientes",
+        "Traducción de requisitos complejos de dominio en flujos de scoring, reporting y producto",
+        "Trabajo entre equipos técnicos, interpretación científica y comunicación de negocio",
+      ],
+    },
+    {
+      period: "08/2019 - 02/2026",
+      title: "Investigador asociado (doctorado)",
+      institution: "Technische Universität Berlin, Climatología",
+      description:
+        "Construí y lideré software intensivo en datos, flujos de ingeniería de datos climáticos y sistemas tipo plataforma en un entorno de investigación altamente técnico, desde productos geoespaciales hasta analítica, infraestructura y herramientas orientadas a usuarios.",
+      focusAreas: [
+        "Lideré MaRESS como plataforma geoespacial full-stack con mapas, grafos, procesamiento PDF/NLP y análisis sobre PostGIS",
+        "Desarrollé herramientas DARWIN para procesamiento netCDF, validación de modelos, análisis de tendencias y analítica climática reproducible",
+        "Entregué sistemas de datos basados en estándares para [UC]² y UCO Berlin en validación, APIs, portales y acceso público a datos",
+      ],
+    },
+    {
+      period: "2019 - actualidad",
+      title: "Ingeniero y consultor independiente",
+      institution: "Clientes científicos y de datos seleccionados",
+      description:
+        "Trabajé con clientes de investigación, instituciones públicas y contextos climáticos que necesitaban ejecución técnica confiable, trabajo con datos y comunicación clara en entornos con alta complejidad de dominio.",
+      focusAreas: [
+        "Trabajé con clientes como farm-food-climate, Freie Universität Berlin y Technische Universität Berlin",
+        "Entregué trabajo técnico en la intersección de software, analítica, comunicación científica e infraestructura",
+        "Funcioné con autonomía en roles con poco contexto inicial y alta exigencia técnica",
+      ],
+    },
+    {
+      period: "10/2019 - actualidad",
+      title: "Docente",
+      institution: "Freie Universität Berlin y Technische Universität Berlin",
+      description:
+        "Diseñé e impartí cursos cuantitativos y de programación intensiva, reforzando mi fortaleza en comunicación, mentoring, pensamiento sistémico y explicación técnica estructurada.",
+      focusAreas: [
+        "Docencia en programación científica, estadística, climatología y teledetección",
+        "Formación de audiencias con perfiles mixtos",
+        "Creación de claridad en contextos interdisciplinares y técnicamente exigentes",
       ],
     },
     {
@@ -299,27 +355,18 @@ export const content: SiteContent = {
       title: "Asistente de investigación",
       institution: "Instituto Potsdam para la Investigación del Impacto Climático (PIK), ISIMIP",
       description:
-        "Diseñó flujos de trabajo de datos climáticos contrafactuales y herramientas estadísticas para archivos de modelos y observaciones a gran escala.",
-      focusAreas: ["Algoritmo ATTRICI", "Datos climáticos contrafactuales", "Python"],
-    },
-    {
-      period: "02/2017 - 01/2019",
-      title: "Asistente de investigación estudiantil",
-      institution: "Humboldt-Universitat zu Berlin, Geografía Climática",
-      description:
-        "Investigó proyecciones de olas de calor y patrones urbanos de estrés térmico en Berlín mediante modelado de mesoescala y flujos de análisis reproducibles.",
+        "Construí bases algorítmicas y de workflows para datos climáticos contrafactuales, fortaleciendo mi base en procesamiento de grandes archivos y en convertir métodos en software útil.",
       focusAreas: [
-        "COSMO-CLM",
-        "Proyecciones climáticas urbanas",
-        "Procesamiento y análisis de datos",
+        "Trabajé en flujos ATTRICI para datos climáticos contrafactuales",
+        "Desarrollé procesamiento fiable en Python sobre archivos de gran escala",
+        "Contribuí a implementaciones técnicas basadas en métodos rigurosos",
       ],
     },
   ],
   publications: [
     {
-      title:
-        "Downscaling dinámico regional y análisis del balance hídrico en diferentes regiones y escalas temporales",
-      venue: "Technische Universitat Berlin",
+      title: "Downscaling dinámico regional y análisis del balance hídrico en diferentes regiones y escalas temporales",
+      venue: "Technische Universität Berlin",
       year: 2025,
       kind: "Thesis",
       authors: "Schmidt, B.",
@@ -329,122 +376,298 @@ export const content: SiteContent = {
       link: "https://depositonce.tu-berlin.de/items/0547b9c5-ea16-4003-af03-fa67e19018d6",
     },
     {
-      title: "MaRESS: Mapeo de la investigación en ciencias del sistema terrestre",
-      venue: "NFDI4Earth Incubator Lab",
+      title: "The Central Europe Refined analysis version 2 (CER v2): evaluating three decades of high-resolution precipitation data for the Berlin-Brandenburg metropolitan region",
+      venue: "Meteorologische Zeitschrift",
       year: 2025,
-      kind: "Technical Report",
-      authors: "Schmidt, B. et al.",
+      kind: "Journal",
+      authors: "Bart, F., Schmidt, B., Wang, X., Holtmann, A., Meier, F., Otto, M., Scherer, D.",
       summary:
-        "Plataforma web y herramientas basadas en grafos para la exploración, análisis y visualización de metadatos de investigación en ciencias del sistema terrestre.",
-      tags: ["Vue", "FastAPI", "PostGIS", "NLP"],
-      link: "https://www.nfdi4earth.de/2participate/incubator-lab",
+        "Evaluación de una reanálisis regional de precipitación de alta resolución y de una configuración de modelo mejorada para Berlín-Brandeburgo.",
+      tags: ["Precipitación", "Clima regional", "Validación"],
+      doi: "10.1127/metz/2024/1233",
+      link: "https://doi.org/10.1127/metz/2024/1233",
     },
     {
-      title: "Estándar de datos climáticos urbanos",
-      venue: "Programa [UC]2",
-      year: 2024,
-      kind: "Technical Report",
-      authors: "Schmidt, B. et al.",
+      title: "Analysis of the Meso-Scale Climate of the Galápagos Archipelago by Dynamical Downscaling of Reanalysis Data",
+      venue: "International Journal of Climatology",
+      year: 2025,
+      kind: "Journal",
+      authors: "Schmidt, B., Turini, N., Otto, M., Delgado Maldonado, B., Bayas López, S. D., Bart, F., Holtmann, A., Bendix, J., Scherer, D.",
       summary:
-        "Especificación y guía de implementación para el manejo estandarizado de conjuntos de datos atmosféricos NetCDF en proyectos de clima urbano.",
-      tags: ["NetCDF", "Estándares de datos", "Clima urbano"],
-      link: "https://uc2-program.org/sites/default/files/inline-files/uc2_datenstandard.pdf",
+        "Validación y análisis de un producto de downscaling de alta resolución para el archipiélago de Galápagos.",
+      tags: ["Downscaling dinámico", "Reanálisis", "Galápagos"],
+      doi: "10.1002/joc.8924",
+      link: "https://doi.org/10.1002/joc.8924",
     },
     {
-      title: "ATTRICI: Construcción de datos climáticos contrafactuales",
-      venue: "ISIMIP",
+      title: "Sensitivity of Water Balance in the Qaidam Basin to the Mid-Pliocene Climate",
+      venue: "Journal of Geophysical Research: Atmospheres",
+      year: 2021,
+      kind: "Journal",
+      authors: "Wang, X., Schmidt, B., Otto, M., Ehlers, T. A., Mutz, S. G., Botsyun, S., Scherer, D.",
+      summary:
+        "Estudio de modelado climático regional sobre cómo la circulación y la topografía modifican el balance hídrico de una cuenca bajo un clima más cálido del pasado.",
+      tags: ["Balance hídrico", "Modelado climático regional", "Plioceno"],
+      doi: "10.1029/2020JD033965",
+      link: "https://doi.org/10.1029/2020JD033965",
+    },
+    {
+      title: "The Spatio-Temporal Cloud Frequency Distribution in the Galapagos Archipelago as Seen from MODIS Cloud Mask Data",
+      venue: "Atmosphere",
       year: 2023,
-      kind: "Technical Report",
-      authors: "Schmidt, B. et al.",
+      kind: "Journal",
+      authors: "Zander, S., Turini, N., Ballari, D., Bayas López, S. D., Célleri, R., Delgado Maldonado, B., Orellana-Alvear, J., Schmidt, B., Scherer, D., Bendix, J.",
       summary:
-        "Marco algorítmico para la generación de conjuntos de datos climáticos contrafactuales a partir de archivos históricos.",
-      tags: ["Datos climáticos", "Análisis contrafactual", "Python"],
-      link: "https://isi-mip.github.io/attrici/attrici.html",
+        "Análisis basado en satélite de cómo cambia la frecuencia de nubes según topografía, estación y condiciones ENSO en Galápagos.",
+      tags: ["MODIS", "Frecuencia de nubes", "Teledetección"],
+      doi: "10.3390/atmos14081225",
+      link: "https://doi.org/10.3390/atmos14081225",
+    },
+  ],
+  publicationInsights: [
+    {
+      slug: "gar-trend-analysis",
+      title: "Tendencias climáticas superficiales y troposféricas en Galápagos a partir de GAR",
+      outlet: "Tesis / análisis GAR",
+      published: "2025-04-01",
+      kind: "Thesis",
+      authors: "Schmidt, B.",
+      summary:
+        "Un análisis de tendencias basado en el conjunto GAR de alta resolución, orientado a separar la variabilidad interanual de los cambios atmosféricos de largo plazo.",
+      tags: ["Tendencias climáticas", "GAR", "Galápagos"],
+      oneLiner:
+        "Usé un conjunto regional de alta resolución para separar la variabilidad fuerte de un año a otro de cambios atmosféricos más sutiles y persistentes.",
+      findings: [
+        "La variabilidad anual de temperatura, humedad y precipitación está fuertemente dominada por ENSO.",
+        "No se detectaron tendencias significativas de largo plazo en las principales variables de superficie analizadas.",
+        "Aun así, la troposfera mostró cambios estructurales asociados al calentamiento, incluida una mayor espesura de capas vinculada al aumento de la temperatura potencial.",
+      ],
+      whyItMatters:
+        "Este trabajo importa porque muestra disciplina para separar señal y ruido en un entorno climático complejo y con escasez de datos. Esa misma mentalidad es clave en analítica robusta y en productos de datos serios.",
+      recruiterTakeaway:
+        "Demuestra rigor analítico, validación cuidadosa y capacidad para sacar conclusiones fiables en sistemas con alta incertidumbre y fuerte variabilidad temporal.",
+      metrics: ["Resolución GAR de ~4 km²", "Sin tendencias significativas en superficie", "Señal de calentamiento troposférico identificada"],
+      link: "https://depositonce.tu-berlin.de/items/0547b9c5-ea16-4003-af03-fa67e19018d6",
+    },
+    {
+      slug: "galapagos-downscaling",
+      title: "Analysis of the Meso-Scale Climate of the Galápagos Archipelago by Dynamical Downscaling of Reanalysis Data",
+      outlet: "International Journal of Climatology",
+      published: "2025-11-15",
+      kind: "Journal",
+      authors: "Schmidt, B., Turini, N., Otto, M., Delgado Maldonado, B., Bayas López, S. D., Bart, F., Holtmann, A., Bendix, J., Scherer, D.",
+      summary:
+        "Un producto de downscaling validado de alta resolución para Galápagos, diseñado para convertir reanálisis globales en información climática local útil.",
+      tags: ["WRF", "Downscaling", "Validación"],
+      doi: "10.1002/joc.8924",
+      oneLiner:
+        "Construí y validé una canalización de análisis climático de alta resolución que traduce entrada global gruesa en información regional específica y usable.",
+      findings: [
+        "El conjunto GAR proporciona un producto climático mesoscalar adaptado a una región con observaciones escasas y desiguales.",
+        "La validación mostró concordancia muy fuerte para temperatura del aire y humedad específica, y de media a fuerte para precipitación diaria.",
+        "Los patrones espaciales del clima dependen fuertemente de la altitud, con precipitación orográfica en la estación seca y convección térmica en la húmeda.",
+      ],
+      whyItMatters:
+        "Es trabajo fundacional de producto de datos: no solo ejecutar un modelo, sino construir algo lo bastante fiable como para servir de base a análisis, planificación e interpretación.",
+      recruiterTakeaway:
+        "Demuestra capacidad de construir sistemas, validarlos frente a mediciones reales y convertir salida computacional en un producto analítico de confianza.",
+      metrics: ["Resolución de 2 km", "Resolución temporal de 2 horas", "WRF v4.3.3", "Validado con observaciones de estaciones"],
+      link: "https://doi.org/10.1002/joc.8924",
+    },
+    {
+      slug: "cer-v2-precipitation",
+      title: "The Central Europe Refined analysis version 2 (CER v2): evaluating three decades of high-resolution precipitation data for the Berlin-Brandenburg metropolitan region",
+      outlet: "Meteorologische Zeitschrift",
+      published: "2025-02-10",
+      kind: "Journal",
+      authors: "Bart, F., Schmidt, B., Wang, X., Holtmann, A., Meier, F., Otto, M., Scherer, D.",
+      summary:
+        "Un estudio de evaluación y mejora de modelo que muestra cómo cambios en el forcing y en la física del modelo mejoraron una reanálisis regional de precipitación de largo plazo.",
+      tags: ["CER v2", "Precipitación", "Validación"],
+      doi: "10.1127/metz/2024/1233",
+      oneLiner:
+        "Mejoré una reanálisis regional de precipitación a varias décadas mediante ajustes sistemáticos de física y comparación rigurosa con observaciones.",
+      findings: [
+        "CER v2 mejoró de forma clara el rendimiento de precipitación frente a la configuración CER anterior.",
+        "La mejor configuración combinó convección Kain-Fritsch con microfísica Thompson.",
+        "CER v2 superó a CER v1 y ERA5 en invierno, primavera y otoño, mientras que el verano siguió siendo el régimen convectivo más difícil.",
+      ],
+      whyItMatters:
+        "Muestra una iteración muy propia de ingeniería: mejorar un sistema, compararlo bien, documentar qué mejora de verdad y reconocer de forma explícita dónde siguen los límites.",
+      recruiterTakeaway:
+        "Demuestra disciplina de benchmarking, mejora medible bajo incertidumbre y capacidad para hacer evolucionar sistemas técnicos de larga vida.",
+      metrics: ["30 años de validación", "94 % menos sesgo mediano anual frente a ERA5", "55 % menos RMSD anual que CER v1", "44 años de cobertura del conjunto"],
+      link: "https://doi.org/10.1127/metz/2024/1233",
+    },
+    {
+      slug: "qaidam-water-balance",
+      title: "Sensitivity of Water Balance in the Qaidam Basin to the Mid-Pliocene Climate",
+      outlet: "Journal of Geophysical Research: Atmospheres",
+      published: "2021-08-27",
+      kind: "Journal",
+      authors: "Wang, X., Schmidt, B., Otto, M., Ehlers, T. A., Mutz, S. G., Botsyun, S., Scherer, D.",
+      summary:
+        "Un estudio de modelado climático regional sobre por qué el balance hídrico de una cuenca cambia bajo un estado climático más cálido.",
+      tags: ["Balance hídrico", "Plioceno", "Modelado climático regional"],
+      doi: "10.1029/2020JD033965",
+      oneLiner:
+        "Usé modelado climático regional de alta resolución para explicar cómo circulación y topografía modifican el balance hídrico de una cuenca bajo un clima más cálido.",
+      findings: [
+        "El clima del Mid-Pliocene aumentó el balance hídrico anual de la cuenca respecto al presente.",
+        "El cambio estuvo impulsado por una mayor entrada de humedad por el oeste y una menor salida por el este.",
+        "El mecanismo vincula cambios de circulación a gran escala con control topográfico regional.",
+      ],
+      whyItMatters:
+        "Este trabajo conecta múltiples escalas de explicación, desde la circulación atmosférica amplia hasta la hidrología de cuenca. Ese tipo de razonamiento sistémico también es muy valioso en analítica avanzada y trabajo de producto.",
+      recruiterTakeaway:
+        "Demuestra pensamiento multiescala, análisis físicamente fundamentado y capacidad para explicar con precisión comportamientos complejos de sistemas.",
+      metrics: ["Publicado en JGR Atmospheres", "Mid-Pliocene con ~400 ppm de CO2", "Downscaling WRF a partir de ECHAM5"],
+      link: "https://doi.org/10.1029/2020JD033965",
+    },
+    {
+      slug: "galapagos-cloud-frequency",
+      title: "The Spatio-Temporal Cloud Frequency Distribution in the Galapagos Archipelago as Seen from MODIS Cloud Mask Data",
+      outlet: "Atmosphere",
+      published: "2023-07-29",
+      kind: "Journal",
+      authors: "Zander, S., Turini, N., Ballari, D., Bayas López, S. D., Célleri, R., Delgado Maldonado, B., Orellana-Alvear, J., Schmidt, B., Scherer, D., Bendix, J.",
+      summary:
+        "Un estudio basado en satélite sobre cómo cambia la frecuencia de nubes según relieve, estación, altitud y ENSO en Galápagos.",
+      tags: ["MODIS", "Frecuencia de nubes", "Teledetección"],
+      doi: "10.3390/atmos14081225",
+      oneLiner:
+        "Analicé patrones de nubosidad a varias escalas para mostrar cómo el relieve, los alisios y ENSO configuran los regímenes de humedad en Galápagos.",
+      findings: [
+        "La frecuencia de nubes varía con fuerza según estación, año, relieve y posición insular, en lugar de comportarse como una señal regional uniforme.",
+        "Las mayores frecuencias aparecen en cotas medias y laderas orientadas al sureste expuestas a los vientos alisios.",
+        "Las condiciones ENSO alteran tanto la nubosidad total como la intensidad de los contrastes topográficos.",
+      ],
+      whyItMatters:
+        "Es un buen ejemplo de análisis de teledetección sensible al relieve que conecta patrones observados con los mecanismos físicos que los explican.",
+      recruiterTakeaway:
+        "Demuestra dominio de teledetección, razonamiento geoespacial y capacidad para extraer estructura útil de grandes conjuntos observacionales.",
+      metrics: ["MODIS Cloud Mask", "Comportamiento diferencial por encima de ~900 m", "Comparación El Niño 2015 vs La Niña 2007"],
+      link: "https://doi.org/10.3390/atmos14081225",
     },
   ],
   projects: [
     {
-      name: "MaRESS: Plataforma de mapeo de investigación del sistema terrestre",
+      name: "Alganize Status",
+      role: "Chief Scientific Officer · liderazgo técnico y de datos",
+      status: "Active",
+      timeframe: "2024 - actualidad",
+      summary:
+        "Una plataforma B2B full-stack con vocación real de producción para analítica de suelos y flujos operativos, incluyendo gestión de campos, ciclo de vida de muestras, reporting, puntuación de salud, recomendaciones, interfaz multilingüe, CI/CD y rutas reales de despliegue.",
+      stack: ["Vue 3", "TypeScript", "FastAPI", "PostgreSQL", "Docker", "GitHub Actions"],
+      outcomes: [
+        "Entregué un flujo de producto basado en roles desde el onboarding hasta el reporting y la gestión documental",
+        "Diseñé flujos de health score, muestras y recomendaciones alineados con necesidades operativas reales",
+        "Actué como CSO cruzando lógica de dominio, estructura de producto, analítica y comunicación técnica",
+      ],
+      link: "https://status.alganize.de",
+    },
+    {
+      name: "MaRESS",
+      role: "Lead engineer en arquitectura de producto e implementación",
       status: "Active",
       timeframe: "2023 - 2026",
       summary:
-        "Lideré el desarrollo de una plataforma web rica en datos para la visualización y exploración de metadatos y relaciones en ciencias del sistema terrestre.",
-      stack: ["Vue.js", "FastAPI", "OpenLayers", "Cytoscape.js", "PostgreSQL", "PostGIS"],
+        "Una plataforma geoespacial full-stack que integra publicaciones desde Zotero, procesa PDFs mediante NLP y OCR, guarda resultados en PostGIS y ofrece exploración interactiva mediante mapas, grafos y flujos de exportación.",
+      stack: ["Vue 3", "TypeScript", "FastAPI", "PostgreSQL", "PostGIS", "Celery", "Redis"],
       outcomes: [
-        "Interfaz interactiva de mapas y grafos",
-        "Flujos de trabajo de metadatos buscables",
-        "Herramientas web científicas reutilizables",
+        "Asumí la arquitectura de frontend, backend, procesamiento asíncrono y flujos geoespaciales",
+        "Implementé funciones GIS como carga de regiones, buffers, clipping y análisis espacial por distancia",
+        "Convertí un problema complejo de descubrimiento de investigación en una plataforma utilizable con lógica de producto",
       ],
       link: "https://www.nfdi4earth.de/2participate/incubator-lab",
     },
     {
-      name: "DARWIN: Dinámica de la precipitación en transición",
-      status: "Completed",
-      timeframe: "2019 - 2026",
-      summary:
-        "Lideré la ingeniería de análisis de datos atmosféricos de alto volumen para investigar la dinámica de fuentes de precipitación y entregar evidencia climática reproducible, incluyendo casos de Galápagos.",
-      stack: ["pandas", "xarray", "NumPy", "Matplotlib", "Plotly", "Panel", "Proxmox", "SaltStack"],
-      outcomes: [
-        "Pipelines automatizados de datos climáticos",
-        "Análisis basado en dashboards",
-        "Publicaciones revisadas por pairs",
-      ],
-      link: "https://vhrz669.hrz.uni-marburg.de/darwin/home.do",
-    },
-    {
-      name: "[UC]2 Clima urbano bajo cambio",
+      name: "[UC]² Data Management System",
+      role: "Full-stack engineer para validación, metadatos y acceso",
       status: "Completed",
       timeframe: "2019 - 2025",
       summary:
-        "Lideré la infraestructura de gestión y visualización de datos para programas de clima urbano, entregando herramientas web y estándares de datos interoperables.",
-      stack: ["Django", "Nuxt", "NetCDF", "Python"],
+        "Un sistema de gestión de datos basado en estándares para conjuntos climáticos UC2, con subida, validación, extracción de metadatos, permisos, búsqueda en catálogo y descarga controlada de productos netCDF.",
+      stack: ["Vue 2", "Vuetify", "Django", "DRF", "Python", "NetCDF"],
       outcomes: [
-        "Plataforma de visualización UCO Berlin",
-        "Flujos de intercambio de datos compartidos",
-        "Estándares de datos a nivel de proyecto",
+        "Implementé ingestión basada en estándares y verificación de conformidad para archivos netCDF UC2",
+        "Construí flujos de metadatos y descarga con control de permisos para instituciones colaboradoras",
+        "Creé una capa fiable de validación e intercambio para operaciones compartidas de datos climáticos urbanos",
+      ],
+      link: "https://dms.klima.tu-berlin.de",
+    },
+    {
+      name: "UCO Berlin",
+      role: "Full-stack engineer para portal público, APIs y vistas en vivo",
+      status: "Completed",
+      timeframe: "2020 - 2025",
+      summary:
+        "Un portal público de datos climáticos urbanos con pila API, búsqueda, exploración geoespacial, integraciones con proveedores, vistas en vivo, productos de radar y entrega SSR.",
+      stack: ["Nuxt", "Vue 3", "Django", "DRF", "PostGIS", "OpenLayers", "Plotly"],
+      outcomes: [
+        "Entregué una experiencia pública de datos climáticos con mapa, tabla, metadatos y descargas",
+        "Integré datos internos UC2 y proveedores externos en un catálogo portal normalizado",
+        "Construí funciones de monitoreo ambiental en vivo y capacidades API para una plataforma observatorio real",
       ],
       link: "https://uco.berlin/",
     },
     {
-      name: "Q-TiP Análisis climático",
+      name: "DARWIN Climate Data Engineering",
+      role: "Lead engineer para procesamiento de datos de modelos y herramientas analíticas",
       status: "Completed",
-      timeframe: "2020 - 2024",
+      timeframe: "2019 - 2026",
       summary:
-        "Diseñé y entregué flujos de modelado para conjuntos de datos climatológicos para investigar dinámicas de puntos de inflexión en sistemas lacustres de Asia Central.",
-      stack: ["WRF", "Python", "Análisis científico de datos"],
+        "Un toolkit de ingeniería de datos climáticos basado en Python y xarray para procesamiento WRF/GAR, remapeo a estaciones, análisis de tendencias, validación de modelos, variables derivadas y visualización de calidad publicable.",
+      stack: ["Python", "xarray", "netCDF", "CDO", "salem", "pandas", "NumPy", "SaltStack"],
       outcomes: [
-        "Evaluaciones climáticas basadas en modelos",
-        "Contribuciones a publicaciones",
-        "Flujos de análisis reutilizables",
+        "Construí flujos reutilizables para grandes archivos de modelos climáticos y comparaciones con estaciones",
+        "Automaticé postprocesado, remapeo y análisis de tendencias sobre datos netCDF",
+        "Sostuve productos analíticos validados y resultados climáticos listos para publicación",
       ],
+      link: "https://vhrz669.hrz.uni-marburg.de/darwin/home.do",
     },
   ],
+  skillBadges: undefined,
+  githubStats: undefined,
   cvAppointments: [
-    {
-      period: "08/2019 - 02/2026",
-      role: "Investigador asociado (doctorado)",
-      institution: "Technische Universitat Berlin, Climatología",
-      location: "Berlín",
-      summary:
-        "Lideré flujos de trabajo climáticos intensivos en datos y entregué aplicaciones web científicas, coordinando resultados de investigación listos para publicación.",
-      highlights: [
-        "Plataforma MaRESS de mapeo del sistema terrestre",
-        "Análisis de datos climáticos DARWIN y dashboards",
-        "Estándares de datos UC2 y herramientas UCO Berlin",
-        "Modelado climático HPC y escritura de publicaciones",
-      ],
-    },
     {
       period: "02/2024 - actualidad",
       role: "Chief Scientific Officer",
       institution: "Alganize GmbH",
       location: "Berlín",
       summary:
-        "Asesoro a equipos biotecnológicos en comunicación científica, análisis de series temporales y reporting orientado a decisiones.",
+        "Responsable del frente científico y de datos de Alganize y participante directo en lógica de producto, reporting, analítica e iniciativas de software técnicamente complejas.",
       highlights: [
-        "Consultoría científica para estudios aplicados",
-        "Análisis de series temporales de datos de estaciones climáticas",
-        "Colaboración interdisciplinaria con equipos técnicos",
+        "Responsabilidad sobre estrategia científica y de datos en proyectos internos y orientados a clientes",
+        "Traducción de requisitos de dominio en flujos de scoring, reporting y producto",
+        "Trabajo como contraparte técnica fuerte entre analítica, producto y comunicación",
+      ],
+    },
+    {
+      period: "08/2019 - 02/2026",
+      role: "Investigador asociado (doctorado)",
+      institution: "Technische Universität Berlin, Climatología",
+      location: "Berlín",
+      summary:
+        "Construí y lideré plataformas full-stack, flujos de ingeniería de datos climáticos, sistemas públicos de datos y herramientas analíticas técnicamente exigentes a lo largo de varios proyectos de largo recorrido.",
+      highlights: [
+        "Lideré la entrega técnica en MaRESS, DARWIN, UC2 DMS y UCO Berlin",
+        "Trabajé en frontend, backend, datos geoespaciales, analítica e infraestructura",
+        "Convertí flujos científicos de alta complejidad en sistemas utilizables, productos validados y pipelines reproducibles",
+        "Conecté implementación, calidad de datos, trabajo publicable y comunicación con stakeholders",
+      ],
+    },
+    {
+      period: "2019 - actualidad",
+      role: "Ingeniero y consultor independiente",
+      institution: "Clientes científicos y de datos seleccionados",
+      location: "Berlín",
+      summary:
+        "Apoyé a clientes en investigación, sector público y clima con ejecución técnica, trabajo con datos y comunicación clara.",
+      highlights: [
+        "Trabajé con clientes como farm-food-climate, Freie Universität Berlin y Technische Universität Berlin",
+        "Apoyé software, analítica y comunicación en contextos especializados",
+        "Rendí bien en roles con alta autonomía y poco margen para una curva de aprendizaje lenta",
       ],
     },
     {
@@ -453,11 +676,11 @@ export const content: SiteContent = {
       institution: "FU Berlin y TU Berlin",
       location: "Berlín",
       summary:
-        "Diseño e imparto cursos cuantitativos y orientados a la programación para investigación ambiental y basada en datos.",
+        "Diseñé e impartí cursos técnicos en programación, estadística, climatología y teledetección para audiencias con perfiles diversos.",
       highlights: [
-        "Estadística 101 y Estadística con R",
-        "Climatología y Atmósfera Urbana",
-        "Programación Científica y Análisis de Teledetección",
+        "Reforcé una capacidad sólida de comunicación y mentoring a través de la docencia técnica",
+        "Estructuré sistemas y métodos complejos en procesos enseñables",
+        "Profundicé la habilidad de explicar contenido técnico difícil con claridad y ajuste al público",
       ],
     },
     {
@@ -466,24 +689,11 @@ export const content: SiteContent = {
       institution: "PIK, ISIMIP",
       location: "Potsdam",
       summary:
-        "Diseñé algoritmos para generar datos climáticos contrafactuales a partir de archivos a gran escala.",
+        "Implementé herramientas algorítmicas y flujos de datos a gran escala para generación de datos climáticos contrafactuales.",
       highlights: [
-        "Diseño y aplicación del algoritmo ATTRICI",
-        "Procesamiento de datos climáticos a gran escala en Python",
-        "Apoyo a los entregables del proyecto ISI-CFACT",
-      ],
-    },
-    {
-      period: "02/2017 - 01/2019",
-      role: "Asistente de investigación estudiantil",
-      institution: "Humboldt-Universitat zu Berlin",
-      location: "Berlín",
-      summary:
-        "Investigué la dinámica de olas de calor urbanas y proyecciones climáticas con modelos de mesoescala y flujos de análisis reproducibles.",
-      highlights: [
-        "Flujos de trabajo del modelo COSMO-CLM",
-        "Estudios de proyección climática urbana",
-        "Análisis espacial y temporal del estrés térmico",
+        "Trabajé en flujos ATTRICI para datos climáticos contrafactuales",
+        "Desarrollé procesamiento fiable en Python sobre archivos de gran escala",
+        "Contribuí a implementaciones técnicas basadas en métodos rigurosos",
       ],
     },
   ],
@@ -491,255 +701,89 @@ export const content: SiteContent = {
     {
       period: "04/2025",
       degree: "Doctorado (Dr. rer. nat.)",
-      institution: "Technische Universitat Berlin",
+      institution: "Technische Universität Berlin",
       details:
-        "Climatología, calificación magna cum laude. Tesis sobre downscaling dinámico regional y balance hídrico en diferentes regiones y escalas temporales.",
+        "Climatología, magna cum laude. Tesis sobre downscaling dinámico regional, tendencias atmosféricas y análisis del balance hídrico en varias regiones y escalas temporales.",
     },
     {
       period: "03/2019",
       degree: "MSc en Geografía del Cambio Global",
-      institution: "Humboldt-Universitat zu Berlin",
+      institution: "Humboldt-Universität zu Berlin",
       details:
-        "Calificación 1,2. Incluye experiencia de campo internacional en exploración sísmica ártica en el University Centre in Svalbard.",
+        "Graduado con distinción (1,2). Incluye experiencia internacional de campo en exploración sísmica ártica en el University Centre in Svalbard.",
     },
     {
       period: "09/2016",
       degree: "BSc en Física del Sistema Terrestre",
       institution: "CAU Kiel y GEOMAR",
-      details: "Enfoque en meteorología, oceanografía y geofísica. Calificación 2,2.",
-    },
-    {
-      period: "06/2008",
-      degree: "Abitur",
-      institution: "Freie Waldorfschule Flensburg",
-      details:
-        "Calificación 1,8 con enfoque en matemáticas y geografía; semestre en el extranjero en Pretoria.",
+      details: "Enfoque en meteorología, oceanografía y geofísica.",
     },
   ],
   honors: [
     {
       year: "2025",
-      title: "Doctorado con Magna cum Laude",
-      issuer: "Technische Universitat Berlin",
+      title: "Doctorado con magna cum laude",
+      issuer: "Technische Universität Berlin",
       description:
-        "Título doctoral otorgado por trabajo en downscaling climático regional y análisis hidrológico.",
+        "Distinción académica por trabajo avanzado en modelado climático regional, downscaling y análisis hidrológico.",
     },
     {
       year: "2019",
       title: "MSc con distinción",
-      issuer: "Humboldt-Universitat zu Berlin",
-      description: "Título en Geografía del Cambio Global completado con calificación 1,2.",
+      issuer: "Humboldt-Universität zu Berlin",
+      description: "Rendimiento cuantitativo fuerte en un campo interdisciplinario e intensivo en datos.",
     },
+  ],
+  certifications: [
     {
-      year: "2008",
-      title: "Abitur con mérito alto",
-      issuer: "Freie Waldorfschule Flensburg",
+      title: "Certified BeeGFS System Engineer",
+      issuer: "BeeGFS",
       description:
-        "Educación secundaria completada con calificación 1,8 y experiencia de estudio internacional.",
+        "Certificación formal en arquitectura, configuración y administración de BeeGFS en entornos distribuidos orientados al rendimiento.",
     },
   ],
   articleHistory: [
     {
-      title:
-        "Downscaling dinámico regional y análisis del balance hídrico en diferentes regiones y escalas temporales",
-      outlet: "Technische Universitat Berlin",
+      title: "Downscaling dinámico regional y análisis del balance hídrico en diferentes regiones y escalas temporales",
+      outlet: "Technische Universität Berlin",
       published: "2025-04-01",
       kind: "Thesis",
       authors: "Schmidt, B.",
-      summary:
-        "Tesis doctoral que documenta la metodología de downscaling climático regional multiescala y análisis hidrológico.",
+      summary: "Tesis doctoral sobre metodología de downscaling multiescala y análisis hidrológico.",
       tags: ["Tesis", "Climatología", "Hidrología"],
       link: "https://depositonce.tu-berlin.de/items/0547b9c5-ea16-4003-af03-fa67e19018d6",
-    },
-    {
-      title: "Plataforma MaRESS de mapeo de ciencias del sistema terrestre",
-      outlet: "NFDI4Earth Incubator Lab",
-      published: "2025-01-01",
-      kind: "Technical Report",
-      authors: "Schmidt, B. et al.",
-      summary:
-        "Resumen de proyecto de una plataforma web lista para producción para análisis basado en mapas y grafos de datos de investigación del sistema terrestre.",
-      tags: ["Informe técnico", "Plataforma web", "Ciencias del sistema terrestre"],
-      link: "https://www.nfdi4earth.de/2participate/incubator-lab",
-    },
-    {
-      title: "Estándar de datos [UC]2 para datos atmosféricos NetCDF",
-      outlet: "Programa [UC]2",
-      published: "2024-01-01",
-      kind: "Technical Report",
-      authors: "Schmidt, B. et al.",
-      summary:
-        "Define flujos de trabajo estandarizados para la gestión, intercambio y análisis de conjuntos de datos atmosféricos de clima urbano.",
-      tags: ["Estándar de datos", "NetCDF", "Clima urbano"],
-      link: "https://uc2-program.org/sites/default/files/inline-files/uc2_datenstandard.pdf",
-    },
-    {
-      title: "Flujo de trabajo ATTRICI de datos climáticos contrafactuales",
-      outlet: "ISIMIP",
-      published: "2019-07-01",
-      kind: "Technical Report",
-      authors: "Schmidt, B. et al.",
-      summary:
-        "Documentación técnica y notas metodológicas sobre la generación de conjuntos de datos climáticos contrafactuales a partir de archivos históricos.",
-      tags: ["Datos climáticos", "Algoritmo", "ISIMIP"],
-      link: "https://isi-mip.github.io/attrici/attrici.html",
-    },
-    {
-      title: "Local Sea Surface Temperatures Modulate the Occurrence of Heavy Rainfall Events in the Galápagos Archipelago",
-      outlet: "Geophysical Research Letters",
-      published: "2025-12-16",
-      kind: "Article",
-      authors: "Schneider, M. K., Turini, N., Ballari, D., Bayas López, S. D., Delgado Maldonado, B., Orellana-Alvear, J., Schmidt, B., Scherer, D., Bendix, J.",
-      doi: "10.1029/2025GL117553",
-      summary:
-        "Muestra cómo la variabilidad local de la temperatura superficial del mar modula la ocurrencia de lluvias intensas en el archipiélago de Galápagos.",
-      tags: ["Galápagos", "Lluvia intensa", "Temperatura superficial del mar"],
-      link: "https://doi.org/10.1029/2025GL117553",
-    },
-    {
-      title: "Analysis of the Meso-Scale Climate of the Galápagos Archipelago by Dynamical Downscaling of Reanalysis Data",
-      outlet: "International Journal of Climatology",
-      published: "2025-11-15",
-      kind: "Article",
-      authors: "Schmidt, B., Turini, N., Otto, M., Delgado Maldonado, B., Bayas López, S. D., Bart, F., Holtmann, A., Bendix, J., Scherer, D.",
-      doi: "10.1002/joc.8924",
-      summary:
-        "Presenta un análisis climático de mesoescala del archipiélago de Galápagos mediante downscaling dinámico de datos de reanálisis.",
-      tags: ["Downscaling dinámico", "Reanálisis", "Galápagos"],
-      link: "https://doi.org/10.1002/joc.8924",
-    },
-    {
-      title: "Operational satellite cloud products need local adjustment – The Galapagos case of ecoclimatic cloud zonation",
-      outlet: "Atmospheric Research",
-      published: "2025-04-01",
-      kind: "Article",
-      authors: "Turini, N., Delgado Maldonado, B., Zander, S., Bayas López, S. D., Ballari, D., Célleri, R., Orellana-Alvear, J., Schmidt, B., Scherer, D., Bendix, J.",
-      doi: "10.1016/j.atmosres.2025.107918",
-      summary:
-        "Evalúa productos satelitales de nubes y demuestra la necesidad de ajustes locales para la zonación nubosa ecoclimática en Galápagos.",
-      tags: ["Productos satelitales", "Zonación nubosa", "Galápagos"],
-      link: "https://doi.org/10.1016/j.atmosres.2025.107918",
-    },
-    {
-      title:
-        "The Central Europe Refined analysis version 2 (CER v2): evaluating three decades of high-resolution precipitation data for the Berlin-Brandenburg metropolitan region",
-      outlet: "Meteorologische Zeitschrift",
-      published: "2025-02-10",
-      kind: "Article",
-      authors: "Bart, F., Schmidt, B., Wang, X., Holtmann, A., Meier, F., Otto, M., Scherer, D.",
-      doi: "10.1127/metz/2024/1233",
-      summary:
-        "Evalúa tres décadas de datos de precipitación de alta resolución para la región metropolitana de Berlín-Brandeburgo con CER v2.",
-      tags: ["Precipitación", "Berlín-Brandeburgo", "Análisis regional"],
-      link: "https://doi.org/10.1127/metz/2024/1233",
-    },
-    {
-      title: "The Spatio-Temporal Cloud Frequency Distribution in the Galapagos Archipelago as Seen from MODIS Cloud Mask Data",
-      outlet: "Atmosphere",
-      published: "2023-07-29",
-      kind: "Article",
-      authors: "Zander, S., Turini, N., Ballari, D., Bayas López, S. D., Célleri, R., Delgado Maldonado, B., Orellana-Alvear, J., Schmidt, B., Scherer, D., Bendix, J.",
-      doi: "10.3390/atmos14081225",
-      summary:
-        "Analiza patrones espacio-temporales de frecuencia de nubosidad en el archipiélago de Galápagos usando datos de máscara de nubes MODIS.",
-      tags: ["MODIS", "Frecuencia de nubes", "Galápagos"],
-      link: "https://doi.org/10.3390/atmos14081225",
-    },
-    {
-      title:
-        "Sensitivity of micro-scale atmospheric processes in a city quarter of Berlin, Germany on elevated meso-scale temperature forcing",
-      outlet: "EGUsphere",
-      published: "2023-05-15",
-      kind: "Article",
-      authors: "Scherer, D., Scherber, K., Fehrenbach, U., Meier, F., Otto, M., Schmidt, B., Steikert, R., Holtmann, A.",
-      doi: "10.5194/egusphere-egu23-1326",
-      summary:
-        "Investiga cómo un forzamiento térmico de mesoescala elevado influye en procesos atmosféricos de microescala en un barrio de Berlín.",
-      tags: ["Clima urbano", "Berlín", "Forzamiento de mesoescala"],
-      link: "https://doi.org/10.5194/egusphere-egu23-1326",
-    },
-    {
-      title: "Sensitivity of Water Balance in the Qaidam Basin to the Mid-Pliocene Climate",
-      outlet: "Journal of Geophysical Research: Atmospheres",
-      published: "2021-08-27",
-      kind: "Article",
-      authors: "Wang, X., Schmidt, B., Otto, M., Ehlers, T. A., Mutz, S. G., Botsyun, S., Scherer, D.",
-      doi: "10.1029/2020JD033965",
-      summary:
-        "Examina la sensibilidad del balance hídrico en la cuenca de Qaidam bajo condiciones climáticas del Plioceno medio.",
-      tags: ["Balance hídrico", "Cuenca de Qaidam", "Plioceno medio"],
-      link: "https://doi.org/10.1029/2020JD033965",
-    },
-    {
-      title: "Sensitivity of Water Balance in the Qaidam Basin to the Mid-Pliocene Climate",
-      outlet: "ESS Open Archive (preprint)",
-      published: "2020-10-09",
-      kind: "Article",
-      authors: "Schmidt, B., Wang, X., Otto, M., Ehlers, T. A., Mutz, S. G., Botsyun, S., Scherer, D.",
-      doi: "10.1002/essoar.10504500.1",
-      summary:
-        "Versión preprint que detalla la sensibilidad modelada del balance hídrico de la cuenca de Qaidam al forzamiento climático del Plioceno medio.",
-      tags: ["Preprint", "Balance hídrico", "Cuenca de Qaidam"],
-      link: "https://doi.org/10.1002/essoar.10504500.1",
-    },
-    {
-      title: "Changes in water balance of the Qaidam Basin from Pliocene to present day",
-      outlet: "EGU General Assembly",
-      published: "2020-03-23",
-      kind: "Article",
-      authors: "Schmidt, B., Wang, X., Mutz, S. G., Botsyun, S., Ehlers, T. A., Scherer, D.",
-      doi: "10.5194/egusphere-egu2020-20666",
-      summary:
-        "Contribución de congreso sobre cambios de largo plazo en el balance hídrico de la cuenca de Qaidam desde el Plioceno hasta hoy.",
-      tags: ["Conferencia", "Balance hídrico", "Cuenca de Qaidam"],
-      link: "https://doi.org/10.5194/egusphere-egu2020-20666",
     },
   ],
   blogPosts: [
     {
       slug: "building-maress",
-      title: "Construyendo MaRESS: Conectando datos espaciales y grafos de conocimiento",
+      title: "Construir MaRESS: búsqueda geoespacial, exploración por grafos y flujos de investigación basados en PDF",
       date: "2025-02-12",
       readMinutes: 7,
       summary:
-        "Reflexiones sobre el diseño de una plataforma web científica que combina exploración de datos geoespaciales con contexto basado en grafos.",
+        "Una mirada a cómo MaRESS combina UX geoespacial, enriquecimiento de metadatos y exploración basada en grafos dentro de un sistema full-stack.",
       tags: ["MaRESS", "Vue", "FastAPI", "PostGIS"],
-      href: "https://github.com/benatouba/maress",
+      href: "https://www.nfdi4earth.de/2participate/incubator-lab",
       relatedArticles: [
         {
-          title: "Plataforma MaRESS de mapeo de ciencias del sistema terrestre",
+          title: "MaRESS: Mapping Research in Earth System Science",
           href: "https://www.nfdi4earth.de/2participate/incubator-lab",
         },
       ],
     },
     {
-      slug: "climate-data-pipelines-darwin",
-      title: "Diseñando pipelines de datos climáticos para DARWIN",
+      slug: "darwin-pipelines",
+      title: "De salidas WRF a analítica climática validada en DARWIN",
       date: "2024-09-20",
       readMinutes: 6,
       summary:
-        "Cómo transformar grandes datos de simulación NetCDF en productos reproducibles listos para el análisis y dashboards.",
-      tags: ["DARWIN", "NetCDF", "xarray", "Reproducibilidad"],
+        "Cómo xarray, flujos netCDF, remapeo y análisis de tendencias se convierten en un sistema analítico reproducible y no en una colección de scripts.",
+      tags: ["DARWIN", "xarray", "netCDF", "Datos climáticos"],
       href: "https://vhrz669.hrz.uni-marburg.de/darwin/home.do",
       relatedArticles: [
         {
-          title:
-            "Downscaling dinámico regional y análisis del balance hídrico en diferentes regiones y escalas temporales",
-          href: "https://depositonce.tu-berlin.de/items/0547b9c5-ea16-4003-af03-fa67e19018d6",
-        },
-      ],
-    },
-    {
-      slug: "teaching-data-literacy",
-      title: "Enseñando alfabetización de datos en cursos de clima y geografía",
-      date: "2024-04-08",
-      readMinutes: 5,
-      summary:
-        "Enfoques prácticos para enseñar estadística reproducible y programación a cohortes estudiantiles interdisciplinarias.",
-      tags: ["Enseñanza", "R", "Programación científica"],
-      relatedArticles: [
-        {
-          title: "Portafolio de cursos: Estadística, Programación Científica y Atmósfera Urbana",
+          title: "Analysis of the Meso-Scale Climate of the Galápagos Archipelago by Dynamical Downscaling of Reanalysis Data",
+          href: "https://doi.org/10.1002/joc.8924",
         },
       ],
     },
@@ -749,60 +793,87 @@ export const content: SiteContent = {
       label: "GitHub",
       href: "https://github.com/benatouba/",
       icon: "mdi-github",
-      description:
-        "Repositorios de código abierto, herramientas de investigación y demos reproducibles.",
+      description: "Código, historial de implementación, experimentos de producto y trabajo técnico.",
       category: "Code",
     },
     {
       label: "ORCID",
       href: "https://orcid.org/0000-0002-9669-3360",
       icon: "mdi-account-badge-outline",
-      description:
-        "Identificador persistente de investigador y registro de metadatos de publicaciones.",
+      description: "Registro persistente de publicaciones e identidad investigadora.",
       category: "Academic",
     },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/dr-benjamin-schmidt/",
       icon: "mdi-linkedin",
-      description: "Perfil professional, colaboraciones y actividades de ponencias.",
+      description: "Perfil profesional para selección, contratación y conversaciones de liderazgo.",
       category: "Professional",
     },
     {
       label: "Google Scholar",
       href: "https://scholar.google.de/citations?hl=de&user=cRAeTxYAAAAJ",
       icon: "mdi-school-outline",
-      description: "Perfil de citaciones y resumen del impacto de publicaciones.",
+      description: "Historial de publicaciones e impacto de citación.",
       category: "Academic",
     },
   ],
   services: [
     {
-      title: "Desarrollo full-stack",
+      title: "Asumir productos de extremo a extremo",
       icon: "mdi-monitor-dashboard",
-      audience: "Startups, laboratorios de investigación y equipos de ingeniería",
       description:
-        "Desarrollo integral de aplicaciones web ricas en datos y APIs — desde diseño de bases de datos y servicios backend hasta frontends interactivos con mapas, grafos y dashboards.",
-      ctaLabel: "Iniciar un proyecto",
-      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
+        "Puedo pasar de decisiones de arquitectura y modelo de datos a backend, frontend y diseño de flujos de usuario hasta el punto en que un producto complejo realmente funciona para quienes lo usan.",
     },
     {
-      title: "Ingeniería de datos y pipelines",
+      title: "Elevar la calidad de la ejecución técnica",
       icon: "mdi-file-document-edit-outline",
-      audience: "Equipos que manejan datos a gran escala o científicos",
       description:
-        "Diseño e implementación de flujos de procesamiento de datos automatizados, pipelines ETL e infraestructura de análisis — construidos para reproducibilidad y escala.",
-      ctaLabel: "Discutir necesidades de datos",
-      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
+        "Aporto rigor en calidad de datos, validación, reproducibilidad y pensamiento operativo, ayudando a los equipos a entregar sistemas más sólidos y con menos puntos ciegos.",
     },
     {
-      title: "Investigación y consultoría científica",
+      title: "Traducir complejidad sin simplificarla de más",
       icon: "mdi-account-group-outline",
-      audience: "Grupos de investigación, BioTech y CleanTech",
       description:
-        "Consultoría en comunicación científica, análisis estadístico, flujos de trabajo de datos climáticos y estrategia de publicación — uniendo ciencia de dominio e ingeniería de software.",
-      ctaLabel: "Reservar una consulta",
-      ctaHref: "mailto:benjamin.schmidt@tu-berlin.de",
+        "Soy especialmente eficaz allí donde ingeniería debe trabajar con expertos de dominio, otras partes interesadas y problemas complejos sin perder velocidad, precisión ni credibilidad.",
+    },
+  ],
+  infrastructure: [
+    {
+      title: "Almacenamiento distribuido y BeeGFS",
+      icon: "mdi-harddisk",
+      description:
+        "Certified BeeGFS System Engineer con experiencia práctica en diseño de almacenamiento distribuido, objetivos de metadatos y almacenamiento, decisiones de RAID y compromisos operativos en entornos de cómputo científico.",
+    },
+    {
+      title: "Administración Linux y automatización",
+      icon: "mdi-console-network-outline",
+      description:
+        "Experiencia con administración Linux, automatización con SaltStack y Ansible, entornos Proxmox, NixOS y el tipo de resolución operativa de problemas que sucede cerca de infraestructura real y no solo en diagramas.",
+    },
+    {
+      title: "Redes HPC y flujos de almacenamiento",
+      icon: "mdi-server-network",
+      description:
+        "Trabajo con InfiniBand, conceptos de iSCSI, ZFS, XFS, ext4, operación cercana a IPMI y decisiones de almacenamiento y red en entornos pequeños de tipo HPC donde rendimiento y confiabilidad importan a la vez.",
+    },
+  ],
+  selectedClients: [
+    {
+      name: "farm-food-climate",
+      note: "Trabajo aplicado de clima y datos en un contexto con múltiples actores y altas exigencias de comunicación.",
+    },
+    {
+      name: "Freie Universität Berlin",
+      note: "Trabajo técnico y analítico en un entorno académico exigente con necesidades científicas y operativas mezcladas.",
+    },
+    {
+      name: "Technische Universität Berlin",
+      note: "Trabajo de software, analítica e infraestructura a través de investigación, docencia y desarrollo de plataformas.",
+    },
+    {
+      name: "Otros clientes científicos y orientados a datos",
+      note: "Trabajé como contribuidor técnico de confianza en roles con alta autonomía, amplitud y complejidad de dominio.",
     },
   ],
   contactLinks: [
@@ -810,31 +881,31 @@ export const content: SiteContent = {
       label: "Correo",
       href: "mailto:benjamin.schmidt@tu-berlin.de",
       icon: "mdi-email-outline",
-      sublabel: "Envia correo",
-    },
-    {
-      label: "ORCID",
-      href: "https://orcid.org/0000-0002-9669-3360",
-      icon: "mdi-account-badge-outline",
-      sublabel: "Ver publicaciones",
+      sublabel: "Iniciar una conversación sobre una vacante",
     },
     {
       label: "GitHub",
       href: "https://github.com/benatouba/",
       icon: "mdi-github",
-      sublabel: "Abrir perfil",
+      sublabel: "Revisar código y sistemas entregados",
     },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/dr-benjamin-schmidt/",
       icon: "mdi-linkedin",
-      sublabel: "Abrir perfil",
+      sublabel: "Ver perfil para selección y contratación",
+    },
+    {
+      label: "ORCID",
+      href: "https://orcid.org/0000-0002-9669-3360",
+      icon: "mdi-account-badge-outline",
+      sublabel: "Revisar historial de publicaciones",
     },
     {
       label: "Google Scholar",
       href: "https://scholar.google.de/citations?hl=de&user=cRAeTxYAAAAJ",
       icon: "mdi-school-outline",
-      sublabel: "Abrir perfil",
+      sublabel: "Ver trayectoria científica",
     },
   ],
 };

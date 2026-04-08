@@ -33,10 +33,10 @@ const { t } = useI18n({ useScope: "global" });
               <v-icon icon="mdi-email-outline" size="18" />
               {{ t("contact.primaryCta") }}
             </a>
-            <a href="/cv" class="secondary-cta">
+            <RouterLink to="/cv" class="secondary-cta">
               <v-icon icon="mdi-file-account-outline" size="18" />
               {{ t("contact.secondaryCta") }}
-            </a>
+            </RouterLink>
           </div>
         </div>
 

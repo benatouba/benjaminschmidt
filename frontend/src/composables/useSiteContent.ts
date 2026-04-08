@@ -35,14 +35,18 @@ const EMPTY_CONTENT: SiteContent = {
   impactHighlights: [],
   careerStages: [],
   publications: [],
+  publicationInsights: [],
   projects: [],
   cvAppointments: [],
   education: [],
   honors: [],
+  certifications: [],
   articleHistory: [],
   blogPosts: [],
   externalProfiles: [],
   services: [],
+  infrastructure: [],
+  selectedClients: [],
   contactLinks: [],
 };
 

@@ -12,6 +12,18 @@ const { t } = useI18n({ useScope: "global" });
 
 const topCards = computed(() => props.cards.slice(0, 2));
 const streakCard = computed(() => props.cards[2]);
+
+function hideBrokenImage(event: Event) {
+  const image = event.target;
+  if (!(image instanceof HTMLImageElement)) {
+    return;
+  }
+
+  const wrapper = image.parentElement;
+  if (wrapper) {
+    wrapper.style.display = "none";
+  }
+}
 </script>
 
 <template>
@@ -38,7 +50,7 @@ const streakCard = computed(() => props.cards[2]);
             loading="lazy"
             decoding="async"
             class="stat-image"
-            @error="(e: Event) => ((e.target as HTMLImageElement).parentElement!.style.display = 'none')"
+            @error="hideBrokenImage"
           />
         </a>
       </div>
@@ -58,7 +70,7 @@ const streakCard = computed(() => props.cards[2]);
             loading="lazy"
             decoding="async"
             class="stat-image streak-image"
-            @error="(e: Event) => ((e.target as HTMLImageElement).parentElement!.style.display = 'none')"
+            @error="hideBrokenImage"
           />
         </a>
       </div>
