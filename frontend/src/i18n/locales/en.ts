@@ -30,21 +30,21 @@ export const messages = {
   },
   impact: {
     kicker: "Proof",
-    heading: "A profile built around shipped systems, not empty positioning",
+    heading: "A profile built around shipped systems",
     copy:
-      "The strongest signal I can offer recruiters is range with evidence: full-stack product delivery, high-context data engineering, infrastructure depth, and a track record of turning specialist domains into reliable systems.",
+      "The strongest signal I can offer recruiters is range with evidence: full-stack product delivery, big-data high-context data engineering, infrastructure depth, and a track record of turning challenges into reliable systems in a variety of domains.",
   },
   clients: {
     kicker: "Selected Clients",
     heading: "Trusted in scientific, public, and applied environments",
     copy:
-      "Alongside institutional roles, I have worked with research, climate, and applied-data clients that needed reliable technical execution and clear communication under real constraints.",
+      "Alongside institutional roles, I have worked with research, climate, and applied-data clients that needed reliable technical execution and clear communication under different, real constraints.",
   },
   infrastructure: {
     kicker: "Systems Depth",
-    heading: "Systems, storage, and HPC experience that most full-stack candidates do not have",
+    heading: "Systems, storage, big-data, and HPC experience that most full-stack candidates do not have",
     copy:
-      "I am not only comfortable at the application layer. I also bring hands-on experience with Linux administration, distributed storage, automation, and HPC environments, including BeeGFS, InfiniBand, SaltStack, and Proxmox-based operations.",
+      "I am not only comfortable at the application layer. I also bring hands-on experience with Linux administration, distributed storage, automation, and HPC environments, including BeeGFS, InfiniBand, SaltStack, and Proxmox-based operations. My experience ranges from harware-adjacent problem solving to building production-style platforms that run on top of complex infrastructure.",
   },
   publicationHighlights: {
     kicker: "Validated Analytics",
@@ -67,7 +67,7 @@ export const messages = {
     kicker: "Career Snapshot",
     heading: "CV",
     copy:
-      "A concise recruiter-facing summary of the experience most relevant to senior and staff engineering roles in product, platform, data, and infrastructure-heavy environments.",
+      "A concise summary of the experience most relevant to senior and staff engineering roles in product, platform, data, and infrastructure-heavy environments.",
     profileTitle: "Current positioning",
     professionalAppointments: "Experience",
     education: "Education",
@@ -252,7 +252,7 @@ export const content: SiteContent = {
     email: "benjamin.schmidt@tu-berlin.de",
     orcid: "0000-0002-9669-3360",
     summary:
-      "I build and lead software systems in environments where the technical context is unusually high. My core strength is turning complex workflows into working products, from Vue and Nuxt frontends through FastAPI and Django backends to automated data pipelines, analytics and visualization layers, storage-heavy systems, Linux administration, and HPC-adjacent infrastructure. I am also an experienced climate-data and scientific communicator.",
+      "I build and lead software systems in environments where the technical context is unusually high. My core strength is turning complex workflows into working products, from Vue and Nuxt frontends through FastAPI, Django and Nuxt backends to automated data pipelines, analytics and visualization layers, storage-heavy systems, Linux administration, and HPC-adjacent hard- and sofware infrastructure. I am also an experienced climate-data and scientific communicator.",
     interests: [
       "Full-stack product engineering",
       "Data-intensive applications",
@@ -315,18 +315,6 @@ export const content: SiteContent = {
       ],
     },
     {
-      period: "08/2019 - 02/2026",
-      title: "Research Associate (PhD)",
-      institution: "Technical University of Berlin, Climatology",
-      description:
-        "Built and led data-intensive software, climate-data engineering workflows, and platform-like systems in a highly technical research environment, spanning geospatial products, analysis pipelines, infrastructure, and stakeholder-facing tools.",
-      focusAreas: [
-        "Led MaRESS, a full-stack geospatial platform with map, graph, PDF/NLP, and PostGIS analysis workflows",
-        "Built DARWIN climate-data tooling for netCDF processing, model validation, trend analysis, and reproducible analytics",
-        "Delivered standards-backed data systems for [UC]² and UCO Berlin across validation, APIs, portals, and public data access",
-      ],
-    },
-    {
       period: "2019 - Present",
       title: "Independent Engineer and Consultant",
       institution: "Selected scientific and applied-data clients",
@@ -339,7 +327,19 @@ export const content: SiteContent = {
       ],
     },
     {
-      period: "10/2019 - Present",
+      period: "08/2019 - 02/2026",
+      title: "Research Associate (PhD)",
+      institution: "Technical University of Berlin, Climatology",
+      description:
+        "Built and led data-intensive software, climate-data engineering workflows, and platform-like systems in a highly technical research environment, spanning geospatial products, analysis pipelines, infrastructure, and stakeholder-facing tools.",
+      focusAreas: [
+        "Led MaRESS, a full-stack geospatial platform with map, graph, PDF/NLP, and PostGIS analysis workflows",
+        "Built DARWIN climate-data tooling for netCDF processing, model validation, trend analysis, and reproducible analytics",
+        "Delivered standards-backed data systems for [UC]² and UCO Berlin across validation, APIs, portals, and public data access",
+      ],
+    },
+    {
+      period: "10/2019 - 02/2026",
       title: "Lecturer",
       institution: "Free University of Berlin and Technical University of Berlin",
       description:
