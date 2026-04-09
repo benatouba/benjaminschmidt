@@ -19,9 +19,11 @@ const content = useSiteContent();
     />
 
     <v-main id="main-content">
-      <RouterView v-slot="{ Component }">
+      <RouterView v-slot="{ Component, route }">
         <Transition name="page-fade" mode="out-in">
-          <component :is="Component" />
+          <div :key="route.fullPath">
+            <component :is="Component" />
+          </div>
         </Transition>
       </RouterView>
     </v-main>
