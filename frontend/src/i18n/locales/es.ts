@@ -315,18 +315,6 @@ export const content: SiteContent = {
       ],
     },
     {
-      period: "08/2019 - 02/2026",
-      title: "Investigador asociado (doctorado)",
-      institution: "Technische Universität Berlin, Climatología",
-      description:
-        "Construí y lideré software intensivo en datos, flujos de ingeniería de datos climáticos y sistemas tipo plataforma en un entorno de investigación altamente técnico, desde productos geoespaciales hasta analítica, infraestructura y herramientas orientadas a usuarios.",
-      focusAreas: [
-        "Lideré MaRESS como plataforma geoespacial full-stack con mapas, grafos, procesamiento PDF/NLP y análisis sobre PostGIS",
-        "Desarrollé herramientas DARWIN para procesamiento netCDF, validación de modelos, análisis de tendencias y analítica climática reproducible",
-        "Entregué sistemas de datos basados en estándares para [UC]² y UCO Berlin en validación, APIs, portales y acceso público a datos",
-      ],
-    },
-    {
       period: "2019 - actualidad",
       title: "Ingeniero y consultor independiente",
       institution: "Clientes científicos y de datos seleccionados",
@@ -339,7 +327,19 @@ export const content: SiteContent = {
       ],
     },
     {
-      period: "10/2019 - actualidad",
+      period: "08/2019 - 02/2026",
+      title: "Investigador asociado (doctorado)",
+      institution: "Technische Universität Berlin, Climatología",
+      description:
+        "Construí y lideré software intensivo en datos, flujos de ingeniería de datos climáticos y sistemas tipo plataforma en un entorno de investigación altamente técnico, desde productos geoespaciales hasta analítica, infraestructura y herramientas orientadas a usuarios.",
+      focusAreas: [
+        "Lideré MaRESS como plataforma geoespacial full-stack con mapas, grafos, procesamiento PDF/NLP y análisis sobre PostGIS",
+        "Desarrollé herramientas DARWIN para procesamiento netCDF, validación de modelos, análisis de tendencias y analítica climática reproducible",
+        "Entregué sistemas de datos basados en estándares para [UC]² y UCO Berlin en validación, APIs, portales y acceso público a datos",
+      ],
+    },
+    {
+      period: "10/2019 - 02/2026",
       title: "Docente",
       institution: "Freie Universität Berlin y Technische Universität Berlin",
       description:

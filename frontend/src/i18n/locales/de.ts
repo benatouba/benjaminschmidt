@@ -315,18 +315,6 @@ export const content: SiteContent = {
       ],
     },
     {
-      period: "08/2019 - 02/2026",
-      title: "Wissenschaftlicher Mitarbeiter (Promotion)",
-      institution: "Technische Universität Berlin, Klimatologie",
-      description:
-        "Baute und leitete datenintensive Software, Klimadaten-Engineering-Workflows und plattformartige Systeme in einem hoch technischen Forschungsumfeld, von Geoprodukten über Analysepipelines bis hin zu Infrastruktur und nutzerorientierten Werkzeugen.",
-      focusAreas: [
-        "Leitete MaRESS als Full-Stack-Geoplattform mit Karte, Graph, PDF/NLP-Workflows und PostGIS-Analysen",
-        "Baute DARWIN-Werkzeuge für netCDF-Verarbeitung, Modellvalidierung, Trendanalyse und reproduzierbare Klimaanalytik",
-        "Lieferte standardsgestützte Datensysteme für [UC]² und UCO Berlin über Validierung, APIs, Portale und öffentlichen Datenzugang hinweg",
-      ],
-    },
-    {
       period: "2019 - heute",
       title: "Selbstständiger Engineer und Berater",
       institution: "Ausgewählte wissenschaftliche und datenorientierte Auftraggeber",
@@ -339,7 +327,19 @@ export const content: SiteContent = {
       ],
     },
     {
-      period: "10/2019 - heute",
+      period: "08/2019 - 02/2026",
+      title: "Wissenschaftlicher Mitarbeiter (Promotion)",
+      institution: "Technische Universität Berlin, Klimatologie",
+      description:
+        "Baute und leitete datenintensive Software, Klimadaten-Engineering-Workflows und plattformartige Systeme in einem hoch technischen Forschungsumfeld, von Geoprodukten über Analysepipelines bis hin zu Infrastruktur und nutzerorientierten Werkzeugen.",
+      focusAreas: [
+        "Leitete MaRESS als Full-Stack-Geoplattform mit Karte, Graph, PDF/NLP-Workflows und PostGIS-Analysen",
+        "Baute DARWIN-Werkzeuge für netCDF-Verarbeitung, Modellvalidierung, Trendanalyse und reproduzierbare Klimaanalytik",
+        "Lieferte standardsgestützte Datensysteme für [UC]² und UCO Berlin über Validierung, APIs, Portale und öffentlichen Datenzugang hinweg",
+      ],
+    },
+    {
+      period: "10/2019 - 02/2026",
       title: "Dozent",
       institution: "Freie Universität Berlin und Technische Universität Berlin",
       description:
