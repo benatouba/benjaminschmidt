@@ -177,7 +177,7 @@ const onFooterNavClick = (event: MouseEvent, item: NavigationItem) => {
 .footer-link:hover {
   color: var(--primary);
   border-color: rgba(250, 179, 135, 0.52);
-  background: rgba(250, 179, 135, 0.2);
+  background: rgba(250, 179, 135, 0.12);
 }
 
 .footer-built {

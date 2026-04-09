@@ -213,7 +213,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 .meta-chip.emphasis {
   color: var(--page-text);
   border-color: rgba(250, 179, 135, 0.42);
-  background: rgba(250, 179, 135, 0.2);
+  background: rgba(250, 179, 135, 0.12);
 }
 
 .hero-actions {
@@ -265,7 +265,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 .profile-link-chip:hover {
   color: var(--page-text);
   border-color: rgba(250, 179, 135, 0.52);
-  background: rgba(250, 179, 135, 0.2);
+  background: rgba(250, 179, 135, 0.12);
 }
 
 .hero-proof {
