@@ -4,8 +4,8 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "25"
-  PNPM_VERSION = "10"
+  NODE_VERSION = "^25"
+  PNPM_VERSION = "^10"
 
 [build.processing.css]
   bundle = true
