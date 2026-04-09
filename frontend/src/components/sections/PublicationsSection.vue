@@ -27,15 +27,22 @@ const preferredKinds: PublicationKind[] = [
 
 const writingKinds = computed<Array<"All" | PublicationKind>>(() => [
   "All",
-  ...preferredKinds.filter((kind) => props.insights.some((entry) => entry.kind === kind)),
+  ...preferredKinds.filter((kind) =>
+    props.insights.some((entry) => entry.kind === kind),
+  ),
 ]);
 
 const filteredEntries = computed(() =>
-  props.insights.filter((entry) => kindFilter.value === "All" || entry.kind === kindFilter.value),
+  props.insights.filter(
+    (entry) => kindFilter.value === "All" || entry.kind === kindFilter.value,
+  ),
 );
 
 watchEffect(() => {
-  if (kindFilter.value !== "All" && !writingKinds.value.includes(kindFilter.value)) {
+  if (
+    kindFilter.value !== "All" &&
+    !writingKinds.value.includes(kindFilter.value)
+  ) {
     kindFilter.value = "All";
   }
 });
@@ -69,7 +76,11 @@ const kindLabel = (kind: "All" | PublicationKind) => {
         <p class="section-copy">{{ t("publications.copy") }}</p>
       </div>
 
-      <div v-if="insights.length" class="filter-bar reveal-up" style="--delay: 100ms">
+      <div
+        v-if="insights.length"
+        class="filter-bar reveal-up"
+        style="--delay: 100ms"
+      >
         <button
           v-for="kind in writingKinds"
           :key="kind"
@@ -92,15 +103,21 @@ const kindLabel = (kind: "All" | PublicationKind) => {
               <v-icon icon="mdi-file-document-outline" size="18" />
             </div>
             <div class="card-meta">
-              <p class="publication-venue">{{ entry.outlet }} · {{ entry.published.slice(0, 4) }}</p>
+              <p class="publication-venue">
+                {{ entry.outlet }} · {{ entry.published.slice(0, 4) }}
+              </p>
               <h3 class="publication-title">{{ entry.title }}</h3>
-              <p v-if="entry.authors" class="publication-authors">{{ entry.authors }}</p>
+              <p v-if="entry.authors" class="publication-authors">
+                {{ entry.authors }}
+              </p>
             </div>
           </div>
 
           <div class="meta-badges">
             <span class="kind-badge">{{ kindLabel(entry.kind) }}</span>
-            <span v-if="entry.doi" class="doi-badge">{{ t("publications.doi") }} {{ entry.doi }}</span>
+            <span v-if="entry.doi" class="doi-badge"
+              >{{ t("publications.doi") }} {{ entry.doi }}</span
+            >
           </div>
 
           <p class="publication-summary">{{ entry.oneLiner }}</p>
@@ -112,10 +129,18 @@ const kindLabel = (kind: "All" | PublicationKind) => {
           </ul>
 
           <div class="metrics-wrap">
-            <span v-for="metric in entry.metrics.slice(0, 3)" :key="metric" class="metric-chip">{{ metric }}</span>
+            <span
+              v-for="metric in entry.metrics.slice(0, 3)"
+              :key="metric"
+              class="metric-chip"
+              >{{ metric }}</span
+            >
           </div>
 
-          <RouterLink :to="`/publications/${entry.slug}`" class="publication-link">
+          <RouterLink
+            :to="`/publications/${entry.slug}`"
+            class="publication-link"
+          >
             {{ t("publications.read") }}
             <v-icon icon="mdi-arrow-right" size="16" />
           </RouterLink>
@@ -168,7 +193,7 @@ const kindLabel = (kind: "All" | PublicationKind) => {
 .filter-btn.active {
   color: var(--primary);
   background: var(--primary-muted);
-  border-color: rgba(34, 211, 238, 0.3);
+  border-color: rgba(250, 179, 135, 0.52);
 }
 
 .publications-grid {
@@ -183,7 +208,7 @@ const kindLabel = (kind: "All" | PublicationKind) => {
   padding: 1.2rem;
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .card-header {
@@ -255,7 +280,7 @@ const kindLabel = (kind: "All" | PublicationKind) => {
 .doi-badge,
 .metric-chip {
   color: var(--page-text-muted);
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.12);
   border: 1px solid var(--border-color);
 }
 
@@ -297,7 +322,7 @@ const kindLabel = (kind: "All" | PublicationKind) => {
   padding: 1.1rem 1.15rem;
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .empty-state p {

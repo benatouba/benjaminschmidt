@@ -26,12 +26,16 @@ const { t } = useI18n({ useScope: "global" });
           class="highlight-card reveal-up"
           :style="`--delay: ${120 + index * 70}ms`"
         >
-          <p class="highlight-outlet">{{ item.outlet }} · {{ item.published.slice(0, 4) }}</p>
+          <p class="highlight-outlet">
+            {{ item.outlet }} · {{ item.published.slice(0, 4) }}
+          </p>
           <h3 class="highlight-title">{{ item.title }}</h3>
           <p class="highlight-oneliner">{{ item.oneLiner }}</p>
 
           <ul class="findings-list">
-            <li v-for="finding in item.findings.slice(0, 2)" :key="finding">{{ finding }}</li>
+            <li v-for="finding in item.findings.slice(0, 2)" :key="finding">
+              {{ finding }}
+            </li>
           </ul>
 
           <RouterLink :to="`/publications/${item.slug}`" class="detail-link">
@@ -41,7 +45,11 @@ const { t } = useI18n({ useScope: "global" });
         </article>
       </div>
 
-      <div v-if="insights.length" class="section-footer reveal-up" style="--delay: 420ms">
+      <div
+        v-if="insights.length"
+        class="section-footer reveal-up"
+        style="--delay: 420ms"
+      >
         <RouterLink to="/publications" class="section-link">
           {{ t("publicationHighlights.viewAll") }}
           <v-icon icon="mdi-arrow-right" size="16" />
@@ -81,7 +89,7 @@ const { t } = useI18n({ useScope: "global" });
   padding: 1.15rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .highlight-outlet {

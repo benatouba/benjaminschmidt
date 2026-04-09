@@ -3,13 +3,16 @@ import { useI18n } from "vue-i18n";
 
 import type { ContactLink, ProfileInfo } from "@/types/site";
 
-const props = withDefaults(defineProps<{
-  profile: ProfileInfo;
-  links: ContactLink[];
-  showHeading?: boolean;
-}>(), {
-  showHeading: true,
-});
+const props = withDefaults(
+  defineProps<{
+    profile: ProfileInfo;
+    links: ContactLink[];
+    showHeading?: boolean;
+  }>(),
+  {
+    showHeading: true,
+  },
+);
 
 const { t } = useI18n({ useScope: "global" });
 </script>
@@ -54,9 +57,15 @@ const { t } = useI18n({ useScope: "global" });
             </div>
             <div class="link-content">
               <span class="link-label">{{ link.label }}</span>
-              <span class="link-sublabel">{{ link.href ? link.sublabel : t("contact.comingSoon") }}</span>
+              <span class="link-sublabel">{{
+                link.href ? link.sublabel : t("contact.comingSoon")
+              }}</span>
             </div>
-            <v-icon :icon="link.href ? 'mdi-arrow-top-right' : 'mdi-clock-outline'" size="16" class="link-arrow" />
+            <v-icon
+              :icon="link.href ? 'mdi-arrow-top-right' : 'mdi-clock-outline'"
+              size="16"
+              class="link-arrow"
+            />
           </a>
         </div>
       </div>
@@ -70,9 +79,7 @@ const { t } = useI18n({ useScope: "global" });
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   gap: 1rem;
   padding: clamp(1.2rem, 2.5vw, 1.8rem);
-  background:
-    radial-gradient(ellipse 90% 65% at 0% 0%, rgba(34, 211, 238, 0.08), transparent 48%),
-    rgba(30, 41, 59, 0.54);
+  background: rgba(49, 50, 68, 0.62);
   border: 1px solid var(--border-color);
   border-radius: 18px;
 }
@@ -126,14 +133,14 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .primary-cta {
-  color: #0f172a;
+  color: #1e1e2e;
   background: var(--primary);
 }
 
 .secondary-cta {
   color: var(--page-text);
   border: 1px solid var(--border-color);
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.12);
 }
 
 .links-panel {
@@ -143,7 +150,7 @@ const { t } = useI18n({ useScope: "global" });
   padding: 0.85rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.34);
+  background: rgba(30, 30, 46, 0.45);
 }
 
 .link-item {
@@ -156,7 +163,7 @@ const { t } = useI18n({ useScope: "global" });
 }
 
 .link-item:hover {
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.12);
 }
 
 .link-icon {
@@ -166,7 +173,7 @@ const { t } = useI18n({ useScope: "global" });
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: rgba(148, 163, 184, 0.1);
+  background: rgba(166, 173, 200, 0.14);
   color: var(--page-text-muted);
 }
 

@@ -34,11 +34,7 @@ const onScroll = () => {
 onMounted(() => window.addEventListener("scroll", onScroll, { passive: true }));
 onUnmounted(() => window.removeEventListener("scroll", onScroll));
 
-const locales = [
-  { code: "en" },
-  { code: "de" },
-  { code: "es" },
-] as const;
+const locales = [{ code: "en" }, { code: "de" }, { code: "es" }] as const;
 
 const setLocale = async (code: string) => {
   const nextLocale = await setAppLocale(code);
@@ -68,9 +64,12 @@ const onMobileNavClick = (event: MouseEvent, item: NavigationItem) => {
   drawerOpen.value = false;
 };
 
-watch(() => route.path, () => {
-  drawerOpen.value = false;
-});
+watch(
+  () => route.path,
+  () => {
+    drawerOpen.value = false;
+  },
+);
 </script>
 
 <template>
@@ -81,7 +80,12 @@ watch(() => route.path, () => {
       <div class="header-container">
         <a class="identity-link" href="/" @click.prevent="$router.push('/')">
           <div class="identity">
-            <img class="brand-mark" src="/favicon.svg" alt="" aria-hidden="true" />
+            <img
+              class="brand-mark"
+              src="/favicon.svg"
+              alt=""
+              aria-hidden="true"
+            />
             <p class="name">{{ props.name }}</p>
             <p class="headline">{{ props.headline }}</p>
           </div>
@@ -119,12 +123,30 @@ watch(() => route.path, () => {
           :aria-expanded="drawerOpen"
           @click="drawerOpen = !drawerOpen"
         >
-          <svg v-if="!drawerOpen" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <svg
+            v-if="!drawerOpen"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
             <line x1="3" y1="6" x2="21" y2="6" />
             <line x1="3" y1="12" x2="21" y2="12" />
             <line x1="3" y1="18" x2="21" y2="18" />
           </svg>
-          <svg v-else width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <svg
+            v-else
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
@@ -133,7 +155,11 @@ watch(() => route.path, () => {
     </div>
 
     <Transition name="drawer">
-      <div v-if="drawerOpen" class="mobile-drawer-backdrop" @click.self="drawerOpen = false">
+      <div
+        v-if="drawerOpen"
+        class="mobile-drawer-backdrop"
+        @click.self="drawerOpen = false"
+      >
         <nav class="mobile-drawer" :aria-label="t('nav.ariaLabel')">
           <a
             v-for="item in props.navItems"
@@ -193,7 +219,7 @@ watch(() => route.path, () => {
 .top-bar {
   min-height: 80px;
   border-bottom: 1px solid var(--border-color);
-  background: rgba(15, 23, 42, 0.85) !important;
+  background: rgba(30, 30, 46, 0.86) !important;
   backdrop-filter: blur(12px) saturate(180%);
   transition: box-shadow 0.2s ease;
 }
@@ -286,7 +312,7 @@ watch(() => route.path, () => {
 
 .nav-link:hover {
   color: var(--page-text);
-  background: rgba(148, 163, 184, 0.1);
+  background: rgba(166, 173, 200, 0.14);
 }
 
 .nav-link.active {
@@ -298,7 +324,7 @@ watch(() => route.path, () => {
   display: flex;
   gap: 0.125rem;
   padding: 0.2rem;
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.14);
   border-radius: 6px;
 }
 
@@ -339,7 +365,7 @@ watch(() => route.path, () => {
 }
 
 .menu-toggle:hover {
-  background: rgba(148, 163, 184, 0.1);
+  background: rgba(166, 173, 200, 0.14);
 }
 
 /* ── Mobile drawer ─────────────────────────── */
@@ -363,7 +389,7 @@ watch(() => route.path, () => {
   flex-direction: column;
   gap: 0.25rem;
   padding: 1rem;
-  background: rgba(15, 23, 42, 0.97);
+  background: rgba(30, 30, 46, 0.97);
   border-left: 1px solid var(--border-color);
   overflow-y: auto;
 }
@@ -381,7 +407,7 @@ watch(() => route.path, () => {
 
 .mobile-nav-link:hover {
   color: var(--page-text);
-  background: rgba(148, 163, 184, 0.1);
+  background: rgba(166, 173, 200, 0.14);
 }
 
 .mobile-nav-link.active {
@@ -394,7 +420,7 @@ watch(() => route.path, () => {
   gap: 0.25rem;
   margin-top: 0.75rem;
   padding: 0.25rem;
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.14);
   border-radius: 6px;
 }
 

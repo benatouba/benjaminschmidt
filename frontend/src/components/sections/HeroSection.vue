@@ -62,7 +62,11 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
           <v-btn to="/cv" variant="outlined" class="action-btn">
             {{ t("hero.openCv") }}
           </v-btn>
-          <v-btn :href="`mailto:${props.profile.email}`" variant="text" class="action-btn text-btn">
+          <v-btn
+            :href="`mailto:${props.profile.email}`"
+            variant="text"
+            class="action-btn text-btn"
+          >
             {{ t("hero.contactMe") }}
           </v-btn>
         </div>
@@ -120,7 +124,11 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
         <div class="strengths-card">
           <p class="strengths-heading">{{ t("hero.coreStrengths") }}</p>
           <div class="strengths-grid">
-            <span v-for="skill in props.profile.skills" :key="skill" class="strength-chip">
+            <span
+              v-for="skill in props.profile.skills"
+              :key="skill"
+              class="strength-chip"
+            >
               {{ skill }}
             </span>
           </div>
@@ -172,7 +180,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   font-size: clamp(1.1rem, 2vw, 1.45rem);
   font-weight: 600;
   line-height: 1.35;
-  color: #f8fafc;
+  color: #f5e0dc;
 }
 
 .hero-summary {
@@ -197,15 +205,15 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   padding: 0.45rem 0.7rem;
   font-size: 0.82rem;
   color: var(--page-text-muted);
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.12);
   border: 1px solid var(--border-color);
   border-radius: 999px;
 }
 
 .meta-chip.emphasis {
   color: var(--page-text);
-  border-color: rgba(34, 211, 238, 0.24);
-  background: rgba(34, 211, 238, 0.1);
+  border-color: rgba(250, 179, 135, 0.42);
+  background: rgba(250, 179, 135, 0.2);
 }
 
 .hero-actions {
@@ -222,7 +230,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
 }
 
 .primary-btn {
-  color: #0f172a !important;
+  color: #1e1e2e !important;
 }
 
 .text-btn {
@@ -245,16 +253,19 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   font-weight: 500;
   color: var(--page-text-muted);
   text-decoration: none;
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.12);
   border: 1px solid var(--border-color);
   border-radius: 999px;
-  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 .profile-link-chip:hover {
   color: var(--page-text);
-  border-color: rgba(34, 211, 238, 0.28);
-  background: rgba(34, 211, 238, 0.08);
+  border-color: rgba(250, 179, 135, 0.52);
+  background: rgba(250, 179, 135, 0.2);
 }
 
 .hero-proof {
@@ -264,9 +275,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   padding: clamp(1rem, 2vw, 1.4rem);
   border: 1px solid var(--border-color);
   border-radius: 18px;
-  background:
-    radial-gradient(ellipse 100% 75% at 15% 0%, rgba(34, 211, 238, 0.09), transparent 52%),
-    rgba(30, 41, 59, 0.56);
+  background: rgba(49, 50, 68, 0.64);
   backdrop-filter: blur(10px);
 }
 
@@ -287,8 +296,8 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   height: clamp(144px, 18vw, 198px);
   object-fit: cover;
   border-radius: 22px;
-  border: 1px solid rgba(34, 211, 238, 0.28);
-  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(250, 179, 135, 0.45);
+  box-shadow: 0 18px 34px rgba(17, 17, 27, 0.48);
 }
 
 .focus-card,
@@ -296,7 +305,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.38);
+  background: rgba(30, 30, 46, 0.5);
 }
 
 .focus-kicker,
@@ -333,7 +342,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   padding: 0.9rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.28);
+  background: rgba(30, 30, 46, 0.42);
 }
 
 .highlight-icon {
@@ -368,7 +377,7 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--page-text);
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.12);
   border: 1px solid var(--border-color);
   border-radius: 999px;
 }

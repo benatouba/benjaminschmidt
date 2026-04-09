@@ -9,7 +9,10 @@ import { VSvgIcon } from "vuetify/lib/composables/icons.js";
 import { mdiFallbackIconPath, mdiIconPathByName } from "@/icons/mdi";
 
 const mdiAliases = Object.fromEntries(
-  Object.entries(mdiIconPathByName).map(([key, path]) => [key.replace(/^mdi-/, ""), path]),
+  Object.entries(mdiIconPathByName).map(([key, path]) => [
+    key.replace(/^mdi-/, ""),
+    path,
+  ]),
 );
 
 const appAliases = {
@@ -35,7 +38,10 @@ const iconSet: IconSet = {
   component: (props: IconProps) => {
     return h(VSvgIcon, {
       ...props,
-      icon: typeof props.icon === "string" ? resolveIconPath(props.icon) : props.icon,
+      icon:
+        typeof props.icon === "string"
+          ? resolveIconPath(props.icon)
+          : props.icon,
     });
   },
 };
@@ -43,15 +49,15 @@ const iconSet: IconSet = {
 const scientificTheme = {
   dark: true,
   colors: {
-    background: "#0f172a",
-    surface: "#1e293b",
-    primary: "#22d3ee",
-    secondary: "#94a3b8",
-    accent: "#22d3ee",
-    info: "#38bdf8",
-    success: "#4ade80",
-    warning: "#fbbf24",
-    error: "#f87171",
+    background: "#1e1e2e",
+    surface: "#313244",
+    primary: "#fab387",
+    secondary: "#a6adc8",
+    accent: "#f9e2af",
+    info: "#89dceb",
+    success: "#a6e3a1",
+    warning: "#f9e2af",
+    error: "#f38ba8",
   },
 };
 

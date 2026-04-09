@@ -90,7 +90,7 @@ const onFooterNavClick = (event: MouseEvent, item: NavigationItem) => {
 .footer {
   border-top: 1px solid var(--border-color);
   padding-block: 2rem 2.5rem;
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(30, 30, 46, 0.56);
 }
 
 .footer-grid {
@@ -165,16 +165,19 @@ const onFooterNavClick = (event: MouseEvent, item: NavigationItem) => {
   height: 36px;
   border-radius: 8px;
   color: var(--page-text-muted);
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.12);
   border: 1px solid var(--border-color);
   text-decoration: none;
-  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 .footer-link:hover {
   color: var(--primary);
-  border-color: rgba(34, 211, 238, 0.3);
-  background: rgba(34, 211, 238, 0.08);
+  border-color: rgba(250, 179, 135, 0.52);
+  background: rgba(250, 179, 135, 0.2);
 }
 
 .footer-built {
@@ -182,7 +185,7 @@ const onFooterNavClick = (event: MouseEvent, item: NavigationItem) => {
   width: 100%;
   text-align: center;
   font-size: 0.7rem;
-  color: rgba(148, 163, 184, 0.4);
+  color: rgba(166, 173, 200, 0.55);
 }
 
 @media (width <= 600px) {

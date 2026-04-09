@@ -29,7 +29,16 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
       aria-label="Scroll to top"
       @click="scrollToTop"
     >
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <polyline points="18 15 12 9 6 15" />
       </svg>
     </button>
@@ -48,22 +57,26 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
   width: 44px;
   height: 44px;
   color: var(--page-text);
-  background: rgba(30, 41, 59, 0.85);
+  background: rgba(49, 50, 68, 0.86);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   backdrop-filter: blur(8px);
   cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .scroll-top-btn:hover {
-  background: rgba(30, 41, 59, 1);
-  border-color: rgba(34, 211, 238, 0.3);
+  background: rgba(69, 71, 90, 0.95);
+  border-color: rgba(250, 179, 135, 0.52);
 }
 
 .fade-up-enter-active,
 .fade-up-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .fade-up-enter-from,

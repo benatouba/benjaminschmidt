@@ -55,7 +55,11 @@ function hideBrokenImage(event: Event) {
         </a>
       </div>
 
-      <div v-if="streakCard" class="streak-wrap reveal-up" style="--delay: 180ms">
+      <div
+        v-if="streakCard"
+        class="streak-wrap reveal-up"
+        style="--delay: 180ms"
+      >
         <a
           :href="streakCard.href"
           :target="streakCard.href ? '_blank' : undefined"
@@ -101,13 +105,15 @@ function hideBrokenImage(event: Event) {
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  background: rgba(15, 23, 42, 0.42);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  background: rgba(30, 30, 46, 0.5);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .stat-link:hover {
   transform: translateY(-2px);
-  border-color: rgba(34, 211, 238, 0.35);
+  border-color: rgba(250, 179, 135, 0.52);
 }
 
 .stat-image {

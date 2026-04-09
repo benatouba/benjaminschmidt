@@ -3,12 +3,15 @@ import { useI18n } from "vue-i18n";
 
 import type { CareerStage } from "@/types/site";
 
-const props = withDefaults(defineProps<{
-  stages: CareerStage[];
-  showHeading?: boolean;
-}>(), {
-  showHeading: true,
-});
+const props = withDefaults(
+  defineProps<{
+    stages: CareerStage[];
+    showHeading?: boolean;
+  }>(),
+  {
+    showHeading: true,
+  },
+);
 
 const { t } = useI18n({ useScope: "global" });
 </script>
@@ -16,7 +19,11 @@ const { t } = useI18n({ useScope: "global" });
 <template>
   <section id="career" class="section-block section-anchor">
     <v-container fluid>
-      <div v-if="props.showHeading" class="section-heading reveal-up" style="--delay: 40ms">
+      <div
+        v-if="props.showHeading"
+        class="section-heading reveal-up"
+        style="--delay: 40ms"
+      >
         <p class="kicker">{{ t("career.kicker") }}</p>
         <h2>{{ t("career.heading") }}</h2>
         <p class="section-copy">{{ t("career.copy") }}</p>
@@ -35,7 +42,12 @@ const { t } = useI18n({ useScope: "global" });
               <p class="card-institution">{{ stage.institution }}</p>
             </div>
             <div class="card-marker">
-              <v-icon :icon="index === 0 ? 'mdi-star-four-points' : 'mdi-briefcase-outline'" size="16" />
+              <v-icon
+                :icon="
+                  index === 0 ? 'mdi-star-four-points' : 'mdi-briefcase-outline'
+                "
+                size="16"
+              />
             </div>
           </div>
 
@@ -77,7 +89,7 @@ const { t } = useI18n({ useScope: "global" });
   padding: 1.15rem 1.2rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .timeline-top {

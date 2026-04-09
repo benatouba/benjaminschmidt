@@ -80,7 +80,12 @@ const postTagBadges = (post: BlogPost) =>
                 v-for="article in post.relatedArticles"
                 :key="`${post.slug}-${article.title}`"
               >
-                <a v-if="article.href" :href="article.href" target="_blank" rel="noreferrer">
+                <a
+                  v-if="article.href"
+                  :href="article.href"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {{ article.title }}
                 </a>
                 <span v-else>{{ article.title }}</span>
@@ -117,14 +122,16 @@ const postTagBadges = (post: BlogPost) =>
   flex-direction: column;
   padding: 1.2rem;
   height: 100%;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .blog-card:hover {
-  border-color: rgba(34, 211, 238, 0.3);
+  border-color: rgba(250, 179, 135, 0.52);
   transform: translateY(-2px);
 }
 
@@ -185,7 +192,9 @@ const postTagBadges = (post: BlogPost) =>
   min-height: 24px;
   padding-block: 2px;
   border-radius: 4px;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
 }
 
 .tag-badge-link:hover {
@@ -239,7 +248,7 @@ const postTagBadges = (post: BlogPost) =>
   align-items: center;
   gap: 0.35rem;
   text-decoration: underline;
-  text-decoration-color: rgba(34, 211, 238, 0.4);
+  text-decoration-color: rgba(250, 179, 135, 0.56);
   text-underline-offset: 3px;
   margin-top: auto;
   padding-top: 0.8rem;

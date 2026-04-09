@@ -81,7 +81,7 @@ watchEffect(() => {
   padding: 1.2rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .missing-copy {

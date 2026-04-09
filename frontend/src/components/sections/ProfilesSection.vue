@@ -30,7 +30,9 @@ const { t } = useI18n({ useScope: "global" });
             </div>
             <div class="card-meta">
               <h3 class="profile-label">{{ profile.label }}</h3>
-              <p class="profile-category">{{ t(`profiles.categories.${profile.category}`) }}</p>
+              <p class="profile-category">
+                {{ t(`profiles.categories.${profile.category}`) }}
+              </p>
             </div>
           </div>
 
@@ -68,14 +70,16 @@ const { t } = useI18n({ useScope: "global" });
   flex-direction: column;
   padding: 1.2rem;
   height: 100%;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .profile-card:hover {
-  border-color: rgba(34, 211, 238, 0.3);
+  border-color: rgba(250, 179, 135, 0.52);
   transform: translateY(-2px);
 }
 

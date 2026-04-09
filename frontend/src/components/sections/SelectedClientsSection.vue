@@ -20,7 +20,11 @@ const { t } = useI18n({ useScope: "global" });
       </div>
 
       <div class="clients-grid reveal-up" style="--delay: 120ms">
-        <article v-for="client in clients" :key="client.name" class="client-card">
+        <article
+          v-for="client in clients"
+          :key="client.name"
+          class="client-card"
+        >
           <h3 class="client-name">{{ client.name }}</h3>
           <p class="client-note">{{ client.note }}</p>
         </article>
@@ -57,7 +61,7 @@ const { t } = useI18n({ useScope: "global" });
   padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .client-name {

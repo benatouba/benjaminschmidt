@@ -32,7 +32,7 @@ const customBadges: Record<string, SkillBadge> = {
   },
   "cytoscape.js": {
     label: "Cytoscape.js",
-    image: "https://img.shields.io/badge/Cytoscape.js-0f172a?style=flat-square",
+    image: "https://img.shields.io/badge/Cytoscape.js-1e1e2e?style=flat-square",
     href: "https://js.cytoscape.org/",
     width: 81,
     height: 20,
@@ -54,7 +54,7 @@ const customBadges: Record<string, SkillBadge> = {
 };
 
 const genericBadgeImage = (label: string) =>
-  `https://img.shields.io/badge/${encodeURIComponent(label)}-334155?style=flat-square`;
+  `https://img.shields.io/badge/${encodeURIComponent(label)}-45475a?style=flat-square`;
 
 export function resolveTechBadge(label: string): ResolvedTechBadge {
   const key = normalize(label);

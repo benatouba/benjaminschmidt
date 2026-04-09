@@ -3,12 +3,15 @@ import { useI18n } from "vue-i18n";
 
 import type { ResearchService } from "@/types/site";
 
-const props = withDefaults(defineProps<{
-  services: ResearchService[];
-  showHeading?: boolean;
-}>(), {
-  showHeading: true,
-});
+const props = withDefaults(
+  defineProps<{
+    services: ResearchService[];
+    showHeading?: boolean;
+  }>(),
+  {
+    showHeading: true,
+  },
+);
 
 const { t } = useI18n({ useScope: "global" });
 </script>
@@ -16,7 +19,11 @@ const { t } = useI18n({ useScope: "global" });
 <template>
   <section id="services" class="section-block section-anchor">
     <v-container fluid>
-      <div v-if="props.showHeading" class="section-heading reveal-up" style="--delay: 40ms">
+      <div
+        v-if="props.showHeading"
+        class="section-heading reveal-up"
+        style="--delay: 40ms"
+      >
         <p class="kicker">{{ t("services.kicker") }}</p>
         <h2>{{ t("services.heading") }}</h2>
         <p class="section-copy">{{ t("services.copy") }}</p>
@@ -68,7 +75,7 @@ const { t } = useI18n({ useScope: "global" });
   padding: 1.25rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .card-icon {

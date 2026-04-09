@@ -65,7 +65,7 @@ const { t } = useI18n({ useScope: "global" });
   padding: 1.15rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .card-icon {

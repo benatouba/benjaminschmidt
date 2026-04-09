@@ -15,8 +15,10 @@ const doiHref = computed(() =>
   props.insight.doi ? `https://doi.org/${props.insight.doi}` : undefined,
 );
 const publicationHref = computed(() => props.insight.link ?? doiHref.value);
-const showDoiLink = computed(
-  () => Boolean(props.insight.link && doiHref.value && props.insight.link !== doiHref.value),
+const showDoiLink = computed(() =>
+  Boolean(
+    props.insight.link && doiHref.value && props.insight.link !== doiHref.value,
+  ),
 );
 </script>
 
@@ -30,15 +32,29 @@ const showDoiLink = computed(
         </RouterLink>
         <p class="detail-meta">{{ insight.outlet }} · {{ publishedYear }}</p>
         <h2 class="detail-title">{{ insight.title }}</h2>
-        <p v-if="insight.authors" class="detail-authors">{{ insight.authors }}</p>
+        <p v-if="insight.authors" class="detail-authors">
+          {{ insight.authors }}
+        </p>
         <p class="detail-lead">{{ insight.oneLiner }}</p>
         <p class="detail-summary">{{ insight.summary }}</p>
 
         <div class="detail-links">
-          <a v-if="publicationHref" :href="publicationHref" target="_blank" rel="noreferrer" class="primary-link">
+          <a
+            v-if="publicationHref"
+            :href="publicationHref"
+            target="_blank"
+            rel="noreferrer"
+            class="primary-link"
+          >
             {{ t("publicationDetail.openSource") }}
           </a>
-          <a v-if="showDoiLink && doiHref" :href="doiHref" target="_blank" rel="noreferrer" class="secondary-link">
+          <a
+            v-if="showDoiLink && doiHref"
+            :href="doiHref"
+            target="_blank"
+            rel="noreferrer"
+            class="secondary-link"
+          >
             {{ t("publicationDetail.openDoi") }}
           </a>
         </div>
@@ -48,7 +64,9 @@ const showDoiLink = computed(
         <article class="detail-card reveal-up" style="--delay: 100ms">
           <p class="card-kicker">{{ t("publicationDetail.mainFindings") }}</p>
           <ul class="detail-list">
-            <li v-for="finding in insight.findings" :key="finding">{{ finding }}</li>
+            <li v-for="finding in insight.findings" :key="finding">
+              {{ finding }}
+            </li>
           </ul>
         </article>
 
@@ -58,15 +76,26 @@ const showDoiLink = computed(
         </article>
 
         <article class="detail-card reveal-up" style="--delay: 180ms">
-          <p class="card-kicker">{{ t("publicationDetail.recruiterTakeaway") }}</p>
+          <p class="card-kicker">
+            {{ t("publicationDetail.recruiterTakeaway") }}
+          </p>
           <p class="detail-copy">{{ insight.recruiterTakeaway }}</p>
         </article>
       </div>
 
-      <div v-if="insight.metrics.length" class="metrics-card reveal-up" style="--delay: 220ms">
+      <div
+        v-if="insight.metrics.length"
+        class="metrics-card reveal-up"
+        style="--delay: 220ms"
+      >
         <p class="card-kicker">{{ t("publicationDetail.keyMetrics") }}</p>
         <div class="metrics-grid">
-          <span v-for="metric in insight.metrics" :key="metric" class="metric-chip">{{ metric }}</span>
+          <span
+            v-for="metric in insight.metrics"
+            :key="metric"
+            class="metric-chip"
+            >{{ metric }}</span
+          >
         </div>
       </div>
     </v-container>
@@ -80,7 +109,7 @@ const showDoiLink = computed(
   padding: 1.2rem;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .detail-meta,
@@ -153,13 +182,13 @@ const showDoiLink = computed(
 }
 
 .primary-link {
-  color: #0f172a;
+  color: #1e1e2e;
   background: var(--primary);
 }
 
 .secondary-link {
   color: var(--page-text);
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.12);
   border: 1px solid var(--border-color);
 }
 
@@ -195,7 +224,7 @@ const showDoiLink = computed(
   padding: 0.45rem 0.75rem;
   border-radius: 999px;
   border: 1px solid var(--border-color);
-  background: rgba(148, 163, 184, 0.08);
+  background: rgba(166, 173, 200, 0.12);
   color: var(--page-text);
   font-size: 0.82rem;
   font-weight: 500;

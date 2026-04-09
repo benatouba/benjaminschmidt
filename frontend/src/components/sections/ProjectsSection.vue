@@ -4,18 +4,21 @@ import { useI18n } from "vue-i18n";
 
 import type { ResearchProject } from "@/types/site";
 
-const props = withDefaults(defineProps<{
-  projects: ResearchProject[];
-  showHeading?: boolean;
-}>(), {
-  showHeading: true,
-});
+const props = withDefaults(
+  defineProps<{
+    projects: ResearchProject[];
+    showHeading?: boolean;
+  }>(),
+  {
+    showHeading: true,
+  },
+);
 
 const { t } = useI18n({ useScope: "global" });
 
 const projectStatusColor = (status: ResearchProject["status"]) => {
   if (status === "Active") return "var(--primary)";
-  if (status === "Planning") return "#fbbf24";
+  if (status === "Planning") return "#f9e2af";
   return "var(--page-text-muted)";
 };
 
@@ -36,7 +39,11 @@ const projectTechBadges = (project: ResearchProject) =>
 <template>
   <section id="projects" class="section-block section-anchor">
     <v-container fluid>
-      <div v-if="props.showHeading" class="section-heading reveal-up" style="--delay: 40ms">
+      <div
+        v-if="props.showHeading"
+        class="section-heading reveal-up"
+        style="--delay: 40ms"
+      >
         <p class="kicker">{{ t("projects.kicker") }}</p>
         <h2>{{ t("projects.heading") }}</h2>
         <p class="section-copy">{{ t("projects.copy") }}</p>
@@ -55,14 +62,20 @@ const projectTechBadges = (project: ResearchProject) =>
               <h3 class="project-title">{{ project.name }}</h3>
               <p v-if="project.role" class="project-role">{{ project.role }}</p>
             </div>
-            <span class="status-badge" :style="{ '--status-color': projectStatusColor(project.status) }">
+            <span
+              class="status-badge"
+              :style="{ '--status-color': projectStatusColor(project.status) }"
+            >
               {{ t(`projects.status.${project.status}`) }}
             </span>
           </div>
 
           <p class="project-summary">{{ project.summary }}</p>
 
-          <div v-if="projectTechBadges(project).length" class="stack-badges-wrap">
+          <div
+            v-if="projectTechBadges(project).length"
+            class="stack-badges-wrap"
+          >
             <a
               v-for="badge in projectTechBadges(project)"
               :key="badge.key"
@@ -92,7 +105,13 @@ const projectTechBadges = (project: ResearchProject) =>
             </ul>
           </div>
 
-          <a v-if="project.link" :href="project.link" target="_blank" rel="noreferrer" class="project-link">
+          <a
+            v-if="project.link"
+            :href="project.link"
+            target="_blank"
+            rel="noreferrer"
+            class="project-link"
+          >
             {{ t("projects.viewProject") }}
             <v-icon icon="mdi-arrow-top-right" size="16" />
           </a>
@@ -131,7 +150,7 @@ const projectTechBadges = (project: ResearchProject) =>
   display: flex;
   flex-direction: column;
   padding: 1.25rem;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
   border: 1px solid var(--border-color);
   border-radius: 14px;
 }
@@ -207,7 +226,7 @@ const projectTechBadges = (project: ResearchProject) =>
   margin-top: 1rem;
   padding: 0.95rem 1rem;
   border-radius: 12px;
-  background: rgba(15, 23, 42, 0.34);
+  background: rgba(30, 30, 46, 0.45);
   border: 1px solid var(--border-color);
 }
 

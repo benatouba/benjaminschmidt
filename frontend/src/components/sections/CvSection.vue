@@ -11,18 +11,21 @@ import type {
   SelectedClient,
 } from "@/types/site";
 
-const props = withDefaults(defineProps<{
-  profile: ProfileInfo;
-  highlights: ImpactHighlight[];
-  appointments: CvAppointment[];
-  education: EducationEntry[];
-  honors: HonorEntry[];
-  certifications: CertificationEntry[];
-  clients: SelectedClient[];
-  showHeading?: boolean;
-}>(), {
-  showHeading: true,
-});
+const props = withDefaults(
+  defineProps<{
+    profile: ProfileInfo;
+    highlights: ImpactHighlight[];
+    appointments: CvAppointment[];
+    education: EducationEntry[];
+    honors: HonorEntry[];
+    certifications: CertificationEntry[];
+    clients: SelectedClient[];
+    showHeading?: boolean;
+  }>(),
+  {
+    showHeading: true,
+  },
+);
 
 const { t } = useI18n({ useScope: "global" });
 </script>
@@ -30,7 +33,11 @@ const { t } = useI18n({ useScope: "global" });
 <template>
   <section id="cv" class="section-block section-anchor">
     <v-container fluid>
-      <div v-if="props.showHeading" class="section-heading reveal-up" style="--delay: 40ms">
+      <div
+        v-if="props.showHeading"
+        class="section-heading reveal-up"
+        style="--delay: 40ms"
+      >
         <p class="kicker">{{ t("cv.kicker") }}</p>
         <h2>{{ t("cv.heading") }}</h2>
         <p class="section-copy">{{ t("cv.copy") }}</p>
@@ -43,14 +50,20 @@ const { t } = useI18n({ useScope: "global" });
           <p class="summary-headline">{{ profile.headline }}</p>
         </div>
         <div class="summary-contact">
-          <a :href="`mailto:${profile.email}`" class="contact-link">{{ profile.email }}</a>
+          <a :href="`mailto:${profile.email}`" class="contact-link">{{
+            profile.email
+          }}</a>
           <span>{{ profile.location }}</span>
           <span>ORCID {{ profile.orcid }}</span>
         </div>
       </div>
 
       <div class="highlights-strip reveal-up" style="--delay: 140ms">
-        <article v-for="item in props.highlights" :key="`${item.value}-${item.label}`" class="highlight-pill">
+        <article
+          v-for="item in props.highlights"
+          :key="`${item.value}-${item.label}`"
+          class="highlight-pill"
+        >
           <p class="pill-value">{{ item.value }}</p>
           <p class="pill-label">{{ item.label }}</p>
         </article>
@@ -70,7 +83,9 @@ const { t } = useI18n({ useScope: "global" });
                   <div>
                     <p class="appointment-period">{{ item.period }}</p>
                     <h4 class="appointment-role">{{ item.role }}</h4>
-                    <p class="appointment-info">{{ item.institution }} · {{ item.location }}</p>
+                    <p class="appointment-info">
+                      {{ item.institution }} · {{ item.location }}
+                    </p>
                   </div>
                 </div>
                 <p class="appointment-summary">{{ item.summary }}</p>
@@ -88,9 +103,15 @@ const { t } = useI18n({ useScope: "global" });
           <div class="cv-card">
             <h3 class="card-title">{{ t("cv.education") }}</h3>
             <div class="list-stack">
-              <article v-for="entry in props.education" :key="`${entry.period}-${entry.degree}`" class="list-item">
+              <article
+                v-for="entry in props.education"
+                :key="`${entry.period}-${entry.degree}`"
+                class="list-item"
+              >
                 <h4 class="list-title">{{ entry.degree }}</h4>
-                <p class="list-subtitle">{{ entry.institution }} · {{ entry.period }}</p>
+                <p class="list-subtitle">
+                  {{ entry.institution }} · {{ entry.period }}
+                </p>
                 <p class="list-detail">{{ entry.details }}</p>
               </article>
             </div>
@@ -99,9 +120,15 @@ const { t } = useI18n({ useScope: "global" });
           <div class="cv-card">
             <h3 class="card-title">{{ t("cv.awardsAndHonors") }}</h3>
             <div class="list-stack compact">
-              <article v-for="honor in props.honors" :key="`${honor.year}-${honor.title}`" class="list-item">
+              <article
+                v-for="honor in props.honors"
+                :key="`${honor.year}-${honor.title}`"
+                class="list-item"
+              >
                 <h4 class="list-title">{{ honor.title }}</h4>
-                <p class="list-subtitle">{{ honor.issuer }} · {{ honor.year }}</p>
+                <p class="list-subtitle">
+                  {{ honor.issuer }} · {{ honor.year }}
+                </p>
                 <p class="list-detail">{{ honor.description }}</p>
               </article>
             </div>
@@ -117,7 +144,10 @@ const { t } = useI18n({ useScope: "global" });
               >
                 <h4 class="list-title">{{ certification.title }}</h4>
                 <p class="list-subtitle">
-                  {{ certification.issuer }}<template v-if="certification.year"> · {{ certification.year }}</template>
+                  {{ certification.issuer
+                  }}<template v-if="certification.year">
+                    · {{ certification.year }}</template
+                  >
                 </p>
                 <p class="list-detail">{{ certification.description }}</p>
               </article>
@@ -127,7 +157,11 @@ const { t } = useI18n({ useScope: "global" });
           <div class="cv-card">
             <h3 class="card-title">{{ t("cv.selectedClients") }}</h3>
             <div class="client-list">
-              <article v-for="client in props.clients" :key="client.name" class="client-item">
+              <article
+                v-for="client in props.clients"
+                :key="client.name"
+                class="client-item"
+              >
                 <h4 class="list-title">{{ client.name }}</h4>
                 <p class="list-detail">{{ client.note }}</p>
               </article>
@@ -163,7 +197,7 @@ const { t } = useI18n({ useScope: "global" });
 .highlight-pill {
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(49, 50, 68, 0.56);
 }
 
 .cv-summary-card {
@@ -261,7 +295,7 @@ const { t } = useI18n({ useScope: "global" });
   padding: 0.95rem 1rem;
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  background: rgba(15, 23, 42, 0.32);
+  background: rgba(30, 30, 46, 0.45);
 }
 
 .appointment-period {
