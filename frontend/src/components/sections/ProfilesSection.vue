@@ -13,10 +13,6 @@ const { t } = useI18n({ useScope: "global" });
 <template>
   <section id="profiles" class="section-block section-anchor">
     <v-container fluid>
-      <div class="section-heading reveal-up" style="--delay: 40ms">
-        <h2>{{ t("profiles.heading") }}</h2>
-      </div>
-
       <div class="profiles-grid">
         <article
           v-for="(profile, index) in props.profiles"

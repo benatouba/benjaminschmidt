@@ -14,8 +14,21 @@ export const normalizeLocaleCode = (value: string | null | undefined): AppLocale
   return value && localeCodes.includes(value as AppLocale) ? (value as AppLocale) : "en";
 };
 
+const localeFromQuery = (() => {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const value = new URLSearchParams(window.location.search).get("lang");
+  if (!value) {
+    return null;
+  }
+
+  return normalizeLocaleCode(value);
+})();
+
 const savedLocale = typeof localStorage !== "undefined" ? localStorage.getItem("locale") : null;
-export const initialLocale = normalizeLocaleCode(savedLocale);
+export const initialLocale = localeFromQuery ?? normalizeLocaleCode(savedLocale);
 
 const loadedLocales = new Set<AppLocale>();
 

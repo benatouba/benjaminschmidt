@@ -1,23 +1,25 @@
 <script setup lang="ts">
 defineProps<{
-  title: string;
+  title?: string;
   kicker?: string;
   copy?: string;
 }>();
 </script>
 
 <template>
-  <v-container class="section-shell" fluid>
-    <div class="section-heading reveal-up" style="--delay: 40ms">
-      <p v-if="kicker" class="kicker">{{ kicker }}</p>
-      <h1 class="page-title">{{ title }}</h1>
-      <p v-if="copy" class="page-copy">{{ copy }}</p>
-    </div>
+  <section id="page-section-header" class="section-block section-anchor">
+    <v-container class="section-shell" fluid>
+      <div class="section-heading reveal-up" style="--delay: 40ms">
+        <p v-if="kicker" class="kicker">{{ kicker }}</p>
+        <h1 class="page-title">{{ title }}</h1>
+        <p v-if="copy" class="page-copy">{{ copy }}</p>
+      </div>
 
-    <div class="content-slot reveal-up" style="--delay: 120ms">
-      <slot></slot>
-    </div>
-  </v-container>
+      <div class="content-slot reveal-up" style="--delay: 120ms">
+        <slot></slot>
+      </div>
+    </v-container>
+  </section>
 </template>
 
 <style scoped>
