@@ -101,23 +101,6 @@ const { t } = useI18n({ useScope: "global" });
 
         <div class="cv-side reveal-up" style="--delay: 220ms">
           <div class="cv-card">
-            <h3 class="card-title">{{ t("cv.education") }}</h3>
-            <div class="list-stack">
-              <article
-                v-for="entry in props.education"
-                :key="`${entry.period}-${entry.degree}`"
-                class="list-item"
-              >
-                <h4 class="list-title">{{ entry.degree }}</h4>
-                <p class="list-subtitle">
-                  {{ entry.institution }} · {{ entry.period }}
-                </p>
-                <p class="list-detail">{{ entry.details }}</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="cv-card">
             <h3 class="card-title">{{ t("cv.awardsAndHonors") }}</h3>
             <div class="list-stack compact">
               <article
@@ -130,6 +113,23 @@ const { t } = useI18n({ useScope: "global" });
                   {{ honor.issuer }} · {{ honor.year }}
                 </p>
                 <p class="list-detail">{{ honor.description }}</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="cv-card">
+            <h3 class="card-title">{{ t("cv.education") }}</h3>
+            <div class="list-stack">
+              <article
+                v-for="entry in props.education"
+                :key="`${entry.period}-${entry.degree}`"
+                class="list-item"
+              >
+                <h4 class="list-title">{{ entry.degree }}</h4>
+                <p class="list-subtitle">
+                  {{ entry.institution }} · {{ entry.period }}
+                </p>
+                <p class="list-detail">{{ entry.details }}</p>
               </article>
             </div>
           </div>
