@@ -285,7 +285,7 @@ export const content: SiteContent = {
     },
     {
       icon: "mdi-web",
-      value: "Multiple shipped products",
+      value: "Shipped products",
       label: "Full-stack delivery",
       detail: "Delivered production-style web platforms, public data portals, internal tools, APIs, dashboards, and reporting systems.",
     },

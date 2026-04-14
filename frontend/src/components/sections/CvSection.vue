@@ -77,7 +77,25 @@ const cvDownload = computed(() => {
         <div class="summary-contact">
           <a :href="`mailto:${profile.email}`" class="contact-link">{{ profile.email }}</a>
           <span>{{ profile.location }}</span>
-          <span>ORCID {{ profile.orcid }}</span>
+          <!-- orcid badge with text and link -->
+          <a
+            v-if="profile.orcid"
+            :href="profile.orcid"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+          >
+            ORCID: {{ profile.orcid.split("/").pop() }}
+          </a>
+          <!-- github badge with text and link -->
+          <a
+            href="https://github.com/benatouba"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+          >
+            GitHub: benatouba
+          </a>
         </div>
       </div>
 
