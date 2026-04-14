@@ -45,27 +45,27 @@ const cvDownload = computed(() => {
 <template>
   <section id="cv" class="section-block section-anchor">
     <v-container fluid>
-      <div
-        v-if="props.showHeading"
-        class="section-heading reveal-up"
-        style="--delay: 40ms"
-      >
-        <p class="kicker">{{ t("cv.kicker") }}</p>
-        <h2>{{ t("cv.heading") }}</h2>
-        <p class="section-copy">{{ t("cv.copy") }}</p>
-      </div>
-
-      <div class="cv-actions reveal-up" style="--delay: 70ms">
-        <v-btn
-          :href="cvDownload.href"
-          :download="cvDownload.filename"
-          color="primary"
-          size="large"
-          class="cv-download-btn"
-          prepend-icon="mdi-download"
-        >
-          {{ t("cv.download") }}
-        </v-btn>
+      <div v-if="props.showHeading" class="section-heading reveal-up" style="--delay: 40ms">
+        <v-row
+          ><v-col cols="10" md="9" lg="8">
+            <p class="kicker">{{ t("cv.kicker") }}</p>
+            <h2>{{ t("cv.heading") }}</h2>
+            <p class="section-copy">{{ t("cv.copy") }}</p>
+          </v-col>
+          <v-spacer />
+          <v-col>
+            <v-btn
+              :href="cvDownload.href"
+              :download="cvDownload.filename"
+              color="primary"
+              size="large"
+              class="cv-download-btn"
+              prepend-icon="mdi-download"
+            >
+              {{ t("cv.download") }}
+            </v-btn>
+          </v-col>
+        </v-row>
       </div>
 
       <div class="cv-summary-card reveal-up" style="--delay: 100ms">
@@ -75,9 +75,7 @@ const cvDownload = computed(() => {
           <p class="summary-headline">{{ profile.headline }}</p>
         </div>
         <div class="summary-contact">
-          <a :href="`mailto:${profile.email}`" class="contact-link">{{
-            profile.email
-          }}</a>
+          <a :href="`mailto:${profile.email}`" class="contact-link">{{ profile.email }}</a>
           <span>{{ profile.location }}</span>
           <span>ORCID {{ profile.orcid }}</span>
         </div>
@@ -108,9 +106,7 @@ const cvDownload = computed(() => {
                   <div>
                     <p class="appointment-period">{{ item.period }}</p>
                     <h4 class="appointment-role">{{ item.role }}</h4>
-                    <p class="appointment-info">
-                      {{ item.institution }} · {{ item.location }}
-                    </p>
+                    <p class="appointment-info">{{ item.institution }} · {{ item.location }}</p>
                   </div>
                 </div>
                 <p class="appointment-summary">{{ item.summary }}</p>
@@ -134,9 +130,7 @@ const cvDownload = computed(() => {
                 class="list-item"
               >
                 <h4 class="list-title">{{ honor.title }}</h4>
-                <p class="list-subtitle">
-                  {{ honor.issuer }} · {{ honor.year }}
-                </p>
+                <p class="list-subtitle">{{ honor.issuer }} · {{ honor.year }}</p>
                 <p class="list-detail">{{ honor.description }}</p>
               </article>
             </div>
@@ -151,9 +145,7 @@ const cvDownload = computed(() => {
                 class="list-item"
               >
                 <h4 class="list-title">{{ entry.degree }}</h4>
-                <p class="list-subtitle">
-                  {{ entry.institution }} · {{ entry.period }}
-                </p>
+                <p class="list-subtitle">{{ entry.institution }} · {{ entry.period }}</p>
                 <p class="list-detail">{{ entry.details }}</p>
               </article>
             </div>
@@ -170,9 +162,7 @@ const cvDownload = computed(() => {
                 <h4 class="list-title">{{ certification.title }}</h4>
                 <p class="list-subtitle">
                   {{ certification.issuer
-                  }}<template v-if="certification.year">
-                    · {{ certification.year }}</template
-                  >
+                  }}<template v-if="certification.year"> · {{ certification.year }}</template>
                 </p>
                 <p class="list-detail">{{ certification.description }}</p>
               </article>
@@ -182,11 +172,7 @@ const cvDownload = computed(() => {
           <div class="cv-card">
             <h3 class="card-title">{{ t("cv.selectedClients") }}</h3>
             <div class="client-list">
-              <article
-                v-for="client in props.clients"
-                :key="client.name"
-                class="client-item"
-              >
+              <article v-for="client in props.clients" :key="client.name" class="client-item">
                 <h4 class="list-title">{{ client.name }}</h4>
                 <p class="list-detail">{{ client.note }}</p>
               </article>
