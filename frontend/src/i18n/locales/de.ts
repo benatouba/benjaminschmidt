@@ -68,6 +68,7 @@ export const messages = {
     heading: "Lebenslauf",
     copy:
       "Eine kompakte, gut lesbare Zusammenfassung der Erfahrung, die für Senior- und Staff-Rollen in produkt-, plattform-, daten- und infrastrukturlastigen Umgebungen am relevantesten ist.",
+    download: "CV als PDF herunterladen",
     profileTitle: "Aktuelle Positionierung",
     professionalAppointments: "Erfahrung",
     education: "Ausbildung",

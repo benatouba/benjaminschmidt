@@ -68,6 +68,7 @@ export const messages = {
     heading: "CV",
     copy:
       "A concise summary of the experience most relevant to senior and staff engineering roles in product, platform, data, and infrastructure-heavy environments.",
+    download: "Download CV (PDF)",
     profileTitle: "Current positioning",
     professionalAppointments: "Experience",
     education: "Education",

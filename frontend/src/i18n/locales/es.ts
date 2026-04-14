@@ -68,6 +68,7 @@ export const messages = {
     heading: "CV",
     copy:
       "Un resumen compacto y útil para selección y contratación de la experiencia más relevante para roles senior y staff en entornos de producto, plataforma, datos e infraestructura.",
+    download: "Descargar CV (PDF)",
     profileTitle: "Posicionamiento actual",
     professionalAppointments: "Experiencia",
     education: "Formación",

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import cvPdfDe from "@/assets/schmidt-benjamin-cv.pdf";
+import cvPdfEn from "@/assets/schmidt-benjamin-cv-en.pdf";
+import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
 import type {
@@ -27,7 +30,16 @@ const props = withDefaults(
   },
 );
 
-const { t } = useI18n({ useScope: "global" });
+const { t, locale } = useI18n({ useScope: "global" });
+
+const cvDownload = computed(() => {
+  const isGerman = locale.value === "de";
+
+  return {
+    href: isGerman ? cvPdfDe : cvPdfEn,
+    filename: isGerman ? "schmidt-benjamin-cv.pdf" : "schmidt-benjamin-cv-en.pdf",
+  };
+});
 </script>
 
 <template>
@@ -41,6 +53,19 @@ const { t } = useI18n({ useScope: "global" });
         <p class="kicker">{{ t("cv.kicker") }}</p>
         <h2>{{ t("cv.heading") }}</h2>
         <p class="section-copy">{{ t("cv.copy") }}</p>
+      </div>
+
+      <div class="cv-actions reveal-up" style="--delay: 70ms">
+        <v-btn
+          :href="cvDownload.href"
+          :download="cvDownload.filename"
+          color="primary"
+          size="large"
+          class="cv-download-btn"
+          prepend-icon="mdi-download"
+        >
+          {{ t("cv.download") }}
+        </v-btn>
       </div>
 
       <div class="cv-summary-card reveal-up" style="--delay: 100ms">
@@ -190,6 +215,19 @@ const { t } = useI18n({ useScope: "global" });
   font-size: 0.96rem;
   line-height: 1.7;
   color: var(--page-text-muted);
+}
+
+.cv-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.9rem;
+}
+
+.cv-download-btn {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 650;
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--primary) 25%, transparent);
 }
 
 .cv-summary-card,
