@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { resolveTechBadge } from "@/data/techBadges";
 import { useI18n } from "vue-i18n";
 
 import profilePhoto from "@/assets/cv-profile-pro-384.webp";
@@ -33,6 +34,10 @@ const quickLinks = [
 
 const featuredHighlights = props.highlights.slice(0, 3);
 const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
+const coreStackBadges = props.profile.skills.map((skill) => ({
+  key: skill,
+  ...resolveTechBadge(skill),
+}));
 </script>
 
 <template>
@@ -124,13 +129,24 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
         <div class="strengths-card">
           <p class="strengths-heading">{{ t("hero.coreStrengths") }}</p>
           <div class="strengths-grid">
-            <span
-              v-for="skill in props.profile.skills"
-              :key="skill"
-              class="strength-chip"
+            <a
+              v-for="badge in coreStackBadges"
+              :key="badge.key"
+              :href="badge.href"
+              :target="badge.href ? '_blank' : undefined"
+              :rel="badge.href ? 'noreferrer' : undefined"
+              class="strength-badge-link"
             >
-              {{ skill }}
-            </span>
+              <img
+                :src="badge.image"
+                :alt="badge.label"
+                :width="badge.width ?? 80"
+                :height="badge.height ?? 20"
+                loading="lazy"
+                decoding="async"
+                class="strength-badge"
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -370,16 +386,15 @@ const profilePhotoSrcset = `${profilePhotoSmall} 256w, ${profilePhoto} 384w`;
   margin-top: 0.8rem;
 }
 
-.strength-chip {
+.strength-badge-link {
   display: inline-flex;
   align-items: center;
-  padding: 0.42rem 0.65rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--page-text);
-  background: rgba(166, 173, 200, 0.12);
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
+}
+
+.strength-badge {
+  display: block;
+  width: auto;
+  height: 20px;
 }
 
 @media (width <= 1080px) {
