@@ -13,7 +13,6 @@ const OG_LOCALE_BY_LANG: Record<(typeof SUPPORTED_LOCALES)[number], string> = {
   de: "de_DE",
   es: "es_ES",
 };
-const MANAGED_ALT_ATTR = "data-managed-hreflang";
 const MANAGED_OG_ALT_ATTR = "data-managed-og-locale-alternate";
 
 const routeTitleKeys: Record<string, string> = {
@@ -49,7 +48,7 @@ const upsertMetaProperty = (property: string, content: string) => {
     return;
   }
 
-  let element = document.head.querySelector<HTMLMetaElement>(`meta[property=\"${property}\"]`);
+  let element = document.head.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
 
   if (!element) {
     element = document.createElement("meta");
@@ -60,14 +59,40 @@ const upsertMetaProperty = (property: string, content: string) => {
   element.setAttribute("content", content);
 };
 
-const buildLocalizedUrl = (path: string, locale: string) => {
+const normalizeCanonicalPath = (path: string) => {
+  if (path === "/") {
+    return "/";
+  }
+
+  return path.replace(/\/+$/, "") || "/";
+};
+
+const buildAbsoluteUrl = (path: string) => {
   if (typeof window === "undefined") {
     return "";
   }
 
   const url = new URL(path, window.location.origin);
-  url.searchParams.set("lang", locale);
   return url.toString();
+};
+
+const syncCanonicalLocation = (canonicalPath: string) => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const currentUrl = new URL(window.location.href);
+  const hadLocaleQuery = currentUrl.searchParams.has("lang");
+  currentUrl.searchParams.delete("lang");
+
+  const needsPathUpdate = currentUrl.pathname !== canonicalPath;
+  if (!hadLocaleQuery && !needsPathUpdate) {
+    return;
+  }
+
+  currentUrl.pathname = canonicalPath;
+  const nextUrl = `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`;
+  window.history.replaceState(window.history.state, "", nextUrl);
 };
 
 const syncOgLocaleAlternateTags = (activeLocale: (typeof SUPPORTED_LOCALES)[number]) => {
@@ -76,7 +101,7 @@ const syncOgLocaleAlternateTags = (activeLocale: (typeof SUPPORTED_LOCALES)[numb
   }
 
   document.head
-    .querySelectorAll(`meta[property=\"og:locale:alternate\"][${MANAGED_OG_ALT_ATTR}=\"true\"]`)
+    .querySelectorAll(`meta[property="og:locale:alternate"][${MANAGED_OG_ALT_ATTR}="true"]`)
     .forEach((node) => node.remove());
 
   for (const locale of SUPPORTED_LOCALES) {
@@ -92,32 +117,8 @@ const syncOgLocaleAlternateTags = (activeLocale: (typeof SUPPORTED_LOCALES)[numb
   }
 };
 
-const syncAlternateLanguageTags = (path: string, activeLocale: (typeof SUPPORTED_LOCALES)[number]) => {
-  if (typeof document === "undefined") {
-    return;
-  }
-
-  document.head
-    .querySelectorAll(`link[rel=\"alternate\"][${MANAGED_ALT_ATTR}=\"true\"]`)
-    .forEach((node) => node.remove());
-
-  for (const locale of SUPPORTED_LOCALES) {
-    const element = document.createElement("link");
-    element.setAttribute("rel", "alternate");
-    element.setAttribute("hreflang", locale);
-    element.setAttribute("href", buildLocalizedUrl(path, locale));
-    element.setAttribute(MANAGED_ALT_ATTR, "true");
-    document.head.appendChild(element);
-  }
-
-  const defaultElement = document.createElement("link");
-  defaultElement.setAttribute("rel", "alternate");
-  defaultElement.setAttribute("hreflang", "x-default");
-  defaultElement.setAttribute("href", buildLocalizedUrl(path, "en"));
-  defaultElement.setAttribute(MANAGED_ALT_ATTR, "true");
-  document.head.appendChild(defaultElement);
-
-  const canonicalHref = buildLocalizedUrl(path, activeLocale);
+const syncCanonicalTags = (canonicalPath: string, activeLocale: (typeof SUPPORTED_LOCALES)[number]) => {
+  const canonicalHref = buildAbsoluteUrl(canonicalPath);
   upsertLinkTag('link[rel="canonical"]', { rel: "canonical", href: canonicalHref });
   upsertMetaProperty("og:url", canonicalHref);
   upsertMetaProperty("og:locale", OG_LOCALE_BY_LANG[activeLocale]);
@@ -154,7 +155,10 @@ router.afterEach((to) => {
 
   const locale = normalizeLocaleCode(i18n.global.locale.value) as (typeof SUPPORTED_LOCALES)[number];
   document.documentElement.setAttribute("lang", locale);
-  syncAlternateLanguageTags(to.path, locale);
+
+  const canonicalPath = normalizeCanonicalPath(to.path);
+  syncCanonicalLocation(canonicalPath);
+  syncCanonicalTags(canonicalPath, locale);
 });
 
 router.onError((error, to) => {

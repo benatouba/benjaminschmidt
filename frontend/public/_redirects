@@ -1,2 +1,19 @@
-# SPA fallback — serve index.html for all client-side routes
+# Canonical sitemap endpoint
+/sitemap-en.xml  /sitemap.xml  301
+/sitemap-de.xml  /sitemap.xml  301
+/sitemap-es.xml  /sitemap.xml  301
+
+# Canonical page URL shape
+/index.html  /  301
+/cv/  /cv  301
+/career/  /career  301
+/publications/  /publications  301
+/publications/:slug/  /publications/:slug  301
+/spotlights/  /spotlights  301
+/projects/  /projects  301
+/profiles/  /profiles  301
+/contact/  /contact  301
+/services/  /services  301
+
+# SPA fallback - serve index.html for all client-side routes
 /*  /index.html  200
