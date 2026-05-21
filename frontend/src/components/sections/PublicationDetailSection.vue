@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { PublicationInsight } from "@/types/site";
 
 const props = defineProps<{
@@ -27,7 +28,7 @@ const showDoiLink = computed(() =>
     <v-container fluid>
       <div class="detail-hero reveal-up" style="--delay: 40ms">
         <RouterLink to="/publications" class="back-link">
-          <v-icon icon="mdi-arrow-left" size="16" />
+          <AppIcon icon="mdi-arrow-left" size="16" />
           {{ t("publicationDetail.backToPublications") }}
         </RouterLink>
         <p class="detail-meta">{{ insight.outlet }} · {{ publishedYear }}</p>

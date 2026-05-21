@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { ContactLink, ProfileInfo } from "@/types/site";
 
 const props = withDefaults(
@@ -33,11 +34,11 @@ const { t } = useI18n({ useScope: "global" });
 
           <div class="contact-actions">
             <a :href="`mailto:${profile.email}`" class="primary-cta">
-              <v-icon icon="mdi-email-outline" size="18" />
+              <AppIcon icon="mdi-email-outline" size="18" />
               {{ t("contact.primaryCta") }}
             </a>
             <RouterLink to="/cv" class="secondary-cta">
-              <v-icon icon="mdi-file-account-outline" size="18" />
+              <AppIcon icon="mdi-file-account-outline" size="18" />
               {{ t("contact.secondaryCta") }}
             </RouterLink>
           </div>
@@ -53,7 +54,7 @@ const { t } = useI18n({ useScope: "global" });
             class="link-item"
           >
             <div class="link-icon">
-              <v-icon :icon="link.icon" size="20" />
+              <AppIcon :icon="link.icon" size="20" />
             </div>
             <div class="link-content">
               <span class="link-label">{{ link.label }}</span>
@@ -61,7 +62,7 @@ const { t } = useI18n({ useScope: "global" });
                 link.href ? link.sublabel : t("contact.comingSoon")
               }}</span>
             </div>
-            <v-icon
+            <AppIcon
               :icon="link.href ? 'mdi-arrow-top-right' : 'mdi-clock-outline'"
               size="16"
               class="link-arrow"

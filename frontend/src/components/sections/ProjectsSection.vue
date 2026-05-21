@@ -2,6 +2,7 @@
 import { resolveKnownTechBadge } from "@/data/techBadges";
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { ResearchProject } from "@/types/site";
 
 const props = withDefaults(
@@ -113,7 +114,7 @@ const projectTechBadges = (project: ResearchProject) =>
             class="project-link"
           >
             {{ t("projects.viewProject") }}
-            <v-icon icon="mdi-arrow-top-right" size="16" />
+            <AppIcon icon="mdi-arrow-top-right" size="16" />
           </a>
         </article>
       </div>

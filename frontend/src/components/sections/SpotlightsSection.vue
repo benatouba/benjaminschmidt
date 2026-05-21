@@ -2,6 +2,7 @@
 import { resolveKnownTechBadge } from "@/data/techBadges";
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { BlogPost } from "@/types/site";
 
 const props = defineProps<{
@@ -40,7 +41,7 @@ const postTagBadges = (post: BlogPost) =>
         >
           <div class="card-header">
             <div class="card-icon">
-              <v-icon icon="mdi-post-outline" size="18" />
+              <AppIcon icon="mdi-post-outline" size="18" />
             </div>
             <div class="card-meta">
               <h3 class="blog-title">{{ post.title }}</h3>
@@ -101,7 +102,7 @@ const postTagBadges = (post: BlogPost) =>
             class="blog-link"
           >
             {{ t("spotlights.viewProject") }}
-            <v-icon icon="mdi-arrow-top-right" size="16" />
+            <AppIcon icon="mdi-arrow-top-right" size="16" />
           </a>
         </article>
       </div>

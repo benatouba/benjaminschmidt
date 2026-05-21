@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { CareerStage } from "@/types/site";
 
 const props = withDefaults(
@@ -42,7 +43,7 @@ const { t } = useI18n({ useScope: "global" });
               <p class="card-institution">{{ stage.institution }}</p>
             </div>
             <div class="card-marker">
-              <v-icon
+              <AppIcon
                 :icon="
                   index === 0 ? 'mdi-star-four-points' : 'mdi-briefcase-outline'
                 "

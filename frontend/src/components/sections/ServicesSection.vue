@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { ResearchService } from "@/types/site";
 
 const props = withDefaults(
@@ -37,7 +38,7 @@ const { t } = useI18n({ useScope: "global" });
           :style="`--delay: ${120 + index * 80}ms`"
         >
           <div class="card-icon">
-            <v-icon :icon="service.icon" size="22" />
+            <AppIcon :icon="service.icon" size="22" />
           </div>
           <h3 class="service-title">{{ service.title }}</h3>
           <p class="service-description">{{ service.description }}</p>

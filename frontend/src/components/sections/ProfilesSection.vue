@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { ExternalProfileLink } from "@/types/site";
 
 const props = defineProps<{
@@ -22,7 +23,7 @@ const { t } = useI18n({ useScope: "global" });
         >
           <div class="card-header">
             <div class="card-icon">
-              <v-icon :icon="profile.icon" size="20" />
+              <AppIcon :icon="profile.icon" size="20" />
             </div>
             <div class="card-meta">
               <h3 class="profile-label">{{ profile.label }}</h3>
@@ -42,7 +43,7 @@ const { t } = useI18n({ useScope: "global" });
             class="profile-link"
           >
             {{ t("profiles.visitProfile") }}
-            <v-icon icon="mdi-arrow-top-right" size="16" />
+            <AppIcon icon="mdi-arrow-top-right" size="16" />
           </a>
           <span v-else class="profile-link disabled">
             {{ t("profiles.comingSoon") }}

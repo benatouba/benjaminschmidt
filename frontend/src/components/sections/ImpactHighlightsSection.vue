@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { ImpactHighlight } from "@/types/site";
 
 defineProps<{
@@ -27,7 +28,7 @@ const { t } = useI18n({ useScope: "global" });
           :style="`--delay: ${120 + index * 70}ms`"
         >
           <div class="card-icon">
-            <v-icon :icon="item.icon" size="18" />
+            <AppIcon :icon="item.icon" size="18" />
           </div>
           <p class="impact-value">{{ item.value }}</p>
           <h3 class="impact-label">{{ item.label }}</h3>

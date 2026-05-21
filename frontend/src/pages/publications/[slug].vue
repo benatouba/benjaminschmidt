@@ -5,6 +5,7 @@ import { useI18n } from "vue-i18n";
 
 import PageSectionShell from "@/components/layout/PageSectionShell.vue";
 import PublicationDetailSection from "@/components/sections/PublicationDetailSection.vue";
+import AppIcon from "@/components/ui/AppIcon.vue";
 import { useSiteContent } from "@/composables/useSiteContent";
 
 const route = useRoute() as ReturnType<typeof useRoute> & {
@@ -64,7 +65,7 @@ watchEffect(() => {
       <div class="missing-card">
         <p class="missing-copy">{{ t("pages.publications.notFoundCopy") }}</p>
         <RouterLink to="/publications" class="missing-link">
-          <v-icon icon="mdi-arrow-left" size="16" />
+          <AppIcon icon="mdi-arrow-left" size="16" />
           {{ t("publicationDetail.backToPublications") }}
         </RouterLink>
       </div>

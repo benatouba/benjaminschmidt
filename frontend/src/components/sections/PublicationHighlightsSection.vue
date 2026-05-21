@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { PublicationInsight } from "@/types/site";
 
 defineProps<{
@@ -40,7 +41,7 @@ const { t } = useI18n({ useScope: "global" });
 
           <RouterLink :to="`/publications/${item.slug}`" class="detail-link">
             {{ t("publicationHighlights.openDetail") }}
-            <v-icon icon="mdi-arrow-right" size="16" />
+            <AppIcon icon="mdi-arrow-right" size="16" />
           </RouterLink>
         </article>
       </div>
@@ -52,7 +53,7 @@ const { t } = useI18n({ useScope: "global" });
       >
         <RouterLink to="/publications" class="section-link">
           {{ t("publicationHighlights.viewAll") }}
-          <v-icon icon="mdi-arrow-right" size="16" />
+          <AppIcon icon="mdi-arrow-right" size="16" />
         </RouterLink>
       </div>
     </v-container>

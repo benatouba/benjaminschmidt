@@ -2,6 +2,7 @@
 import { computed, ref, watchEffect } from "vue";
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type { PublicationInsight, PublicationKind } from "@/types/site";
 
 const props = defineProps<{
@@ -100,7 +101,7 @@ const kindLabel = (kind: "All" | PublicationKind) => {
         >
           <div class="card-header">
             <div class="card-icon">
-              <v-icon icon="mdi-file-document-outline" size="18" />
+              <AppIcon icon="mdi-file-document-outline" size="18" />
             </div>
             <div class="card-meta">
               <p class="publication-venue">
@@ -142,7 +143,7 @@ const kindLabel = (kind: "All" | PublicationKind) => {
             class="publication-link"
           >
             {{ t("publications.read") }}
-            <v-icon icon="mdi-arrow-right" size="16" />
+            <AppIcon icon="mdi-arrow-right" size="16" />
           </RouterLink>
         </article>
       </div>

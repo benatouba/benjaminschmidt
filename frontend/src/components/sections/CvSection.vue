@@ -4,6 +4,7 @@ import cvPdfEn from "@/assets/schmidt-benjamin-cv-en.pdf";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import type {
   CertificationEntry,
   CvAppointment,
@@ -60,8 +61,10 @@ const cvDownload = computed(() => {
               color="primary"
               size="large"
               class="cv-download-btn"
-              prepend-icon="mdi-download"
             >
+              <template #prepend>
+                <AppIcon icon="mdi-download" size="18" />
+              </template>
               {{ t("cv.download") }}
             </v-btn>
           </v-col>

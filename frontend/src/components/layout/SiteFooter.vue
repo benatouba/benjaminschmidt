@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import { useSiteContent } from "@/composables/useSiteContent";
 import type { NavigationItem } from "@/types/site";
 
@@ -47,7 +48,7 @@ const onFooterNavClick = (event: MouseEvent, item: NavigationItem) => {
           <p class="footer-name">{{ t("footer.copyright", { year }) }}</p>
           <p class="footer-tagline">{{ t("footer.tagline") }}</p>
           <p class="footer-location">
-            <v-icon icon="mdi-map-marker-outline" size="14" />
+            <AppIcon icon="mdi-map-marker-outline" size="14" />
             {{ t("footer.location") }}
           </p>
         </div>
@@ -76,7 +77,7 @@ const onFooterNavClick = (event: MouseEvent, item: NavigationItem) => {
             rel="noreferrer"
             :aria-label="link.label"
           >
-            <v-icon :icon="link.icon" size="18" />
+            <AppIcon :icon="link.icon" size="18" />
           </a>
         </div>
 
@@ -129,7 +130,7 @@ const onFooterNavClick = (event: MouseEvent, item: NavigationItem) => {
   color: var(--page-text-muted);
 }
 
-.footer-location .v-icon {
+.footer-location .app-icon {
   color: var(--primary);
 }
 

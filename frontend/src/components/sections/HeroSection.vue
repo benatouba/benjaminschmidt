@@ -2,6 +2,7 @@
 import { resolveTechBadge } from "@/data/techBadges";
 import { useI18n } from "vue-i18n";
 
+import AppIcon from "@/components/ui/AppIcon.vue";
 import profilePhoto from "@/assets/cv-profile-pro-384.webp";
 import profilePhotoSmall from "@/assets/cv-profile-pro-256.webp";
 
@@ -51,11 +52,11 @@ const coreStackBadges = props.profile.skills.map((skill) => ({
 
         <div class="hero-meta">
           <span class="meta-chip">
-            <v-icon icon="mdi-map-marker-outline" size="15" />
+            <AppIcon icon="mdi-map-marker-outline" size="15" />
             {{ props.profile.location }}
           </span>
           <span class="meta-chip emphasis">
-            <v-icon icon="mdi-briefcase-check-outline" size="15" />
+            <AppIcon icon="mdi-briefcase-check-outline" size="15" />
             {{ t("hero.availability") }}
           </span>
         </div>
@@ -85,7 +86,7 @@ const coreStackBadges = props.profile.skills.map((skill) => ({
             target="_blank"
             rel="noreferrer"
           >
-            <v-icon :icon="link.icon" size="15" />
+            <AppIcon :icon="link.icon" size="15" />
             {{ link.label }}
           </a>
         </div>
@@ -120,7 +121,7 @@ const coreStackBadges = props.profile.skills.map((skill) => ({
             :key="`${item.value}-${item.label}`"
             class="highlight-card"
           >
-            <v-icon :icon="item.icon" size="18" class="highlight-icon" />
+            <AppIcon :icon="item.icon" size="18" class="highlight-icon" />
             <p class="highlight-value">{{ item.value }}</p>
             <p class="highlight-label">{{ item.label }}</p>
           </article>
