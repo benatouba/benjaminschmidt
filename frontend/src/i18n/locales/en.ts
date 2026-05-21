@@ -250,7 +250,7 @@ export const content: SiteContent = {
     location: "Berlin, Germany",
     address: "10589 Berlin-Charlottenburg",
     phone: "Please contact via email",
-    email: "benjamin.schmidt@tu-berlin.de",
+    email: "b.schmidt@alganize.de",
     orcid: "0000-0002-9669-3360",
     summary:
       "I build and lead software systems in environments where the technical context is unusually high. My core strength is turning complex workflows into working products, from Vue and Nuxt frontends through FastAPI, Django and Nuxt backends to automated data pipelines, analytics and visualization layers, storage-heavy systems, Linux administration, and HPC-adjacent hard- and sofware infrastructure. I am also an experienced climate-data and scientific communicator.",
@@ -892,7 +892,7 @@ export const content: SiteContent = {
   contactLinks: [
     {
       label: "Email",
-      href: "mailto:benjamin.schmidt@tu-berlin.de",
+      href: "mailto:b.schmidt@alganize.de",
       icon: "mdi-email-outline",
       sublabel: "Start a hiring conversation",
     },

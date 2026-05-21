@@ -250,7 +250,7 @@ export const content: SiteContent = {
     location: "Berlin, Deutschland",
     address: "10589 Berlin-Charlottenburg",
     phone: "Bitte kontaktieren Sie mich per E-Mail",
-    email: "benjamin.schmidt@tu-berlin.de",
+    email: "b.schmidt@alganize.de",
     orcid: "0000-0002-9669-3360",
     summary:
       "Ich baue und leite Softwaresysteme in Umgebungen mit ungewöhnlich hohem technischem Kontext. Meine Kernstärke ist, komplexe Abläufe in funktionierende Produkte zu übersetzen, von Vue- und Nuxt-Frontends über FastAPI- und Django-Backends bis hin zu automatisierten Datenpipelines, Analyse- und Visualisierungsschichten, speicherlastigen Systemen, Linux-Administration und HPC-naher Infrastruktur. Hinzu kommt viel Erfahrung in der Kommunikation von Klima- und Forschungsdaten.",
@@ -880,7 +880,7 @@ export const content: SiteContent = {
   contactLinks: [
     {
       label: "E-Mail",
-      href: "mailto:benjamin.schmidt@tu-berlin.de",
+      href: "mailto:b.schmidt@alganize.de",
       icon: "mdi-email-outline",
       sublabel: "Gespräch über eine Rolle starten",
     },
