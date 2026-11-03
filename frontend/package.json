@@ -19,7 +19,7 @@
     "@fontsource/source-sans-3": "^5.2.9",
     "@mdi/js": "^7.4.47",
     "vue": "^3.5.32",
-    "vue-i18n": "^11.3.2",
+    "vue-i18n": "^11.4.14",
     "vue-router": "^5.0.4",
     "vuetify": "^4.0.5"
   },
